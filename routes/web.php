@@ -35,6 +35,7 @@ Route::group(['middleware' => 'auth'], function()
 
 // Add Server
     Route::get('/addServer', ['as' => 'addServer', 'uses' => 'ServersController@add']);
+    Route::post('/addServer', ['as' => 'addServer.post', 'uses' => 'ServersController@addPost']);
 
 // Rate server
     Route::get('/server/{id}/vote', ['as' => 'voteServer', 'uses' => 'ServersController@vote']);
@@ -50,7 +51,15 @@ Route::post('/server/{id}/addComment', ['as' => 'serverAddComment', 'uses' => 'S
 // Statistic
 Route::get('/server/{id}/statistic', ['as' => 'serverStat', 'uses' => 'ServersController@serverStat']);
 
-
+// Games
+Route::get('/aion', ['as' => 'aion', 'uses' => 'ServersController@aion']);
+Route::get('/mu', ['as' => 'mu', 'uses' => 'ServersController@mu']);
+Route::get('/rf', ['as' => 'rf', 'uses' => 'ServersController@rf']);
+Route::get('/wow', ['as' => 'wow', 'uses' => 'ServersController@wow']);
+Route::get('/perfect', ['as' => 'perfect', 'uses' => 'ServersController@perfect']);
+Route::get('/jade', ['as' => 'jade', 'uses' => 'ServersController@jade']);
+Route::get('/lineage', ['as' => 'lineage', 'uses' => 'ServersController@lineage']);
+Route::get('/other', ['as' => 'other', 'uses' => 'ServersController@other']);
 
 // 404
 Route::get('404', ['as' => '404', 'uses' => 'ErrorHandlerController@errorCode404']);

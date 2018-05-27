@@ -1,4 +1,9 @@
 $(document).ready(function(){
+
+    $("#check-3").change(function(){
+        return $("#vote_description").toggle()
+    });
+
 	var leftHeight = $('.contentLeft').height();
 	var rightHeight = $('.contentRight').height();
 

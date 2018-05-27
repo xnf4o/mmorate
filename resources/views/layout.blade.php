@@ -14,29 +14,29 @@
 <body>
     <div class="nav-game">
         <div class="content-main">
-            <a href="" class="item-link-game">
+            <a href="{{ route('aion') }}" class="item-link-game">
             <i><img src="/img/elements/ico-1.png" alt=""></i> Aion
         </a>
-            <a href="" class="item-link-game">
+            <a href="{{ route('jade') }}" class="item-link-game">
             <i><img src="/img/elements/ico-2.png" alt=""></i> Jade Dynasty
         </a>
-            {{-- <a href="" class="item-link-game active-game-nav"> --}}
-            <a href="" class="item-link-game">
+             {{--<a href="" class="item-link-game active-game-nav">--}}
+            <a href="{{ route('lineage') }}" class="item-link-game">
             <i><img src="/img/elements/ico-3.png" alt=""></i> Lineage 2
         </a>
-            <a href="" class="item-link-game">
+            <a href="{{ route('mu') }}" class="item-link-game">
             <i><img src="/img/elements/ico-4.png" alt=""></i> Mu Online
         </a>
-            <a href="" class="item-link-game">
+            <a href="{{ route('perfect') }}" class="item-link-game">
             <i><img src="/img/elements/ico-5.png" alt=""></i> Perfect World
         </a>
-            <a href="" class="item-link-game">
+            <a href="{{ route('rf') }}" class="item-link-game">
             <i><img src="/img/elements/ico-6.png" alt=""></i> RF Online
         </a>
-            <a href="" class="item-link-game">
+            <a href="{{ route('wow') }}" class="item-link-game">
             <i><img src="/img/elements/ico-7.png" alt=""></i> World Of Warcraft
         </a>
-            <a href="" class="item-link-game">
+            <a href="#" class="item-link-game">
              Online Games
         </a>
         </div>
@@ -65,7 +65,7 @@
             Панель навигации
         </div>
 {{--            @if(MMORATE\Servers::MyCount() == 0)--}}
-        <a href="" class="itemLkMenu @if(Request::is('addServer')) lkMenuActive @endif">
+        <a href="{{ route('addServer') }}" class="itemLkMenu @if(Request::is('addServer')) lkMenuActive @endif">
             <span class="vnutItemMenu" style="border-top: 0;"><span class="arrMenu">› </span>Добавить сервер</span>
         </a>
         <a href="" class="itemLkMenu @if(Request::is('profile')) lkMenuActive @endif">

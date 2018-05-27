@@ -34,7 +34,8 @@
                             <option>Рейтингу</option>
                         </select>
                     </div>
-                    <h1><i class="ico-title"><img src="../img/lineage/title.png" alt=""></i>Рейтинг игровых серверов Lineage 2</h1>
+                    @if(isset($game)) <h1><i class="ico-title"><img src="../img/elements/{{ $game }}.png" alt="{{ $game }}"></i>Рейтинг игровых серверов {{ $gameTitle }}</h1> @else
+                                        <h1><i class="ico-title"></i>Рейтинг всех игровых серверов</h1> @endif
                     <div class="clear"></div>
                 </div>
             </div>
