@@ -55,15 +55,14 @@
                             <span class="segment-info">Онлайн: <span class="rightText">{{ $server->online }}</span></span>
                             <span class="segment-info">Макс.онлайн: <span class="rightText">{{ $server->max_online }}</span></span>
                             </span>
+                            @if(isset($worlds))
+                            @foreach($worlds as $world)
                             <span class="rateServ">
-                            x1000
-                        </span>
-                            <span class="rateServ">
-                            x1000
-                        </span>
-                            <span class="rateServ">
-                            x1000
-                        </span><br>
+                                x{{ $world->rate }}
+                            </span>
+                            @endforeach
+                            @endif
+                            <br>
                            {{ $server->description }}
                         </p>
                         <div class="clear"></div>

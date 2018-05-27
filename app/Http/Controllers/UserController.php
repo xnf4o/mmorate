@@ -15,14 +15,27 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Страницы профиля
+     */
     public function profile(){
         return view('pages.profile');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Странца смены пароля
+     */
     public function changePassword(){
         return view('pages.changePassword');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * Смена пароля
+     */
     public function changePasswordPost(Request $request){
         $user = Auth::user();
         $data = $request->all();

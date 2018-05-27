@@ -36,6 +36,8 @@ Route::group(['middleware' => 'auth'], function()
 // Add Server
     Route::get('/addServer', ['as' => 'addServer', 'uses' => 'ServersController@add']);
     Route::post('/addServer', ['as' => 'addServer.post', 'uses' => 'ServersController@addPost']);
+    Route::get('/server/{id}/addWorld', ['as' => 'addWorld', 'uses' => 'ServersController@addWorld']);
+    Route::post('/server/{id}/addWorld', ['as' => 'addWorld.post', 'uses' => 'ServersController@addWorldPost']);
 
 // Rate server
     Route::get('/server/{id}/vote', ['as' => 'voteServer', 'uses' => 'ServersController@vote']);

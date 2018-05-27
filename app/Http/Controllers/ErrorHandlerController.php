@@ -6,8 +6,12 @@ use Illuminate\Http\Request;
 
 class ErrorHandlerController extends Controller
 {
-  public function errorCode404()
-  {
-    return view('errors.404');
-  }
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * 404
+     */
+      public function errorCode404()
+      {
+        return view('errors.404');
+      }
 }
