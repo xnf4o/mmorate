@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.site')
 @section('title', 'Голосование за сервер ' . $server->name)
 @section('content')
     <div class="main-container">

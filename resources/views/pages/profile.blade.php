@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.site')
 @section('title', 'Редактирование профиля')
 @section('content')
     <div class="style-bg-content">

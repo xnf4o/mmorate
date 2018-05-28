@@ -18,6 +18,7 @@ class Votes extends Migration
             $table->string('user_id');
             $table->string('server_id');
             $table->string('nickname');
+            $table->string('ip');
             $table->timestamps();
         });
     }

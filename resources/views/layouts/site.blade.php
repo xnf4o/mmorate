@@ -14,26 +14,25 @@
 <body>
     <div class="nav-game">
         <div class="content-main">
-            <a href="{{ route('aion') }}" class="item-link-game">
+            <a href="{{ route('aion') }}" class="item-link-game @if(Request::is('aion')) active-game-nav @endif">
             <i><img src="/img/elements/ico-1.png" alt=""></i> Aion
         </a>
-            <a href="{{ route('jade') }}" class="item-link-game">
+            <a href="{{ route('jade') }}" class="item-link-game @if(Request::is('jade')) active-game-nav @endif">
             <i><img src="/img/elements/ico-2.png" alt=""></i> Jade Dynasty
         </a>
-             {{--<a href="" class="item-link-game active-game-nav">--}}
-            <a href="{{ route('lineage') }}" class="item-link-game">
+            <a href="{{ route('lineage') }}" class="item-link-game @if(Request::is('lineage')) active-game-nav @endif">
             <i><img src="/img/elements/ico-3.png" alt=""></i> Lineage 2
         </a>
-            <a href="{{ route('mu') }}" class="item-link-game">
+            <a href="{{ route('mu') }}" class="item-link-game @if(Request::is('mu')) active-game-nav @endif">
             <i><img src="/img/elements/ico-4.png" alt=""></i> Mu Online
         </a>
-            <a href="{{ route('perfect') }}" class="item-link-game">
+            <a href="{{ route('perfect') }}" class="item-link-game @if(Request::is('perfect')) active-game-nav @endif">
             <i><img src="/img/elements/ico-5.png" alt=""></i> Perfect World
         </a>
-            <a href="{{ route('rf') }}" class="item-link-game">
+            <a href="{{ route('rf') }}" class="item-link-game @if(Request::is('rf')) active-game-nav @endif">
             <i><img src="/img/elements/ico-6.png" alt=""></i> RF Online
         </a>
-            <a href="{{ route('wow') }}" class="item-link-game">
+            <a href="{{ route('wow') }}" class="item-link-game @if(Request::is('wow')) active-game-nav @endif">
             <i><img src="/img/elements/ico-7.png" alt=""></i> World Of Warcraft
         </a>
             <a href="#" class="item-link-game">
@@ -152,6 +151,14 @@
     <div class="segment-rek-sitebar">
         <div class="bg-ramka-sitebar"></div>
         <a href=""><img src="/img/rk/bn234.png" alt=""></a>
+    </div>
+    <div class="bottom-sitebar">
+        <a href=""><img src="img/elements/logo-sitebar.png" alt=""></a>
+        <div class="miniRek">
+            <a href=""></a>
+            <a href=""></a>
+            <a href=""></a>
+        </div>
     </div>
     <div class="widget-block">
         <div class="title-vk">

@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.site')
 @section('title', 'Баннера и кнопки')
 @section('content')
     <div class="news-container">

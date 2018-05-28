@@ -20,6 +20,7 @@ class Worlds extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('rate');
+            $table->string('type');
             $table->string('donate');
             $table->string('onlineUrl');
             $table->string('IpLogin');
