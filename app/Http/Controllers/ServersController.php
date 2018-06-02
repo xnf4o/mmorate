@@ -28,7 +28,7 @@ class ServersController extends Controller
     public function main(){
 //        $allServers = Servers::lineage()->paginate(10);
         $allServers = Servers::paginate(10);
-        return view('main', compact('allServers'));
+        return view('pages.index', compact('allServers'));
     }
 
     /**
@@ -40,7 +40,7 @@ class ServersController extends Controller
         $allServers = Servers::aion()->paginate(10);
         $game = 'aion';
         $gameTitle = 'Aion';
-        return view('main', compact('allServers', 'game', 'gameTitle'));
+        return view('pages.index', compact('allServers', 'game', 'gameTitle'));
     }
 
     /**
@@ -52,7 +52,7 @@ class ServersController extends Controller
         $allServers = Servers::lineage()->paginate(10);
         $game = 'lineage';
         $gameTitle = 'Lineage 2';
-        return view('main', compact('allServers', 'game', 'gameTitle'));
+        return view('pages.index', compact('allServers', 'game', 'gameTitle'));
     }
 
     /**
@@ -64,7 +64,7 @@ class ServersController extends Controller
         $allServers = Servers::wow()->paginate(10);
         $game = 'wow';
         $gameTitle = 'World Of Warcraft';
-        return view('main', compact('allServers', 'game', 'gameTitle'));
+        return view('pages.index', compact('allServers', 'game', 'gameTitle'));
     }
 
     /**
@@ -76,7 +76,7 @@ class ServersController extends Controller
         $allServers = Servers::jade()->paginate(10);
         $game = 'jade';
         $gameTitle = 'Jade Dynasty';
-        return view('main', compact('allServers', 'game', 'gameTitle'));
+        return view('pages.index', compact('allServers', 'game', 'gameTitle'));
     }
 
     /**
@@ -88,7 +88,7 @@ class ServersController extends Controller
         $allServers = Servers::mu()->paginate(10);
         $game = 'mu';
         $gameTitle = 'Mu Online';
-        return view('main', compact('allServers', 'game', 'gameTitle'));
+        return view('pages.index', compact('allServers', 'game', 'gameTitle'));
     }
 
     /**
@@ -100,7 +100,7 @@ class ServersController extends Controller
         $allServers = Servers::rf()->paginate(10);
         $game = 'rf';
         $gameTitle = 'RF Online';
-        return view('main', compact('allServers', 'game', 'gameTitle'));
+        return view('pages.index', compact('allServers', 'game', 'gameTitle'));
     }
 
     /**
@@ -112,7 +112,7 @@ class ServersController extends Controller
         $allServers = Servers::perfect()->paginate(10);
         $game = 'perfect';
         $gameTitle = 'Perfect World';
-        return view('main', compact('allServers', 'game', 'gameTitle'));
+        return view('pages.index', compact('allServers', 'game', 'gameTitle'));
     }
 
     /**
