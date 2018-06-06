@@ -13,16 +13,54 @@ return [
     |
     */
 
-    'menu' => [[
+    'menu' => [
+        [
+            'icon' => 'fa fa-table',
+            'title' => 'Списки серверов',
+            'url' => 'javascript:;',
+            'caret' => true,
+            'sub_menu' => [[
+                'url' => '/admin/servers',
+                'title' => 'Все сервера'
+            ],[
+                'url' => 'javascript:;',
+                'title' => 'Сервера по играм',
+                'sub_menu' => [[
+                    'url' => '/admin/servers/aion',
+                    'title' => 'Aion'
+                ],[
+                    'url' => '/admin/servers/jade',
+                    'title' => 'Jade Dynasty'
+                ],[
+                    'url' => '/admin/servers/lineage',
+                    'title' => 'Lineage 2'
+                ],[
+                    'url' => '/admin/servers/mu',
+                    'title' => 'Mu Online'
+                ],[
+                    'url' => '/admin/servers/perfect',
+                    'title' => 'Perfect World'
+                ],[
+                    'url' => '/admin/servers/rf',
+                    'title' => 'RF Online'
+                ],[
+                    'url' => '/admin/servers/wow',
+                    'title' => 'World Of Warcraft'
+                ],[
+                    'url' => '/admin/servers/other',
+                    'title' => 'Online'
+                ]]
+            ]]
+        ],[
         'icon' => 'fa fa-th-large',
         'title' => 'Dashboard',
         'url' => 'javascript:;',
         'caret' => true,
         'sub_menu' => [[
-            'url' => '/dashboard/v1',
+            'url' => '/admin/dashboard/v1',
             'title' => 'Dashboard v1'
         ],[
-            'url' => '/dashboard/v2',
+            'url' => '/admin/dashboard/v2',
             'title' => 'Dashboard v2'
         ]]
     ],[
@@ -31,20 +69,20 @@ return [
         'url' => 'javascript:;',
         'badge' => '10',
         'sub_menu' => [[
-            'url' => '/email/inbox',
+            'url' => '/admin/email/inbox',
             'title' => 'Inbox'
         ],[
-            'url' => '/email/compose',
+            'url' => '/admin/email/compose',
             'title' => 'Compose'
         ],[
-            'url' => '/email/detail',
+            'url' => '/admin/email/detail',
             'title' => 'Detail'
         ]]
     ],[
         'icon' => 'fab fa-simplybuilt',
         'title' => 'Widgets',
         'label' => 'NEW',
-        'url' => '/widget'
+        'url' => '/admin/widget'
     ],[
         'icon' => 'fa fa-gem',
         'title' => 'UI Elements',
@@ -52,58 +90,58 @@ return [
         'label' => 'NEW',
         'caret' => true,
         'sub_menu' => [[
-            'url' => '/ui/general',
+            'url' => '/admin/ui/general',
             'title' => 'General',
             'highlight' => true
         ],[
-            'url' => '/ui/typography',
+            'url' => '/admin/ui/typography',
             'title' => 'Typography'
         ],[
-            'url' => '/ui/tabs-accordions',
+            'url' => '/admin/ui/tabs-accordions',
             'title' => 'Tabs & Accordions'
         ],[
-            'url' => '/ui/unlimited-nav-tabs',
+            'url' => '/admin/ui/unlimited-nav-tabs',
             'title' => 'Unlimited Nav Tabs'
         ],[
-            'url' => '/ui/modal-notification',
+            'url' => '/admin/ui/modal-notification',
             'title' => 'Modal & Notification',
             'highlight' => true
         ],[
-            'url' => '/ui/widget-boxes',
+            'url' => '/admin/ui/widget-boxes',
             'title' => 'Widget Boxes'
         ],[
-            'url' => '/ui/media-object',
+            'url' => '/admin/ui/media-object',
             'title' => 'Media Object'
         ],[
-            'url' => '/ui/buttons',
+            'url' => '/admin/ui/buttons',
             'title' => 'Buttons',
             'highlight' => true
         ],[
-            'url' => '/ui/icons',
+            'url' => '/admin/ui/icons',
             'title' => 'Icons'
         ],[
-            'url' => '/ui/simple-line-icons',
+            'url' => '/admin/ui/simple-line-icons',
             'title' => 'Simple Line Ioncs'
         ],[
-            'url' => '/ui/ionicons',
+            'url' => '/admin/ui/ionicons',
             'title' => 'Ionicons'
         ],[
-            'url' => '/ui/tree-view',
+            'url' => '/admin/ui/tree-view',
             'title' => 'Tree View'
         ],[
-            'url' => '/ui/language-bar-icon',
+            'url' => '/admin/ui/language-bar-icon',
             'title' => 'Language Bar & Icon'
         ],[
-            'url' => '/ui/social-buttons',
+            'url' => '/admin/ui/social-buttons',
             'title' => 'Social Buttons'
         ],[
-            'url' => '/ui/intro-js',
+            'url' => '/admin/ui/intro-js',
             'title' => 'Intro JS'
         ]]
     ],[
         'img' => '/assets/img/logo/logo-bs4.png',
         'title' => 'Bootstrap 4',
-        'url' => '/bootstrap-4',
+        'url' => '/admin/bootstrap-4',
         'label' => 'NEW'
     ],[
         'icon' => 'fa fa-list-ol',
@@ -112,39 +150,39 @@ return [
         'label' => 'NEW',
         'caret' => true,
         'sub_menu' => [[
-            'url' => '/form/elements',
+            'url' => '/admin/form/elements',
             'title' => 'Form Elements',
             'highlight' => true
         ],[
-            'url' => '/form/plugins',
+            'url' => '/admin/form/plugins',
             'title' => 'Form Plugins',
             'highlight' => true
         ],[
-            'url' => '/form/slider-switcher',
+            'url' => '/admin/form/slider-switcher',
             'title' => 'Form Slider + Switcher'
         ],[
-            'url' => '/form/validation',
+            'url' => '/admin/form/validation',
             'title' => 'Form Validation'
         ],[
-            'url' => '/form/wizards',
+            'url' => '/admin/form/wizards',
             'title' => 'Wizards'
         ],[
-            'url' => '/form/wizards-validation',
+            'url' => '/admin/form/wizards-validation',
             'title' => 'Wizards + Validation'
         ],[
-            'url' => '/form/wysiwyg',
+            'url' => '/admin/form/wysiwyg',
             'title' => 'WYSIWYG'
         ],[
-            'url' => '/form/x-editable',
+            'url' => '/admin/form/x-editable',
             'title' => 'X-Editable'
         ],[
-            'url' => '/form/multiple-file-upload',
+            'url' => '/admin/form/multiple-file-upload',
             'title' => 'Multiple File Upload'
         ],[
-            'url' => '/form/summernote',
+            'url' => '/admin/form/summernote',
             'title' => 'Summernote'
         ],[
-            'url' => '/form/dropzone',
+            'url' => '/admin/form/dropzone',
             'title' => 'Dropzone'
         ]]
     ],[
@@ -153,46 +191,46 @@ return [
         'url' => 'javascript:;',
         'caret' => true,
         'sub_menu' => [[
-            'url' => '/table/basic',
+            'url' => '/admin/table/basic',
             'title' => 'Basic'
         ],[
             'url' => 'javascript:;',
             'title' => 'Managed Tables',
             'sub_menu' => [[
-                'url' => '/table/manage/default',
+                'url' => '/admin/table/manage/default',
                 'title' => 'Default'
             ],[
-                'url' => '/table/manage/autofill',
+                'url' => '/admin/table/manage/autofill',
                 'title' => 'Autofill'
             ],[
-                'url' => '/table/manage/buttons',
+                'url' => '/admin/table/manage/buttons',
                 'title' => 'Buttons'
             ],[
-                'url' => '/table/manage/colreorder',
+                'url' => '/admin/table/manage/colreorder',
                 'title' => 'ColReorder'
             ],[
-                'url' => '/table/manage/fixed-column',
+                'url' => '/admin/table/manage/fixed-column',
                 'title' => 'Fixed Column'
             ],[
-                'url' => '/table/manage/fixed-header',
+                'url' => '/admin/table/manage/fixed-header',
                 'title' => 'Fixed Header'
             ],[
-                'url' => '/table/manage/keytable',
+                'url' => '/admin/table/manage/keytable',
                 'title' => 'KeyTable'
             ],[
-                'url' => '/table/manage/responsive',
+                'url' => '/admin/table/manage/responsive',
                 'title' => 'Responsive'
             ],[
-                'url' => '/table/manage/rowreorder',
+                'url' => '/admin/table/manage/rowreorder',
                 'title' => 'RowReorder'
             ],[
-                'url' => '/table/manage/scroller',
+                'url' => '/admin/table/manage/scroller',
                 'title' => 'Scroller'
             ],[
-                'url' => '/table/manage/select',
+                'url' => '/admin/table/manage/select',
                 'title' => 'Select'
             ],[
-                'url' => '/table/manage/combine',
+                'url' => '/admin/table/manage/combine',
                 'title' => 'Extension Combination'
             ]]
         ]]
@@ -220,10 +258,10 @@ return [
         'url' => 'javascript:;',
         'caret' => true,
         'sub_menu' => [[
-            'url' => '/email-template/system',
+            'url' => '/admin/email-template/system',
             'title' => 'System Template'
         ],[
-            'url' => '/email-template/newsletter',
+            'url' => '/admin/email-template/newsletter',
             'title' => 'Newsletter Template'
         ]]
     ],[
@@ -232,32 +270,32 @@ return [
         'url' => 'javascript:;',
         'caret' => true,
         'sub_menu' => [[
-            'url' => '/chart/flot',
+            'url' => '/admin/chart/flot',
             'title' => 'Flot Chart'
         ],[
-            'url' => '/chart/morris',
+            'url' => '/admin/chart/morris',
             'title' => 'Morris Chart'
         ],[
-            'url' => '/chart/js',
+            'url' => '/admin/chart/js',
             'title' => 'Chart JS'
         ],[
-            'url' => '/chart/d3',
+            'url' => '/admin/chart/d3',
             'title' => 'd3 Chart'
         ]]
     ],[
         'icon' => 'fa fa-calendar',
         'title' => 'Calendar',
-        'url' => '/calendar'
+        'url' => '/admin/calendar'
     ],[
         'icon' => 'fa fa-map',
         'title' => 'Map',
         'url' => 'javascript:;',
         'caret' => true,
         'sub_menu' => [[
-            'url' => '/map/vector',
+            'url' => '/admin/map/vector',
             'title' => 'Vector Map'
         ],[
-            'url' => '/map/google',
+            'url' => '/admin/map/google',
             'title' => 'Google Map'
         ]]
     ],[
@@ -266,10 +304,10 @@ return [
         'url' => 'javascript:;',
         'caret' => true,
         'sub_menu' => [[
-            'url' => '/gallery/v1',
+            'url' => '/admin/gallery/v1',
             'title' => 'Gallery v1'
         ],[
-            'url' => '/gallery/v2',
+            'url' => '/admin/gallery/v2',
             'title' => 'Gallery v2'
         ]]
     ],[
@@ -278,49 +316,49 @@ return [
         'url' => 'javascript:;',
         'caret' => true,
         'sub_menu' => [[
-            'url' => '/page-option/page-blank',
+            'url' => '/admin/page-option/page-blank',
             'title' => 'Blank Page'
         ],[
-            'url' => '/page-option/page-with-footer',
+            'url' => '/admin/page-option/page-with-footer',
             'title' => 'Page with Footer'
         ],[
-            'url' => '/page-option/page-without-sidebar',
+            'url' => '/admin/page-option/page-without-sidebar',
             'title' => 'Page without Sidebar'
         ],[
-            'url' => '/page-option/page-with-right-sidebar',
+            'url' => '/admin/page-option/page-with-right-sidebar',
             'title' => 'Page with Right Sidebar'
         ],[
-            'url' => '/page-option/page-with-minified-sidebar',
+            'url' => '/admin/page-option/page-with-minified-sidebar',
             'title' => 'Page with Minified Sidebar'
         ],[
-            'url' => '/page-option/page-with-two-sidebar',
+            'url' => '/admin/page-option/page-with-two-sidebar',
             'title' => 'Page with Two Sidebar'
         ],[
-            'url' => '/page-option/page-full-height',
+            'url' => '/admin/page-option/page-full-height',
             'title' => 'Full Height Content'
         ],[
-            'url' => '/page-option/page-with-wide-sidebar',
+            'url' => '/admin/page-option/page-with-wide-sidebar',
             'title' => 'Page with Wide Sidebar'
         ],[
-            'url' => '/page-option/page-with-light-sidebar',
+            'url' => '/admin/page-option/page-with-light-sidebar',
             'title' => 'Page with Light Sidebar'
         ],[
-            'url' => '/page-option/page-with-mega-menu',
+            'url' => '/admin/page-option/page-with-mega-menu',
             'title' => 'Page with Mega Menu'
         ],[
-            'url' => '/page-option/page-with-top-menu',
+            'url' => '/admin/page-option/page-with-top-menu',
             'title' => 'Page with Top Menu'
         ],[
-            'url' => '/page-option/page-with-boxed-layout',
+            'url' => '/admin/page-option/page-with-boxed-layout',
             'title' => 'Page with Boxed Layout'
         ],[
-            'url' => '/page-option/page-with-mixed-menu',
+            'url' => '/admin/page-option/page-with-mixed-menu',
             'title' => 'Page with Mixed Menu'
         ],[
-            'url' => '/page-option/boxed-layout-with-mixed-menu',
+            'url' => '/admin/page-option/boxed-layout-with-mixed-menu',
             'title' => 'Boxed Layout with Mixed Menu'
         ],[
-            'url' => '/page-option/page-with-transparent-sidebar',
+            'url' => '/admin/page-option/page-with-transparent-sidebar',
             'title' => 'Page with Transparent Sidebar'
         ]]
     ],[
@@ -329,22 +367,22 @@ return [
         'url' => 'javascript:;',
         'caret' => true,
         'sub_menu' => [[
-            'url' => '/extra/timeline',
+            'url' => '/admin/extra/timeline',
             'title' => 'Timeline'
         ],[
-            'url' => '/extra/coming-soon',
+            'url' => '/admin/extra/coming-soon',
             'title' => 'Coming Soon Page'
         ],[
-            'url' => '/extra/search-result',
+            'url' => '/admin/extra/search-result',
             'title' => 'Search Results'
         ],[
-            'url' => '/extra/invoice',
+            'url' => '/admin/extra/invoice',
             'title' => 'Invoice'
         ],[
-            'url' => '/extra/error-page',
+            'url' => '/admin/extra/error-page',
             'title' => '404 Error Page'
         ],[
-            'url' => '/extra/profile',
+            'url' => '/admin/extra/profile',
             'title' => 'Profile Page'
         ]]
     ],[
@@ -353,16 +391,16 @@ return [
         'url' => 'javascript:;',
         'caret' => true,
         'sub_menu' => [[
-            'url' => '/login/v1',
+            'url' => '/admin/login/v1',
             'title' => 'Login'
         ],[
-            'url' => '/login/v2',
+            'url' => '/admin/login/v2',
             'title' => 'Login v2'
         ],[
-            'url' => '/login/v3',
+            'url' => '/admin/login/v3',
             'title' => 'Login v3'
         ],[
-            'url' => '/register/v3',
+            'url' => '/admin/register/v3',
             'title' => 'Register v3'
         ]]
     ],[
@@ -403,7 +441,7 @@ return [
         'url' => 'javascript:;',
         'caret' => true,
         'sub_menu' => [[
-            'url' => '/helper/css',
+            'url' => '/admin/helper/css',
             'title' => 'Predefined CSS Classes'
         ]]
     ],[

@@ -1,4 +1,4 @@
-@php
+)0@php
 	$sidebarClass = (!empty($sidebarTransparent)) ? 'sidebar-transparent' : '';
 @endphp
 <!-- begin #sidebar -->
@@ -15,8 +15,8 @@
 					</div>
 					<div class="info">
 						<b class="caret pull-right"></b>
-						Sean Ngu
-						<small>Front end developer</small>
+						Панель управления
+						<small>MMORate</small>
 					</div>
 				</a>
 			</li>
@@ -31,7 +31,7 @@
 		<!-- end sidebar user -->
 		<!-- begin sidebar nav -->
 		<ul class="nav">
-			<li class="nav-header">Navigation</li>
+			<li class="nav-header">Навигация</li>
 			@php
 				$currentUrl = '/'. Request::path();
 				

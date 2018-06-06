@@ -52,6 +52,21 @@ Route::prefix('admin')->group(function ()
     Route::get('/', function () {
         return redirect('admin/dashboard/v2');
     });
+    Route::get('/servers', 'AdminController@servers')->name('admin.servers');
+    // Games
+    Route::get('/servers/aion', 'AdminController@aion')->name('admin.servers.aion');
+    Route::get('/servers/jade', 'AdminController@jade')->name('admin.servers.jade');
+    Route::get('/servers/lineage', 'AdminController@lineage')->name('admin.servers.lineage');
+    Route::get('/servers/mu', 'AdminController@mu')->name('admin.servers.mu');
+    Route::get('/servers/perfect', 'AdminController@perfect')->name('admin.servers.perfect');
+    Route::get('/servers/rf', 'AdminController@rf')->name('admin.servers.rf');
+    Route::get('/servers/wow', 'AdminController@wow')->name('admin.servers.wow');
+    // Editers
+    Route::get('/server/{id}/edit', 'AdminController@editServer')->name('admin.server.edit');
+    Route::post('/server/{id}/edit', 'AdminController@editServerPost')->name('admin.server.edit.post');
+    Route::get('/server/{id}/approve', 'AdminController@approveServer')->name('admin.server.approve');
+    Route::get('/server/{id}/delete', 'AdminController@deleteServer')->name('admin.server.delete');
+
     Route::get('/dashboard/v1', function () {
         return view('admin/dashboard-v1');
     });

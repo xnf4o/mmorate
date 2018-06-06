@@ -27,7 +27,7 @@ class ServersController extends Controller
      */
     public function main(){
 //        $allServers = Servers::lineage()->paginate(10);
-        $allServers = Servers::paginate(10);
+        $allServers = Servers::where('status', '1')->paginate(10);
         return view('pages.index', compact('allServers'));
     }
 
@@ -37,7 +37,7 @@ class ServersController extends Controller
      */
     public function aion()
     {
-        $allServers = Servers::aion()->paginate(10);
+        $allServers = Servers::aion()->where('status', '1')->paginate(10);
         $game = 'aion';
         $gameTitle = 'Aion';
         return view('pages.index', compact('allServers', 'game', 'gameTitle'));
@@ -49,7 +49,7 @@ class ServersController extends Controller
      */
     public function lineage()
     {
-        $allServers = Servers::lineage()->paginate(10);
+        $allServers = Servers::lineage()->where('status', '1')->paginate(10);
         $game = 'lineage';
         $gameTitle = 'Lineage 2';
         return view('pages.index', compact('allServers', 'game', 'gameTitle'));
@@ -61,7 +61,7 @@ class ServersController extends Controller
      */
     public function wow()
     {
-        $allServers = Servers::wow()->paginate(10);
+        $allServers = Servers::wow()->where('status', '1')->paginate(10);
         $game = 'wow';
         $gameTitle = 'World Of Warcraft';
         return view('pages.index', compact('allServers', 'game', 'gameTitle'));
@@ -73,7 +73,7 @@ class ServersController extends Controller
      */
     public function jade()
     {
-        $allServers = Servers::jade()->paginate(10);
+        $allServers = Servers::jade()->where('status', '1')->paginate(10);
         $game = 'jade';
         $gameTitle = 'Jade Dynasty';
         return view('pages.index', compact('allServers', 'game', 'gameTitle'));
@@ -85,7 +85,7 @@ class ServersController extends Controller
      */
     public function mu()
     {
-        $allServers = Servers::mu()->paginate(10);
+        $allServers = Servers::mu()->where('status', '1')->paginate(10);
         $game = 'mu';
         $gameTitle = 'Mu Online';
         return view('pages.index', compact('allServers', 'game', 'gameTitle'));
@@ -97,7 +97,7 @@ class ServersController extends Controller
      */
     public function rf()
     {
-        $allServers = Servers::rf()->paginate(10);
+        $allServers = Servers::rf()->where('status', '1')->paginate(10);
         $game = 'rf';
         $gameTitle = 'RF Online';
         return view('pages.index', compact('allServers', 'game', 'gameTitle'));
@@ -109,7 +109,7 @@ class ServersController extends Controller
      */
     public function perfect()
     {
-        $allServers = Servers::perfect()->paginate(10);
+        $allServers = Servers::perfect()->where('status', '1')->paginate(10);
         $game = 'perfect';
         $gameTitle = 'Perfect World';
         return view('pages.index', compact('allServers', 'game', 'gameTitle'));
