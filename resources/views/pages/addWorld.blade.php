@@ -33,12 +33,12 @@
 
                                 <div class="form-group-lk">
                                     <label>Введите название мира:</label>
-                                    <input type="text" class="text-ing-lk" name="name">
+                                    <input type="text" class="text-ing-lk" name="name" value="{{ old('name') }}">
                                 </div>
                                 <div class="form-group-lk">
                                     <span class="reteIcon">X</span>
                                     <label>Введите рейты:</label>
-                                    <input type="text" class="text-ing-lk customInputRate" name="rate">
+                                    <input type="text" class="text-ing-lk customInputRate" name="rate" value="{{ old('rate') }}">
                                 </div>
                                 <div class="block-select-lk">
                                     <label>Выбирите тип мира:</label>
@@ -65,28 +65,28 @@
                                 </div>
                                 <div class="form-group-lk">
                                     <label>Игроков онлайн:</label>
-                                    <input type="text" class="text-ing-lk" name="onlineUrl">
-                                    <span>Введите данные онлайна вручную или укажите ссылку на текстовый файл, например: http://example.com/online.txt</span>
+                                    <input type="text" class="text-ing-lk" name="onlineUrl" value="{{ old('onlineUrl') }}">
+                                    <span>Введите данные онлайна вручную</span>
                                 </div>
                             </div>
                             <div class="clear"></div>
                             <div class="text-area-lk-srv">
                                 <label>Описание мира:</label>
-                                <textarea class="textarea-style-lk" name="description"></textarea>
+                                <textarea class="textarea-style-lk" name="description">{{ old('description') }}</textarea>
                             </div>
                             <div class="leftBlockLk">
 
                                 <div class="form-group-lk">
                                     <label>IP Логин сервера: Порт:</label>
-                                    <input type="text" class="text-ing-lk" name="IpLogin">
+                                    <input type="text" class="text-ing-lk" name="IpLogin" value="{{ old('IpLogin') }}">
                                 </div>
                                 <div class="form-group-lk">
                                     <label>IP Гейм сервера: Порт</label>
-                                    <input type="text" class="text-ing-lk" name="IpGame">
+                                    <input type="text" class="text-ing-lk" name="IpGame" value="{{ old('IpGame') }}">
                                 </div>
                                 <div class="form-group-lk">
                                     <label>Дата создания:</label>
-                                    <input type="text" class="text-ing-lk" name="created">
+                                    <input type="text" class="text-ing-lk" name="created" id="created" data-lang="ru" data-years="50" data-format="DD.MM.YYYY" data-sundayfirst="false" value="{{ old('created') }}">
                                 </div>
                                 <div class="block-select-lk">
                                     <label>Статус:</label>
@@ -290,7 +290,7 @@
                             <div class="clear"></div>
                             <div class="text-area-lk-srv">
                                 <label>Описание модификаций:</label>
-                                <textarea class="textarea-style-lk" name="modDesc"></textarea>
+                                <textarea class="textarea-style-lk" name="modDesc">{{ old('modDesc') }}</textarea>
                             </div>
                             <div class="block-select-lk">
                                 <input type="checkbox" id="check-1" class="lkCheckSucsess" name="clans">
@@ -298,7 +298,7 @@
                             </div>
                             <div class="form-group-lk">
                                 <label>Введите теги:</label>
-                                <input type="text" class="text-ing-lk" name="tags" placeholder="Через запятую">
+                                <input type="text" class="text-ing-lk" name="tags" placeholder="Через запятую" value="{{ old('tags') }}">
                             </div>
                             @if ($errors->any())
                                 @foreach ($errors->all() as $error)

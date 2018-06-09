@@ -5,8 +5,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/libs.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('../css/libs.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('../css/main.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css" />
     <title>MMORATE - @yield('title')</title>
 </head>
@@ -35,7 +35,7 @@
             <a href="{{ route('wow') }}" class="item-link-game @if(Request::is('wow')) active-game-nav @endif">
             <i><img src="/img/elements/ico-7.png" alt=""></i> World Of Warcraft
         </a>
-            <a href="#" class="item-link-game">
+            <a href="{{ route('other') }}" class="item-link-game @if(Request::is('other')) active-game-nav @endif">
              Online Games
         </a>
         </div>
@@ -153,7 +153,7 @@
         <a href=""><img src="/img/rk/bn234.png" alt=""></a>
     </div>
     <div class="bottom-sitebar">
-        <a href=""><img src="img/elements/logo-sitebar.png" alt=""></a>
+        <a href=""><img src="/img/elements/logo-sitebar.png" alt=""></a>
         <div class="miniRek">
             <a href=""></a>
             <a href=""></a>
@@ -221,9 +221,14 @@
         <div class="clear"></div>
     </div>
 </footer>
-<script type="text/javascript" src="../js/libs.min.js"></script>
-<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="../js/common.js"></script>
+    <script type="text/javascript" src="{{ asset('/js/libs.min.js') }}"></script>
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>--}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ion.calendar/2.0.2/js/moment-with-locales.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion.calendar/2.0.2/css/ion.calendar.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ion.calendar/2.0.2/js/ion.calendar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+    <script type="text/javascript" src="{{ asset('/js/jquery-ui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/common.js') }}"></script>
 </body>
 
 </html>

@@ -3,6 +3,7 @@
 namespace MMORATE\Http\Controllers;
 
 use Illuminate\Http\Request;
+use MMORATE\Servers;
 
 class PagesController extends Controller
 {
@@ -64,10 +65,20 @@ class PagesController extends Controller
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Промо страница
+     */
+    public function promo()
+    {
+        return view('pages.promo');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * Баннеры
      */
     public function banners()
     {
-        return view('pages.banners');
+        $servers = Servers::where('user_id', \Auth::id())->get();
+        return view('pages.banners', compact('servers'));
     }
 }

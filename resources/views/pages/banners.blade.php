@@ -34,30 +34,22 @@
                             </p>
                             <div class="gameVibor">
                                 <h3>Выберите профиль для получения баннера:</h3>
+                                @foreach($servers as $i => $s)
+                                    @php
+                                    if ($s->game == 'aion') $s->game = 'Aion';
+                                    if ($s->game == 'lineage') $s->game = 'Lineage 2';
+                                    if ($s->game == 'jade') $s->game = 'Jade Dynasty';
+                                    if ($s->game == 'wow') $s->game = 'World Of Warcraft';
+                                    if ($s->game == 'rf') $s->game = 'RF Online';
+                                    if ($s->game == 'mu') $s->game = 'MU Online';
+                                    if ($s->game == 'perfect') $s->game = 'Perfect World';
+                                    if ($s->game == 'other') $s->game = 'Онлайн игра';
+                                    @endphp
                                 <div class="itemProfil_bn">
-                                    <input type="checkbox" id="check-1" class="lkCheckSucsess" name="">
-                                    <label for="check-1">World Of Warcraft</label>
+                                    <input type="checkbox" id="check-{{ $i }}" class="lkCheckSucsess" name="">
+                                    <label for="check-{{ $i }}">{{ $s->game }}</label>
                                 </div>
-                                <div class="itemProfil_bn">
-                                    <input type="checkbox" id="check-1" class="lkCheckSucsess" name="">
-                                    <label for="check-1">World Of Warcraft</label>
-                                </div>
-                                <div class="itemProfil_bn">
-                                    <input type="checkbox" id="check-1" class="lkCheckSucsess" name="">
-                                    <label for="check-1">World Of Warcraft</label>
-                                </div>
-                                <div class="itemProfil_bn">
-                                    <input type="checkbox" id="check-1" class="lkCheckSucsess" name="">
-                                    <label for="check-1">World Of Warcraft</label>
-                                </div>
-                                <div class="itemProfil_bn">
-                                    <input type="checkbox" id="check-1" class="lkCheckSucsess" name="">
-                                    <label for="check-1">World Of Warcraft</label>
-                                </div>
-                                <div class="itemProfil_bn">
-                                    <input type="checkbox" id="check-1" class="lkCheckSucsess" name="">
-                                    <label for="check-1">World Of Warcraft</label>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                         <div class="clear"></div>

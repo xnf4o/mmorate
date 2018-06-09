@@ -116,6 +116,18 @@ class ServersController extends Controller
     }
 
     /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Страница Perfect World
+     */
+    public function other()
+    {
+        $allServers = Servers::other()->where('status', '1')->paginate(10);
+        $game = 'onl';
+        $gameTitle = 'онлайн игр';
+        return view('pages.index', compact('allServers', 'game', 'gameTitle'));
+    }
+
+    /**
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * Страница сервера
@@ -235,9 +247,11 @@ class ServersController extends Controller
     public function addWorldPost(Request $r){
         $r->validate([
             'description' => 'required|min:80',
-            'onlineUrl'   => 'required|url',
+            'onlineUrl'   => 'required|int',
             'rate'        => 'required|without_spaces'
         ]);
+        $clans = ($r->get('clans')) ? $r->get('clans') : 0;
+        $tags = ($r->get('tags')) ? $r->get('tags') : '';
 
         $world = new Worlds();
         $world->user_id = Auth::user()->id;
@@ -256,8 +270,8 @@ class ServersController extends Controller
         $world->versionNumber = $r->get('versionNumber');
         $world->modification = $r->get('modification');
         $world->modDesc = $r->get('modDesc');
-        $world->clans = $r->get('clans');
-        $world->tags = $r->get('tags');
+        $world->clans = $clans;
+        $world->tags = $tags;
         $world->save();
 
         return redirect()->route('serverPage', $r->get('server_id'));

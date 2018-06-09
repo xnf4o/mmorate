@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="form-group-lk">
                                     <label>Название игрового сервера:</label>
-                                    <input type="text" class="text-ing-lk" name="name" alt="Название игрового сервера">
+                                    <input type="text" class="text-ing-lk" name="name" alt="Название игрового сервера" value="{{ old('name') }}">
                                 </div>
                                 <div class="block-select-lk">
                                     <label>Выбирите страну:</label>
@@ -300,15 +300,15 @@
                                 </div>
                                 <div class="form-group-lk">
                                     <label>Сайт сервера:</label>
-                                    <input type="text" class="text-ing-lk" name="site">
+                                    <input type="text" class="text-ing-lk" name="site" value="{{ old('site') }}">
                                 </div>
                                 <div class="form-group-lk">
                                     <label>Видио трейлер:</label>
-                                    <input type="text" class="text-ing-lk" name="video" placeholder="Ссылка на Youtube">
+                                    <input type="text" class="text-ing-lk" name="video" placeholder="Ссылка на Youtube" value="{{ old('video') }}">
                                 </div>
                                 <div class="form-group-lk">
                                     <label>Введите теги:</label>
-                                    <input type="text" class="text-ing-lk" name="tags" placeholder="Через запятую">
+                                    <input type="text" class="text-ing-lk" name="tags" placeholder="Через запятую" value="{{ old('tags') }}">
                                 </div>
                             </div>
                             <div class="rightBlockLk">
@@ -316,7 +316,7 @@
                             <div class="clear"></div>
                             <div class="text-area-lk">
                                 <label>Описание сервера:</label>
-                                <textarea class="textarea-style-lk" name="description"></textarea>
+                                <textarea class="textarea-style-lk" name="description">{{ old('description') }}</textarea>
                             </div>
                             <p class="line-razdel"></p>
                             <div class="block-select-lk">
@@ -335,7 +335,7 @@
                                         {{--<option>Ник персоанажа</option>--}}
                                     {{--</select>--}}
                                 {{--</div>--}}
-                                <textarea class="textarea-style-lk" name="vote_description"></textarea>
+                                <textarea class="textarea-style-lk" name="vote_description">{{ old('vote_description') }}</textarea>
                             </div>
                             @if ($errors->any())
                                         @foreach ($errors->all() as $error)
