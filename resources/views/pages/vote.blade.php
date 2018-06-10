@@ -41,21 +41,29 @@
                         @csrf
                         <div class="form-group-golos">
                             <label class="title-label-golos">Выберите сервер:</label>
-                            <input type="radio" id="rate-1" class="radio-rate" name="1">
-                            <label for="rate-1">Midltow x100</label>
-                            <input type="radio" id="rate-2" class="radio-rate" name="1">
-                            <label for="rate-2">Midltow x10</label>
-                            <input type="radio" id="rate-3" class="radio-rate" name="1">
-                            <label for="rate-3">Midltow x50</label>
+                            @forelse($rates as $i => $rate)
+                                <input type="radio" id="rate-{{ $i }}" class="radio-rate" name="server">
+                                <label for="rate-{{ $i }}">{{ $rate->name }} x{{ $rate->rate }}</label>
+                                @empty
+                                Нет серверов
+                            @endforelse
                         </div>
                         <div class="form-group-golos">
                             <label class="title-label-golos">Укажите ник своего персоанажа:</label>
-                            <input type="text" class="text-ing-golos" name="nickname">
+                            <input type="text" class="text-ing-golos" name="nickname" value="{{ old('nickname') }}">
+                            @if ($errors->has('nickname'))
+                                <span class="invalid-feedback" style="margin: 0">
+                                    <strong>{{ $errors->first('nickname') }}</strong>
+                                </span>
+                            @endif
                         </div>
                         <div class="capcha-golos">
-                            <img src="/img/bg/capha.png" alt="">
+                            {!! Captcha::display() !!}
                         </div>
-                        <button class="btn-golos-form" type="submit">Голосовать за сервер</button>
+                        @php
+                            $vote = \MMORATE\Votes::where('user_id', Auth::id())->orderBy('created_at', 'DESC')->first();
+                        @endphp
+                        <button class="btn-golos-form" type="submit" @if($vote->created_at->isToday()) disabled @endif>@if($vote->created_at->isToday())Сегодня вы уже голосовали @else Голосовать за сервер@endif</button>
                     </form>
                     <div class="text-info-golos">
                         <p>

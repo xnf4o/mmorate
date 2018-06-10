@@ -22,11 +22,13 @@ Route::group(['domain' => $domain], function () {
     Route::get('/support', 'PagesController@support')->name('support');
     Route::get('/faq', 'PagesController@faq')->name('faq');
     Route::get('/', 'PagesController@promo')->name('main');
+//    Route::get('/', 'ServersController@main')->name('main');
 
     Route::middleware('auth')->group(function ()
     {
 // Profile
         Route::get('/profile', 'UserController@profile')->name('profile');
+        Route::post('/profile/changeAvatar', 'UserController@updateAvatar')->name('updateAvatar');
 
 // Change Password
         Route::get('/password/edit', 'UserController@changePassword')->name('changePassword');
@@ -90,11 +92,12 @@ Route::group(['domain' => 'online.' . $domain], function () {
 
 // Admin
 //
-Route::group(['domain' => 'admin.mmorate.com'], function () {
+Route::group(['domain' => 'admin.mmorate.com', 'middleware' => 'admin'], function () {
+//Route::group(['middleware' => 'admin'], function () {
 //    Route::get('/', 'AdminController@main')->name('admin.main');
-    Route::get('/', function () {
-        return redirect('/dashboard/v2');
-    });
+//    Route::get('/', function () {
+//        return redirect('/dashboard/v2');
+//    });
     Route::get('/servers', 'AdminController@servers')->name('admin.servers');
     // Games
     Route::get('/servers/aion', 'AdminController@aion')->name('admin.servers.aion');

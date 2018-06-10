@@ -48,6 +48,29 @@ var PingModel = function (servers) {
 };
 
 $(document).ready(function(){
+    let out = document.getElementById('timeleft');
+    const fullday = 24*3600e3;
+    const tzdiff = new Date().getTimezoneOffset()*60e3;
+
+    let timer = () => {
+        // До полуночи в UTC
+        // let diff = fullday - Date.now() % fullday;
+
+        // До полуночи в часовом поясе клиента
+        let diff = fullday - (Date.now()-tzdiff) % fullday
+
+        if (diff <= 0) return clearInterval(i); // Конец
+        diff /= 1e3; // мс -> с
+        out.innerText = [
+            diff / 3600 % 24 |0, // hours
+            diff / 60 % 60   |0, // minutes
+            diff / 1 % 60    |0  // seconds
+        ].map(d => d<10?'0'+d:d).join(':');
+    };
+
+    let i = setInterval(timer, 450);
+    timer();
+    $('#file-1').on("change", function(){ $('#updateAvatar').submit(); });
     $('#created').ionDatePicker();
     $("#check-3").change(function(){
         return $("#vote_description").toggle()

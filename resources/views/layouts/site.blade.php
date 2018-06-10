@@ -67,7 +67,7 @@
         <a href="{{ route('addServer') }}" class="itemLkMenu @if(Request::is('addServer')) lkMenuActive @endif">
             <span class="vnutItemMenu" style="border-top: 0;"><span class="arrMenu">› </span>Добавить сервер</span>
         </a>
-        <a href="" class="itemLkMenu @if(Request::is('profile')) lkMenuActive @endif">
+        <a href="{{ route('profile') }}" class="itemLkMenu @if(Request::is('profile')) lkMenuActive @endif">
             <span class="vnutItemMenu"><span class="arrMenu">› </span>Редактировать профиль</span>
         </a>
             {{--@else--}}
@@ -120,7 +120,8 @@
               </span>
           @endif
           <div class="capcha">
-            <img src="/img/bg/capha.png" alt="">
+            {{--<img src="/img/bg/capha.png" alt="">--}}
+              {!! Captcha::display() !!}
           </div>
           <button class="authBtn"></button>
           <a href="{{ route('password.request') }}">Забыли пароль?</a>
@@ -136,12 +137,15 @@
       <form>
         <div class="form-auth">
           <div class="auth-autorize">
-            Добро пожаловать, <span class="user-auth-name">{{ Auth::user()->name }}</span>
+              Добро пожаловать, <span class="user-auth-name"><a href="{{ route('profile') }}">{{ Auth::user()->name }}</a></span>
             <p class="line-user-uath"></p>
             <p>Предыдущий IP адрес: {{ Auth::user()->last_login_ip }}</p>
             <p>Текущий IP адрес: {{ Request::ip() }}</p>
             <p class="line-user-uath"></p>
-            <p>До голосования осталось: <span class="timer-uath"> 24:00:00</span></p>
+              @php
+              $vote = \MMORATE\Votes::where('user_id', Auth::id())->orderBy('created_at', 'DESC')->first();
+              @endphp
+            <p>До голосования осталось: <span class="timer-uath" @if($vote->created_at->isToday()) id="timeleft" @endif>00:00:00</span></p>
             {{--<a href="{{ route('logout') }}" class="out-btn"><i><img src="/img/icon/i-9.png" alt=""></i> Выйти</a>--}}
           </div>
         </div>

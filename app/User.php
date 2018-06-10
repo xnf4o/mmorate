@@ -10,6 +10,10 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $casts = [
+        'is_admin' => 'boolean',
+    ];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -28,6 +32,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * Возвращает кол-во серверов пользователя
+     *
+     * @return mixed
+     */
     public function servers(){
         return Servers::where('user_id', $this->id)->count();
     }

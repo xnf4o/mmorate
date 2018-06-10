@@ -166,7 +166,8 @@ class ServersController extends Controller
      */
     public function vote($id){
         $server = Servers::where('id', $id)->first();
-        return view('pages.vote', compact('server'));
+        $rates = Worlds::where('server_id', $id)->get();
+        return view('pages.vote', compact('server', 'rates'));
     }
 
     /**
@@ -176,6 +177,14 @@ class ServersController extends Controller
      * Добавление голоса
      */
     public function votePost($id, Request $r){
+        $r->validate([
+            'nickname' => 'required',
+//            'g-recaptcha-response' => 'required|captcha'
+        ]);
+
+        $vote = Votes::where('user_id', Auth::id())->orderBy('created_at', 'DESC')->first();
+        if($vote->created_at->isToday()) abort('404');
+
         $votes = new Votes();
         $votes->user_id = Auth::user()->id;
         $votes->server_id = $id;
@@ -184,7 +193,7 @@ class ServersController extends Controller
         $votes->save();
 
         $server = Servers::where('id', $id)->first();
-        $server->rates += 1;
+        $server->votes += 1;
         $server->save();
 
         return view('pages.voteFinish', compact('server'));
