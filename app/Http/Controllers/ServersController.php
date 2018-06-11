@@ -12,9 +12,6 @@ use MMORATE\Worlds;
 
 class ServersController extends Controller
 {
-    //  TODO: Обновление рейтинга
-    protected $allServers;
-    protected $server;
 
 //    Статус сервера:
 //    0 - не проверен
@@ -26,8 +23,7 @@ class ServersController extends Controller
      * Главная страница
      */
     public function main(){
-//        $allServers = Servers::lineage()->paginate(10);
-        $allServers = Servers::where('status', '1')->paginate(10);
+        $allServers = Servers::where('status', '1')->sortable()->paginate(10);
         return view('pages.index', compact('allServers'));
     }
 
@@ -37,9 +33,10 @@ class ServersController extends Controller
      */
     public function aion()
     {
-        $allServers = Servers::aion()->where('status', '1')->paginate(10);
+        $allServers = Servers::aion()->where('status', '1')->sortable()->paginate(10);
         $game = 'aion';
         $gameTitle = 'Aion';
+
         return view('pages.index', compact('allServers', 'game', 'gameTitle'));
     }
 
@@ -49,9 +46,10 @@ class ServersController extends Controller
      */
     public function lineage()
     {
-        $allServers = Servers::lineage()->where('status', '1')->paginate(10);
+        $allServers = Servers::lineage()->where('status', '1')->sortable()->paginate(10);
         $game = 'lineage';
         $gameTitle = 'Lineage 2';
+
         return view('pages.index', compact('allServers', 'game', 'gameTitle'));
     }
 
@@ -61,9 +59,10 @@ class ServersController extends Controller
      */
     public function wow()
     {
-        $allServers = Servers::wow()->where('status', '1')->paginate(10);
+        $allServers = Servers::wow()->where('status', '1')->sortable()->paginate(10);
         $game = 'wow';
         $gameTitle = 'World Of Warcraft';
+
         return view('pages.index', compact('allServers', 'game', 'gameTitle'));
     }
 
@@ -73,9 +72,10 @@ class ServersController extends Controller
      */
     public function jade()
     {
-        $allServers = Servers::jade()->where('status', '1')->paginate(10);
+        $allServers = Servers::jade()->where('status', '1')->sortable()->paginate(10);
         $game = 'jade';
         $gameTitle = 'Jade Dynasty';
+
         return view('pages.index', compact('allServers', 'game', 'gameTitle'));
     }
 
@@ -85,9 +85,10 @@ class ServersController extends Controller
      */
     public function mu()
     {
-        $allServers = Servers::mu()->where('status', '1')->paginate(10);
+        $allServers = Servers::mu()->where('status', '1')->sortable()->paginate(10);
         $game = 'mu';
         $gameTitle = 'Mu Online';
+
         return view('pages.index', compact('allServers', 'game', 'gameTitle'));
     }
 
@@ -97,9 +98,10 @@ class ServersController extends Controller
      */
     public function rf()
     {
-        $allServers = Servers::rf()->where('status', '1')->paginate(10);
+        $allServers = Servers::rf()->where('status', '1')->sortable()->paginate(10);
         $game = 'rf';
         $gameTitle = 'RF Online';
+
         return view('pages.index', compact('allServers', 'game', 'gameTitle'));
     }
 
@@ -109,21 +111,23 @@ class ServersController extends Controller
      */
     public function perfect()
     {
-        $allServers = Servers::perfect()->where('status', '1')->paginate(10);
+        $allServers = Servers::perfect()->where('status', '1')->sortable()->paginate(10);
         $game = 'perfect';
         $gameTitle = 'Perfect World';
+
         return view('pages.index', compact('allServers', 'game', 'gameTitle'));
     }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * Страница Perfect World
+     * Страница онлайн игр
      */
     public function other()
     {
-        $allServers = Servers::other()->where('status', '1')->paginate(10);
+        $allServers = Servers::other()->where('status', '1')->sortable()->paginate(10);
         $game = 'onl';
         $gameTitle = 'онлайн игр';
+
         return view('pages.index', compact('allServers', 'game', 'gameTitle'));
     }
 
@@ -136,6 +140,7 @@ class ServersController extends Controller
         $server = Servers::where('id', $id)->first();
         $comments = Comments::where('server_id', $id)->get();
         $worlds = Worlds::where('server_id', $id)->get();
+
         return view('pages.server', compact('server', 'comments', 'worlds'));
     }
 
@@ -146,17 +151,20 @@ class ServersController extends Controller
      * Добавление комментария
      */
     public function addComment($id, Request $r){
-        $server = Servers::where('id', $id)->first();
-        $server->reviews += 1;
-        $server->save();
         $comment = new Comments();
-        $comment->author = \Auth::user()->name;
+        $comment->author = Auth::user()->name;
         $comment->text = $r->get('text');
         $comment->server_id = $id;
         $comment->rating = $r->get('rating');
         $comment->experience = $r->get('experience');
         $comment->save();
-        return redirect(route('serverPage', $id));
+
+        $server = Servers::where('id', $id)->first();
+        $server->reviews += 1;
+        $server->rating = Comments::where('server_id', $id)->avg('rating');
+        $server->save();
+
+        return redirect()->route('serverPage', $id);
     }
 
     /**
@@ -167,6 +175,7 @@ class ServersController extends Controller
     public function vote($id){
         $server = Servers::where('id', $id)->first();
         $rates = Worlds::where('server_id', $id)->get();
+
         return view('pages.vote', compact('server', 'rates'));
     }
 
@@ -186,7 +195,7 @@ class ServersController extends Controller
         if($vote->created_at->isToday()) abort('404');
 
         $votes = new Votes();
-        $votes->user_id = Auth::user()->id;
+        $votes->user_id = Auth::id();
         $votes->server_id = $id;
         $votes->nickname = $r->get('nickname');
         $votes->ip = $r->ip();
@@ -197,10 +206,6 @@ class ServersController extends Controller
         $server->save();
 
         return view('pages.voteFinish', compact('server'));
-    }
-
-    public function stat($id){
-
     }
 
     /**
@@ -219,13 +224,12 @@ class ServersController extends Controller
     public function addPost(Request $r){
         $r->validate([
             'site' => 'required|url',
-            'name' => 'required|unique:servers',
-            'game' => 'required|not_in:0',
+            'name' => 'required',
             'description' => 'required|min:80',
         ]);
 
         $server = new Servers();
-        $server->user_id = Auth::user()->id;
+        $server->user_id = Auth::id();
         $server->name = $r->get('name');
         $server->game = $r->get('game');
         $server->country = $r->get('country');
@@ -244,7 +248,8 @@ class ServersController extends Controller
      */
     public function addWorld($id){
         $server = Servers::where('id', $id)->first();
-        if ($server->user_id != Auth::user()->id) abort(404); // 404, если добавляет мир не на свой сервер.
+        if ($server->user_id != Auth::id()) abort(404);
+
         return view('pages.addWorld', compact('id', 'server'));
     }
 
@@ -263,7 +268,7 @@ class ServersController extends Controller
         $tags = ($r->get('tags')) ? $r->get('tags') : '';
 
         $world = new Worlds();
-        $world->user_id = Auth::user()->id;
+        $world->user_id = Auth::id();
         $world->name = $r->get('name');
         $world->rate = $r->get('rate');
         $world->server_id = $r->get('server_id');
@@ -286,4 +291,74 @@ class ServersController extends Controller
         return redirect()->route('serverPage', $r->get('server_id'));
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Возврат серверов пользователя для редактирования
+     */
+    public function myServers(){
+       $allServers = Servers::where('user_id', Auth::id())->get();
+
+       return view('pages.myServers', compact('allServers'));
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Страница редактирования сервера
+     */
+    public function edit($id){
+        $server = Servers::where('id', $id)->first();
+        if ($server->user_id != Auth::id()) abort('404');
+
+        return view('pages.editServer', compact('server'));
+    }
+
+
+    /**
+     * @param Request $r
+     * @return \Illuminate\Http\RedirectResponse
+     * Редактирование сервера
+     */
+    public function editPost($id, Request $r){
+        $r->validate([
+            'site' => 'required|url',
+            'name' => 'required',
+            'description' => 'required|min:80',
+        ]);
+
+        $server = Servers::where('id', $id)->first();
+        $server->name = $r->get('name');
+        $server->country = $r->get('country');
+        $server->site = $r->get('site');
+        $server->description = $r->get('description');
+//        $server->status = 0;
+        $server->save();
+
+        return redirect()->route('serverPage', $server->id);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Возврат серверов пользователя для показа статистики
+     */
+    public function myServersStat(){
+        $allServers = Servers::where('user_id', Auth::id())->get();
+
+        return view('pages.myServersStat', compact('allServers'));
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Статистика сервера
+     */
+    public function serverStat($id){
+        $server = Servers::where('id', $id)->first();
+        if ($server->user_id != Auth::id()) abort('404');
+
+        $allServers = Servers::where('user_id', Auth::id())->get();
+        $votes = Votes::where('server_id', $id)->get();
+
+        return view('pages.serverStat', compact('server', 'votes', 'allServers'));
+    }
 }

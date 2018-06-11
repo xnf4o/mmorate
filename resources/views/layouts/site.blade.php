@@ -63,22 +63,21 @@
         <div class="title-menu-lk">
             Панель навигации
         </div>
-{{--            @if(MMORATE\Servers::MyCount() == 0)--}}
+            @if(auth()->user()->is_admin == 1)
+        <a href="{{ route('admin.servers') }}" class="itemLkMenu">
+                <span class="vnutItemMenu" style="border-top: 0;"><span class="arrMenu">› </span>Панель управления</span>
+        </a>
+            @endif
         <a href="{{ route('addServer') }}" class="itemLkMenu @if(Request::is('addServer')) lkMenuActive @endif">
-            <span class="vnutItemMenu" style="border-top: 0;"><span class="arrMenu">› </span>Добавить сервер</span>
+                <span class="vnutItemMenu" style="border-top: 0;"><span class="arrMenu">› </span>Добавить сервер</span>
         </a>
         <a href="{{ route('profile') }}" class="itemLkMenu @if(Request::is('profile')) lkMenuActive @endif">
             <span class="vnutItemMenu"><span class="arrMenu">› </span>Редактировать профиль</span>
         </a>
-            {{--@else--}}
-                {{--<a href="" class="itemLkMenu @if(Request::is('profile')) lkMenuActive @endif">--}}
-                    {{--<span class="vnutItemMenu" style="border-top: 0;"><span class="arrMenu">› </span>Редактировать профиль</span>--}}
-                {{--</a>--}}
-            {{--@endif--}}
-        <a href="" class="itemLkMenu @if(Request::is('editServer')) lkMenuActive @endif">
+        <a href="{{ route('myServers') }}" class="itemLkMenu @if(Request::is('myServers') or Request::is('editServer')) lkMenuActive @endif">
             <span class="vnutItemMenu"><span class="arrMenu">› </span>Редактировать сервер</span>
         </a>
-        <a href="" class="itemLkMenu @if(Request::is('statistic')) lkMenuActive @endif">
+        <a href="{{ route('myServersStat') }}" class="itemLkMenu @if(Request::is('statistic')) lkMenuActive @endif">
             <span class="vnutItemMenu"><span class="arrMenu">› </span>Статистика</span>
         </a>
         <a href="{{ route('changePassword') }}" class="itemLkMenu @if(Request::is('changePasswordPage')) lkMenuActive @endif">

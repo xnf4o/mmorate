@@ -4,9 +4,13 @@ namespace MMORATE;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Kyslik\ColumnSortable\Sortable;
 
 class Servers extends Model
 {
+    use Sortable;
+
+    public $sortable = ['rating', 'name', 'reviews', 'online', 'votes'];
 
     public static function scopeLineage($query){
         return $query->whereGame('lineage')->whereStatus('1');
@@ -43,4 +47,12 @@ class Servers extends Model
     public static function scopeMyCount($query){
         return $query->whereUser_id(Auth::user()->id)->count();
     }
+
+    public function comments(){
+        return $this->belongsTo('MMORATE\Comments');
+    }
+
+//    public static function rating(){
+//        return $this->reviews()->avg('rating');
+//    }
 }

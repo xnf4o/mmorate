@@ -12,7 +12,8 @@
 */
 
 
-$domain = 'mmorate.com';
+//$domain = 'mmorate.com';
+$domain = 'mmo.test';
 // Pages
 Route::group(['domain' => $domain], function () {
     Route::get('/logout', 'PagesController@logout')->name('logout');
@@ -21,8 +22,8 @@ Route::group(['domain' => $domain], function () {
     Route::get('/contacts', 'PagesController@contacts')->name('contacts');
     Route::get('/support', 'PagesController@support')->name('support');
     Route::get('/faq', 'PagesController@faq')->name('faq');
-    Route::get('/', 'PagesController@promo')->name('main');
-//    Route::get('/', 'ServersController@main')->name('main');
+//    Route::get('/', 'PagesController@promo')->name('main');
+    Route::get('/', 'ServersController@main')->name('main');
 
     Route::middleware('auth')->group(function ()
     {
@@ -37,11 +38,16 @@ Route::group(['domain' => $domain], function () {
 //Banners
         Route::get('/banners', 'PagesController@banners')->name('banners');
 
-// Add Server
+// Server
         Route::get('/addServer', 'ServersController@add')->name('addServer');
         Route::post('/addServer', 'ServersController@addPost')->name('addServer.post');
         Route::get('/server/{id}/addWorld', 'ServersController@addWorld')->name('addWorld');
         Route::post('/server/{id}/addWorld', 'ServersController@addWorldPost')->name('addWorld.post');
+        Route::get('/myServers', 'ServersController@myServers')->name('myServers');
+        Route::get('/server/{id}/edit', 'ServersController@edit')->name('editServer');
+        Route::post('/server/{id}/edit', 'ServersController@editPost')->name('editServer.post');
+        Route::get('/myServersStat', 'ServersController@myServersStat')->name('myServersStat');
+        Route::get('/server/{id}/stat', 'ServersController@serverStat')->name('serverStat');
 
 // Rate server
         Route::get('/server/{id}/vote', 'ServersController@vote')->name('voteServer');
@@ -91,13 +97,11 @@ Route::group(['domain' => 'online.' . $domain], function () {
 });
 
 // Admin
-//
-Route::group(['domain' => 'admin.mmorate.com', 'middleware' => 'admin'], function () {
-//Route::group(['middleware' => 'admin'], function () {
+Route::group(['middleware' => 'admin' ,'domain' => 'admin.' . $domain], function () {
 //    Route::get('/', 'AdminController@main')->name('admin.main');
-//    Route::get('/', function () {
-//        return redirect('/dashboard/v2');
-//    });
+    Route::get('/', function () {
+        return redirect('/dashboard/v2');
+    });
     Route::get('/servers', 'AdminController@servers')->name('admin.servers');
     // Games
     Route::get('/servers/aion', 'AdminController@aion')->name('admin.servers.aion');
@@ -107,7 +111,7 @@ Route::group(['domain' => 'admin.mmorate.com', 'middleware' => 'admin'], functio
     Route::get('/servers/perfect', 'AdminController@perfect')->name('admin.servers.perfect');
     Route::get('/servers/rf', 'AdminController@rf')->name('admin.servers.rf');
     Route::get('/servers/wow', 'AdminController@wow')->name('admin.servers.wow');
-    // Editers
+    // Editors
     Route::get('/server/{id}/edit', 'AdminController@editServer')->name('admin.server.edit');
     Route::post('/server/{id}/edit', 'AdminController@editServerPost')->name('admin.server.edit.post');
     Route::get('/server/{id}/approve', 'AdminController@approveServer')->name('admin.server.approve');

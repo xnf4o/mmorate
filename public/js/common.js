@@ -1,83 +1,28 @@
-function ping(ip, callback) {
-
-    if (!this.inUse) {
-        this.status = 'unchecked';
-        this.inUse = true;
-        this.callback = callback;
-        this.ip = ip;
-        var _that = this;
-        this.img = new Image();
-        this.img.onload = function () {
-            _that.inUse = false;
-            _that.callback('responded');
-
-        };
-        this.img.onerror = function (e) {
-            if (_that.inUse) {
-                _that.inUse = false;
-                _that.callback('responded', e);
-            }
-
-        };
-        this.start = new Date().getTime();
-        this.img.src = "http://" + ip;
-        this.timer = setTimeout(function () {
-            if (_that.inUse) {
-                _that.inUse = false;
-                _that.callback('timeout');
-            }
-        }, 1500);
-    }
-}
-var PingModel = function (servers) {
-    var self = this;
-    var myServers = [];
-    ko.utils.arrayForEach(servers, function (location) {
-        myServers.push({
-            name: location,
-            status: ko.observable('unchecked')
-        });
-    });
-    self.servers = ko.observableArray(myServers);
-    ko.utils.arrayForEach(self.servers(), function (s) {
-        s.status('checking');
-        new ping(s.name, function (status, e) {
-            s.status(status);
-        });
-    });
-};
-
 $(document).ready(function(){
     let out = document.getElementById('timeleft');
-    const fullday = 24*3600e3;
-    const tzdiff = new Date().getTimezoneOffset()*60e3;
+    if (out != null){
+        let timer = () => {
+            let diff = 864e5 - (Date.now() - new Date().getTimezoneOffset()*60e3) % 864e5;
+            if (diff <= 0) return clearInterval(i);
+            diff /= 1e3;
+            out.innerText = [
+                diff / 3600 % 24 |0,
+                diff / 60 % 60   |0,
+                diff % 60    |0
+            ].map(d => d < 10 ? '0' + d : d).join(':');
+        };
 
-    let timer = () => {
-        // До полуночи в UTC
-        // let diff = fullday - Date.now() % fullday;
-
-        // До полуночи в часовом поясе клиента
-        let diff = fullday - (Date.now()-tzdiff) % fullday
-
-        if (diff <= 0) return clearInterval(i); // Конец
-        diff /= 1e3; // мс -> с
-        out.innerText = [
-            diff / 3600 % 24 |0, // hours
-            diff / 60 % 60   |0, // minutes
-            diff / 1 % 60    |0  // seconds
-        ].map(d => d<10?'0'+d:d).join(':');
-    };
-
-    let i = setInterval(timer, 450);
-    timer();
+        let i = setInterval(timer, 450);
+        timer();
+    }
     $('#file-1').on("change", function(){ $('#updateAvatar').submit(); });
-    $('#created').ionDatePicker();
+    if(document.getElementById('created') != null) $('#created').ionDatePicker();
     $("#check-3").change(function(){
         return $("#vote_description").toggle()
     });
 
-	var leftHeight = $('.contentLeft').height();
-	var rightHeight = $('.contentRight').height();
+	const leftHeight = $('.contentLeft').height();
+	const rightHeight = $('.contentRight').height();
 
 	if(leftHeight > rightHeight){
 		$('.contentRight').css('min-height',leftHeight +'px');
@@ -86,8 +31,7 @@ $(document).ready(function(){
 	}
 	
 
-	var maxValueBet = 10;
-    var widthLine;
+	const maxValueBet = 10;
     $("#slider").slider({
         value: 0, //Значение, которое будет выставлено слайдеру при загрузке
         min: 0, //Минимально возможное значение на ползунке
@@ -105,126 +49,126 @@ $(document).ready(function(){
         }
     });
 
-    /*График переходов*/
-        var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        var config = {
-            type: 'line',
-            data: {
-                labels: ["January", "February", "March", "April", "May", "June", "July"],
-                datasets: [{
-                    label: "Price",
-                    backgroundColor: "#6f5c4f",
-                    borderColor: "#6f5c4f",
-                    data: [
-                        12,
-                        24,
-                        25,
-                        34,
-                        12,
-                        22,
-                        29
-                    ],
-                    fill: false,
-               
-                    
-                    
-                }]
-            },
-            options: {
-                responsive: true,
-                title:{
-                    display:true,
-                    text:'Переходы за последний месяц'
-                },
-                tooltips: {
-                    mode: 'index',
-                    intersect: false,
-                },
-                hover: {
-                    mode: 'nearest',
-                    intersect: true
-                },
-              
-            }
-        };
-       
-
-      
-        window.onload = function() {
-            var ctx = document.getElementById("graphick").getContext("2d");
-            window.myLine = new Chart(ctx, config);
-        };
-        
-
-
-
-
-       
-
-      /*График голосованй*/
-        
-        var MONTHS2 = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-            var config2 = {
-            type: 'line',
-            data: {
-                labels: ["January", "February", "March", "April", "May", "June", "July"],
-                datasets: [{
-                    label: "Price",
-                    backgroundColor: "#6f5c4f",
-                    borderColor: "#6f5c4f",
-                    data: [
-                        12,
-                        14,
-                        25,
-                        34,
-                        52,
-                        22,
-                        39
-                    ],
-                    fill: false,
-               
-                    
-                    
-                }]
-            },
-            options: {
-                responsive: true,
-                title:{
-                    display:true,
-                    text:'Голосований за последний месяц'
-                },
-                tooltips: {
-                    mode: 'index',
-                    intersect: false,
-                },
-                hover: {
-                    mode: 'nearest',
-                    intersect: true
-                },
-              
-            }
-            };
-            
-            var ctx2 = document.getElementById("graphick2").getContext("2d");
-            window.myLine = new Chart(ctx2, config2);
-            $('#graphick2').hide();
-
-
-
-
-        $('#tabGol').click(function(){
-             $('.itemTabGraphick').removeClass('activeStat');
-            $(this).addClass('activeStat');
-           
-            $('#graphick2').show();
-            $('#graphick').hide();
-        });
-        $('#tabPere').click(function(){
-            $('.itemTabGraphick').removeClass('activeStat');
-            $(this).addClass('activeStat');
-
-            $('#graphick2').hide();
-            $('#graphick').show();
-        });
+    // /*График переходов*/
+    //     const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    //     let config = {
+    //         type: 'line',
+    //         data: {
+    //             labels: ["January", "February", "March", "April", "May", "June", "July"],
+    //             datasets: [{
+    //                 label: "Price",
+    //                 backgroundColor: "#6f5c4f",
+    //                 borderColor: "#6f5c4f",
+    //                 data: [
+    //                     12,
+    //                     24,
+    //                     25,
+    //                     34,
+    //                     12,
+    //                     22,
+    //                     29
+    //                 ],
+    //                 fill: false,
+    //
+    //
+    //
+    //             }]
+    //         },
+    //         options: {
+    //             responsive: true,
+    //             title:{
+    //                 display:true,
+    //                 text:'Переходы за последний месяц'
+    //             },
+    //             tooltips: {
+    //                 mode: 'index',
+    //                 intersect: false,
+    //             },
+    //             hover: {
+    //                 mode: 'nearest',
+    //                 intersect: true
+    //             },
+    //
+    //         }
+    //     };
+    //
+    //
+    //
+    //     window.onload = function() {
+    //         let ctx = document.getElementById("graphick").getContext("2d");
+    //         window.myLine = new Chart(ctx, config);
+    //     };
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //   /*График голосованй*/
+    //
+    //     const MONTHS2 = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    //         let config2 = {
+    //         type: 'line',
+    //         data: {
+    //             labels: ["January", "February", "March", "April", "May", "June", "July"],
+    //             datasets: [{
+    //                 label: "Price",
+    //                 backgroundColor: "#6f5c4f",
+    //                 borderColor: "#6f5c4f",
+    //                 data: [
+    //                     12,
+    //                     14,
+    //                     25,
+    //                     34,
+    //                     52,
+    //                     22,
+    //                     39
+    //                 ],
+    //                 fill: false,
+    //
+    //
+    //
+    //             }]
+    //         },
+    //         options: {
+    //             responsive: true,
+    //             title:{
+    //                 display:true,
+    //                 text:'Голосований за последний месяц'
+    //             },
+    //             tooltips: {
+    //                 mode: 'index',
+    //                 intersect: false,
+    //             },
+    //             hover: {
+    //                 mode: 'nearest',
+    //                 intersect: true
+    //             },
+    //
+    //         }
+    //         };
+    //
+    //         let ctx2 = document.getElementById("graphick2").getContext("2d");
+    //         window.myLine = new Chart(ctx2, config2);
+    //         $('#graphick2').hide();
+    //
+    //
+    //
+    //
+    //     $('#tabGol').click(function(){
+    //          $('.itemTabGraphick').removeClass('activeStat');
+    //         $(this).addClass('activeStat');
+    //
+    //         $('#graphick2').show();
+    //         $('#graphick').hide();
+    //     });
+    //     $('#tabPere').click(function(){
+    //         $('.itemTabGraphick').removeClass('activeStat');
+    //         $(this).addClass('activeStat');
+    //
+    //         $('#graphick2').hide();
+    //         $('#graphick').show();
+    //     });
 
 });

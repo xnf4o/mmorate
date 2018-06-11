@@ -191,6 +191,7 @@ body {
   background: url('../img/bg/leftBg.png') repeat-y;
   z-index: 2;
   padding-left: 11px;
+  min-height: 1925px;
 }
 .contentRight {
   width: 338px;
@@ -2258,4 +2259,14 @@ margin-left: 295px;
   -ms-transform-origin: 0 0;
   -o-transform-origin: 0 0;
   transform-origin: 0 0;
+}
+
+.myServerLink{
+    display: inline-block;
+    cursor: pointer;
+    color: #614c3f;
+    font: 15px CalibriBold;
+    position: relative;
+    margin-top: 15px;
+    margin-bottom: 0 !important;
 }

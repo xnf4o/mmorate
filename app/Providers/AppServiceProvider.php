@@ -4,6 +4,7 @@ namespace MMORATE\Providers;
 
 use Validator;
 use Illuminate\Support\ServiceProvider;
+use URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,7 +18,8 @@ class AppServiceProvider extends ServiceProvider
         Validator::extend('without_spaces', function($attr, $value){
             return preg_match('/^\S*$/u', $value);
         });
-        URL::forceScheme('https');
+        if (env('FORCE_HTTPS', false))
+            URL::forceScheme('https');
     }
 
     /**
