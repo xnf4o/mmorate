@@ -57,10 +57,10 @@
                                 <label>Телефон:</label>
                                 <input type="text" class="text-ing-lk" id="phone" value="{{ auth()->user()->phone }}" @if(auth()->user()->phone_verified == 1) disabled @endif placeholder="Укажите телефон">
                             </div>
-                            <input type="button" value="Сохранить" class="create-server">
                             @if(!auth()->user()->phone)
                                 <a href="#" class="create-server" style="padding: 14px 35px;">Подтвердить телефон</a><br><br><br>
-                                @endif
+                            @endif
+                            <input type="button" value="Сохранить" class="create-server">
                         </div>
                     </form>
                     <form action="{{ route('updateAvatar') }}" method="post" id="updateAvatar" enctype="multipart/form-data">
