@@ -43,6 +43,7 @@
                             <label>Введите новый пароль:</label>
                             <input type="text" class="text-ing-lk" name="pass">
                         </div>
+                        <div class="capcha">{!! Captcha::display() !!}</div>
                         <div class="form-group-lk">
                             <label>Подтвердите новый пароль:</label>
                             <input type="text" class="text-ing-lk" name="pass_confirmation">

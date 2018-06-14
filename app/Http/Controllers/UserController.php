@@ -74,4 +74,16 @@ class UserController extends Controller
         return redirect()->route('profile');
     }
 
+    public function update(Request $r){
+        $user = Auth::user();
+        $user->fname = $r->get('fname');
+        $user->nickname = $r->get('nickname');
+        $user->project = $r->get('project');
+        $user->bday = $r->get('bday');
+//        $user->phone = $r->get('phone');
+        $user->save();
+
+        return redirect()->route('profile');
+    }
+
 }

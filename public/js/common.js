@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $("#phone").mask("+7(999) 999-9999");
+    $("#phone").mask("+7(999) 999-99-99");
     fuckAdBlock.onDetected(function(){
         $('#ad').val('1')
     });
@@ -7,7 +7,8 @@ $(document).ready(function(){
         $('#ad').val('0')
     });
     $('#file-1').on("change", function(){ $('#updateAvatar').submit(); });
-    if(document.getElementById('created') != null) $('#created').ionDatePicker();
+    if(document.getElementById('created') != null) $('#created').ionDatePicker({lang: "ru", sundayFirst: false, years: "80", format: "DD.MM.YYYY"});
+    if(document.getElementById('bday') != null) $('#bday').ionDatePicker({lang: "ru", sundayFirst: false, years: "80", format: "DD.MM.YYYY"});
     $("#check-3").change(function(){
         return $("#vote_description").toggle()
     });

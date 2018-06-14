@@ -47,7 +47,7 @@
                                     @endphp
                                 <div class="itemProfil_bn">
                                     <input type="checkbox" id="check-{{ $i }}" class="lkCheckSucsess" name="">
-                                    <label for="check-{{ $i }}">{{ $s->game }}</label>
+                                    <label for="check-{{ $i }}">{{ $s->name }} ({{ $s->game }})</label>
                                 </div>
                                 @endforeach
                             </div>

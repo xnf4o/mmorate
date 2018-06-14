@@ -30,6 +30,7 @@ Route::group(['domain' => $domain], function () {
 // Profile
         Route::get('/profile', 'UserController@profile')->name('profile');
         Route::post('/profile/changeAvatar', 'UserController@updateAvatar')->name('updateAvatar');
+        Route::post('/profile/edit', 'UserController@edit')->name('profile.edit');
 
 // Change Password
         Route::get('/password/edit', 'UserController@changePassword')->name('changePassword');
