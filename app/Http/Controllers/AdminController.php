@@ -58,6 +58,7 @@ class AdminController extends Controller
         $server->trailer = $r->get('trailer');
         $server->description = $r->get('description');
         $server->tags = $r->get('tags');
+        $server->coefficient = $r->get('coefficient');
         $server->save();
 
         return redirect()->route('admin.servers')->with('message', 'Сервер успешно отредактирован!');

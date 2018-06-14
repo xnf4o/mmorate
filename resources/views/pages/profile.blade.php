@@ -27,16 +27,39 @@
                 </div>
                 <div class="content-lk-block">
                     <form>
+                        @csrf
                         <div class="leftBlockLk">
-
                             <div class="form-group-lk">
-                                <label>Email:</label>
-                                <input type="text" class="text-ing-lk" value="{{ auth()->user()->email }}" disabled>
+                                <label>Имя:</label>
+                                <input type="text" class="text-ing-lk" name="name" value="{{ auth()->user()->name }}" placeholder="Укажите имя">
                             </div>
                             <div class="form-group-lk">
                                 <label>Логин:</label>
                                 <input type="text" class="text-ing-lk" value="{{ auth()->user()->name }}" disabled>
                             </div>
+                            <div class="form-group-lk">
+                                <label>Ник:</label>
+                                <input type="text" class="text-ing-lk" value="{{ auth()->user()->nickname }}" placeholder="Укажите ник">
+                            </div>
+                            <div class="form-group-lk">
+                                <label>Email:</label>
+                                <input type="text" class="text-ing-lk" value="{{ auth()->user()->email }}" disabled>
+                            </div>
+                            <div class="form-group-lk">
+                                <label>Дата рождения:</label>
+                                <input type="text" class="text-ing-lk" value="{{ auth()->user()->bday }}" placeholder="Укажите дату рождения">
+                            </div>
+                            <div class="form-group-lk">
+                                <label>Сайт (проект):</label>
+                                <input type="text" class="text-ing-lk" name="project" value="{{ auth()->user()->project }}">
+                            </div>
+                            <div class="form-group-lk">
+                                <label>Телефон:</label>
+                                <input type="text" class="text-ing-lk" id="phone" value="{{ auth()->user()->phone }}" @if(auth()->user()->phone_verified == 1) disabled @endif placeholder="Укажите телефон">
+                            </div>
+                            @if(auth()->user()->phone_verified != 1)
+                                <a href="#" class="create-server" style="padding: 14px 35px;">Подтвердить телефон</a><br><br><br>
+                                @endif
                             {{--<div class="form-group-lk">--}}
                                 {{--<label>Сайт сервера:</label>--}}
                                 {{--<input type="text" class="text-ing-lk" name="">--}}

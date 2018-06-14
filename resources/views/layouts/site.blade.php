@@ -225,10 +225,15 @@
     </div>
 </footer>
     <script type="text/javascript" src="{{ asset('/js/libs.min.js') }}"></script>
-    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>--}}
+    {{--https://github.com/sitexw/FuckAdBlock--}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuckadblock/3.2.1/fuckadblock.min.js"></script>
+    {{--http://igorescobar.github.io/jQuery-Mask-Plugin/--}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    {{--https://github.com/IonDen/ion.calendar--}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ion.calendar/2.0.2/js/moment-with-locales.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion.calendar/2.0.2/css/ion.calendar.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ion.calendar/2.0.2/js/ion.calendar.min.js"></script>
+    {{--https://github.com/knockout/knockout--}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
     <script type="text/javascript" src="{{ asset('/js/jquery-ui.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/js/common.js') }}"></script>

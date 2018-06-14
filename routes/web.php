@@ -12,8 +12,8 @@
 */
 
 
-//$domain = 'mmorate.com';
-$domain = 'mmo.test';
+$domain = 'mmorate.com';
+//$domain = 'mmo.test';
 // Pages
 Route::group(['domain' => $domain], function () {
     Route::get('/logout', 'PagesController@logout')->name('logout');

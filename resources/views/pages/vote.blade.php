@@ -39,6 +39,7 @@
                     </div>
                     <form action="{{ route('voteServer.post', $server->id) }}" method="post">
                         @csrf
+                        <input type="hidden" name="adBlockIsEnabled" id="ad">
                         <div class="form-group-golos">
                             <label class="title-label-golos">Выберите сервер:</label>
                             @forelse($rates as $i => $rate)

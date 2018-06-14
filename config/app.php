@@ -148,6 +148,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Buzz\LaravelGoogleCaptcha\CaptchaServiceProvider::class,
+        NotificationChannels\SmscRu\SmscRuServiceProvider::class,
 
         /*
          * Package Service Providers...

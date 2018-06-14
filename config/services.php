@@ -35,4 +35,12 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'smscru' => [
+        'login'  => 'mmorate',
+        'secret' => 'Udabwinivcijqu0',
+        'sender' => 'MMORATE'
+    ],
+
+    /// Udabwinivcijqu0
+
 ];

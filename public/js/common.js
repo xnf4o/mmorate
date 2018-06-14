@@ -1,20 +1,11 @@
 $(document).ready(function(){
-    let out = document.getElementById('timeleft');
-    if (out != null){
-        let timer = () => {
-            let diff = 864e5 - (Date.now() - new Date().getTimezoneOffset()*60e3) % 864e5;
-            if (diff <= 0) return clearInterval(i);
-            diff /= 1e3;
-            out.innerText = [
-                diff / 3600 % 24 |0,
-                diff / 60 % 60   |0,
-                diff % 60    |0
-            ].map(d => d < 10 ? '0' + d : d).join(':');
-        };
-
-        let i = setInterval(timer, 450);
-        timer();
-    }
+    $("#phone").mask("+7(999) 999-9999");
+    fuckAdBlock.onDetected(function(){
+        $('#ad').val('1')
+    });
+    fuckAdBlock.onNotDetected(function(){
+        $('#ad').val('0')
+    });
     $('#file-1').on("change", function(){ $('#updateAvatar').submit(); });
     if(document.getElementById('created') != null) $('#created').ionDatePicker();
     $("#check-3").change(function(){

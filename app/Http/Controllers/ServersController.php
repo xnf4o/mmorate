@@ -2,10 +2,11 @@
 
 namespace MMORATE\Http\Controllers;
 
+use Carbon\Carbon;
+use MMORATE\Notifications\smsNotification;
 use MMORATE\Servers;
 use MMORATE\Comments;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use MMORATE\Votes;
 use Illuminate\Support\Facades\Auth;
 use MMORATE\Worlds;
@@ -13,17 +14,18 @@ use MMORATE\Worlds;
 class ServersController extends Controller
 {
 
-//    Статус сервера:
-//    0 - не проверен
-//    1 - проверен и опубликован
-//    2 - удален
+    const COEF = 1;
+    const COEF_IF_OFTEN = 0.5;
+    const COEF_SMS_OR_VIP = 10;
+    const PAGINATE = 10;
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * Главная страница
      */
     public function main(){
-        $allServers = Servers::where('status', '1')->sortable()->paginate(10);
+        $allServers = Servers::where('status', Servers::CONFIRMED)->sortable()->paginate(self::PAGINATE);
+//        \Notification::send(auth()->user(), new smsNotification());
         return view('pages.index', compact('allServers'));
     }
 
@@ -33,7 +35,7 @@ class ServersController extends Controller
      */
     public function aion()
     {
-        $allServers = Servers::aion()->where('status', '1')->sortable()->paginate(10);
+        $allServers = Servers::aion()->where('status', Servers::CONFIRMED)->sortable()->paginate(self::PAGINATE);
         $game = 'aion';
         $gameTitle = 'Aion';
 
@@ -46,7 +48,7 @@ class ServersController extends Controller
      */
     public function lineage()
     {
-        $allServers = Servers::lineage()->where('status', '1')->sortable()->paginate(10);
+        $allServers = Servers::lineage()->where('status', Servers::CONFIRMED)->sortable()->paginate(self::PAGINATE);
         $game = 'lineage';
         $gameTitle = 'Lineage 2';
 
@@ -59,7 +61,7 @@ class ServersController extends Controller
      */
     public function wow()
     {
-        $allServers = Servers::wow()->where('status', '1')->sortable()->paginate(10);
+        $allServers = Servers::wow()->where('status', Servers::CONFIRMED)->sortable()->paginate(self::PAGINATE);
         $game = 'wow';
         $gameTitle = 'World Of Warcraft';
 
@@ -72,7 +74,7 @@ class ServersController extends Controller
      */
     public function jade()
     {
-        $allServers = Servers::jade()->where('status', '1')->sortable()->paginate(10);
+        $allServers = Servers::jade()->where('status', Servers::CONFIRMED)->sortable()->paginate(self::PAGINATE);
         $game = 'jade';
         $gameTitle = 'Jade Dynasty';
 
@@ -85,7 +87,7 @@ class ServersController extends Controller
      */
     public function mu()
     {
-        $allServers = Servers::mu()->where('status', '1')->sortable()->paginate(10);
+        $allServers = Servers::mu()->where('status', Servers::CONFIRMED)->sortable()->paginate(self::PAGINATE);
         $game = 'mu';
         $gameTitle = 'Mu Online';
 
@@ -98,7 +100,7 @@ class ServersController extends Controller
      */
     public function rf()
     {
-        $allServers = Servers::rf()->where('status', '1')->sortable()->paginate(10);
+        $allServers = Servers::rf()->where('status', Servers::CONFIRMED)->sortable()->paginate(self::PAGINATE);
         $game = 'rf';
         $gameTitle = 'RF Online';
 
@@ -111,7 +113,7 @@ class ServersController extends Controller
      */
     public function perfect()
     {
-        $allServers = Servers::perfect()->where('status', '1')->sortable()->paginate(10);
+        $allServers = Servers::perfect()->where('status', Servers::CONFIRMED)->sortable()->paginate(self::PAGINATE);
         $game = 'perfect';
         $gameTitle = 'Perfect World';
 
@@ -124,7 +126,7 @@ class ServersController extends Controller
      */
     public function other()
     {
-        $allServers = Servers::other()->where('status', '1')->sortable()->paginate(10);
+        $allServers = Servers::other()->where('status', Servers::CONFIRMED)->sortable()->paginate(self::PAGINATE);
         $game = 'onl';
         $gameTitle = 'онлайн игр';
 
@@ -194,6 +196,17 @@ class ServersController extends Controller
         $vote = Votes::where('user_id', Auth::id())->orderBy('created_at', 'DESC')->first();
         if($vote->created_at->isToday()) abort('404');
 
+        $voteCoeff = self::COEF;
+        $adBlock = $r->get('adBlockIsEnabled');
+        $vote = Votes::where('server_id', $id)->orderBy('created_at', 'DESC')->first();
+        $server = Servers::where('id', $id)->first();
+        if ($vote->created_at->greaterThan(Carbon::now()->subHour()->toDateTimeString()))
+            $voteCoeff = self::COEF_IF_OFTEN;
+        if ($adBlock == 1)
+            $voteCoeff = self::COEF;
+        if ($server->coefficient != self::COEF)
+            $voteCoeff = $server->coefficient;
+
         $votes = new Votes();
         $votes->user_id = Auth::id();
         $votes->server_id = $id;
@@ -202,7 +215,7 @@ class ServersController extends Controller
         $votes->save();
 
         $server = Servers::where('id', $id)->first();
-        $server->votes += 1;
+        $server->votes += $voteCoeff;
         $server->save();
 
         return view('pages.voteFinish', compact('server'));
@@ -235,7 +248,7 @@ class ServersController extends Controller
         $server->country = $r->get('country');
         $server->site = $r->get('site');
         $server->description = $r->get('description');
-        $server->status = 0;
+        $server->status = Servers::UNCONFIRMED;
         $server->save();
 
         return redirect()->route('addWorld', $server->id);
@@ -331,7 +344,7 @@ class ServersController extends Controller
         $server->country = $r->get('country');
         $server->site = $r->get('site');
         $server->description = $r->get('description');
-//        $server->status = 0;
+//        $server->status = Servers::UNCONFIRMED;
         $server->save();
 
         return redirect()->route('serverPage', $server->id);

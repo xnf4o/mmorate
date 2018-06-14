@@ -69,6 +69,12 @@
                                 <input class="form-control" type="text" id="tags" name="tags" data-parsley-type="digits" placeholder="tags" {{ $server->tags }} />
                             </div>
                         </div>
+                        <div class="form-group row m-b-15">
+                            <label class="col-md-4 col-sm-4 col-form-label" for="coefficient">Коэффициент при голосовании (по умолчанию 1):</label>
+                            <div class="col-md-8 col-sm-8">
+                                <input class="form-control" type="text" id="coefficient" name="coefficient" data-parsley-type="digits" placeholder="..." {{ $server->coefficient }} />
+                            </div>
+                        </div>
                         {{--<div class="form-group row m-b-15">--}}
                             {{--<label class="col-md-4 col-sm-4 col-form-label" for="message">Number :</label>--}}
                             {{--<div class="col-md-8 col-sm-8">--}}

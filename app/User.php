@@ -41,4 +41,14 @@ class User extends Authenticatable
         return Servers::where('user_id', $this->id)->count();
     }
 
+    /**
+     * Возвращает номер пользователя для СМСЦ
+     *
+     * @return mixed
+     */
+    public function routeNotificationForSmscRu()
+    {
+        return $this->phone;
+    }
+
 }
