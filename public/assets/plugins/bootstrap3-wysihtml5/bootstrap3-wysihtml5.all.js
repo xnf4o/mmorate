@@ -122,7 +122,7 @@ var wysihtml5 = {
         return typeof o[p] != UNDEFINED;
     }
 
-    // Creates a convenience function to save verbose repeated calls to tests functions
+    // Creates a convenience function to save verbose repeated calls to smsNotification functions
     function createMultiplePropertyTest(testFunc) {
         return function(o, props) {
             var i = props.length;
@@ -288,7 +288,7 @@ var wysihtml5 = {
         var testRange;
         var implementsDomRange = false, implementsTextRange = false;
 
-        // First, perform basic feature tests
+        // First, perform basic feature smsNotification
 
         if (isHostMethod(document, "createRange")) {
             testRange = document.createRange();
@@ -472,7 +472,7 @@ var wysihtml5 = {
 
     /*----------------------------------------------------------------------------------------------------------------*/
 
-    // Wait for document to load before running tests
+    // Wait for document to load before running smsNotification
 
     var docReady = false;
 
@@ -509,7 +509,7 @@ var wysihtml5 = {
         var UNDEF = "undefined";
         var util = api.util;
 
-        // Perform feature tests
+        // Perform feature smsNotification
         if (!util.areHostMethods(document, ["createDocumentFragment", "createElement", "createTextNode"])) {
             module.fail("document missing a Node creation method");
         }
@@ -538,7 +538,7 @@ var wysihtml5 = {
 
         /*----------------------------------------------------------------------------------------------------------------*/
 
-        // Removed use of indexOf because of a bizarre bug in Opera that is thrown in one of the Acid3 tests. I haven't been
+        // Removed use of indexOf because of a bizarre bug in Opera that is thrown in one of the Acid3 smsNotification. I haven't been
         // able to replicate it outside of the test. The bug is that indexOf returns -1 when called on an Array that
         // contains just the document as a single element and the value searched for is the document.
         var arrayContains = /*Array.prototype.indexOf ?
@@ -2911,10 +2911,10 @@ var wysihtml5 = {
                 typeof testSelection.rangeCount == NUMBER && features.implementsDomRange) {
 
             (function() {
-                // Previously an iframe was used but this caused problems in some circumstances in IE, so tests are
+                // Previously an iframe was used but this caused problems in some circumstances in IE, so smsNotification are
                 // performed on the current document's selection. See issue 109.
 
-                // Note also that if a selection previously existed, it is wiped by these tests. This should usually be fine
+                // Note also that if a selection previously existed, it is wiped by these smsNotification. This should usually be fine
                 // because initialization usually happens when the document loads, but could be a problem for a script that
                 // loads and initializes Rangy later. If anyone complains, code could be added to save and restore the
                 // selection.
@@ -4224,7 +4224,7 @@ wysihtml5.browser = (function() {
   }
 
   return {
-    // Static variable needed, publicly accessible, to be able override it in unit tests
+    // Static variable needed, publicly accessible, to be able override it in unit smsNotification
     USER_AGENT: userAgent,
 
     /**
@@ -6042,7 +6042,7 @@ wysihtml5.dom.parse = (function() {
     newNode = oldNode.ownerDocument.createElement(rule.rename_tag || nodeName);
     _handleAttributes(oldNode, newNode, rule, clearInternals);
     _handleStyles(oldNode, newNode, rule);
-    // tests if type condition is met or node should be removed/unwrapped
+    // smsNotification if type condition is met or node should be removed/unwrapped
     if (rule.one_of_type && !_testTypes(oldNode, currentRules, rule.one_of_type, clearInternals)) {
       return (rule.remove_action && rule.remove_action == "unwrap") ? false : null;
     }

@@ -1,3 +1,6 @@
+function world_click(link) {
+    window.location.href = link;
+}
 $(document).ready(function(){
     $("#phone").mask("+7(999) 999-99-99");
     fuckAdBlock.onDetected(function(){

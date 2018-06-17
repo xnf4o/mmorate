@@ -65,7 +65,7 @@ module.exports = function(grunt) {
 			}
 		},
 		qunit: {
-			// NOTE: these tests are all run by the `test` task below to run against each jQuery version supported
+			// NOTE: these smsNotification are all run by the `test` task below to run against each jQuery version supported
 			all: []
 		},
 		test: {
@@ -166,7 +166,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('build', ['dev', 'concat', 'uglify', 'test:dist']);
 	grunt.registerTask('default', ['dev']);
 
-	grunt.registerTask('test', 'Executes QUnit tests with all supported jQuery versions', function() {
+	grunt.registerTask('test', 'Executes QUnit smsNotification with all supported jQuery versions', function() {
 		var i, l,
 			baseURL = 'http://localhost:' + PORT,
 			versionUrls = [],

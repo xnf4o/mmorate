@@ -1,5 +1,5 @@
 // Creates a new element from the given elementHtml in a sandbox before each
-// tests defined in the tests function. It initializes it as a tags input with
+// smsNotification defined in the smsNotification function. It initializes it as a tags input with
 // the given options.
 function testTagsInput(elementHtml, options, tests) {
   if (typeof options === 'function') {

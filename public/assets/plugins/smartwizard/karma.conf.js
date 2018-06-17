@@ -56,7 +56,7 @@ module.exports = function(config) {
     logLevel: config.LOG_INFO,
 
 
-    // enable / disable watching file and executing tests whenever any file changes
+    // enable / disable watching file and executing smsNotification whenever any file changes
     autoWatch: false,
 
 
@@ -66,7 +66,7 @@ module.exports = function(config) {
 
 
     // Continuous Integration mode
-    // if true, Karma captures browsers, runs the tests and exits
+    // if true, Karma captures browsers, runs the smsNotification and exits
     singleRun: true,
 
     // Concurrency level

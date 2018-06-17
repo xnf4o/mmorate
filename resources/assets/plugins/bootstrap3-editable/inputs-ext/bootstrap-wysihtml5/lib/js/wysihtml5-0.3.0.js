@@ -76,7 +76,7 @@ window['rangy'] = (function() {
         return typeof o[p] != UNDEFINED;
     }
 
-    // Creates a convenience function to save verbose repeated calls to tests functions
+    // Creates a convenience function to save verbose repeated calls to smsNotification functions
     function createMultiplePropertyTest(testFunc) {
         return function(o, props) {
             var i = props.length;
@@ -164,7 +164,7 @@ window['rangy'] = (function() {
         var testRange;
         var implementsDomRange = false, implementsTextRange = false;
 
-        // First, perform basic feature tests
+        // First, perform basic feature smsNotification
 
         if (isHostMethod(document, "createRange")) {
             testRange = document.createRange();
@@ -287,7 +287,7 @@ window['rangy'] = (function() {
 
     /*----------------------------------------------------------------------------------------------------------------*/
 
-    // Wait for document to load before running tests
+    // Wait for document to load before running smsNotification
 
     var docReady = false;
 
@@ -331,7 +331,7 @@ rangy.createModule("DomUtil", function(api, module) {
     var UNDEF = "undefined";
     var util = api.util;
 
-    // Perform feature tests
+    // Perform feature smsNotification
     if (!util.areHostMethods(document, ["createDocumentFragment", "createElement", "createTextNode"])) {
         module.fail("document missing a Node creation method");
     }
@@ -360,7 +360,7 @@ rangy.createModule("DomUtil", function(api, module) {
 
     /*----------------------------------------------------------------------------------------------------------------*/
 
-    // Removed use of indexOf because of a bizarre bug in Opera that is thrown in one of the Acid3 tests. I haven't been
+    // Removed use of indexOf because of a bizarre bug in Opera that is thrown in one of the Acid3 smsNotification. I haven't been
     // able to replicate it outside of the test. The bug is that indexOf returns -1 when called on an Array that
     // contains just the document as a single element and the value searched for is the document.
     var arrayContains = /*Array.prototype.indexOf ?
@@ -3399,7 +3399,7 @@ wysihtml5.browser = (function() {
   }
   
   return {
-    // Static variable needed, publicly accessible, to be able override it in unit tests
+    // Static variable needed, publicly accessible, to be able override it in unit smsNotification
     USER_AGENT: userAgent,
     
     /**

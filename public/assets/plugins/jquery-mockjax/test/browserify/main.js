@@ -19,7 +19,7 @@ function getResource(cb) {
 /* jshint unused:true */
 
 
-// These are just here so that my tests can hit the *same* jQuery instance
+// These are just here so that my smsNotification can hit the *same* jQuery instance
 // that Mockjax is on as well as the `getResource()` function above.
 // You would NOT need this in your own code.
 window.jQuery = jquery;

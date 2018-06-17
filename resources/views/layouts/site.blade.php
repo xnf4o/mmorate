@@ -60,9 +60,10 @@
     </div>
         @else
         <div class="menu-block-lk">
-        <div class="title-menu-lk">
-            Панель навигации
-        </div>
+            <div class="title-menu-lk" onclick="$('.menu-panel-lk').slideToggle();">
+                Панель навигации
+            </div>
+            <div class="menu-panel-lk">
             @if(auth()->user()->is_admin == 1)
         <a href="{{ route('admin.servers') }}" class="itemLkMenu">
                 <span class="vnutItemMenu" style="border-top: 0;"><span class="arrMenu">› </span>Панель управления</span>
@@ -94,6 +95,7 @@
         <a href="{{ route('logout') }}" class="itemLkMenu">
             <span class="vnutItemMenu" style="border-bottom: 0;"><span class="arrMenu">› </span>Выйти</span>
         </a>
+            </div>
     </div>
   @endif
     <div class="segment-rek-sitebar">

@@ -374,4 +374,17 @@ class ServersController extends Controller
 
         return view('pages.serverStat', compact('server', 'votes', 'allServers'));
     }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Страница мира
+     */
+    public function world($servId, $id){
+        $server = Servers::where('id', $servId)->first();
+        if (!Worlds::where('server_id', $server->id)->first()) abort('404');
+        $world = Worlds::where('id', $id)->first();
+
+        return view('pages.world', compact('world', 'server'));
+    }
 }

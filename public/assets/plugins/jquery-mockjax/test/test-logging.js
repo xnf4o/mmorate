@@ -6,7 +6,7 @@
 
 	// Note: currently sinon cannot stub object methods in this manner in IE
 	// See GH issue: https://github.com/sinonjs/sinon/issues/1009
-	// As such, we'll be skipping the logger tests for IE currently
+	// As such, we'll be skipping the logger smsNotification for IE currently
 	if (/MSIE/.test(navigator.userAgent)) {
 		qunit.module('Logging');
 		

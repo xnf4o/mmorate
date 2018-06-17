@@ -109,7 +109,7 @@
   var testName;
 
   if ( Modernizr ) {
-    // if there's a previous Modernzir, check if there are necessary tests
+    // if there's a previous Modernzir, check if there are necessary smsNotification
     for ( testName in tests) {
       if ( !Modernizr.hasOwnProperty( testName ) ) {
         // if test hasn't been run, use addTest to run it
@@ -117,7 +117,7 @@
       }
     }
   } else {
-    // or create new mini Modernizr that just has the 3 tests
+    // or create new mini Modernizr that just has the 3 smsNotification
     Modernizr = window.Modernizr = {
       _version : '1.6ish: miniModernizr for Isotope'
     };
@@ -125,7 +125,7 @@
     var classes = ' ';
     var result;
 
-    // Run through tests
+    // Run through smsNotification
     for ( testName in tests) {
       result = tests[ testName ]();
       Modernizr[ testName ] = result;

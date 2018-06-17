@@ -250,7 +250,7 @@
 
 #qunit-banner.qunit-fail                    { background-color: #EE5757; }
 
-/*** Skipped tests */
+/*** Skipped smsNotification */
 
 #qunit-tests .skipped {
     background-color: #EBECE9;

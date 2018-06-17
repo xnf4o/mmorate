@@ -164,7 +164,7 @@ module.exports = function (grunt) {
         'jshint', 'jscs',
         // build
         'uglify', 'less',
-        // tests
+        // smsNotification
         'env:paris', 'connect', 'jasmine'
     ]);
 

@@ -12,8 +12,8 @@
 */
 
 
-$domain = 'mmorate.com';
-//$domain = 'mmo.test';
+//$domain = 'mmorate.com';
+$domain = 'mmo.test';
 // Pages
 Route::group(['domain' => $domain], function () {
     Route::get('/logout', 'PagesController@logout')->name('logout');
@@ -60,6 +60,7 @@ Route::group(['domain' => $domain], function () {
 
 //Servers
 Route::get('/server/{id}', 'ServersController@server')->name('serverPage');
+Route::get('/server/{servId}/worlds/{id}', 'ServersController@world')->name('worldPage');
 Route::post('/server/{id}/addComment', 'ServersController@addComment')->name('serverAddComment');
 
 // Statistic

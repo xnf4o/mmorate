@@ -3567,7 +3567,7 @@ function updateLocale(name, config) {
         // backwards compat for now: also set the locale
         getSetGlobalLocale(name);
     } else {
-        // pass null for config to unupdate, useful for tests
+        // pass null for config to unupdate, useful for smsNotification
         if (locales[name] != null) {
             if (locales[name].parentLocale != null) {
                 locales[name] = locales[name].parentLocale;
@@ -5625,7 +5625,7 @@ function bubble () {
         months = 0;
     }
 
-    // The following code bubbles up values, see the tests for
+    // The following code bubbles up values, see the smsNotification for
     // examples of what that means.
     data.milliseconds = milliseconds % 1000;
 

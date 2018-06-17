@@ -135,7 +135,7 @@ var Dropzone = function (_Emitter) {
     key: "initClass",
     value: function initClass() {
 
-      // Exposing the emitter class, mainly for tests
+      // Exposing the emitter class, mainly for smsNotification
       this.prototype.Emitter = Emitter;
 
       /*
@@ -3484,7 +3484,7 @@ var contentLoaded = function contentLoaded(win, fn) {
   }
 };
 
-// As a single function to be able to write tests.
+// As a single function to be able to write smsNotification.
 Dropzone._autoDiscoverFunction = function () {
   if (Dropzone.autoDiscover) {
     return Dropzone.discover();

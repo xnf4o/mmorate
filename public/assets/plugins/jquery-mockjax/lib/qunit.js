@@ -97,14 +97,14 @@ QUnit = {};
  * `config` initialized at top of scope
  */
 config = {
-    // The queue of tests to run
+    // The queue of smsNotification to run
     queue: [],
 
     // block until document ready
     blocking: true,
 
-    // by default, run previously failed tests first
-    // very useful in combination with "Hide passed tests" checked
+    // by default, run previously failed smsNotification first
+    // very useful in combination with "Hide passed smsNotification" checked
     reorder: true,
 
     // by default, modify document.title when suite is done
@@ -113,7 +113,7 @@ config = {
     // by default, scroll to top of the page when suite is done
     scrolltop: true,
 
-    // when enabled, all tests must call expect()
+    // when enabled, all smsNotification must call expect()
     requireExpects: false,
 
     // depth up-to which object will be dumped
@@ -124,8 +124,8 @@ config = {
     urlConfig: [
         {
             id: "hidepassed",
-            label: "Hide passed tests",
-            tooltip: "Only show tests and assertions that fail. Stored as query-strings."
+            label: "Hide passed smsNotification",
+            tooltip: "Only show smsNotification and assertions that fail. Stored as query-strings."
         },
         {
             id: "noglobals",
@@ -136,7 +136,7 @@ config = {
         {
             id: "notrycatch",
             label: "No try-catch",
-            tooltip: "Enabling this will run tests outside of a try-catch block. Makes debugging " +
+            tooltip: "Enabling this will run smsNotification outside of a try-catch block. Makes debugging " +
                 "exceptions in IE reasonable. Stored as query-strings."
         }
     ],
@@ -204,7 +204,7 @@ config.modules.push( config.currentModule );
         }
     }
 
-    // Figure out if we're running the tests from a server or not
+    // Figure out if we're running the smsNotification from a server or not
     QUnit.isLocal = location.protocol === "file:";
 
     // Expose the current QUnit version
@@ -215,7 +215,7 @@ config.modules.push( config.currentModule );
 // `QUnit` initialized at top of scope
 extend( QUnit, {
 
-    // call on start of module test to prepend name to all tests
+    // call on start of module test to prepend name to all smsNotification
     module: function( name, testEnvironment ) {
         var currentModule = {
             name: name,
@@ -814,7 +814,7 @@ function Test( settings ) {
 
     if ( settings.skip ) {
 
-        // Skipped tests will fully ignore any sent callback
+        // Skipped smsNotification will fully ignore any sent callback
         this.callback = function() {};
         this.async = false;
         this.expected = 0;
@@ -901,7 +901,7 @@ Test.prototype = {
             // else next test will carry the responsibility
             saveGlobal();
 
-            // Restart the tests if they're blocking
+            // Restart the smsNotification if they're blocking
             if ( config.blocking ) {
                 QUnit.start();
             }
@@ -936,7 +936,7 @@ Test.prototype = {
     hooks: function( handler ) {
         var hooks = [];
 
-        // Hooks are ignored on skipped tests
+        // Hooks are ignored on skipped smsNotification
         if ( this.skip ) {
             return hooks;
         }
@@ -1137,7 +1137,7 @@ Test.prototype = {
             module = QUnit.urlParams.module && QUnit.urlParams.module.toLowerCase(),
             fullName = ( this.module.name + ": " + this.testName ).toLowerCase();
 
-        // Internally-generated tests are always valid
+        // Internally-generated smsNotification are always valid
         if ( this.callback && this.callback.validTest ) {
             return true;
         }
@@ -1170,16 +1170,16 @@ Test.prototype = {
 
 };
 
-// Resets the test setup. Useful for tests that modify the DOM.
+// Resets the test setup. Useful for smsNotification that modify the DOM.
 /*
-DEPRECATED: Use multiple tests instead of resetting inside a test.
+DEPRECATED: Use multiple smsNotification instead of resetting inside a test.
 Use testStart or testDone for custom cleanup.
 This method will throw an error in 2.0, and will be removed in 2.1
 */
 QUnit.reset = function() {
 
     // Return on non-browser environments
-    // This is necessary to not break on node tests
+    // This is necessary to not break on node smsNotification
     if ( typeof window === "undefined" ) {
         return;
     }
@@ -1275,7 +1275,7 @@ QUnit.assert = Assert.prototype = {
         // Backwards compatibility fix.
         // Allows the direct use of global exported assertions and QUnit.assert.*
         // Although, it's use is not recommended as it can leak assertions
-        // to other tests from async tests, because we only get a reference to the current test,
+        // to other smsNotification from async smsNotification, because we only get a reference to the current test,
         // not exactly the test where assertion were intended to be called.
         if ( !currentTest ) {
             throw new Error( "assertion outside test context, in " + sourceFromStacktrace( 2 ) );
@@ -3075,7 +3075,7 @@ QUnit.init = function() {
     config.queue = [];
 
     // Return on non-browser environments
-    // This is necessary to not break on node tests
+    // This is necessary to not break on node smsNotification
     if ( typeof window === "undefined" ) {
         return;
     }
@@ -3087,10 +3087,10 @@ QUnit.init = function() {
             "<h2 id='qunit-banner'></h2>" +
             "<div id='qunit-testrunner-toolbar'></div>" +
             "<h2 id='qunit-userAgent'></h2>" +
-            "<ol id='qunit-tests'></ol>";
+            "<ol id='qunit-smsNotification'></ol>";
     }
 
-    tests = id( "qunit-tests" );
+    tests = id( "qunit-smsNotification" );
     banner = id( "qunit-banner" );
     result = id( "qunit-testresult" );
 
@@ -3319,9 +3319,9 @@ function toolbarChanged() {
     if ( "hidepassed" === field.name && "replaceState" in window.history ) {
         config[ field.name ] = value || false;
         if ( value ) {
-            addClass( id( "qunit-tests" ), "hidepass" );
+            addClass( id( "qunit-smsNotification" ), "hidepass" );
         } else {
-            removeClass( id( "qunit-tests" ), "hidepass" );
+            removeClass( id( "qunit-smsNotification" ), "hidepass" );
         }
 
         // It is not necessary to refresh the whole page
@@ -3493,7 +3493,7 @@ function appendBanner() {
 }
 
 function appendTestResults() {
-    var tests = id( "qunit-tests" ),
+    var tests = id( "qunit-smsNotification" ),
         result = id( "qunit-testresult" );
 
     if ( result ) {
@@ -3550,7 +3550,7 @@ function appendTestsList( modules ) {
 
 function appendTest( name, testId, moduleName ) {
     var title, rerunTrigger, testBlock, assertList,
-        tests = id( "qunit-tests" );
+        tests = id( "qunit-smsNotification" );
 
     if ( !tests ) {
         return;
@@ -3589,7 +3589,7 @@ QUnit.begin(function( details ) {
             "<h2 id='qunit-banner'></h2>" +
             "<div id='qunit-testrunner-toolbar'></div>" +
             "<h2 id='qunit-userAgent'></h2>" +
-            "<ol id='qunit-tests'></ol>";
+            "<ol id='qunit-smsNotification'></ol>";
     }
 
     appendHeader();
@@ -3608,7 +3608,7 @@ QUnit.begin(function( details ) {
 QUnit.done(function( details ) {
     var i, key,
         banner = id( "qunit-banner" ),
-        tests = id( "qunit-tests" ),
+        tests = id( "qunit-smsNotification" ),
         html = [
             "Tests completed in ",
             details.runtime,
@@ -3640,7 +3640,7 @@ QUnit.done(function( details ) {
         ].join( " " );
     }
 
-    // clear own sessionStorage items if all tests passed
+    // clear own sessionStorage items if all smsNotification passed
     if ( config.reorder && defined.sessionStorage && details.failed === 0 ) {
         for ( i = 0; i < sessionStorage.length; i++ ) {
             key = sessionStorage.key( i++ );
@@ -3676,7 +3676,7 @@ QUnit.testStart(function( details ) {
         testBlock.className = "running";
     } else {
 
-        // Report later registered tests
+        // Report later registered smsNotification
         appendTest( details.name, details.testId, details.module );
     }
 
@@ -3758,7 +3758,7 @@ QUnit.log(function( details ) {
 QUnit.testDone(function( details ) {
     var testTitle, time, testItem, assertList,
         good, bad, testCounts, skipped,
-        tests = id( "qunit-tests" );
+        tests = id( "qunit-smsNotification" );
 
     if ( !tests ) {
         return;

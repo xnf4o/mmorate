@@ -1315,14 +1315,14 @@ jQuery.support = (function() {
 	div.setAttribute( "className", "t" );
 	div.innerHTML = "  <link/><table></table><a href='/a'>a</a><input type='checkbox'/>";
 
-	// Support tests won't run in some limited or non-browser environments
+	// Support smsNotification won't run in some limited or non-browser environments
 	all = div.getElementsByTagName("*");
 	a = div.getElementsByTagName("a")[ 0 ];
 	if ( !all || !a || !all.length ) {
 		return {};
 	}
 
-	// First batch of tests
+	// First batch of smsNotification
 	select = document.createElement("select");
 	opt = select.appendChild( document.createElement("option") );
 	input = div.getElementsByTagName("input")[ 0 ];
@@ -1450,7 +1450,7 @@ jQuery.support = (function() {
 	div.cloneNode( true ).style.backgroundClip = "";
 	support.clearCloneStyle = div.style.backgroundClip === "content-box";
 
-	// Run tests that need a body at doc ready
+	// Run smsNotification that need a body at doc ready
 	jQuery(function() {
 		var container, marginDiv, tds,
 			divReset = "padding:0;margin:0;border:0;display:block;box-sizing:content-box;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;",
@@ -4026,7 +4026,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 	document = doc;
 	docElem = doc.documentElement;
 
-	// Support tests
+	// Support smsNotification
 	documentIsXML = isXML( doc );
 
 	// Check if getElementsByTagName("*") returns only elements
@@ -4199,7 +4199,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 
 			// Webkit/Opera - :checked should return selected option elements
 			// http://www.w3.org/TR/2011/REC-css3-selectors-20110929/#checked
-			// IE8 throws error here and will not see later tests
+			// IE8 throws error here and will not see later smsNotification
 			if ( !div.querySelectorAll(":checked").length ) {
 				rbuggyQSA.push(":checked");
 			}
@@ -4215,7 +4215,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 			}
 
 			// FF 3.5 - :enabled/:disabled and hidden elements (hidden elements are still enabled)
-			// IE8 throws error here and will not see later tests
+			// IE8 throws error here and will not see later smsNotification
 			if ( !div.querySelectorAll(":enabled").length ) {
 				rbuggyQSA.push( ":enabled", ":disabled" );
 			}

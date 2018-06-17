@@ -68,6 +68,41 @@
                         <div class="clear"></div>
                     </div>
                 </div>
+                <div class="block-comment content-list-page">
+                    <h4>Игровые миры</h4>
+                    <table class="list-server">
+                        <tbody>
+                        @forelse($worlds as $world)
+                            <tr onclick="world_click('{{ route('worldPage', [$server->id, $world->id]) }}')" style="cursor: pointer">
+                            <td>
+                                {{ $world->name }}
+                            </td>
+                            <td>
+                                x{{ $world->rate }}
+                            </td>
+                            <td>
+                                ~{{ $world->onlineUrl }} чел.
+                            </td>
+                            <td>
+                                n/a uptime
+                            </td>
+                            <td>
+                                v {{ $world->versionNumber }}
+                            </td>
+                            <td>
+                                {{ $world->type }}
+                            </td>
+                            <td>
+                                <i class="lang-server flag-icon flag-icon-{{ $server->country }}"></i>
+                            </td>
+                        </tr>
+                        @empty
+                            <tr>
+                                <td colspan="7" width="100%" style="text-align: center">У сервера нет миров</td>
+                            </tr>
+                            @endforelse
+                        </tbody></table>
+                </div>
                 <div class="block-comment" id="comments">
                     @foreach($comments as $comment)
                         <div class="item-comment">

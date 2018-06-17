@@ -278,7 +278,7 @@
       }
       return support
       // Test element, has to be standard HTML and must not be hidden
-      // for the CSS3 tests using window.getComputedStyle to be applicable:
+      // for the CSS3 smsNotification using window.getComputedStyle to be applicable:
     })(document.createElement('div')),
 
     requestAnimationFrame:

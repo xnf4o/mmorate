@@ -7,7 +7,7 @@
 			qunit.assert.ok(false, 'Error callback executed: ' + xhr.status, xhr.responseText);
 		};
 
-		// Speed up our tests
+		// Speed up our smsNotification
 		$.mockjaxSettings.responseTime = 0;
 		$.mockjaxSettings.logging = false;
 

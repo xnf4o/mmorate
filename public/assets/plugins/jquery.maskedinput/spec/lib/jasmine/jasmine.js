@@ -21,7 +21,7 @@ jasmine.unimplementedMethod_ = function() {
 jasmine.undefined = jasmine.___undefined___;
 
 /**
- * Default interval in milliseconds for event loop yields (e.g. to allow network activity or to refresh the screen with the HTML-based runner). Small values here may result in slow test running. Zero means no updates until all tests have completed.
+ * Default interval in milliseconds for event loop yields (e.g. to allow network activity or to refresh the screen with the HTML-based runner). Small values here may result in slow test running. Zero means no updates until all smsNotification have completed.
  *
  */
 jasmine.DEFAULT_UPDATE_INTERVAL = 250;
@@ -447,7 +447,7 @@ var spyOn = function(obj, methodName) {
 /**
  * Creates a Jasmine spec that will be added to the current suite.
  *
- * // TODO: pending tests
+ * // TODO: pending smsNotification
  *
  * @example
  * it('should be true', function() {
@@ -542,7 +542,7 @@ var afterEach = function(afterEachFunction) {
  *
  * Stores the description and all defined specs in the Jasmine environment as one suite of specs. Variables declared
  * are accessible by calls to beforeEach, it, and afterEach. Describe blocks can be nested, allowing for specialization
- * of setup in some tests.
+ * of setup in some smsNotification.
  *
  * @example
  * // TODO: a simple suite

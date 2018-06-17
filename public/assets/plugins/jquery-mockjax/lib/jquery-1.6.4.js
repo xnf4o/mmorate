@@ -1177,7 +1177,7 @@ jQuery.support = (function() {
         i,
         isSupported;
 
-    // Preliminary tests
+    // Preliminary smsNotification
     div.setAttribute("className", "t");
     div.innerHTML = "   <link/><table></table><a href='/a' style='top:1px;float:left;opacity:.55;'>a</a><input type='checkbox'/>";
 
@@ -1190,7 +1190,7 @@ jQuery.support = (function() {
         return {};
     }
 
-    // First batch of supports tests
+    // First batch of supports smsNotification
     select = document.createElement( "select" );
     opt = select.appendChild( document.createElement("option") );
     input = div.getElementsByTagName( "input" )[ 0 ];

@@ -5,7 +5,7 @@ module.exports = function(grunt){
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         qunit: {
-            all: ['tests/tests.html']
+            all: ['smsNotification/smsNotification.html']
         },
         jshint: {
             options: {
@@ -87,7 +87,7 @@ module.exports = function(grunt){
     });
 
     grunt.registerTask('lint', 'Lint all js files with jshint and jscs', ['jshint', 'jscs']);
-    grunt.registerTask('test', 'Lint files and run unit tests', ['lint', 'qunit']);
+    grunt.registerTask('test', 'Lint files and run unit smsNotification', ['lint', 'qunit']);
     grunt.registerTask('finish', 'Prepares repo for commit [test, less:repo, screenshots]', ['test', 'less:repo', 'screenshots']);
     grunt.registerTask('dist', 'Builds minified files', ['less:css', 'less:standalone', 'cssmin', 'uglify']);
 
