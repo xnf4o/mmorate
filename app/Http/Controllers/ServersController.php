@@ -237,7 +237,7 @@ class ServersController extends Controller
             'site' => 'required|url',
             'name' => 'required',
             'description' => 'required|min:80',
-            'аdescription' => 'required|min:80',
+            'fdescription' => 'required|min:80',
         ]);
 
         $server = new Servers();
