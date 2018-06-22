@@ -43,7 +43,7 @@
                             </div>
                             <div class="form-group-lk">
                                 <label>Email:</label>
-                                <input type="text" class="text-ing-lk" value="{{ auth()->user()->email }}" disabled>
+                                <input type="text" class="text-ing-lk" value="{{ auth()->user()->email }} - @if(auth()->user()->email_confirmed == 1)Подтверждено @else Не подтверждено @endif" disabled>
                             </div>
                             <div class="form-group-lk">
                                 <label>Дата рождения:</label>
@@ -55,11 +55,8 @@
                             </div>
                             <div class="form-group-lk">
                                 <label>Телефон:</label>
-                                <input type="text" class="text-ing-lk" id="phone" value="{{ auth()->user()->phone }}" @if(auth()->user()->phone_verified == 1) disabled @endif placeholder="Укажите телефон">
+                                <input type="text" class="text-ing-lk" value="{{ auth()->user()->phone }} - @if(auth()->user()->phone_confirmed == 1)Подтверждено @else Не подтверждено @endif" placeholder="Укажите телефон" disabled>
                             </div>
-                            @if(!auth()->user()->phone)
-                                <a href="#" class="create-server" style="padding: 14px 35px;">Подтвердить телефон</a><br><br><br>
-                            @endif
                             <input type="button" value="Сохранить" class="create-server">
                         </div>
                     </form>
@@ -72,6 +69,7 @@
                                 <input type="file" class="btn-load-photo" id="file-1" name="avatar" accept="image/jpeg,image/png">
                                 <label for="file-1">Выбрать изображения</label>
                                 <a href="{{ route('changePassword') }}" style="display:block;width:100%;background:url(../img/elements/btn-load.png) no-repeat top center;color:#614c3f;font:18px CalibriBold;text-align:center;line-height:63px;margin-top:25px;cursor:pointer;height:100%;">Сменить пароль</a>
+                                @if (auth()->user()->phone_confirmed == 0 or auth()->user()->email_confirmed == 0)<a href="{{ route('confirmation') }}" style="display:block;width:100%;background:url(../img/elements/btn-load.png) no-repeat top center;color:#614c3f;font:18px CalibriBold;text-align:center;line-height:63px;margin-top:25px;cursor:pointer;height:100%;">Подтвердить аккаунт</a> @endif
                                 <a href="#" style="display:block;width:100%;background:url(../img/elements/btn-load.png) no-repeat top center;color:#614c3f;font:18px CalibriBold;text-align:center;line-height:63px;margin-top:25px;cursor:pointer;height:100%;">Удалить профиль</a>
                             </div>
                         </div>

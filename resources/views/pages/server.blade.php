@@ -33,7 +33,6 @@
                         <a href="{{ route('voteServer',$server->id) }}" class="btn-golos"><i><img src="../img/icon/i-1.png" alt=""></i> Проголосовать</a>
                         <div class="number-top-server goldNumber">
                             {{ $server->id }}
-                             {{--TODO: Рейтинг сервера--}}
                         </div>
                         <p class="name-server">{{ $server->name }} <a class="link-server"><i class="lang-server flag-icon flag-icon-{{ $server->country }}"></i> {{ $server->site }}</a></p>
                         <div class="clear"></div>
@@ -66,6 +65,21 @@
                            {{ $server->description }}
                         </p>
                         <div class="clear"></div>
+                        <div class="segment-rek-item" style="margin: 20px 0;">
+                            <div class="bg-ramka-item"></div>
+                        </div>
+                        <div class="opis-block">
+                            <h6>Полное описание сервера</h6>
+                            <p>{{ $server->fdescription }}</p>
+                            <span class="linkStat-and-comment">
+                                <a href="">
+                                <i><img src="/img/icon/i-2.png"></i> Статистика
+                            </a>
+                                <a href="">
+                                <i><img src="/img/icon/i-3.png"></i> {{ $server->reviews }} Комментариев
+                            </a>
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div class="block-comment content-list-page">

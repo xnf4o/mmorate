@@ -41,11 +41,9 @@
                       @csrf
                         <div class="form-group-reg">
                             <label class="title-label-reg">Введите email:</label>
-                            <input type="text" class="text-ing-reg" name="email" value="{{ old('email') }}">
+                            <input type="text" class="text-ing-reg {{ $errors->has('email') ? 'error-input' : '' }}" name="email" value="{{ old('email') }}">
                             @if ($errors->has('email'))
-                                <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('email') }}</strong>
-                                </span>
+                                <span class="error-message" style="margin-left: 37%;display: block;">Не удалось найти пользователя с указанным электронным адресом.</span>
                             @endif
                         </div>
 

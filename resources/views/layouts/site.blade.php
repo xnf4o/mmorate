@@ -77,11 +77,11 @@
         </a>
             @if(MMORATE\Servers::MyCount() != 0)
         <a href="{{ route('myServers') }}" class="itemLkMenu @if(Request::is('myServers') or Request::is('editServer')) lkMenuActive @endif">
-            <span class="vnutItemMenu"><span class="arrMenu">› </span>Редактировать серверы</span>
+            <span class="vnutItemMenu"><span class="arrMenu">› </span>Мои серверы</span>
         </a>
-        <a href="{{ route('myServersStat') }}" class="itemLkMenu @if(Request::is('statistic')) lkMenuActive @endif">
-            <span class="vnutItemMenu"><span class="arrMenu">› </span>Статистика</span>
-        </a>
+        {{--<a href="{{ route('myServersStat') }}" class="itemLkMenu @if(Request::is('statistic')) lkMenuActive @endif">--}}
+            {{--<span class="vnutItemMenu"><span class="arrMenu">› </span>Статистика</span>--}}
+        {{--</a>--}}
             @endif
             <a href="{{ route('changePassword') }}" class="itemLkMenu @if(Request::is('changePasswordPage')) lkMenuActive @endif">
             <span class="vnutItemMenu"><span class="arrMenu">› </span>Сменить пароль</span>

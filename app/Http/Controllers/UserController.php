@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\ViewErrorBag;
+use MMORATE\Notifications\smsNotification;
 use Image;
+use Mail;
+use MMORATE\User;
 
 class UserController extends Controller
 {
@@ -74,6 +77,11 @@ class UserController extends Controller
         return redirect()->route('profile');
     }
 
+    /**
+     * @param Request $r
+     * @return \Illuminate\Http\RedirectResponse
+     * Функция сохранения отредактированных данных пользователя
+     */
     public function update(Request $r){
         $user = Auth::user();
         $user->fname = $r->get('fname');
@@ -86,4 +94,72 @@ class UserController extends Controller
         return redirect()->route('profile');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     * Страница подтверждения почты и телефона
+     */
+    public function confirmation(){
+        if (Auth::user()->phone_confirmed == 0 or Auth::user()->email_confirmed == 0)
+            return view('pages.confirmation');
+        return redirect()->route('profile');
+    }
+
+    /**
+     * @param Request $r
+     * @return \Illuminate\Http\JsonResponse
+     * Функция отправки письма на почту
+     */
+    public function sendEmailCode(Request $r){
+        $user = Auth::user();
+        if ($user->email != $r->get('email')) $user->email = $r->get('email');
+        $user->email_code = rand(00000,99999);
+        $user->save();
+
+        Mail::send('emails.code', ['user' => $user], function ($m) use ($user) {
+            $m->from(env('MAIL_USERNAME'), 'MMORATE');
+            $m->to($user->email, $user->name)->subject('Код подтверждения');
+        });
+        return response()->json(['success' => 'true']);
+    }
+
+    /**
+     * @param Request $r
+     * @return \Illuminate\Http\JsonResponse
+     * Функция сверения и подтверждения кода из почты
+     */
+    public function verifyEmail(Request $r){
+        $user = User::where('email_code', $r->get('code'))->first();
+        if (!$user) return response()->json(['error' => 'true'], 404);
+        $user->email_confirmed = 1;
+        $user->save();
+        return response()->json(['success' => 'true']);
+    }
+
+    /**
+     * @param Request $r
+     * @return \Illuminate\Http\JsonResponse
+     * Функция отправки смс
+     */
+    public function sendSmsCode(Request $r){
+        $user = Auth::user();
+        if ($user->phone != $r->get('phone')){
+            $user->phone = $r->get('phone');
+            $user->save();
+        }
+        \Notification::send($user, new smsNotification());
+        return response()->json(['success' => 'true']);
+    }
+
+    /**
+     * @param Request $r
+     * @return \Illuminate\Http\JsonResponse
+     * Функция сверения и подтверждения кода из смс
+     */
+    public function verifySms(Request $r){
+        $user = User::where('phone_code', $r->get('code'))->first();
+        if (!$user) return response()->json(['error' => 'true'], 404);
+        $user->phone_confirmed = 1;
+        $user->save();
+        return response()->json(['success' => 'true']);
+    }
 }

@@ -2,6 +2,112 @@ function world_click(link) {
     window.location.href = link;
 }
 $(document).ready(function(){
+    // Отправка почты
+    $('#sendEmBtn').on('click', function (e) {
+        e.preventDefault();
+        const email = $('#mail').val();
+        $.ajax({
+            type: "POST",
+            url: '/profile/sendEmailCode',
+            data: {email: email},
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function() {
+                $('#form-1').hide();
+                $('#mes-1').show();
+            }
+        });
+    });
+    // Подтверждение почты
+    $('#accEmBtn').on('click', function (e) {
+        e.preventDefault();
+        const code = $('#code').val();
+        if (code == null || code == ''){
+            $('#code').addClass('error-input');
+            setTimeout(function () {
+                $('#code').removeClass('error-input');
+            }, 1000);
+            return false;
+        }
+        $.ajax({
+            type: "POST",
+            url: '/profile/verifyEmail',
+            data: {code: code},
+            dataType: 'json',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function() {
+                $('#form-3').hide();
+                $('#mes-3').show();
+                setTimeout(function () {
+                    $('#emblck').html('');
+                }, 3000);
+            },
+            error: function (request, status, error) {
+                $('#code').addClass('error-input');
+                setTimeout(function () {
+                    $('#code').removeClass('error-input');
+                }, 1000);
+            }
+        });
+    });
+
+
+    // Отправка sms
+    $('#sendSmsBtn').on('click', function (e) {
+        e.preventDefault();
+        const phone = $('#phone').val();
+        $.ajax({
+            type: "POST",
+            url: '/profile/sendSmsCode',
+            data: {phone: phone},
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function() {
+                $('#form-2').hide();
+                $('#mes-2').show();
+            }
+        });
+    });
+    // Подтверждение sms
+    $('#accSmsBtn').on('click', function (e) {
+        e.preventDefault();
+        const code = $('#smsCode').val();
+        if (code == null || code == ''){
+            $('#smsCode').addClass('error-input');
+            setTimeout(function () {
+                $('#smsCode').removeClass('error-input');
+            }, 1000);
+            return false;
+        }
+        $.ajax({
+            type: "POST",
+            url: '/profile/verifySms',
+            data: {code: code},
+            dataType: 'json',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function() {
+                $('#form-4').hide();
+                $('#mes-4').show();
+                setTimeout(function () {
+                    $('#phnblck').html('');
+                }, 3000);
+            },
+            error: function (request, status, error) {
+                $('#smsCode').addClass('error-input');
+                setTimeout(function () {
+                    $('#smsCode').removeClass('error-input');
+                }, 1000);
+            }
+        });
+    });
+
+    
     $("#phone").mask("+7(999) 999-99-99");
     fuckAdBlock.onDetected(function(){
         $('#ad').val('1')

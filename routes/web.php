@@ -31,6 +31,11 @@ Route::group(['domain' => $domain], function () {
         Route::get('/profile', 'UserController@profile')->name('profile');
         Route::post('/profile/changeAvatar', 'UserController@updateAvatar')->name('updateAvatar');
         Route::post('/profile/edit', 'UserController@edit')->name('profile.edit');
+        Route::get('/profile/confirmation', 'UserController@confirmation')->name('confirmation');
+        Route::post('/profile/sendEmailCode', 'UserController@sendEmailCode')->name('sendEmailCode');
+        Route::post('/profile/verifyEmail', 'UserController@verifyEmail')->name('verifyEmail');
+        Route::post('/profile/sendSmsCode', 'UserController@sendSmsCode')->name('sendSmsCode');
+        Route::post('/profile/verifySms', 'UserController@verifySms')->name('verifySms');
 
 // Change Password
         Route::get('/password/edit', 'UserController@changePassword')->name('changePassword');

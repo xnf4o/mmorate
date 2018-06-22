@@ -32,7 +32,7 @@
                                 <div class="block-select-lk">
                                     <label>Выбирите игру:</label>
                                     <div class="item-select-lk">
-                                        <select name="game">
+                                        <select name="game" {{ $errors->has('game') ? 'error-input' : '' }}>
                                             <option value="0">-- Выберите игру --</option>
                                             <option value="aion">Aion</option>
                                             <option value="jade">Jade Dynasty</option>
@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="form-group-lk">
                                     <label>Название игрового сервера:</label>
-                                    <input type="text" class="text-ing-lk" name="name" alt="Название игрового сервера" value="{{ old('name') }}">
+                                    <input type="text" class="text-ing-lk {{ $errors->has('name') ? 'error-input' : '' }}" name="name" alt="Название игрового сервера" value="{{ old('name') }}">
                                 </div>
                                 <div class="block-select-lk">
                                     <label>Выбирите страну:</label>
@@ -300,7 +300,7 @@
                                 </div>
                                 <div class="form-group-lk">
                                     <label>Сайт сервера:</label>
-                                    <input type="text" class="text-ing-lk" name="site" value="{{ old('site') }}">
+                                    <input type="text" class="text-ing-lk {{ $errors->has('site') ? 'error-input' : '' }}" name="site" value="{{ old('site') }}">
                                 </div>
                                 <div class="form-group-lk">
                                     <label>Видио трейлер:</label>
@@ -315,8 +315,12 @@
                             </div>
                             <div class="clear"></div>
                             <div class="text-area-lk">
-                                <label>Описание сервера:</label>
-                                <textarea class="textarea-style-lk" name="description">{{ old('description') }}</textarea>
+                                <label>Кратакое описание сервера:</label>
+                                <textarea class="textarea-style-lk {{ $errors->has('description') ? 'error-input' : '' }}" name="description">{{ old('description') }}</textarea>
+                            </div>
+                            <div class="text-area-lk">
+                                <label>Полное описание сервера:</label>
+                                <textarea class="textarea-style-lk {{ $errors->has('fdescription') ? 'error-input' : '' }}" name="description">{{ old('fdescription') }}</textarea>
                             </div>
                             <p class="line-razdel"></p>
                             <div class="block-select-lk">

@@ -3,7 +3,6 @@
 namespace MMORATE\Http\Controllers;
 
 use Carbon\Carbon;
-use MMORATE\Notifications\smsNotification;
 use MMORATE\Servers;
 use MMORATE\Comments;
 use Illuminate\Http\Request;
@@ -25,7 +24,6 @@ class ServersController extends Controller
      */
     public function main(){
         $allServers = Servers::where('status', Servers::CONFIRMED)->sortable()->paginate(self::PAGINATE);
-//        \Notification::send(auth()->user(), new smsNotification());
         return view('pages.index', compact('allServers'));
     }
 
@@ -239,6 +237,7 @@ class ServersController extends Controller
             'site' => 'required|url',
             'name' => 'required',
             'description' => 'required|min:80',
+            'аdescription' => 'required|min:80',
         ]);
 
         $server = new Servers();
@@ -248,6 +247,7 @@ class ServersController extends Controller
         $server->country = $r->get('country');
         $server->site = $r->get('site');
         $server->description = $r->get('description');
+        $server->fdescription = $r->get('fdescription');
         $server->status = Servers::UNCONFIRMED;
         $server->save();
 
@@ -337,6 +337,7 @@ class ServersController extends Controller
             'site' => 'required|url',
             'name' => 'required',
             'description' => 'required|min:80',
+            'fdescription' => 'required|min:80',
         ]);
 
         $server = Servers::where('id', $id)->first();
@@ -344,6 +345,7 @@ class ServersController extends Controller
         $server->country = $r->get('country');
         $server->site = $r->get('site');
         $server->description = $r->get('description');
+        $server->fdescription = $r->get('fdescription');
 //        $server->status = Servers::UNCONFIRMED;
         $server->save();
 

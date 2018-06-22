@@ -21,42 +21,34 @@
                     @csrf
                       <div class="form-group-reg">
                           <label class="title-label-reg">Введите логин:</label>
-                          <input type="text" class="{{ $errors->has('name') ? ' is-invalid' : '' }} text-ing-reg" name="name" value="{{ old('name') }}" required autofocus>
+                          <input type="text" class="text-ing-reg {{ $errors->has('name') ? 'error-input' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
                           @if ($errors->has('name'))
-                              <span class="invalid-feedback">
-                                  <strong>{{ $errors->first('name') }}</strong>
-                              </span>
+                              <span class="error-message" style="margin-left: 37%;display: block;">Логин жуе занят.</span>
                           @endif
                       </div>
                       <div class="form-group-reg">
                           <label class="title-label-reg">Введите e-mail:</label>
-                          <input type="text" class="text-ing-reg" name="email" value="{{ old('email') }}" required>
+                          <input type="text" class="text-ing-reg {{ $errors->has('email') ? 'error-input' : '' }}" name="email" value="{{ old('email') }}" required>
                           @if ($errors->has('email'))
-                              <span class="invalid-feedback">
-                                  <strong>{{ $errors->first('email') }}</strong>
-                              </span>
+                              <span class="error-message" style="margin-left: 37%;display: block;">Email уже зарегистрирован.</span>
                           @endif
                       </div>
                       <div class="form-group-reg">
                           <label class="title-label-reg">Придумайте пароль:</label>
-                          <input type="password" class="text-ing-reg" name="password" required>
+                          <input type="password" class="text-ing-reg {{ $errors->has('password') ? 'error-input' : '' }}" name="password" required>
                           @if ($errors->has('password'))
-                              <span class="invalid-feedback">
-                                  <strong>{{ $errors->first('password') }}</strong>
-                              </span>
+                              <span class="error-message" style="margin-left: 37%;display: block;">Пароль не соответсвует требованиям или несовапдает.</span>
                           @endif
                       </div>
                       <div class="form-group-reg">
                           <label class="title-label-reg">Подтвердите пароль:</label>
-                          <input type="password" class="text-ing-reg" name="password_confirmation">
+                          <input type="password" class="text-ing-reg {{ $errors->has('password') ? 'error-input' : '' }}" name="password_confirmation">
                       </div>
                       <div class="form-group-checkbox">
                           <input type="checkbox" id="licence" class="licenceSucsess" name="license">
                           <label for="licence">Я принимаю условия <a href="">лецензионного соглашения</a></label>
                           @if ($errors->has('license'))
-                              <span class="invalid-feedback">
-                                  <strong>Вы не приняли соглашение</strong>
-                              </span>
+                              <span class="error-message" style="margin-left: 37%;display: block;">Вы не приняли соглашение.</span>
                           @endif
                       </div>
                       <div class="capcha">{!! Captcha::display() !!}</div>
@@ -86,7 +78,7 @@
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
 
                                 @if ($errors->has('name'))
-                                    <span class="invalid-feedback">
+                                    <span class="error-message">
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </span>
                                 @endif
@@ -100,7 +92,7 @@
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
-                                    <span class="invalid-feedback">
+                                    <span class="error-message">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
@@ -114,7 +106,7 @@
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
                                 @if ($errors->has('password'))
-                                    <span class="invalid-feedback">
+                                    <span class="error-message">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif

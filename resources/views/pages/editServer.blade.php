@@ -315,8 +315,12 @@
                             </div>
                             <div class="clear"></div>
                             <div class="text-area-lk">
-                                <label>Описание сервера:</label>
+                                <label>Краткое описание сервера:</label>
                                 <textarea class="textarea-style-lk" name="description">{{ $server->description }}</textarea>
+                            </div>
+                            <div class="text-area-lk">
+                                <label>Полное описание сервера:</label>
+                                <textarea class="textarea-style-lk" name="description">{{ $server->fdescription }}</textarea>
                             </div>
                             <p class="line-razdel"></p>
                             <div class="block-select-lk">

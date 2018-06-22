@@ -1,0 +1,1 @@
+Код подтверждения MMORATE: {{ $user->email_code }}

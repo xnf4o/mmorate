@@ -11,7 +11,7 @@
 
 <body class="bg-404">
     <div class="logo-404">
-        <a href="{{ route('main') }}>
+        <a href="{{ route('main') }}">
             <img src="/img/elements/logo.png" alt="">
         </a>
     </div>

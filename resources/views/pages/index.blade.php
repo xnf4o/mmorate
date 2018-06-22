@@ -14,7 +14,7 @@
             <img src="../img/elements/logo.png" alt="">
         </a>
     </div>
-    <div class="style-bg-content">
+    <div class="style-bg-content ">
         <div class="content-bg-top">
             <div class="element-desing-1">
                 <img src="../img/elements/elem-1.png" alt="">
@@ -26,7 +26,7 @@
                 <img src="../img/elements/elem-3.png" alt="">
             </div>
         </div>
-        <div class="contentLeft">
+        <div class="contentLeft @if(isset($game)){{ $game.'-img' }}@endif">
             <div class="segment-rek-top">
                 <div class="bg-ramka-rek"></div>
                 <a href=""><img src="../img/rk/bn468.png" alt=""></a>
