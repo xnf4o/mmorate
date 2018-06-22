@@ -72,7 +72,7 @@
                             <h6>Полное описание сервера</h6>
                             <p>{{ $server->fdescription }}</p>
                             <span class="linkStat-and-comment">
-                                <a href="">
+                                <a href="{{ route('serverStat', $server->id) }}">
                                 <i><img src="/img/icon/i-2.png"></i> Статистика
                             </a>
                                 <a href="">
