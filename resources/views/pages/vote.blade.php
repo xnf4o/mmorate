@@ -64,7 +64,7 @@
                         @php
                             $vote = \MMORATE\Votes::where('user_id', Auth::id())->orderBy('created_at', 'DESC')->first();
                         @endphp
-                        <button class="btn-golos-form" type="submit" @if($vote->created_at->isToday()) disabled @endif>@if($vote->created_at->isToday())Сегодня вы уже голосовали @else Голосовать за сервер@endif</button>
+                        <button class="btn-golos-form" type="submit" @if(isset($vote) and $vote->created_at->isToday()) disabled @endif>@if(isset($vote) and $vote->created_at->isToday())Сегодня вы уже голосовали @else Голосовать за сервер@endif</button>
                     </form>
                     <div class="text-info-golos">
                         <p>

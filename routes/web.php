@@ -12,8 +12,8 @@
 */
 
 
-//$domain = 'mmorate.com';
-$domain = 'mmo.test';
+$domain = 'mmorate.com';
+//$domain = 'mmo.test';
 // Pages
 Route::group(['domain' => $domain], function () {
     Route::get('/logout', 'PagesController@logout')->name('logout');
@@ -30,7 +30,7 @@ Route::group(['domain' => $domain], function () {
 // Profile
         Route::get('/profile', 'UserController@profile')->name('profile');
         Route::post('/profile/changeAvatar', 'UserController@updateAvatar')->name('updateAvatar');
-        Route::post('/profile/edit', 'UserController@edit')->name('profile.edit');
+        Route::post('/profile/edit', 'UserController@update')->name('profile.edit');
         Route::get('/profile/confirmation', 'UserController@confirmation')->name('confirmation');
         Route::post('/profile/sendEmailCode', 'UserController@sendEmailCode')->name('sendEmailCode');
         Route::post('/profile/verifyEmail', 'UserController@verifyEmail')->name('verifyEmail');

@@ -14,6 +14,10 @@ class User extends Authenticatable
         'is_admin' => 'boolean',
     ];
 
+    protected $fillable = [
+        'name', 'email', 'password'
+    ];
+
 
     /**
      * The attributes that should be hidden for arrays.

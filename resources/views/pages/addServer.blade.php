@@ -320,7 +320,7 @@
                             </div>
                             <div class="text-area-lk">
                                 <label>Полное описание сервера:</label>
-                                <textarea class="textarea-style-lk {{ $errors->has('fdescription') ? 'error-input' : '' }}" name="description">{{ old('fdescription') }}</textarea>
+                                <textarea class="textarea-style-lk {{ $errors->has('fdescription') ? 'error-input' : '' }}" name="fdescription">{{ old('fdescription') }}</textarea>
                             </div>
                             <p class="line-razdel"></p>
                             <div class="block-select-lk">

@@ -57,7 +57,7 @@
                                 <label>Телефон:</label>
                                 <input type="text" class="text-ing-lk" value="{{ auth()->user()->phone }} - @if(auth()->user()->phone_confirmed == 1)Подтверждено @else Не подтверждено @endif" placeholder="Укажите телефон" disabled>
                             </div>
-                            <input type="button" value="Сохранить" class="create-server">
+                            <input type="submit" value="Сохранить" class="create-server">
                         </div>
                     </form>
                     <form action="{{ route('updateAvatar') }}" method="post" id="updateAvatar" enctype="multipart/form-data">

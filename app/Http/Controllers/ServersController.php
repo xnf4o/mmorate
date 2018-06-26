@@ -192,13 +192,13 @@ class ServersController extends Controller
         ]);
 
         $vote = Votes::where('user_id', Auth::id())->orderBy('created_at', 'DESC')->first();
-        if($vote->created_at->isToday()) abort('404');
+        if(isset($vote) and $vote->created_at->isToday()) abort('404');
 
         $voteCoeff = self::COEF;
         $adBlock = $r->get('adBlockIsEnabled');
         $vote = Votes::where('server_id', $id)->orderBy('created_at', 'DESC')->first();
         $server = Servers::where('id', $id)->first();
-        if ($vote->created_at->greaterThan(Carbon::now()->subHour()->toDateTimeString()))
+        if (isset($vote) and $vote->created_at->greaterThan(Carbon::now()->subHour()->toDateTimeString()))
             $voteCoeff = self::COEF_IF_OFTEN;
         if ($adBlock == 1)
             $voteCoeff = self::COEF;
@@ -246,6 +246,8 @@ class ServersController extends Controller
         $server->game = $r->get('game');
         $server->country = $r->get('country');
         $server->site = $r->get('site');
+        $server->tags = $r->get('tags');
+        $server->trailer = $r->get('video');
         $server->description = $r->get('description');
         $server->fdescription = $r->get('fdescription');
         $server->status = Servers::UNCONFIRMED;
