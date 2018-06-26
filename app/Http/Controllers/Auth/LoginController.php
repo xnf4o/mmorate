@@ -2,6 +2,7 @@
 
 namespace MMORATE\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use MMORATE\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -35,5 +36,12 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    protected function validateLogin(Request $r)
+    {
+        $r->validate([
+            'g-recaptcha-response' => 'required|captcha'
+        ]);
     }
 }

@@ -188,7 +188,7 @@ class ServersController extends Controller
     public function votePost($id, Request $r){
         $r->validate([
             'nickname' => 'required',
-//            'g-recaptcha-response' => 'required|captcha'
+            'g-recaptcha-response' => 'required|captcha'
         ]);
 
         $vote = Votes::where('user_id', Auth::id())->orderBy('created_at', 'DESC')->first();

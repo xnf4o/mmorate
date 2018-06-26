@@ -49,6 +49,7 @@ class UserController extends Controller
             $r->validate([
                 'oldpass' => 'required',
                 'pass' => 'required|string|min:6|confirmed',
+                'g-recaptcha-response' => 'required|captcha'
             ]);
             if (Hash::check($data['oldpass'], $user->getAuthPassword())) {
                 $user->fill(['password' => Hash::make($data['pass'])])->save();

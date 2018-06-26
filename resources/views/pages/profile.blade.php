@@ -70,7 +70,6 @@
                                 <label for="file-1">Выбрать изображения</label>
                                 <a href="{{ route('changePassword') }}" style="display:block;width:100%;background:url(../img/elements/btn-load.png) no-repeat top center;color:#614c3f;font:18px CalibriBold;text-align:center;line-height:63px;margin-top:25px;cursor:pointer;height:100%;">Сменить пароль</a>
                                 @if (auth()->user()->phone_confirmed == 0 or auth()->user()->email_confirmed == 0)<a href="{{ route('confirmation') }}" style="display:block;width:100%;background:url(../img/elements/btn-load.png) no-repeat top center;color:#614c3f;font:18px CalibriBold;text-align:center;line-height:63px;margin-top:25px;cursor:pointer;height:100%;">Подтвердить аккаунт</a> @endif
-                                <a href="#" style="display:block;width:100%;background:url(../img/elements/btn-load.png) no-repeat top center;color:#614c3f;font:18px CalibriBold;text-align:center;line-height:63px;margin-top:25px;cursor:pointer;height:100%;">Удалить профиль</a>
                             </div>
                         </div>
                     </form>
