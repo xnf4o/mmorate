@@ -28,7 +28,8 @@
                     <div class="content-lk-block">
                         <div class="material-block">
                             <p>
-                                При нажатии на данный баннер, пользователя перенесет на страницу голосования за ваш проект.
+                                При нажатии на данный баннер, пользователя перенесет на страницу голосования за ваш
+                                проект.
                                 <br> Выберите понравившейся баннер и разместите его код у себя на странице.
                                 <br> Угловые баннеры следует размещать после тега <b>‹/body›</b>
                             </p>
@@ -36,19 +37,19 @@
                                 <h3>Выберите профиль для получения баннера:</h3>
                                 @foreach($servers as $i => $s)
                                     @php
-                                    if ($s->game == 'aion') $s->game = 'Aion';
-                                    if ($s->game == 'lineage') $s->game = 'Lineage 2';
-                                    if ($s->game == 'jade') $s->game = 'Jade Dynasty';
-                                    if ($s->game == 'wow') $s->game = 'World Of Warcraft';
-                                    if ($s->game == 'rf') $s->game = 'RF Online';
-                                    if ($s->game == 'mu') $s->game = 'MU Online';
-                                    if ($s->game == 'perfect') $s->game = 'Perfect World';
-                                    if ($s->game == 'other') $s->game = 'Онлайн игра';
+                                        if ($s->game == 'aion') $s->game = 'Aion';
+                                        if ($s->game == 'lineage') $s->game = 'Lineage 2';
+                                        if ($s->game == 'jade') $s->game = 'Jade Dynasty';
+                                        if ($s->game == 'wow') $s->game = 'World Of Warcraft';
+                                        if ($s->game == 'rf') $s->game = 'RF Online';
+                                        if ($s->game == 'mu') $s->game = 'MU Online';
+                                        if ($s->game == 'perfect') $s->game = 'Perfect World';
+                                        if ($s->game == 'other') $s->game = 'Онлайн игра';
                                     @endphp
-                                <div class="itemProfil_bn">
-                                    <input type="checkbox" id="check-{{ $i }}" class="lkCheckSucsess" name="">
-                                    <label for="check-{{ $i }}">{{ $s->name }} ({{ $s->game }})</label>
-                                </div>
+                                    <div class="itemProfil_bn">
+                                        <input type="checkbox" id="check-{{ $i }}" class="lkCheckSucsess" name="">
+                                        <label for="check-{{ $i }}">{{ $s->name }} ({{ $s->game }})</label>
+                                    </div>
                                 @endforeach
                             </div>
                         </div>
@@ -81,4 +82,4 @@
                     </div>
                 </div>
             </div>
-    @endsection
+@endsection

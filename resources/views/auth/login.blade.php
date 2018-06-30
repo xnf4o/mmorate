@@ -28,7 +28,11 @@
                                 <span class="error-message">Имя пользователя и пароль не совпадают.</span>
                             @endif
                         </div>
-                        <div class="capcha"><img src="../img/bg/capha.png" alt=""></div>
+                        <div class="capcha">{!! Captcha::display() !!}
+                            @if ($errors->has('g-recaptcha-response'))
+                                <span class="error-message">Подтвердите капчу</span>
+                            @endif
+                        </div>
                         <div class="form-group-checkbox">
                             <button type="submit" class="btn-regist"><i><img src="../img/icon/i-13.png" alt=""></i> Войти</button>
                         </div>

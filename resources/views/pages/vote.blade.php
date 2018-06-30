@@ -26,7 +26,8 @@
                 </div>
                 <div class="top-server-list">
                     <div class="title-list-server">
-                        <h1><i class="ico-title"><img src="/img/icon/i-6.png" alt=""></i><span>Голосование за сервер</span></h1>
+                        <h1><i class="ico-title"><img src="/img/icon/i-6.png"
+                                                      alt=""></i><span>Голосование за сервер</span></h1>
                         <div class="clear"></div>
                     </div>
                 </div>
@@ -35,7 +36,8 @@
                         <div class="number-top-server goldNumber">
                             1
                         </div>
-                        <p class="name-server-golos">{{ $server->name }} <span>{{ number_format($server->rates,0,",",".") }} Голосов получено</span></p>
+                        <p class="name-server-golos">{{ $server->name }} <span>{{ number_format($server->rates,0,",",".") }}
+                                Голосов получено</span></p>
                     </div>
                     <form action="{{ route('voteServer.post', $server->id) }}" method="post">
                         @csrf
@@ -45,7 +47,7 @@
                             @forelse($rates as $i => $rate)
                                 <input type="radio" id="rate-{{ $i }}" class="radio-rate" name="server">
                                 <label for="rate-{{ $i }}">{{ $rate->name }} x{{ $rate->rate }}</label>
-                                @empty
+                            @empty
                                 Нет серверов
                             @endforelse
                         </div>
@@ -64,14 +66,18 @@
                         @php
                             $vote = \MMORATE\Votes::where('user_id', Auth::id())->orderBy('created_at', 'DESC')->first();
                         @endphp
-                        <button class="btn-golos-form" type="submit" @if(isset($vote) and $vote->created_at->isToday()) disabled @endif>@if(isset($vote) and $vote->created_at->isToday())Сегодня вы уже голосовали @else Голосовать за сервер@endif</button>
+                        <button class="btn-golos-form" type="submit"
+                                @if(isset($vote) and $vote->created_at->isToday()) disabled @endif>@if(isset($vote) and $vote->created_at->isToday())
+                                Сегодня вы уже голосовали @else Голосовать за сервер@endif</button>
                     </form>
                     <div class="text-info-golos">
                         <p>
-                            Для голосования в рейтинге действует правило: любой пользователь может проголосовать только один раз
+                            Для голосования в рейтинге действует правило: любой пользователь может проголосовать только
+                            один раз
                             в календарные сутки. <br><br>
 
-                            Это означает, что если вы уже голосовали сегодня, то следующий голос может быть принят в 00:01
+                            Это означает, что если вы уже голосовали сегодня, то следующий голос может быть принят в
+                            00:01
                         </p>
                     </div>
                     <div class="text-info-golos">
@@ -82,8 +88,8 @@
                             <i><img src="/img/icon/i-7.png" alt=""></i> Отдать VIP голос
                         </a>
                     </div>
-                    </div>
-                    </div>
-                    </div>
+                </div>
+            </div>
+        </div>
 
-    @endsection
+@endsection

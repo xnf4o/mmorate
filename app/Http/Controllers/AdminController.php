@@ -7,51 +7,61 @@ use MMORATE\Servers;
 
 class AdminController extends Controller
 {
-    public function main(){
+    public function main()
+    {
         return view('admin.main');
     }
 
-    public function servers(){
+    public function servers()
+    {
         $servers = Servers::where('status', '1')->get();
         return view('admin.serverList', compact('servers'));
     }
 
-    public function aion(){
+    public function aion()
+    {
         $servers = Servers::aion()->where('status', '1')->get();
         return view('admin.serverList', compact('servers'));
     }
 
-    public function jade(){
+    public function jade()
+    {
         $servers = Servers::jade()->where('status', '1')->get();
         return view('admin.serverList', compact('servers'));
     }
 
-    public function lineage(){
+    public function lineage()
+    {
         $servers = Servers::lineage()->where('status', '1')->get();
         return view('admin.serverList', compact('servers'));
     }
 
-    public function mu(){
+    public function mu()
+    {
         $servers = Servers::mu()->where('status', '1')->get();
         return view('admin.serverList', compact('servers'));
     }
 
-    public function perfect(){
+    public function perfect()
+    {
         $servers = Servers::perfect()->where('status', '1')->get();
         return view('admin.serverList', compact('servers'));
     }
 
-    public function wow(){
+    public function wow()
+    {
         $servers = Servers::wow()->where('status', '1')->get();
         return view('admin.serverList', compact('servers'));
     }
 
-    public function editServer($id){
+    public function editServer($id)
+    {
         $server = Servers::where('id', $id)->first();
         return view('admin.serverEdit', compact('server'));
     }
 
-    public function editServerPost($id, Request $r){
+    public function editServerPost($id, Request $r)
+    {
         $server = Servers::where('id', $id)->first();
         $server->name = $r->get('name');
         $server->site = $r->get('site');
@@ -64,7 +74,8 @@ class AdminController extends Controller
         return redirect()->route('admin.servers')->with('message', 'Сервер успешно отредактирован!');
     }
 
-    public function approveServer($id){
+    public function approveServer($id)
+    {
         $server = Servers::where('id', $id)->first();
         $server->status = 1;
         $server->save();
@@ -72,7 +83,8 @@ class AdminController extends Controller
         return redirect()->back()->with('message', 'Сервер успешно одобрен!');
     }
 
-    public function deleteServer($id){
+    public function deleteServer($id)
+    {
         $server = Servers::where('id', $id)->first();
         $server->status = 2;
         $server->save();

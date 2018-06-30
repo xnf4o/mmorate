@@ -12,8 +12,8 @@
 */
 
 
-$domain = 'mmorate.com';
-//$domain = 'mmo.test';
+//$domain = 'mmorate.com';
+$domain = 'mmo.test';
 // Pages
 Route::group(['domain' => $domain], function () {
     Route::get('/logout', 'PagesController@logout')->name('logout');
@@ -21,12 +21,12 @@ Route::group(['domain' => $domain], function () {
     Route::get('/rules', 'PagesController@rules')->name('rules');
     Route::get('/contacts', 'PagesController@contacts')->name('contacts');
     Route::get('/support', 'PagesController@support')->name('support');
+    Route::get('/request', 'PagesController@request')->name('request');
     Route::get('/faq', 'PagesController@faq')->name('faq');
-//    Route::get('/', 'PagesController@promo')->name('main');
-    Route::get('/', 'ServersController@main')->name('main');
+    Route::get('/', 'PagesController@promo')->name('main');
+//    Route::get('/', 'ServersController@main')->name('main');
 
-    Route::middleware('auth')->group(function ()
-    {
+    Route::middleware('auth')->group(function () {
 // Profile
         Route::get('/profile', 'UserController@profile')->name('profile');
         Route::post('/profile/changeAvatar', 'UserController@updateAvatar')->name('updateAvatar');
@@ -72,39 +72,39 @@ Route::post('/server/{id}/addComment', 'ServersController@addComment')->name('se
 Route::get('/server/{id}/statistic', 'ServersController@serverStat')->name('serverStat');
 
 Route::group(['domain' => 'aion.' . $domain], function () {
-    Route::get('/',  'ServersController@aion')->name('aion');
+    Route::get('/', 'ServersController@aion')->name('aion');
 });
 
 Route::group(['domain' => 'mu.' . $domain], function () {
-    Route::get('/',  'ServersController@mu')->name('mu');
+    Route::get('/', 'ServersController@mu')->name('mu');
 });
 
 Route::group(['domain' => 'rf.' . $domain], function () {
-    Route::get('/',  'ServersController@rf')->name('rf');
+    Route::get('/', 'ServersController@rf')->name('rf');
 });
 
 Route::group(['domain' => 'wow.' . $domain], function () {
-    Route::get('/',  'ServersController@wow')->name('wow');
+    Route::get('/', 'ServersController@wow')->name('wow');
 });
 
 Route::group(['domain' => 'pw.' . $domain], function () {
-    Route::get('/',  'ServersController@perfect')->name('perfect');
+    Route::get('/', 'ServersController@perfect')->name('perfect');
 });
 
 Route::group(['domain' => 'jd.' . $domain], function () {
-    Route::get('/',  'ServersController@jade')->name('jade');
+    Route::get('/', 'ServersController@jade')->name('jade');
 });
 
 Route::group(['domain' => 'l2.' . $domain], function () {
-    Route::get('/',  'ServersController@lineage')->name('lineage');
+    Route::get('/', 'ServersController@lineage')->name('lineage');
 });
 
 Route::group(['domain' => 'online.' . $domain], function () {
-    Route::get('/',  'ServersController@other')->name('other');
+    Route::get('/', 'ServersController@other')->name('other');
 });
 
 // Admin
-Route::group(['middleware' => 'admin' ,'domain' => 'admin.' . $domain], function () {
+Route::group(['middleware' => 'admin', 'domain' => 'admin.' . $domain], function () {
 //    Route::get('/', 'AdminController@main')->name('admin.main');
     Route::get('/', function () {
         return redirect('/dashboard/v2');

@@ -2,9 +2,8 @@
 
 namespace MMORATE;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use MMORATE\Servers;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -33,7 +32,8 @@ class User extends Authenticatable
      *
      * @return mixed
      */
-    public function servers(){
+    public function servers()
+    {
         return Servers::where('user_id', $this->id)->count();
     }
 

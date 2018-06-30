@@ -5,10 +5,9 @@ namespace MMORATE\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\ViewErrorBag;
-use MMORATE\Notifications\smsNotification;
 use Image;
 use Mail;
+use MMORATE\Notifications\smsNotification;
 use MMORATE\User;
 
 class UserController extends Controller
@@ -23,7 +22,8 @@ class UserController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * Страницы профиля
      */
-    public function profile(){
+    public function profile()
+    {
         return view('pages.profile');
     }
 
@@ -31,7 +31,8 @@ class UserController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * Странца смены пароля
      */
-    public function changePassword(){
+    public function changePassword()
+    {
         return view('pages.changePassword');
     }
 
@@ -40,7 +41,8 @@ class UserController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * Смена пароля
      */
-    public function changePasswordPost(Request $r){
+    public function changePasswordPost(Request $r)
+    {
         $user = Auth::user();
         $data = $r->all();
         $success = false;
@@ -66,11 +68,12 @@ class UserController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * Функция смены аватарки
      */
-    public function updateAvatar(Request $r){
-        if($r->hasFile('avatar')){
+    public function updateAvatar(Request $r)
+    {
+        if ($r->hasFile('avatar')) {
             $avatar = $r->file('avatar');
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            Image::make($avatar)->resize(258, 258)->save( public_path('/uploads/avatars/' . $filename ) );
+            Image::make($avatar)->resize(258, 258)->save(public_path('/uploads/avatars/' . $filename));
             $user = Auth::user();
             $user->avatar = '/uploads/avatars/' . $filename;
             $user->save();
@@ -83,12 +86,14 @@ class UserController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * Функция сохранения отредактированных данных пользователя
      */
-    public function update(Request $r){
+    public function update(Request $r)
+    {
         $user = Auth::user();
         $user->fname = $r->get('fname');
         $user->nickname = $r->get('nickname');
         $user->project = $r->get('project');
         $user->bday = $r->get('bday');
+        $user->email = $r->get('email');
 //        $user->phone = $r->get('phone');
         $user->save();
 
@@ -99,7 +104,8 @@ class UserController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      * Страница подтверждения почты и телефона
      */
-    public function confirmation(){
+    public function confirmation()
+    {
         if (Auth::user()->phone_confirmed == 0 or Auth::user()->email_confirmed == 0)
             return view('pages.confirmation');
         return redirect()->route('profile');
@@ -110,10 +116,11 @@ class UserController extends Controller
      * @return \Illuminate\Http\JsonResponse
      * Функция отправки письма на почту
      */
-    public function sendEmailCode(Request $r){
+    public function sendEmailCode(Request $r)
+    {
         $user = Auth::user();
         if ($user->email != $r->get('email')) $user->email = $r->get('email');
-        $user->email_code = rand(00000,99999);
+        $user->email_code = rand(00000, 99999);
         $user->save();
 
         Mail::send('emails.code', ['user' => $user], function ($m) use ($user) {
@@ -128,7 +135,8 @@ class UserController extends Controller
      * @return \Illuminate\Http\JsonResponse
      * Функция сверения и подтверждения кода из почты
      */
-    public function verifyEmail(Request $r){
+    public function verifyEmail(Request $r)
+    {
         $user = User::where('email_code', $r->get('code'))->first();
         if (!$user) return response()->json(['error' => 'true'], 404);
         $user->email_confirmed = 1;
@@ -141,9 +149,10 @@ class UserController extends Controller
      * @return \Illuminate\Http\JsonResponse
      * Функция отправки смс
      */
-    public function sendSmsCode(Request $r){
+    public function sendSmsCode(Request $r)
+    {
         $user = Auth::user();
-        if ($user->phone != $r->get('phone')){
+        if ($user->phone != $r->get('phone')) {
             $user->phone = $r->get('phone');
             $user->save();
         }
@@ -156,7 +165,8 @@ class UserController extends Controller
      * @return \Illuminate\Http\JsonResponse
      * Функция сверения и подтверждения кода из смс
      */
-    public function verifySms(Request $r){
+    public function verifySms(Request $r)
+    {
         $user = User::where('phone_code', $r->get('code'))->first();
         if (!$user) return response()->json(['error' => 'true'], 404);
         $user->phone_confirmed = 1;

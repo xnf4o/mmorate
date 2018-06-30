@@ -1,5 +1,5 @@
 @extends('layouts.site')
-@section('title', 'Техническая поддержка')
+@section('title', 'Контакты')
 @section('content')
     <div class="news-container">
         <div class="contentLogoNews">
@@ -10,20 +10,20 @@
         <div class="style-bg-content">
             <div class="content-bg-top">
                 <div class="element-desing-1">
-                    <img src="../img/elements/elem-1.png" alt="">
+                    <img src="img/elements/elem-1.png" alt="">
                 </div>
                 <div class="element-desing-3">
-                    <img src="../img/elements/elem-3.png" alt="">
+                    <img src="img/elements/elem-3.png" alt="">
                 </div>
             </div>
             <div class="contentLeft">
                 <div class="segment-rek-top">
                     <div class="bg-ramka-rek"></div>
-                    <a href=""><img src="../img/rk/bn468.png" alt=""></a>
+                    <a href=""><img src="img/rk/bn468.png" alt=""></a>
                 </div>
                 <div class="top-server-list">
                     <div class="title-list-server">
-                        <h1><i class="ico-title"><img src="../img/icon/i20.png" alt=""></i>Техническая поддержка</h1>
+                        <h1><i class="ico-title"><img src="img/icon/i20.png" alt=""></i>Техническая поддержка</h1>
                         <div class="clear"></div>
                     </div>
                     <div class="content-page">

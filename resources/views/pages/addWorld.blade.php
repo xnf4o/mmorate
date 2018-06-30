@@ -22,7 +22,8 @@
                 </div>
                 <div class="top-server-list">
                     <div class="title-list-lk">
-                        <h1><i class="ico-title"><img src="/img/icon/l-3.png" alt=""></i><span>Добавление сервера</span></h1>
+                        <h1><i class="ico-title"><img src="/img/icon/l-3.png" alt=""></i><span>Добавление сервера</span>
+                        </h1>
                         <div class="clear"></div>
                     </div>
                     <div class="content-lk-block">
@@ -38,7 +39,8 @@
                                 <div class="form-group-lk">
                                     <span class="reteIcon">X</span>
                                     <label>Введите рейты:</label>
-                                    <input type="text" class="text-ing-lk customInputRate" name="rate" value="{{ old('rate') }}">
+                                    <input type="text" class="text-ing-lk customInputRate" name="rate"
+                                           value="{{ old('rate') }}">
                                 </div>
                                 <div class="block-select-lk">
                                     <label>Выбирите тип мира:</label>
@@ -59,20 +61,23 @@
                                         <select name="donate">
                                             <option value="0">Нет</option>
                                             <option value="1">Вещи, влияющие на экономику</option>
-                                            <option value="2">Вещи, не влияющие на экономику</option></select>
+                                            <option value="2">Вещи, не влияющие на экономику</option>
+                                        </select>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group-lk">
                                     <label>Игроков онлайн:</label>
-                                    <input type="text" class="text-ing-lk" name="onlineUrl" value="{{ old('onlineUrl') }}">
+                                    <input type="text" class="text-ing-lk" name="onlineUrl"
+                                           value="{{ old('onlineUrl') }}">
                                     <span>Введите данные онлайна вручную</span>
                                 </div>
                             </div>
                             <div class="clear"></div>
                             <div class="text-area-lk-srv">
                                 <label>Описание мира:</label>
-                                <textarea class="textarea-style-lk" name="description">{{ old('description') }}</textarea>
+                                <textarea class="textarea-style-lk"
+                                          name="description">{{ old('description') }}</textarea>
                             </div>
                             <div class="leftBlockLk">
 
@@ -86,7 +91,9 @@
                                 </div>
                                 <div class="form-group-lk">
                                     <label>Дата создания:</label>
-                                    <input type="text" class="text-ing-lk" name="created" id="created" data-lang="ru" data-years="50" data-format="DD.MM.YYYY" data-sundayfirst="false" value="{{ old('created') }}">
+                                    <input type="text" class="text-ing-lk" name="created" id="created" data-lang="ru"
+                                           data-years="50" data-format="DD.MM.YYYY" data-sundayfirst="false"
+                                           value="{{ old('created') }}">
                                 </div>
                                 <div class="block-select-lk">
                                     <label>Статус:</label>
@@ -100,39 +107,78 @@
                                     </div>
                                 </div>
                                 @if($server->game == 'linegae' || $server->game == 'wow')
-                                <div class="block-select-lk">
-                                    <label>Версия игры:</label>
-                                    <div class="item-select-lk">
-                                        <select name="gameVersion">
-                                            @if($server->game == 'lineage')
-                                                <option value="Lineage 2 The 1st Throne: The Kamael">Lineage 2 The 1st Throne: The Kamael</option>
-                                                <option value="Lineage 2 Saga 2: The Chaotic Throne">Lineage 2 Saga 2: The Chaotic Throne</option>
-                                                <option value="Lineage 2: Interlude">Lineage 2: Interlude</option>
-                                                <option value="Lineage 2 The 1st Throne: Hellbound">Lineage 2 The 1st Throne: Hellbound</option>
-                                                <option value="Lineage 2 The 2nd Throne: Gracia">Lineage 2 The 2nd Throne: Gracia</option>
-                                                <option value="Lineage 2 Chronicle 4: Scions of Destiny">Lineage 2 Chronicle 4: Scions of Destiny</option>
-                                                <option value="Lineage 2 Saga 1: The Chaotic Chronicles">Lineage 2 Saga 1: The Chaotic Chronicles</option>
-                                                <option value="Lineage 2: Prelude">Lineage 2: Prelude</option>
-                                                <option value="Lineage 2 Chronicle 1: Harbingers of War">Lineage 2 Chronicle 1: Harbingers of War</option>
-                                                <option value="Lineage 2 Chronicle 2: Age of Splendor">Lineage 2 Chronicle 2: Age of Splendor</option>
-                                                <option value="Lineage 2 Chronicle 3: Rise of Darkness">Lineage 2 Chronicle 3: Rise of Darkness</option>
-                                                <option value="Lineage 2 Chronicle 5: Oath of Blood">Lineage 2 Chronicle 5: Oath of Blood</option>
-                                                <option value="Lineage 2 The 2nd Throne: Gracia Part 1">Lineage 2 The 2nd Throne: Gracia Part 1</option>
-                                                <option value="Lineage 2 The 2nd Throne: Gracia Part 2">Lineage 2 The 2nd Throne: Gracia Part 2</option>
-                                                <option value="Lineage 2 The 2nd Throne: Gracia Final">Lineage 2 The 2nd Throne: Gracia Final</option>
-                                                <option value="Lineage 2 The 2nd Throne: Freya">Lineage 2 The 2nd Throne: Freya</option>
-                                                <option value="Lineage 2: Gracia Plus">Lineage 2: Gracia Plus</option>
-                                            @elseif($server->game == 'wow')
-                                                <option value="World of Warcraft: Wrath of the Lich King">World of Warcraft: Wrath of the Lich King</option>
-                                                <option value="World of Warcraft: Legion">World of Warcraft: Legion</option>
-                                                <option value="World of Warcraft: Mists of Pandaria">World of Warcraft: Mists of Pandaria</option>
-                                                <option value="World of Warcraft: Cataclysm">World of Warcraft: Cataclysm</option>
-                                                <option value="World of Warcraft: The Burning Crus">World of Warcraft: The Burning Crusade</option>
-                                            @endif
-                                        </select>
+                                    <div class="block-select-lk">
+                                        <label>Версия игры:</label>
+                                        <div class="item-select-lk">
+                                            <select name="gameVersion">
+                                                @if($server->game == 'lineage')
+                                                    <option value="Lineage 2 The 1st Throne: The Kamael">Lineage 2 The
+                                                        1st Throne: The Kamael
+                                                    </option>
+                                                    <option value="Lineage 2 Saga 2: The Chaotic Throne">Lineage 2 Saga
+                                                        2: The Chaotic Throne
+                                                    </option>
+                                                    <option value="Lineage 2: Interlude">Lineage 2: Interlude</option>
+                                                    <option value="Lineage 2 The 1st Throne: Hellbound">Lineage 2 The
+                                                        1st Throne: Hellbound
+                                                    </option>
+                                                    <option value="Lineage 2 The 2nd Throne: Gracia">Lineage 2 The 2nd
+                                                        Throne: Gracia
+                                                    </option>
+                                                    <option value="Lineage 2 Chronicle 4: Scions of Destiny">Lineage 2
+                                                        Chronicle 4: Scions of Destiny
+                                                    </option>
+                                                    <option value="Lineage 2 Saga 1: The Chaotic Chronicles">Lineage 2
+                                                        Saga 1: The Chaotic Chronicles
+                                                    </option>
+                                                    <option value="Lineage 2: Prelude">Lineage 2: Prelude</option>
+                                                    <option value="Lineage 2 Chronicle 1: Harbingers of War">Lineage 2
+                                                        Chronicle 1: Harbingers of War
+                                                    </option>
+                                                    <option value="Lineage 2 Chronicle 2: Age of Splendor">Lineage 2
+                                                        Chronicle 2: Age of Splendor
+                                                    </option>
+                                                    <option value="Lineage 2 Chronicle 3: Rise of Darkness">Lineage 2
+                                                        Chronicle 3: Rise of Darkness
+                                                    </option>
+                                                    <option value="Lineage 2 Chronicle 5: Oath of Blood">Lineage 2
+                                                        Chronicle 5: Oath of Blood
+                                                    </option>
+                                                    <option value="Lineage 2 The 2nd Throne: Gracia Part 1">Lineage 2
+                                                        The 2nd Throne: Gracia Part 1
+                                                    </option>
+                                                    <option value="Lineage 2 The 2nd Throne: Gracia Part 2">Lineage 2
+                                                        The 2nd Throne: Gracia Part 2
+                                                    </option>
+                                                    <option value="Lineage 2 The 2nd Throne: Gracia Final">Lineage 2 The
+                                                        2nd Throne: Gracia Final
+                                                    </option>
+                                                    <option value="Lineage 2 The 2nd Throne: Freya">Lineage 2 The 2nd
+                                                        Throne: Freya
+                                                    </option>
+                                                    <option value="Lineage 2: Gracia Plus">Lineage 2: Gracia Plus
+                                                    </option>
+                                                @elseif($server->game == 'wow')
+                                                    <option value="World of Warcraft: Wrath of the Lich King">World of
+                                                        Warcraft: Wrath of the Lich King
+                                                    </option>
+                                                    <option value="World of Warcraft: Legion">World of Warcraft:
+                                                        Legion
+                                                    </option>
+                                                    <option value="World of Warcraft: Mists of Pandaria">World of
+                                                        Warcraft: Mists of Pandaria
+                                                    </option>
+                                                    <option value="World of Warcraft: Cataclysm">World of Warcraft:
+                                                        Cataclysm
+                                                    </option>
+                                                    <option value="World of Warcraft: The Burning Crus">World of
+                                                        Warcraft: The Burning Crusade
+                                                    </option>
+                                                @endif
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                    @endif
+                                @endif
                                 <div class="block-select-lk">
                                     <label>Номер версии:</label>
                                     <div class="item-select-lk">
@@ -218,7 +264,7 @@
                                                 <option value="7.2.5">7.2.5</option>
                                                 <option value="7.3.2">7.3.2</option>
                                                 <option value="7.3.5">7.3.5</option>
-                                                @elseif($server->game == 'mu')
+                                            @elseif($server->game == 'mu')
                                                 <option value="S2">S2</option>
                                                 <option value="S3">S3</option>
                                                 <option value="S4">S4</option>
@@ -233,7 +279,7 @@
                                                 <option value="S11">S11</option>
                                                 <option value="S12">S12</option>
                                                 <option value="S13">S13</option>
-                                                @elseif($server->game == 'rf')
+                                            @elseif($server->game == 'rf')
                                                 <option value="2.1.1">2.1.1</option>
                                                 <option value="2.1.5">2.1.5</option>
                                                 <option value="2.1.5.2">2.1.5.2</option>
@@ -243,7 +289,7 @@
                                                 <option value="2.2.4">2.2.4</option>
                                                 <option value="1.5">1.5</option>
                                                 <option value="18.2.6">18.2.6</option>
-                                                @elseif($server->game == 'jade')
+                                            @elseif($server->game == 'jade')
                                                 <option value="3.0.1">3.0.1</option>
                                                 <option value="3.0.9">3.0.9</option>
                                                 <option value="3.1.1">3.1.1</option>
@@ -252,7 +298,7 @@
                                                 <option value="4.0.0">4.0.0</option>
                                                 <option value="4.2.0">4.2.0</option>
                                                 <option value="4.4.0">4.4.0</option>
-                                                @elseif($server->game == 'perfect')
+                                            @elseif($server->game == 'perfect')
                                                 <option value="1.3.6">1.3.6</option>
                                                 <option value="1.3.7">1.3.7</option>
                                                 <option value="1.4.4">1.4.4</option>
@@ -298,7 +344,8 @@
                             </div>
                             <div class="form-group-lk">
                                 <label>Введите теги:</label>
-                                <input type="text" class="text-ing-lk" name="tags" placeholder="Через запятую" value="{{ old('tags') }}">
+                                <input type="text" class="text-ing-lk" name="tags" placeholder="Через запятую"
+                                       value="{{ old('tags') }}">
                             </div>
                             @if ($errors->any())
                                 @foreach ($errors->all() as $error)
@@ -312,4 +359,4 @@
                     </div>
                 </div>
             </div>
-    @endsection()
+@endsection()

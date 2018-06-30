@@ -10,18 +10,18 @@
 </head>
 
 <body class="bg-404">
-    <div class="logo-404">
-        <a href="{{ route('main') }}">
-            <img src="/img/elements/logo.png" alt="">
-        </a>
-    </div>
-    <div class="text-404">
-        <span>404</span>
-        <br> Страница не найдена
-    </div>
-    <a href="/" class="link-main">ВЕРНУТЬСЯ НА ГЛАВНУЮ ›</a>
-    <script type="text/javascript" src="/js/libs.min.js"></script>
-    <script type="text/javascript" src="/js/jquery-ui.min.js"></script>
+<div class="logo-404">
+    <a href="{{ route('main') }}">
+        <img src="/img/elements/logo.png" alt="">
+    </a>
+</div>
+<div class="text-404">
+    <span>404</span>
+    <br> Страница не найдена
+</div>
+<a href="/" class="link-main">ВЕРНУТЬСЯ НА ГЛАВНУЮ ›</a>
+<script type="text/javascript" src="/js/libs.min.js"></script>
+<script type="text/javascript" src="/js/jquery-ui.min.js"></script>
 </body>
 
 </html>

@@ -14,8 +14,8 @@ class PagesController extends Controller
      */
     public function logout()
     {
-      auth()->logout();
-      return redirect('/');
+        auth()->logout();
+        return redirect('/');
     }
 
     /**
@@ -52,6 +52,15 @@ class PagesController extends Controller
     public function support()
     {
         return view('pages.support');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Поддержка
+     */
+    public function request()
+    {
+        return view('pages.request');
     }
 
     /**

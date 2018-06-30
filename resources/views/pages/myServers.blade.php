@@ -23,7 +23,8 @@
                 </div>
                 <div class="top-server-list">
                     <div class="title-list-lk">
-                        <h1><i class="ico-title"><img src="img/icon/i-23.png" alt=""></i><span>Список серверов</span></h1>
+                        <h1><i class="ico-title"><img src="img/icon/i-23.png" alt=""></i><span>Список серверов</span>
+                        </h1>
                         <div class="clear"></div>
                     </div>
                     <div class="lk-list-server">
@@ -44,9 +45,12 @@
 
                                 </div>
                                 <div class="text-list-server">
-                                    <h4><a href="{{ route('serverPage', $server->id) }}" style="color: inherit;">{{ $server->name }}</a></h4>
+                                    <h4><a href="{{ route('serverPage', $server->id) }}"
+                                           style="color: inherit;">{{ $server->name }}</a></h4>
                                     <p>Игра: <span>{{ $server->game }}</span></p>
-                                    <span class="rate-list"><i><img src="img/icon/i-24.png" alt=""></i> Рейтинг: {{ sprintf("%.2f", $server->rating) }} баллов</span>
+                                    <span class="rate-list"><i><img src="img/icon/i-24.png"
+                                                                    alt=""></i> Рейтинг: {{ sprintf("%.2f", $server->rating) }}
+                                        баллов</span>
                                 </div>
                                 <div class="link-list-server">
                                     <a href="{{ route('editServer', $server->id) }}"><img src="img/icon/l1.png" alt=""></a>

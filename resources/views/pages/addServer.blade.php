@@ -22,7 +22,8 @@
                 </div>
                 <div class="top-server-list">
                     <div class="title-list-lk">
-                        <h1><i class="ico-title"><img src="/img/icon/l-2.png" alt=""></i>Создание профиля <span class="miniTextTitle">›   Добавление сервера</span></h1>
+                        <h1><i class="ico-title"><img src="/img/icon/l-2.png" alt=""></i>Создание профиля <span
+                                    class="miniTextTitle">›   Добавление сервера</span></h1>
                         <div class="clear"></div>
                     </div>
                     <div class="content-lk-block">
@@ -47,7 +48,12 @@
                                 </div>
                                 <div class="form-group-lk">
                                     <label>Название игрового сервера:</label>
-                                    <input type="text" class="text-ing-lk {{ $errors->has('name') ? 'error-input' : '' }}" name="name" alt="Название игрового сервера" value="{{ old('name') }}">
+                                    <input type="text"
+                                           class="text-ing-lk {{ $errors->has('name') ? 'error-input' : '' }}"
+                                           name="name" alt="Название игрового сервера" value="{{ old('name') }}">
+                                    @if ($errors->has('name'))
+                                        <span class="error-message">Введите название сервера.</span>
+                                    @endif
                                 </div>
                                 <div class="block-select-lk">
                                     <label>Выбирите страну:</label>
@@ -81,7 +87,9 @@
                                             <option value="ba">Босния и Герцеговина (Bosnia and Herzegovina)</option>
                                             <option value="bw">Ботсвана (Botswana)</option>
                                             <option value="br">Бразилия (Brazil)</option>
-                                            <option value="io">Британская территория в Индийском океане (British Indian Ocean Territory)</option>
+                                            <option value="io">Британская территория в Индийском океане (British Indian
+                                                Ocean Territory)
+                                            </option>
                                             <option value="bn">Бруней-Даруссалам (Brunei Darussalam)</option>
                                             <option value="bf">Буркина-Фасо (Burkina Faso)</option>
                                             <option value="bi">Бурунди (Burundi)</option>
@@ -89,7 +97,8 @@
                                             <option value="vu">Вануату (Vanuatu)</option>
                                             <option value="hu">Венгрия (Hungary)</option>
                                             <option value="ve">Венесуэла (Venezuela)</option>
-                                            <option value="vg">Виргинские острова, Британские (British Virgin Islands)</option>
+                                            <option value="vg">Виргинские острова, Британские (British Virgin Islands)
+                                            </option>
                                             <option value="vi">Виргинские острова, США (USA Virgin Islands)</option>
                                             <option value="vn">Вьетнам (Vietnam)</option>
                                             <option value="ga">Габон (Gabon)</option>
@@ -140,11 +149,14 @@
                                             <option value="kg">Киргизия (Kyrgyzstan)</option>
                                             <option value="ki">Кирибати (Kiribati)</option>
                                             <option value="cn">Китай (China)</option>
-                                            <option value="cc">Кокосовые (Килинг) острова (Cocos (Keeling) Islands)</option>
+                                            <option value="cc">Кокосовые (Килинг) острова (Cocos (Keeling) Islands)
+                                            </option>
                                             <option value="co">Колумбия (Colombia)</option>
                                             <option value="km">Коморы (Comoros)</option>
                                             <option value="cg">Конго (Congo)</option>
-                                            <option value="cd">Конго) Демократическая Республика (Democratic Republic of the Congo)</option>
+                                            <option value="cd">Конго) Демократическая Республика (Democratic Republic of
+                                                the Congo)
+                                            </option>
                                             <option value="cr">Коста-Рика (Costa Rica)</option>
                                             <option value="ci">Кот д'Ивуар (Côte d'Ivoire)</option>
                                             <option value="cu">Куба (Cuba)</option>
@@ -166,7 +178,9 @@
                                             <option value="mw">Малави (Malawi)</option>
                                             <option value="my">Малайзия (Malaysia)</option>
                                             <option value="ml">Мали (Mali)</option>
-                                            <option value="um">Малые Тихоокеанские отдаленные острова Соединенных Штатов (United States Minor Outlying Islands)</option>
+                                            <option value="um">Малые Тихоокеанские отдаленные острова Соединенных Штатов
+                                                (United States Minor Outlying Islands)
+                                            </option>
                                             <option value="mv">Мальдивы (Maldives)</option>
                                             <option value="mt">Мальта (Malta)</option>
                                             <option value="ma">Марокко (Morocco)</option>
@@ -192,20 +206,27 @@
                                             <option value="nz">Новая Зеландия (New Zealand)</option>
                                             <option value="nc">Новая Каледония (New Caledonia)</option>
                                             <option value="no">Норвегия (Norway)</option>
-                                            <option value="ae">Объединенные Арабские Эмираты (United Arab Emirates)</option>
+                                            <option value="ae">Объединенные Арабские Эмираты (United Arab Emirates)
+                                            </option>
                                             <option value="om">Оман (Oman)</option>
                                             <option value="ky">Острова Кайман (Cayman Islands)</option>
                                             <option value="ck">Острова Кука (Cook Islands)</option>
-                                            <option value="tc">Острова Теркс и Кайкос (Turks and Caicos Islands)</option>
+                                            <option value="tc">Острова Теркс и Кайкос (Turks and Caicos Islands)
+                                            </option>
                                             <option value="bv">Остров Буве (Bouvet Island)</option>
                                             <option value="nf">Остров Норфолк (Norfolk Island)</option>
                                             <option value="cx">Остров Рождества (Christmas Island)</option>
-                                            <option value="hm">Остров Херд и острова Макдональд (Heard Island and McDonald Islands)</option>
+                                            <option value="hm">Остров Херд и острова Макдональд (Heard Island and
+                                                McDonald Islands)
+                                            </option>
                                             <option value="pk">Пакистан (Pakistan)</option>
                                             <option value="pw">Палау (Palau)</option>
-                                            <option value="ps">Палестинская территория, оккупированная (Palestine)</option>
+                                            <option value="ps">Палестинская территория, оккупированная (Palestine)
+                                            </option>
                                             <option value="pa">Панама (Panama)</option>
-                                            <option value="va">Папский Престол (Государство &amp;mdash; город Ватикан) (Vatican City)</option>
+                                            <option value="va">Папский Престол (Государство &amp;mdash; город Ватикан)
+                                                (Vatican City)
+                                            </option>
                                             <option value="pg">Папуа-Новая Гвинея (Papua New Guinea)</option>
                                             <option value="py">Парагвай (Paraguay)</option>
                                             <option value="pe">Перу (Peru)</option>
@@ -225,20 +246,27 @@
                                             <option value="sz">Свазиленд (Swaziland)</option>
                                             <option value="sh">Святая Елена (St Helena)</option>
                                             <option value="kp">Северная Корея (North Korea)</option>
-                                            <option value="mp">Северные Марианские острова (Northern Mariana Islands)</option>
+                                            <option value="mp">Северные Марианские острова (Northern Mariana Islands)
+                                            </option>
                                             <option value="sc">Сейшелы (Seychelles)</option>
                                             <option value="sn">Сенегал (Senegal)</option>
                                             <option value="pm">Сен-Пьер и Микелон (St Pierre and Miquelon)</option>
-                                            <option value="vc">Сент-Винсент и Гренадины (St Vincent and the Grenadines)</option>
+                                            <option value="vc">Сент-Винсент и Гренадины (St Vincent and the
+                                                Grenadines)
+                                            </option>
                                             <option value="kn">Сент-Китс и Невис (St Kitts and Nevis)</option>
                                             <option value="lc">Сент-Люсия (St Lucia)</option>
                                             <option value="rs">Сербия (Serbia)</option>
                                             <option value="sg">Сингапур (Singapore)</option>
-                                            <option value="sy">Сирийская Арабская Республика (Siriyskaya Arabskaya Respublika, Posol'stvo)</option>
+                                            <option value="sy">Сирийская Арабская Республика (Siriyskaya Arabskaya
+                                                Respublika, Posol'stvo)
+                                            </option>
                                             <option value="sk">Словакия (Slovakia)</option>
                                             <option value="si">Словения (Slovenia)</option>
                                             <option value="gb">Соединенное Королевство (United Kingdom)</option>
-                                            <option value="us">Соединенные Штаты (Soyedinennye Shtaty Ameriki (SShA) Konsul'skiy Otdel)</option>
+                                            <option value="us">Соединенные Штаты (Soyedinennye Shtaty Ameriki (SShA)
+                                                Konsul'skiy Otdel)
+                                            </option>
                                             <option value="sb">Соломоновы острова (Solomon Islands)</option>
                                             <option value="so">Сомали (Somalia)</option>
                                             <option value="sd">Судан (Sudan)</option>
@@ -247,7 +275,9 @@
                                             <option value="tj">Таджикистан (Tajikistan)</option>
                                             <option value="th">Таиланд (Thailand)</option>
                                             <option value="tw">Тайвань (Китай) (Taiwan)</option>
-                                            <option value="tz">Танзания) Объединенная Республика (United Republic of Tanzania)</option>
+                                            <option value="tz">Танзания) Объединенная Республика (United Republic of
+                                                Tanzania)
+                                            </option>
                                             <option value="tl">Тимор-Лесте (Timor-Leste)</option>
                                             <option value="tg">Того (Togo)</option>
                                             <option value="tk">Токелау (Tokelau)</option>
@@ -266,13 +296,18 @@
                                             <option value="fj">Фиджи (Fiji)</option>
                                             <option value="ph">Филиппины (Philippines)</option>
                                             <option value="fi">Финляндия (Finland)</option>
-                                            <option value="fk">Фолклендские острова (Мальвинские) (Falkland Islands)</option>
+                                            <option value="fk">Фолклендские острова (Мальвинские) (Falkland Islands)
+                                            </option>
                                             <option value="fr">Франция (France)</option>
                                             <option value="gf">Французская Гвиана (French Guiana)</option>
                                             <option value="pf">Французская Полинезия (French Polynesia)</option>
-                                            <option value="tf">Французские Южные территории (French Southern and Antarctic Lands)</option>
+                                            <option value="tf">Французские Южные территории (French Southern and
+                                                Antarctic Lands)
+                                            </option>
                                             <option value="hr">Хорватия (Croatia)</option>
-                                            <option value="cf">Центрально-Африканская Республика (Central African Republic)</option>
+                                            <option value="cf">Центрально-Африканская Республика (Central African
+                                                Republic)
+                                            </option>
                                             <option value="td">Чад (Chad)</option>
                                             <option value="me">Черногория (Montenegro)</option>
                                             <option value="cz">Чешская Республика (Czech Republic)</option>
@@ -289,7 +324,9 @@
                                             <option value="ee">Эстония (Estonia)</option>
                                             <option value="et">Эфиопия (Ethiopia)</option>
                                             <option value="za">Южная Африка (South Africa)</option>
-                                            <option value="gs">Южная Джорджия и Южные Сандвичевы острова (South Georgia and the South Sandwich Islands)</option>
+                                            <option value="gs">Южная Джорджия и Южные Сандвичевы острова (South Georgia
+                                                and the South Sandwich Islands)
+                                            </option>
                                             <option value="kr">Южная Корея (South Korea)</option>
                                             <option value="jm">Ямайка (Jamaica)</option>
                                             <option value="jp">Япония (Japan)</option>
@@ -300,15 +337,22 @@
                                 </div>
                                 <div class="form-group-lk">
                                     <label>Сайт сервера:</label>
-                                    <input type="text" class="text-ing-lk {{ $errors->has('site') ? 'error-input' : '' }}" name="site" value="{{ old('site') }}">
+                                    <input type="text"
+                                           class="text-ing-lk {{ $errors->has('site') ? 'error-input' : '' }}"
+                                           name="site" value="{{ old('site') }}" placeholder="http://site.ru">
+                                    @if ($errors->has('site'))
+                                        <span class="error-message">Ссылка на сайт должны быть вида http://site.ru.</span>
+                                    @endif
                                 </div>
                                 <div class="form-group-lk">
                                     <label>Видио трейлер:</label>
-                                    <input type="text" class="text-ing-lk" name="video" placeholder="Ссылка на Youtube" value="{{ old('video') }}">
+                                    <input type="text" class="text-ing-lk" name="video" placeholder="Ссылка на Youtube"
+                                           value="{{ old('video') }}">
                                 </div>
                                 <div class="form-group-lk">
                                     <label>Введите теги:</label>
-                                    <input type="text" class="text-ing-lk" name="tags" placeholder="Через запятую" value="{{ old('tags') }}">
+                                    <input type="text" class="text-ing-lk" name="tags" placeholder="Через запятую"
+                                           value="{{ old('tags') }}">
                                 </div>
                             </div>
                             <div class="rightBlockLk">
@@ -316,11 +360,21 @@
                             <div class="clear"></div>
                             <div class="text-area-lk">
                                 <label>Кратакое описание сервера:</label>
-                                <textarea class="textarea-style-lk {{ $errors->has('description') ? 'error-input' : '' }}" name="description">{{ old('description') }}</textarea>
+                                <textarea
+                                        class="textarea-style-lk {{ $errors->has('description') ? 'error-input' : '' }}"
+                                        name="description">{{ old('description') }}</textarea>
+                                @if ($errors->has('description'))
+                                    <span class="error-message">Описание сервера должно быть не менее 80 символов.</span>
+                                @endif
                             </div>
                             <div class="text-area-lk">
                                 <label>Полное описание сервера:</label>
-                                <textarea class="textarea-style-lk {{ $errors->has('fdescription') ? 'error-input' : '' }}" name="fdescription">{{ old('fdescription') }}</textarea>
+                                <textarea
+                                        class="textarea-style-lk {{ $errors->has('fdescription') ? 'error-input' : '' }}"
+                                        name="fdescription">{{ old('fdescription') }}</textarea>
+                                @if ($errors->has('fdescription'))
+                                    <span class="error-message">Полное описание сервера должно быть не менее 80 символов.</span>
+                                @endif
                             </div>
                             <p class="line-razdel"></p>
                             <div class="block-select-lk">
@@ -332,22 +386,23 @@
                             <div class="block-select-lk" id="vote_description" style="display: none;">
                                 <label>Правила голосования для игроков:</label>
                                 {{--<div class="item-select-lk">--}}
-                                    {{--<select>--}}
-                                        {{--<option>Ник персоанажа</option>--}}
-                                        {{--<option>Ник персоанажа</option>--}}
-                                        {{--<option>Ник персоанажа</option>--}}
-                                        {{--<option>Ник персоанажа</option>--}}
-                                    {{--</select>--}}
+                                {{--<select>--}}
+                                {{--<option>Ник персоанажа</option>--}}
+                                {{--<option>Ник персоанажа</option>--}}
+                                {{--<option>Ник персоанажа</option>--}}
+                                {{--<option>Ник персоанажа</option>--}}
+                                {{--</select>--}}
                                 {{--</div>--}}
-                                <textarea class="textarea-style-lk" name="vote_description">{{ old('vote_description') }}</textarea>
+                                <textarea class="textarea-style-lk"
+                                          name="vote_description">{{ old('vote_description') }}</textarea>
                             </div>
-                            @if ($errors->any())
-                                        @foreach ($errors->all() as $error)
-                                            <span class="invalid-feedback" style="margin: 0">
-                                                <strong>{{ $error }}</strong>
-                                            </span>
-                                        @endforeach
-                            @endif
+                            {{--@if ($errors->any())--}}
+                            {{--@foreach ($errors->all() as $error)--}}
+                            {{--<span class="invalid-feedback" style="margin: 0">--}}
+                            {{--<strong>{{ $error }}</strong>--}}
+                            {{--</span>--}}
+                            {{--@endforeach--}}
+                            {{--@endif--}}
 
                             <button class="create-server">Следующий шаг ›</button>
                         </form>

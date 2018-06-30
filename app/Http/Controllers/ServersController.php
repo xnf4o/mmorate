@@ -22,7 +22,8 @@ class ServersController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * Главная страница
      */
-    public function main(){
+    public function main()
+    {
         $allServers = Servers::where('status', Servers::CONFIRMED)->sortable()->paginate(self::PAGINATE);
         return view('pages.index', compact('allServers'));
     }
@@ -136,7 +137,8 @@ class ServersController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * Страница сервера
      */
-    public function server($id){
+    public function server($id)
+    {
         $server = Servers::where('id', $id)->first();
         $comments = Comments::where('server_id', $id)->get();
         $worlds = Worlds::where('server_id', $id)->get();
@@ -150,7 +152,8 @@ class ServersController extends Controller
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      * Добавление комментария
      */
-    public function addComment($id, Request $r){
+    public function addComment($id, Request $r)
+    {
         $comment = new Comments();
         $comment->author = Auth::user()->name;
         $comment->text = $r->get('text');
@@ -172,7 +175,8 @@ class ServersController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * Страница голосования
      */
-    public function vote($id){
+    public function vote($id)
+    {
         $server = Servers::where('id', $id)->first();
         $rates = Worlds::where('server_id', $id)->get();
 
@@ -185,14 +189,15 @@ class ServersController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * Добавление голоса
      */
-    public function votePost($id, Request $r){
+    public function votePost($id, Request $r)
+    {
         $r->validate([
             'nickname' => 'required',
             'g-recaptcha-response' => 'required|captcha'
         ]);
 
         $vote = Votes::where('user_id', Auth::id())->orderBy('created_at', 'DESC')->first();
-        if(isset($vote) and $vote->created_at->isToday()) abort('404');
+        if (isset($vote) and $vote->created_at->isToday()) abort('404');
 
         $voteCoeff = self::COEF;
         $adBlock = $r->get('adBlockIsEnabled');
@@ -223,7 +228,8 @@ class ServersController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * Страница добавления сервера
      */
-    public function add(){
+    public function add()
+    {
         return view('pages.addServer');
     }
 
@@ -232,7 +238,8 @@ class ServersController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * Добавление сервера
      */
-    public function addPost(Request $r){
+    public function addPost(Request $r)
+    {
         $r->validate([
             'site' => 'required|url',
             'name' => 'required',
@@ -261,7 +268,8 @@ class ServersController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * Страница добавления мира
      */
-    public function addWorld($id){
+    public function addWorld($id)
+    {
         $server = Servers::where('id', $id)->first();
         if ($server->user_id != Auth::id()) abort(404);
 
@@ -273,11 +281,12 @@ class ServersController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * Создание мира
      */
-    public function addWorldPost(Request $r){
+    public function addWorldPost(Request $r)
+    {
         $r->validate([
             'description' => 'required|min:80',
-            'onlineUrl'   => 'required|int',
-            'rate'        => 'required|without_spaces'
+            'onlineUrl' => 'required|int',
+            'rate' => 'required|without_spaces'
         ]);
         $clans = ($r->get('clans')) ? $r->get('clans') : 0;
         $tags = ($r->get('tags')) ? $r->get('tags') : '';
@@ -310,10 +319,11 @@ class ServersController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * Возврат серверов пользователя для редактирования
      */
-    public function myServers(){
-       $allServers = Servers::where('user_id', Auth::id())->get();
+    public function myServers()
+    {
+        $allServers = Servers::where('user_id', Auth::id())->get();
 
-       return view('pages.myServers', compact('allServers'));
+        return view('pages.myServers', compact('allServers'));
     }
 
     /**
@@ -321,7 +331,8 @@ class ServersController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * Страница редактирования сервера
      */
-    public function edit($id){
+    public function edit($id)
+    {
         $server = Servers::where('id', $id)->first();
         if ($server->user_id != Auth::id()) abort('404');
 
@@ -334,7 +345,8 @@ class ServersController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * Редактирование сервера
      */
-    public function editPost($id, Request $r){
+    public function editPost($id, Request $r)
+    {
         $r->validate([
             'site' => 'required|url',
             'name' => 'required',
@@ -358,7 +370,8 @@ class ServersController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * Возврат серверов пользователя для показа статистики
      */
-    public function myServersStat(){
+    public function myServersStat()
+    {
         $allServers = Servers::where('user_id', Auth::id())->get();
 
         return view('pages.myServersStat', compact('allServers'));
@@ -369,7 +382,8 @@ class ServersController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * Статистика сервера
      */
-    public function serverStat($id){
+    public function serverStat($id)
+    {
         $server = Servers::where('id', $id)->first();
         if ($server->user_id != Auth::id()) abort('404');
 
@@ -384,7 +398,8 @@ class ServersController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * Страница мира
      */
-    public function world($servId, $id){
+    public function world($servId, $id)
+    {
         $server = Servers::where('id', $servId)->first();
         if (!Worlds::where('server_id', $server->id)->first()) abort('404');
         $world = Worlds::where('id', $id)->first();
