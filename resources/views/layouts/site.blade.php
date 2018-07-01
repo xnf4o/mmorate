@@ -49,6 +49,23 @@
         <a href="{{ route('faq') }}" class="menu-item"><span class="line-menu"></span>Вопросы и ответы</a>
     </div>
 </div>
+@if(isset($game) && $game != 'lineage')
+    @if($game == 'perfect' or $game == 'my')
+        <div class="pw-container">
+            @endif
+            <div class="{{ $game }}-container">
+                @else
+                    <div class="main-container">
+                        @endif
+    <div class="contentLogoNews">
+        @if(isset($route))
+        <a href="{{ route($route) }}">
+            @else
+        <a href="{{ route('main') }}">
+            @endif
+            <img src="../img/elements/logo.png" alt="">
+        </a>
+    </div>
 @yield('content')
 <div class="contentRight">
     <div class="element-desing-2">

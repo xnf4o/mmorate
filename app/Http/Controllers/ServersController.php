@@ -37,8 +37,9 @@ class ServersController extends Controller
         $allServers = Servers::aion()->where('status', Servers::CONFIRMED)->sortable()->paginate(self::PAGINATE);
         $game = 'aion';
         $gameTitle = 'Aion';
+        $route = 'aion';
 
-        return view('pages.index', compact('allServers', 'game', 'gameTitle'));
+        return view('pages.index', compact('allServers', 'game', 'gameTitle', 'route'));
     }
 
     /**
@@ -50,8 +51,9 @@ class ServersController extends Controller
         $allServers = Servers::lineage()->where('status', Servers::CONFIRMED)->sortable()->paginate(self::PAGINATE);
         $game = 'lineage';
         $gameTitle = 'Lineage 2';
+        $route = 'l2';
 
-        return view('pages.index', compact('allServers', 'game', 'gameTitle'));
+        return view('pages.index', compact('allServers', 'game', 'gameTitle', 'route'));
     }
 
     /**
@@ -63,8 +65,9 @@ class ServersController extends Controller
         $allServers = Servers::wow()->where('status', Servers::CONFIRMED)->sortable()->paginate(self::PAGINATE);
         $game = 'wow';
         $gameTitle = 'World Of Warcraft';
+        $route = 'wow';
 
-        return view('pages.index', compact('allServers', 'game', 'gameTitle'));
+        return view('pages.index', compact('allServers', 'game', 'gameTitle', 'route'));
     }
 
     /**
@@ -76,8 +79,9 @@ class ServersController extends Controller
         $allServers = Servers::jade()->where('status', Servers::CONFIRMED)->sortable()->paginate(self::PAGINATE);
         $game = 'jade';
         $gameTitle = 'Jade Dynasty';
+        $route = 'jd';
 
-        return view('pages.index', compact('allServers', 'game', 'gameTitle'));
+        return view('pages.index', compact('allServers', 'game', 'gameTitle', 'route'));
     }
 
     /**
@@ -89,8 +93,9 @@ class ServersController extends Controller
         $allServers = Servers::mu()->where('status', Servers::CONFIRMED)->sortable()->paginate(self::PAGINATE);
         $game = 'mu';
         $gameTitle = 'Mu Online';
+        $route = 'mu';
 
-        return view('pages.index', compact('allServers', 'game', 'gameTitle'));
+        return view('pages.index', compact('allServers', 'game', 'gameTitle', 'route'));
     }
 
     /**
@@ -102,8 +107,9 @@ class ServersController extends Controller
         $allServers = Servers::rf()->where('status', Servers::CONFIRMED)->sortable()->paginate(self::PAGINATE);
         $game = 'rf';
         $gameTitle = 'RF Online';
+        $route = 'rf';
 
-        return view('pages.index', compact('allServers', 'game', 'gameTitle'));
+        return view('pages.index', compact('allServers', 'game', 'gameTitle', 'route'));
     }
 
     /**
@@ -115,8 +121,9 @@ class ServersController extends Controller
         $allServers = Servers::perfect()->where('status', Servers::CONFIRMED)->sortable()->paginate(self::PAGINATE);
         $game = 'perfect';
         $gameTitle = 'Perfect World';
+        $route = 'pw';
 
-        return view('pages.index', compact('allServers', 'game', 'gameTitle'));
+        return view('pages.index', compact('allServers', 'game', 'gameTitle', 'route'));
     }
 
     /**
@@ -128,8 +135,9 @@ class ServersController extends Controller
         $allServers = Servers::other()->where('status', Servers::CONFIRMED)->sortable()->paginate(self::PAGINATE);
         $game = 'onl';
         $gameTitle = 'онлайн игр';
+        $route = 'online';
 
-        return view('pages.index', compact('allServers', 'game', 'gameTitle'));
+        return view('pages.index', compact('allServers', 'game', 'gameTitle', 'route'));
     }
 
     /**

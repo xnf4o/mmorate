@@ -23,8 +23,8 @@ Route::group(['domain' => $domain], function () {
     Route::get('/support', 'PagesController@support')->name('support');
     Route::get('/request', 'PagesController@request')->name('request');
     Route::get('/faq', 'PagesController@faq')->name('faq');
-    Route::get('/', 'PagesController@promo')->name('main');
-//    Route::get('/', 'ServersController@main')->name('main');
+//    Route::get('/', 'PagesController@promo')->name('main');
+    Route::get('/', 'ServersController@main')->name('main');
 
     Route::middleware('auth')->group(function () {
 // Profile

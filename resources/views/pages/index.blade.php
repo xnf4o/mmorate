@@ -1,19 +1,6 @@
 @extends('layouts.site')
 @section('title', 'Главная')
 @section('content')
-    @if(isset($game) && $game != 'lineage')
-        @if($game == 'perfect' or $game == 'my')
-            <div class="pw-container">
-                @endif
-                <div class="{{ $game }}-container">
-                    @else
-                        <div class="main-container">
-                            @endif
-                            <div class="contentLogo">
-                                <a href="{{ route('main') }}">
-                                    <img src="../img/elements/logo.png" alt="">
-                                </a>
-                            </div>
                             <div class="style-bg-content ">
                                 <div class="content-bg-top">
                                     <div class="element-desing-1">

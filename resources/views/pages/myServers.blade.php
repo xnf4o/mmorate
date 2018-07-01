@@ -1,13 +1,6 @@
 @extends('layouts.site')
 @section('title', 'Список серверов')
 @section('content')
-
-    <div class="news-container">
-        <div class="contentLogoNews">
-            <a href="{{ route('main') }}">
-                <img src="img/elements/logo.png" alt="">
-            </a>
-        </div>
         <div class="style-bg-content">
             <div class="content-bg-lk">
                 <div class="element-desing-1">

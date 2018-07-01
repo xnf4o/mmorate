@@ -1,12 +1,6 @@
 @extends('layouts.site')
 @section('title', 'Подтверждение аккаунта')
 @section('content')
-    <div class="news-container">
-        <div class="contentLogoNews">
-            <a href="{{ route('main') }}">
-                <img src="../img/elements/logo.png" alt="">
-            </a>
-        </div>
         <div class="style-bg-content">
             <div class="content-bg-top">
                 <div class="element-desing-1">
