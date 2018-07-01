@@ -242,7 +242,7 @@
 </footer>
 <script type="text/javascript" src="{{ asset('/js/libs.min.js') }}"></script>
 {{--https://github.com/sitexw/FuckAdBlock--}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fuckadblock/3.2.1/fuckadblock.min.js"></script>
+{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/fuckadblock/3.2.1/fuckadblock.min.js"></script>--}}
 {{--http://igorescobar.github.io/jQuery-Mask-Plugin/--}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 {{--https://github.com/IonDen/ion.calendar--}}

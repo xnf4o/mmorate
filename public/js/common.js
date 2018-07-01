@@ -131,12 +131,12 @@ $(document).ready(function () {
 
 
     $("#phone").mask("+7(999) 999-99-99");
-    fuckAdBlock.onDetected(function () {
-        $('#ad').val('1')
-    });
-    fuckAdBlock.onNotDetected(function () {
-        $('#ad').val('0')
-    });
+    // fuckAdBlock.onDetected(function () {
+    //     $('#ad').val('1')
+    // });
+    // fuckAdBlock.onNotDetected(function () {
+    //     $('#ad').val('0')
+    // });
     $('#file-1').on("change", function () {
         $('#updateAvatar').submit();
     });
