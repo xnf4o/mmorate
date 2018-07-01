@@ -285,6 +285,7 @@ class ServersController extends Controller
     {
         $r->validate([
             'description' => 'required|min:80',
+            'modDesc' => 'required|min:80',
             'onlineUrl' => 'required|int',
             'rate' => 'required|without_spaces'
         ]);
