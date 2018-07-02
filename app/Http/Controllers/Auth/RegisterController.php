@@ -66,7 +66,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        Mail::send('emails.profile', ['data' => $data], function ($m) use ($data) {
+        Mail::send('emails.register', ['data' => $data], function ($m) use ($data) {
             $m->from(env('MAIL_USERNAME'), 'MMORATE');
             $m->to($data['email'], $data['name'])->subject('Регистрация');
         });
