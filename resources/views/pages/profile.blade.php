@@ -21,6 +21,13 @@
                         <div class="clear"></div>
                     </div>
                     <div class="content-lk-block">
+                        @if (session()->has('success'))
+                            <div class="infoRegist">
+                                Ваши данные были изменены!
+                                <span>Уведомление отправлено на почту</span>
+                            </div>
+                            <p class="lineReg"></p>
+                        @endif
                         <form action="{{ route('profile.edit') }}" method="post">
                             @csrf
                             <div class="leftBlockLk">

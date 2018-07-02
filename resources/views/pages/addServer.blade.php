@@ -21,6 +21,7 @@
                         <div class="clear"></div>
                     </div>
                     <div class="content-lk-block">
+                        @if(auth()->user()->email_confirmed == 1 and auth()->user()->phone_confirmed == 1)
                         <form action="{{ route('addServer.post') }}" method="post">
                             @csrf
                             <div class="leftBlockLk">
@@ -400,6 +401,13 @@
 
                             <button class="create-server">Следующий шаг ›</button>
                         </form>
+                        @else
+                            <div class="infoRegist">
+                                Добавление сервера станет доступно после подтверждения почты и телефона.
+                                <span>Подтвердите почту и телефон.</span>
+                            </div>
+                            <p class="lineReg"></p>
+                        @endif
                     </div>
                 </div>
             </div>

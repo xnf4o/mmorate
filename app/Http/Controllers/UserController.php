@@ -37,6 +37,15 @@ class UserController extends Controller
     }
 
     /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Редирект по роуту
+     */
+    public function redirect($route)
+    {
+        return redirect()->route($route);
+    }
+
+    /**
      * @param Request $r
      * @return \Illuminate\Http\RedirectResponse
      * Смена пароля
@@ -60,6 +69,12 @@ class UserController extends Controller
                 return back()->withErrors(["Старый пароль указан неверно"]);
             }
         }
+
+        Mail::send('emails.password', ['user' => $user], function ($m) use ($user) {
+            $m->from(env('MAIL_USERNAME'), 'MMORATE');
+            $m->to($user->email, $user->name)->subject('Уведомление');
+        });
+
         return back()->with("success", $success);
     }
 
@@ -78,6 +93,12 @@ class UserController extends Controller
             $user->avatar = '/uploads/avatars/' . $filename;
             $user->save();
         }
+
+        Mail::send('emails.avatar', ['user' => $user], function ($m) use ($user) {
+            $m->from(env('MAIL_USERNAME'), 'MMORATE');
+            $m->to($user->email, $user->name)->subject('Уведомление');
+        });
+
         return redirect()->route('profile');
     }
 
@@ -97,7 +118,12 @@ class UserController extends Controller
 //        $user->phone = $r->get('phone');
         $user->save();
 
-        return redirect()->route('profile');
+        Mail::send('emails.profile', ['user' => $user], function ($m) use ($user) {
+            $m->from(env('MAIL_USERNAME'), 'MMORATE');
+            $m->to($user->email, $user->name)->subject('Уведомление');
+        });
+
+        return back()->with("success", 'true');
     }
 
     /**
@@ -114,7 +140,7 @@ class UserController extends Controller
     /**
      * @param Request $r
      * @return \Illuminate\Http\JsonResponse
-     * Функция отправки письма на почту
+     * Функция отправки письма c кодом на почту
      */
     public function sendEmailCode(Request $r)
     {

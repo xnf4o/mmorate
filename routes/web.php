@@ -17,6 +17,7 @@ $domain = 'mmorate.com';
 // Pages
 Route::group(['domain' => $domain], function () {
     Route::get('/logout', 'PagesController@logout')->name('logout');
+    Route::get('/redirect/{route}', 'UserController@redirect')->name('redirect');
     Route::get('/about', 'PagesController@about')->name('about');
     Route::get('/rules', 'PagesController@rules')->name('rules');
     Route::get('/contacts', 'PagesController@contacts')->name('contacts');

@@ -1,31 +1,32 @@
 @extends('layouts.site')
 @section('title', 'Голосование за сервер ' . $server->name)
 @section('content')
-        <div class="style-bg-content">
-            <div class="content-bg-top">
-                <div class="element-desing-1">
-                    <img src="/img/elements/elem-1.png" alt="">
-                </div>
-                <div class="element-desing-2">
-                    <img src="/img/elements/elem-2.png" alt="">
-                </div>
-                <div class="element-desing-3">
-                    <img src="/img/elements/elem-3.png" alt="">
+    <div class="style-bg-content">
+        <div class="content-bg-top">
+            <div class="element-desing-1">
+                <img src="/img/elements/elem-1.png" alt="">
+            </div>
+            <div class="element-desing-2">
+                <img src="/img/elements/elem-2.png" alt="">
+            </div>
+            <div class="element-desing-3">
+                <img src="/img/elements/elem-3.png" alt="">
+            </div>
+        </div>
+        <div class="contentLeft">
+            <div class="segment-rek-top">
+                <div class="bg-ramka-rek"></div>
+                <a href=""><img src="/img/rk/bn468.png" alt=""></a>
+            </div>
+            <div class="top-server-list">
+                <div class="title-list-server">
+                    <h1><i class="ico-title"><img src="/img/icon/i-6.png"
+                                                  alt=""></i><span>Голосование за сервер</span></h1>
+                    <div class="clear"></div>
                 </div>
             </div>
-            <div class="contentLeft">
-                <div class="segment-rek-top">
-                    <div class="bg-ramka-rek"></div>
-                    <a href=""><img src="/img/rk/bn468.png" alt=""></a>
-                </div>
-                <div class="top-server-list">
-                    <div class="title-list-server">
-                        <h1><i class="ico-title"><img src="/img/icon/i-6.png"
-                                                      alt=""></i><span>Голосование за сервер</span></h1>
-                        <div class="clear"></div>
-                    </div>
-                </div>
-                <div class="item-top no-bg">
+            <div class="item-top no-bg">
+                @if(auth()->user()->email_confirmed == 1 and auth()->user()->phone_confirmed == 1)
                     <div class="title-item-golos">
                         <div class="number-top-server goldNumber">
                             1
@@ -82,8 +83,15 @@
                             <i><img src="/img/icon/i-7.png" alt=""></i> Отдать VIP голос
                         </a>
                     </div>
-                </div>
+                @else
+                    <div class="infoRegist">
+                        Голосование за сервер станет доступно после подтверждения почты и телефона.
+                        <span>Подтвердите почту и телефон.</span>
+                    </div>
+                    <p class="lineReg"></p>
+                @endif
             </div>
         </div>
+    </div>
 
 @endsection

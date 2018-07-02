@@ -7,6 +7,7 @@ use MMORATE\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Mail;
 
 class RegisterController extends Controller
 {
@@ -28,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/profile';
+    protected $redirectTo = '/redirect/profile';
 
     /**
      * Create a new controller instance.
@@ -65,6 +66,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        Mail::send('emails.profile', ['data' => $data], function ($m) use ($data) {
+            $m->from(env('MAIL_USERNAME'), 'MMORATE');
+            $m->to($data['email'], $data['name'])->subject('Регистрация');
+        });
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

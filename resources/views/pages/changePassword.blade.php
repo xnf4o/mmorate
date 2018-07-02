@@ -1,26 +1,34 @@
 @extends('layouts.site')
 @section('title', 'Смена пароля')
 @section('content')
-        <div class="style-bg-content">
-            <div class="content-bg-lk">
-                <div class="element-desing-1">
-                    <img src="../img/elements/elem-1.png" alt="">
-                </div>
-                <div class="element-desing-3">
-                    <img src="../img/elements/elem-3.png" alt="">
-                </div>
+    <div class="style-bg-content">
+        <div class="content-bg-lk">
+            <div class="element-desing-1">
+                <img src="../img/elements/elem-1.png" alt="">
             </div>
-            <div class="contentLeft">
-                <div class="title-lk">
-                    <h3><i><img src="../img/icon/l-1.png" alt=""></i> Кабинет администратора</h3>
+            <div class="element-desing-3">
+                <img src="../img/elements/elem-3.png" alt="">
+            </div>
+        </div>
+        <div class="contentLeft">
+            <div class="title-lk">
+                <h3><i><img src="../img/icon/l-1.png" alt=""></i> Кабинет администратора</h3>
+            </div>
+            <div class="top-server-list">
+                <div class="title-list-lk">
+                    <h1><i class="ico-title"><img src="../img/icon/l-4.png"
+                                                  alt=""></i><span>Настройки профиля</span></h1>
+                    <div class="clear"></div>
                 </div>
-                <div class="top-server-list">
-                    <div class="title-list-lk">
-                        <h1><i class="ico-title"><img src="../img/icon/l-4.png"
-                                                      alt=""></i><span>Настройки профиля</span></h1>
-                        <div class="clear"></div>
-                    </div>
-                    <h4 class="content-lk-block">
+                <div class="content-lk-block">
+                    @if(auth()->user()->email_confirmed == 1)
+                        @if (session()->has('success'))
+                            <div class="infoRegist">
+                                Ваш пароль был изменен!
+                                <span>Уведомление отправлено на почту</span>
+                            </div>
+                            <p class="lineReg"></p>
+                        @endif
                         <form action="{{ route('changePassword.post') }}" method="post">
                             @csrf
                             <h4 class="titlePassLk">Смена пароля</h4>
@@ -45,7 +53,15 @@
                             </div>
                             <button type="submit" class="create-server">Сохранить изменения</button>
                         </form>
+                    @else
+                        <div class="infoRegist">
+                            Смена пароля станет доступна после подтверждения почты.
+                            <span>Подтвердите почту.</span>
+                        </div>
+                        <p class="lineReg"></p>
+                    @endif
                 </div>
             </div>
+        </div>
 
 @endsection
