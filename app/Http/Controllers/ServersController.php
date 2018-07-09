@@ -81,6 +81,7 @@ class ServersController extends Controller
         $gameTitle = 'Jade Dynasty';
         $route = 'jade';
 
+
         return view('pages.index', compact('allServers', 'game', 'gameTitle', 'route'));
     }
 
