@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{{ asset('../css/libs.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('../css/main.css') }}">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css"/>
     <title>MMORATE - @yield('title')</title>
 </head>
@@ -186,7 +187,7 @@
         <a href=""><img src="/img/rk/bn234.png" alt=""></a>
     </div>
     <div class="bottom-sitebar">
-        <a href=""><img src="/img/elements/logo-sitebar.png" alt=""></a>
+        {{--<a href=""><img src="/img/elements/logo-sitebar.png" alt=""></a>--}}
         <div class="miniRek">
             <a href=""></a>
             <a href=""></a>
@@ -229,7 +230,7 @@
             характер и не являются официальной версией игры.
             <br>
             <br>
-            <a href="">© 2018 Topmmo.com</a> - Мониторинг игровых серверов
+            <a href="">© 2018 MmoRate.com</a> - Мониторинг игровых серверов
         </p>
         <div class="social-footer">
             <a href="" class="item-social vk-ico"></a>

@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/css/libs.min.css">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <title>MMORATE - 404</title>
 </head>
 

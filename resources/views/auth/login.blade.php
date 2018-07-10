@@ -5,7 +5,7 @@
     <div class="regist-content">
         <div class="content-regist">
             <div class="reg-block-logo">
-                <a href=""><img src="../img/elements/logo.png" alt=""></a>
+                <a href="{{ route('main') }}"><img src="../img/elements/logo.png" alt=""></a>
             </div>
             <div class="block-title-regist">
                 <h3><i><img src="../img/icon/i-12.png" alt=""></i> Авторизация</h3>

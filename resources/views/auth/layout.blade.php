@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../css/libs.min.css">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <title>MMORATE - @yield('title')</title>
 </head>
 
@@ -20,7 +21,7 @@
             <br> Играть на данных серверах вы можете абсолютно бесплатно, так как они носят лишь ознакомительный характер и не являются официальной версией игры.
             <br>
             <br>
-            <a href="">© 2018 Topmmo.com</a> - Мониторинг игровых серверов
+            <a href="">© 2018 MmoRate.com</a> - Мониторинг игровых серверов
         </p>
         <div class="social-footer">
             <a href="" class="item-social vk-ico"></a>

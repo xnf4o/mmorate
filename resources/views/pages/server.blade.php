@@ -150,6 +150,7 @@
                         </div>
                     @endforeach
                 </div>
+                @if(Auth::check())
                 <div class="form-comment">
                     <h3>Оставить отзыв о сервере</h3>
                     <form action="{{ route('serverAddComment', $server->id) }}" method="post">
@@ -185,5 +186,6 @@
                         <button class="send-comment">Отправить отзыв</button>
                     </form>
                 </div>
+                    @endif
             </div>
 @endsection

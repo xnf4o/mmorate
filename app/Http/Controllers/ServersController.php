@@ -296,6 +296,7 @@ class ServersController extends Controller
             'description' => 'required|min:80',
             'modDesc' => 'required|min:80',
             'onlineUrl' => 'required|int',
+            'versionNumber' => 'required',
             'rate' => 'required|without_spaces'
         ]);
         $clans = ($r->get('clans')) ? $r->get('clans') : 0;
