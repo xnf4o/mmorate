@@ -17,32 +17,39 @@
                         <input type="hidden" name="token" value="{{ $token }}">
                         <div class="form-group-reg">
                             <label class="title-label-reg">E-mail:</label>
-                            <input type="text" class="text-ing-reg {{ $errors->has('email') ? 'error-input' : '' }}" name="email" value="{{ old('email') }}" required>
+                            <input type="text" class="text-ing-reg {{ $errors->has('email') ? 'error-input' : '' }}"
+                                   name="email" value="{{ old('email') }}" required>
                             @if ($errors->has('email'))
                                 <span class="error-message">Имя пользователя и пароль не совпадают.</span>
                             @endif
                         </div>
                         <div class="form-group-reg">
                             <label class="title-label-reg">Пароль:</label>
-                            <input type="password" class="text-ing-reg {{ $errors->has('password') ? 'error-input' : '' }}" name="password" required>
+                            <input type="password"
+                                   class="text-ing-reg {{ $errors->has('password') ? 'error-input' : '' }}"
+                                   name="password" required>
                             @if ($errors->has('password'))
                                 <span class="error-message">Пароли не совпадают</span>
                             @endif
                         </div>
                         <div class="form-group-reg">
                             <label class="title-label-reg">Пароль:</label>
-                            <input type="password" class="text-ing-reg {{ $errors->has('password_confimation') ? 'error-input' : '' }}" name="password_confimation" required>
+                            <input type="password"
+                                   class="text-ing-reg {{ $errors->has('password_confimation') ? 'error-input' : '' }}"
+                                   name="password_confimation" required>
                             @if ($errors->has('password_confimation'))
                                 <span class="error-message">Пароли не совпадают</span>
                             @endif
                         </div>
                         {{--<div class="capcha">{!! Captcha::display() !!}--}}
-                            {{--@if ($errors->has('g-recaptcha-response'))--}}
-                                {{--<span class="error-message">Подтвердите капчу</span>--}}
-                            {{--@endif--}}
+                        {{--@if ($errors->has('g-recaptcha-response'))--}}
+                        {{--<span class="error-message">Подтвердите капчу</span>--}}
+                        {{--@endif--}}
                         {{--</div>--}}
                         <div class="form-group-checkbox">
-                            <button type="submit" class="btn-regist"><i><img src="../img/icon/i-13.png" alt=""></i> Сменить пароль</button>
+                            <button type="submit" class="btn-regist"><i><img src="../img/icon/i-13.png" alt=""></i>
+                                Сменить пароль
+                            </button>
                         </div>
                     </form>
                 </div>

@@ -1,34 +1,34 @@
 @extends('layouts.site')
 @section('title', 'Добавление сервера')
 @section('content')
-        <div class="style-bg-content">
-            <div class="content-bg-lk">
-                <div class="element-desing-1">
-                    <img src="/img/elements/elem-1.png" alt="">
-                </div>
-                <div class="element-desing-3">
-                    <img src="/img/elements/elem-3.png" alt="">
-                </div>
+    <div class="style-bg-content">
+        <div class="content-bg-lk">
+            <div class="element-desing-1">
+                <img src="/img/elements/elem-1.png" alt="">
             </div>
-            <div class="contentLeft">
-                <div class="title-lk">
-                    <h3><i><img src="/img/icon/l-1.png" alt=""></i> Кабинет администратора</h3>
+            <div class="element-desing-3">
+                <img src="/img/elements/elem-3.png" alt="">
+            </div>
+        </div>
+        <div class="contentLeft">
+            <div class="title-lk">
+                <h3><i><img src="/img/icon/l-1.png" alt=""></i> Кабинет администратора</h3>
+            </div>
+            <div class="top-server-list">
+                <div class="title-list-lk">
+                    <h1><i class="ico-title"><img src="/img/icon/l-2.png" alt=""></i>Создание профиля <span
+                                class="miniTextTitle">›   Добавление сервера</span></h1>
+                    <div class="clear"></div>
                 </div>
-                <div class="top-server-list">
-                    <div class="title-list-lk">
-                        <h1><i class="ico-title"><img src="/img/icon/l-2.png" alt=""></i>Создание профиля <span
-                                    class="miniTextTitle">›   Добавление сервера</span></h1>
-                        <div class="clear"></div>
-                    </div>
-                    <div class="content-lk-block">
-                        @if(auth()->user()->email_confirmed == 1 and auth()->user()->phone_confirmed == 1)
-                        <form action="{{ route('addServer.post') }}" method="post">
+                <div class="content-lk-block">
+                    @if(auth()->user()->email_confirmed == 1 and auth()->user()->phone_confirmed == 1)
+                        <form action="{{ route('addServer.post') }}" method="post" id="addServerForm">
                             @csrf
                             <div class="leftBlockLk">
                                 <div class="block-select-lk">
                                     <label>Выбирите игру:</label>
                                     <div class="item-select-lk">
-                                        <select name="game" {{ $errors->has('game') ? 'error-input' : '' }}>
+                                        <select name="game" {{ $errors->has('game') ? 'error-input' : '' }} required>
                                             <option value="0">-- Выберите игру --</option>
                                             <option value="aion">Aion</option>
                                             <option value="jade">Jade Dynasty</option>
@@ -45,7 +45,8 @@
                                     <label>Название игрового сервера:</label>
                                     <input type="text"
                                            class="text-ing-lk {{ $errors->has('name') ? 'error-input' : '' }}"
-                                           name="name" alt="Название игрового сервера" value="{{ old('name') }}">
+                                           name="name" alt="Название игрового сервера" value="{{ old('name') }}"
+                                           required minlength="3">
                                     @if ($errors->has('name'))
                                         <span class="error-message">Введите название сервера.</span>
                                     @endif
@@ -53,7 +54,7 @@
                                 <div class="block-select-lk">
                                     <label>Выбирите страну:</label>
                                     <div class="item-select-lk">
-                                        <select name="country">
+                                        <select name="country" required>
                                             <option value="au">Австралия (Australia)</option>
                                             <option value="at">Австрия (Austria)</option>
                                             <option value="az">Азербайджан (Azerbaijan)</option>
@@ -332,16 +333,16 @@
                                 </div>
                                 <div class="form-group-lk">
                                     <label>Сайт сервера:</label>
-                                    <input type="text"
+                                    <input type="url"
                                            class="text-ing-lk {{ $errors->has('site') ? 'error-input' : '' }}"
-                                           name="site" value="{{ old('site') }}" placeholder="http://site.ru">
+                                           name="site" value="{{ old('site') }}" placeholder="http://site.ru" required>
                                     @if ($errors->has('site'))
                                         <span class="error-message">Ссылка на сайт должны быть вида http://site.ru.</span>
                                     @endif
                                 </div>
                                 <div class="form-group-lk">
                                     <label>Видио трейлер:</label>
-                                    <input type="text" class="text-ing-lk" name="video" placeholder="Ссылка на Youtube"
+                                    <input type="url" class="text-ing-lk" name="video" placeholder="Ссылка на Youtube"
                                            value="{{ old('video') }}">
                                 </div>
                                 <div class="form-group-lk">
@@ -357,7 +358,7 @@
                                 <label>Кратакое описание сервера:</label>
                                 <textarea
                                         class="textarea-style-lk {{ $errors->has('description') ? 'error-input' : '' }}"
-                                        name="description">{{ old('description') }}</textarea>
+                                        name="description" required minlength="30">{{ old('description') }}</textarea>
                                 @if ($errors->has('description'))
                                     <span class="error-message">Описание сервера должно быть не менее 80 символов.</span>
                                 @endif
@@ -366,7 +367,7 @@
                                 <label>Полное описание сервера:</label>
                                 <textarea
                                         class="textarea-style-lk {{ $errors->has('fdescription') ? 'error-input' : '' }}"
-                                        name="fdescription">{{ old('fdescription') }}</textarea>
+                                        name="fdescription" required minlength="30">{{ old('fdescription') }}</textarea>
                                 @if ($errors->has('fdescription'))
                                     <span class="error-message">Полное описание сервера должно быть не менее 80 символов.</span>
                                 @endif
@@ -401,15 +402,18 @@
 
                             <button class="create-server">Следующий шаг ›</button>
                         </form>
-                        @else
-                            <div class="infoRegist">
-                                Добавление сервера станет доступно после подтверждения почты и телефона.
-                                <span>Подтвердите почту и телефон.</span>
-                            </div>
-                            <p class="lineReg"></p>
-                        @endif
-                    </div>
+                    @else
+                        <div class="infoRegist">
+                            Добавление сервера станет доступно после подтверждения почты и телефона.
+                            <span>Подтвердите почту и телефон.</span>
+                        </div>
+                        <p class="lineReg"></p>
+                    @endif
                 </div>
             </div>
+        </div>
 
+        @endsection
+        @section('scripts')
+            <script>$("#addServerForm").validate();</script>
 @endsection

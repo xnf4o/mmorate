@@ -48,7 +48,8 @@
                         </div>
                         <div class="form-group-golos">
                             <label class="title-label-golos">Укажите ник своего персоанажа:</label>
-                            <input type="text" class="text-ing-golos" name="nickname" value="{{ old('nickname') }}">
+                            <input type="text" class="text-ing-golos" name="nickname" value="{{ old('nickname') }}"
+                                   required minlength="3">
                             @if ($errors->has('nickname'))
                                 <span class="invalid-feedback" style="margin: 0">
                                     <strong>{{ $errors->first('nickname') }}</strong>
@@ -94,4 +95,7 @@
         </div>
     </div>
 
+@endsection
+@section('scripts')
+    <script>$("#editServerForm").validate();</script>
 @endsection

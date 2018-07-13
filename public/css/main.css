@@ -3134,3 +3134,15 @@ span.invalid-feedback {
     margin-top: 15px;
     margin-bottom: 0 !important;
 }
+
+input.error, textarea.error {
+    border-color: #ff1b1b;
+}
+
+#registerForm label.error {
+    margin-left: 38%;
+}
+
+label.error {
+    color: #ff1b1b;
+}

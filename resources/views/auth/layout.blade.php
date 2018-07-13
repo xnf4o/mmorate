@@ -50,7 +50,14 @@
     </div>
 </footer>
 <script type="text/javascript" src="../js/libs.min.js"></script>
+{{--http://igorescobar.github.io/jQuery-Mask-Plugin/--}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+{{--https://github.com/jquery-validation/jquery-validation--}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/localization/messages_ru.min.js"></script>
+<script type="text/javascript" src="{{ asset('/js/jquery-ui.min.js') }}"></script>
 <script type="text/javascript" src="../js/common.js"></script>
+@yield('scripts')
 </body>
-
 </html>
