@@ -1,5 +1,4 @@
 @extends('layouts.site')
-@section('title', 'Сервер ' . $server->name)
 @section('content')
     <div class="style-bg-content">
         <div class="content-bg-top">
@@ -25,7 +24,7 @@
             </div>
             <div class="item-top no-bg">
                 <div class="title-item-top">
-                    <a href="{{ route('voteServer',$server->id) }}" class="btn-golos"><i><img
+                    <a href="{{ route('voteServer', $server->link ?? $server->id) }}" class="btn-golos"><i><img
                                     src="../img/icon/i-1.png" alt=""></i> Проголосовать</a>
                     <div class="number-top-server goldNumber">
                         {{ $server->id }}
@@ -64,7 +63,7 @@
                             @endforeach
                         @endif
                         <br>
-                        {{ $server->description }}
+                        {!! $description !!}
                     </p>
                     <div class="clear"></div>
                     <div class="segment-rek-item" style="margin: 20px 0;">
@@ -80,6 +79,16 @@
                                 <a href="">
                                 <i><img src="/img/icon/i-3.png"></i> {{ $server->reviews }} Комментариев
                             </a>
+                            <script type="text/javascript">(function() {
+                                    if (window.pluso)if (typeof window.pluso.start == "function") return;
+                                    if (window.ifpluso==undefined) { window.ifpluso = 1;
+                                        var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+                                        s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
+                                        s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';
+                                        var h=d[g]('body')[0];
+                                        h.appendChild(s);
+                                    }})();</script>
+<div class="share pluso" style="position:absolute;" data-background="transparent" data-options="small,round,line,horizontal,nocounter,theme=04" data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir,email,print"></div>
                             </span>
                     </div>
                 </div>
@@ -89,7 +98,7 @@
                 <table class="list-server">
                     <tbody>
                     @forelse($worlds as $world)
-                        <tr onclick="world_click('{{ route('worldPage', [$server->id, $world->id]) }}')"
+                        <tr onclick="world_click('{{ route('worldPage', [$server->link ?? $server->id, $world->id]) }}')"
                             style="cursor: pointer">
                             <td>
                                 {{ $world->name }}

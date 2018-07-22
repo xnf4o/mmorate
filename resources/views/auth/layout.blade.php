@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="../css/libs.min.css">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
-    <title>MMORATE - @yield('title')</title>
+    <title>@yield('title') - MMORATE</title>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
             <br> Играть на данных серверах вы можете абсолютно бесплатно, так как они носят лишь ознакомительный характер и не являются официальной версией игры.
             <br>
             <br>
-            <a href="">© 2018 MmoRate.com</a> - Мониторинг игровых серверов
+            <a href="{{ route('index') }}">© 2018 MmoRate.com</a> - Мониторинг игровых серверов
         </p>
         <div class="social-footer">
             <a href="" class="item-social vk-ico"></a>
@@ -31,25 +31,25 @@
         </div>
         <ul class="footer-menu">
             <li>
-                <a href="../about">О проекте</a>
+                <a href="{{ route('about') }}">О проекте</a>
             </li>
             <li>
-                <a href="../rulse">Правила</a>
+                <a href="{{ route('rules') }}">Правила</a>
             </li>
             <li>
-                <a href="../contacts">Контакты</a>
+                <a href="{{ route('contacts') }}">Контакты</a>
             </li>
             <li>
-                <a href="../support">Техническая поддержка</a>
+                <a href="{{ route('support') }}">Техническая поддержка</a>
             </li>
             <li>
-                <a href="../faq">Вопросы и ответы</a>
+                <a href="{{ route('faq') }}">Вопросы и ответы</a>
             </li>
         </ul>
         <div class="clear"></div>
     </div>
 </footer>
-<script type="text/javascript" src="../js/libs.min.js"></script>
+<script type="text/javascript" src="{{ asset('js/libs.min.js') }}"></script>
 {{--http://igorescobar.github.io/jQuery-Mask-Plugin/--}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 {{--https://github.com/jquery-validation/jquery-validation--}}
@@ -57,7 +57,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/localization/messages_ru.min.js"></script>
 <script type="text/javascript" src="{{ asset('/js/jquery-ui.min.js') }}"></script>
-<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="{{ asset('/js/common.js') }}"></script>
 @yield('scripts')
 </body>
 </html>

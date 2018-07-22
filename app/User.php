@@ -9,6 +9,12 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    const USER_ROLE = 0;
+    const USER_ADMIN = 1;
+    const USER_PRO = 2;
+    const USER_PREMIUM = 3;
+    const USER_JOURNAL = 4;
+
     protected $casts = [
         'is_admin' => 'boolean',
     ];

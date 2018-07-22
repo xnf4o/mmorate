@@ -1,5 +1,4 @@
 @extends('layouts.site')
-@section('title', 'Добавление мира')
 @section('content')
     <div class="style-bg-content">
         <div class="content-bg-lk">
@@ -34,7 +33,7 @@
                             <div class="form-group-lk">
                                 <span class="reteIcon">X</span>
                                 <label>Введите рейты:</label>
-                                <input type="text" class="text-ing-lk customInputRate" name="rate"
+                                <input type="number" class="text-ing-lk customInputRate" name="rate"
                                        value="{{ old('rate') }}" required>
                             </div>
                             <div class="block-select-lk">
@@ -77,14 +76,18 @@
                         <div class="leftBlockLk">
 
                             <div class="form-group-lk">
-                                <label>IP Логин сервера: Порт:</label>
+                                <label>IP:PORT Логин сервера:</label>
                                 <input type="text" class="text-ing-lk" name="IpLogin" value="{{ old('IpLogin') }}"
+                                       id="ipLog"
                                        required>
+                                <span id="ipLogSpan"></span>
                             </div>
                             <div class="form-group-lk">
-                                <label>IP Гейм сервера: Порт</label>
+                                <label>IP:PORT Гейм сервера:</label>
                                 <input type="text" class="text-ing-lk" name="IpGame" value="{{ old('IpGame') }}"
+                                       id="ipGame"
                                        required>
+                                <span id="ipGameSpan"></span>
                             </div>
                             <div class="form-group-lk">
                                 <label>Дата создания:</label>
@@ -173,6 +176,7 @@
                                                 </option>
                                             @endif
                                         </select>
+                                        <a href="{{ route('support') }}">Нет необходимой версии?</a>
                                     </div>
                                 </div>
                             @endif
@@ -316,6 +320,7 @@
                                             <option value="1.5.6">1.5.6</option>
                                         @endif
                                     </select>
+                                    <a href="{{ route('support') }}">Нет необходимой версии?</a>
                                 </div>
                             </div>
                             <div class="block-select-lk">

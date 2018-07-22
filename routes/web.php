@@ -12,8 +12,8 @@
 */
 
 
-$domain = 'mmorate.com';
-//$domain = 'mmo.test';
+//$domain = 'mmorate.com';
+$domain = 'mmo.test';
 // Pages
 Route::group(['domain' => $domain], function () {
     Route::get('/logout', 'PagesController@logout')->name('logout');
@@ -24,8 +24,11 @@ Route::group(['domain' => $domain], function () {
     Route::get('/support', 'PagesController@support')->name('support');
     Route::get('/request', 'PagesController@request')->name('request');
     Route::get('/faq', 'PagesController@faq')->name('faq');
-    Route::get('/', 'PagesController@promo')->name('main');
-//    Route::get('/', 'ServersController@main')->name('main');
+//    Route::get('/', 'PagesController@promo')->name('main');
+    Route::get('/', 'ServersController@main')->name('main');
+
+    Route::get('/test', 'ServersController@test');
+    Route::post('/ping', 'ServersController@ping');
 
     Route::middleware('auth')->group(function () {
 // Profile
@@ -59,7 +62,13 @@ Route::group(['domain' => $domain], function () {
 // Rate server
         Route::get('/server/{id}/vote', 'ServersController@vote')->name('voteServer');
         Route::post('/server/{id}/vote', 'ServersController@votePost')->name('voteServer.post');
-
+// Vip functions
+        Route::get('/privileges', 'PrivilegesController@main')->name('privileges');
+        Route::get('/privileges/bb', 'PrivilegesController@bb')->name('privileges.bb');
+        Route::get('/privileges/banner', 'PrivilegesController@banner')->name('privileges.banner');
+        Route::get('/privileges/link', 'PrivilegesController@link')->name('privileges.link');
+        Route::get('/privileges/header', 'PrivilegesController@header')->name('privileges.header');
+        Route::post('/privileges/buy', 'PrivilegesController@buy')->name('privileges.buy');
 
     });
 });

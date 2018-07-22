@@ -5,11 +5,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{{ asset('../css/libs.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('../css/main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/libs.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css"/>
-    <title>MMORATE - @yield('title')</title>
+    {!! SEO::generate(true) !!}
 </head>
 
 <body>
@@ -64,7 +64,7 @@
                                     @else
                                         <a href="{{ route('main') }}">
                                             @endif
-                                            <img src="../img/elements/logo.png" alt="">
+                                            <img src="{{ asset('img/elements/logo.png') }}" alt="MMORATE">
                                         </a>
                         </div>
                         @yield('content')
@@ -84,41 +84,49 @@
                                     <div class="menu-panel-lk" style="display: block">
                                         @if(auth()->user()->is_admin == 1)
                                             <a href="{{ route('admin.servers') }}" class="itemLkMenu">
-                                                <span class="vnutItemMenu" style="border-top: 0;"><span class="arrMenu">› </span>Панель управления</span>
+                                                <span class="vnutItemMenu" style="border-top: 0;"><span class="arrMenu">› </span>Панель администратора</span>
                                             </a>
                                         @endif
-                                        <a href="{{ route('addServer') }}"
-                                           class="itemLkMenu @if(Request::is('addServer')) lkMenuActive @endif">
-                    <span class="vnutItemMenu" style="border-top: 0;"><span
-                                class="arrMenu">› </span>Добавить сервер</span>
-                                        </a>
-                                        <a href="{{ route('profile') }}"
-                                           class="itemLkMenu @if(Request::is('profile')) lkMenuActive @endif">
-                                            <span class="vnutItemMenu"><span class="arrMenu">› </span>Редактировать профиль</span>
-                                        </a>
+                                            <a href="{{ route('profile') }}"
+                                               class="itemLkMenu @if(Request::is('profile')) lkMenuActive @endif">
+                                                <span class="vnutItemMenu"><span class="arrMenu">› </span>Настройки профиля</span>
+                                            </a>
+                                            <a href="#"
+                                               class="itemLkMenu @if(Request::is('profile')) lkMenuActive @endif">
+                                                <span class="vnutItemMenu"><span class="arrMenu">› </span>Мои голоса</span>
+                                            </a>
                                         @if(MMORATE\Servers::MyCount() != 0)
-                                            <a href="{{ route('myServers') }}"
-                                               class="itemLkMenu @if(Request::is('myServers') or Request::is('editServer')) lkMenuActive @endif">
-                                                <span class="vnutItemMenu"><span
-                                                            class="arrMenu">› </span>Мои серверы</span>
+                                                <a href="{{ route('myServers') }}"
+                                                class="itemLkMenu @if(Request::is('myServers') or Request::is('editServer')) lkMenuActive @endif">
+                                                    <span class="vnutItemMenu"><span
+                                                            class="arrMenu">› </span>Мои сервера</span>
+                                                </a>
+                                                {{--<a href="{{ route('myServersStat') }}" class="itemLkMenu @if(Request::is('statistic')) lkMenuActive @endif">--}}
+                                                {{--<span class="vnutItemMenu"><span class="arrMenu">› </span>Статистика</span>--}}
+                                                {{--</a>--}}
+                                            @endif
+                                            <a href="{{ route('addServer') }}"
+                                               class="itemLkMenu @if(Request::is('addServer')) lkMenuActive @endif">
+                                            <span class="vnutItemMenu" style="border-top: 0;"><span
+                                                        class="arrMenu">› </span>Добавить сервер</span>
                                             </a>
-                                            {{--<a href="{{ route('myServersStat') }}" class="itemLkMenu @if(Request::is('statistic')) lkMenuActive @endif">--}}
-                                            {{--<span class="vnutItemMenu"><span class="arrMenu">› </span>Статистика</span>--}}
-                                            {{--</a>--}}
-                                        @endif
-                                        <a href="{{ route('changePassword') }}"
-                                           class="itemLkMenu @if(Request::is('changePasswordPage')) lkMenuActive @endif">
-                                            <span class="vnutItemMenu"><span
-                                                        class="arrMenu">› </span>Сменить пароль</span>
-                                        </a>
-                                        <a href="{{ route('banners') }}"
-                                           class="itemLkMenu @if(Request::is('ads')) lkMenuActive @endif">
-                                            <span class="vnutItemMenu"><span
-                                                        class="arrMenu">› </span>Баннера и кнопки</span>
-                                        </a>
-                                        <a href=""
-                                           class="itemLkMenu @if(Request::is('profileVip')) lkMenuActive @endif">
+                                            {{--<a href="{{ route('changePassword') }}"--}}
+                                        {{--class="itemLkMenu @if(Request::is('changePasswordPage')) lkMenuActive @endif">--}}
+                                        {{--<span class="vnutItemMenu"><span--}}
+                                        {{--class="arrMenu">› </span>Сменить пароль</span>--}}
+                                        {{--</a>--}}
+                                        {{--<a href="{{ route('banners') }}"--}}
+                                        {{--class="itemLkMenu @if(Request::is('ads')) lkMenuActive @endif">--}}
+                                        {{--<span class="vnutItemMenu"><span--}}
+                                        {{--class="arrMenu">› </span>Баннера и кнопки</span>--}}
+                                        {{--</a>--}}
+                                        <a href="{{ route('privileges') }}"
+                                           class="itemLkMenu @if(Request::is('privilege')) lkMenuActive @endif">
                                             <span class="vnutItemMenu"><span class="arrMenu">› </span>VIP Профиль</span>
+                                        </a>
+                                        <a href="{{ route('privileges.header') }}"
+                                           class="itemLkMenu @if(Request::is('header')) lkMenuActive @endif">
+                                            <span class="vnutItemMenu"><span class="arrMenu">› </span>Реклама</span>
                                         </a>
                                         <a href="{{ route('logout') }}" class="itemLkMenu">
                                             <span class="vnutItemMenu" style="border-bottom: 0;"><span

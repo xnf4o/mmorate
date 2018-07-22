@@ -3,6 +3,7 @@
 namespace MMORATE\Http\Middleware;
 
 use Closure;
+use MMORATE\User;
 
 class CheckIsAdmin
 {
@@ -15,7 +16,7 @@ class CheckIsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (\Auth::user() &&  \Auth::user()->is_admin == 1) {
+        if (\Auth::user() &&  \Auth::user()->role == User::USER_ADMIN) {
             return $next($request);
         }
 

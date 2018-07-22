@@ -9,6 +9,7 @@ use Image;
 use Mail;
 use MMORATE\Notifications\smsNotification;
 use MMORATE\User;
+use SEO;
 
 class UserController extends Controller
 {
@@ -24,6 +25,7 @@ class UserController extends Controller
      */
     public function profile()
     {
+        SEO::setTitle('Настройки профиля');
         return view('pages.profile');
     }
 
@@ -33,6 +35,7 @@ class UserController extends Controller
      */
     public function changePassword()
     {
+        SEO::setTitle('Смена пароля');
         return view('pages.changePassword');
     }
 
@@ -132,6 +135,7 @@ class UserController extends Controller
      */
     public function confirmation()
     {
+        SEO::setTitle('Подтверждение аккаунта');
         if (Auth::user()->phone_confirmed == 0 or Auth::user()->email_confirmed == 0)
             return view('pages.confirmation');
         return redirect()->route('profile');

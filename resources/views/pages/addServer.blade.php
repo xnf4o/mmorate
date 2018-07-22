@@ -1,5 +1,4 @@
 @extends('layouts.site')
-@section('title', 'Добавление сервера')
 @section('content')
     <div class="style-bg-content">
         <div class="content-bg-lk">

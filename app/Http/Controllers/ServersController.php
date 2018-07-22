@@ -2,13 +2,17 @@
 
 namespace MMORATE\Http\Controllers;
 
+use Artesaos\SEOTools\SEOMeta;
 use Carbon\Carbon;
+use MMORATE\Privilege;
 use MMORATE\Servers;
 use MMORATE\Comments;
 use Illuminate\Http\Request;
 use MMORATE\Votes;
 use Illuminate\Support\Facades\Auth;
 use MMORATE\Worlds;
+use PheRum\BBCode\Facades\BBCode;
+use SEO;
 
 class ServersController extends Controller
 {
@@ -18,13 +22,25 @@ class ServersController extends Controller
     const COEF_SMS_OR_VIP = 10;
     const PAGINATE = 10;
 
+    protected $orig_arr;
+    protected $modif_arr;
+
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * Главная страница
      */
     public function main()
     {
+        SEO::setTitle('Главная');
         $allServers = Servers::where('status', Servers::CONFIRMED)->sortable()->paginate(self::PAGINATE);
+        foreach ($allServers as $server) {
+            $server->description = preg_replace('#\[[^\]]+\]#', '', $server->description);
+            if (Privilege::where('user_id', $server->user_id)->where('action', Privilege::PRIVILEGE_BB)->where('status', '1')->first())
+                $server->description = BBCode::parse($server->description);
+            if (!Privilege::where('user_id', $server->user_id)->where('action', Privilege::PRIVILEGE_SERVER_LINK)->where('status', '1')->first())
+                $server->link = null;
+        }
+
         return view('pages.index', compact('allServers'));
     }
 
@@ -38,6 +54,12 @@ class ServersController extends Controller
         $game = 'aion';
         $gameTitle = 'Aion';
         $route = 'aion';
+        SEO::setTitle('Список серверов' . $gameTitle);
+        foreach ($allServers as $server) {
+            $server->description = preg_replace('#\[[^\]]+\]#', '', $server->description);
+            if (Privilege::where('user_id', $server->user_id)->where('status', '1')->first())
+                $server->description = BBCode::parse($server->description);
+        }
 
         return view('pages.index', compact('allServers', 'game', 'gameTitle', 'route'));
     }
@@ -52,6 +74,12 @@ class ServersController extends Controller
         $game = 'lineage';
         $gameTitle = 'Lineage 2';
         $route = 'lineage';
+        SEO::setTitle('Список серверов' . $gameTitle);
+        foreach ($allServers as $server) {
+            $server->description = preg_replace('#\[[^\]]+\]#', '', $server->description);
+            if (Privilege::where('user_id', $server->user_id)->where('status', '1')->first())
+                $server->description = BBCode::parse($server->description);
+        }
 
         return view('pages.index', compact('allServers', 'game', 'gameTitle', 'route'));
     }
@@ -66,6 +94,12 @@ class ServersController extends Controller
         $game = 'wow';
         $gameTitle = 'World Of Warcraft';
         $route = 'wow';
+        SEO::setTitle('Список серверов' . $gameTitle);
+        foreach ($allServers as $server) {
+            $server->description = preg_replace('#\[[^\]]+\]#', '', $server->description);
+            if (Privilege::where('user_id', $server->user_id)->where('status', '1')->first())
+                $server->description = BBCode::parse($server->description);
+        }
 
         return view('pages.index', compact('allServers', 'game', 'gameTitle', 'route'));
     }
@@ -80,7 +114,12 @@ class ServersController extends Controller
         $game = 'jade';
         $gameTitle = 'Jade Dynasty';
         $route = 'jade';
-
+        SEO::setTitle('Список серверов' . $gameTitle);
+        foreach ($allServers as $server) {
+            $server->description = preg_replace('#\[[^\]]+\]#', '', $server->description);
+            if (Privilege::where('user_id', $server->user_id)->where('status', '1')->first())
+                $server->description = BBCode::parse($server->description);
+        }
 
         return view('pages.index', compact('allServers', 'game', 'gameTitle', 'route'));
     }
@@ -95,6 +134,12 @@ class ServersController extends Controller
         $game = 'mu';
         $gameTitle = 'Mu Online';
         $route = 'mu';
+        SEO::setTitle('Список серверов' . $gameTitle);
+        foreach ($allServers as $server) {
+            $server->description = preg_replace('#\[[^\]]+\]#', '', $server->description);
+            if (Privilege::where('user_id', $server->user_id)->where('status', '1')->first())
+                $server->description = BBCode::parse($server->description);
+        }
 
         return view('pages.index', compact('allServers', 'game', 'gameTitle', 'route'));
     }
@@ -109,6 +154,12 @@ class ServersController extends Controller
         $game = 'rf';
         $gameTitle = 'RF Online';
         $route = 'rf';
+        SEO::setTitle('Список серверов' . $gameTitle);
+        foreach ($allServers as $server) {
+            $server->description = preg_replace('#\[[^\]]+\]#', '', $server->description);
+            if (Privilege::where('user_id', $server->user_id)->where('status', '1')->first())
+                $server->description = BBCode::parse($server->description);
+        }
 
         return view('pages.index', compact('allServers', 'game', 'gameTitle', 'route'));
     }
@@ -123,6 +174,12 @@ class ServersController extends Controller
         $game = 'perfect';
         $gameTitle = 'Perfect World';
         $route = 'perfect';
+        SEO::setTitle('Список серверов' . $gameTitle);
+        foreach ($allServers as $server) {
+            $server->description = preg_replace('#\[[^\]]+\]#', '', $server->description);
+            if (Privilege::where('user_id', $server->user_id)->where('status', '1')->first())
+                $server->description = BBCode::parse($server->description);
+        }
 
         return view('pages.index', compact('allServers', 'game', 'gameTitle', 'route'));
     }
@@ -137,6 +194,12 @@ class ServersController extends Controller
         $game = 'onl';
         $gameTitle = 'онлайн игр';
         $route = 'other';
+        SEO::setTitle('Список серверов' . $gameTitle);
+        foreach ($allServers as $server) {
+            $server->description = preg_replace('#\[[^\]]+\]#', '', $server->description);
+            if (Privilege::where('user_id', $server->user_id)->where('status', '1')->first())
+                $server->description = BBCode::parse($server->description);
+        }
 
         return view('pages.index', compact('allServers', 'game', 'gameTitle', 'route'));
     }
@@ -148,11 +211,111 @@ class ServersController extends Controller
      */
     public function server($id)
     {
-        $server = Servers::where('id', $id)->first();
-        $comments = Comments::where('server_id', $id)->get();
-        $worlds = Worlds::where('server_id', $id)->get();
+        $server = Servers::where('link', $id)->first() ?? Servers::where('id', $id)->first();
+        if (!Privilege::where('user_id', $server->user_id)->where('action', Privilege::PRIVILEGE_SERVER_LINK)->where('status', '1')->first() and !is_numeric($id))
+            return abort(404);
+        if (!Privilege::where('user_id', $server->user_id)->where('action', Privilege::PRIVILEGE_SERVER_LINK)->where('status', '1')->first())
+            $server->link = null;
 
-        return view('pages.server', compact('server', 'comments', 'worlds'));
+        $comments = Comments::where('server_id', $server->id)->get();
+        $worlds = Worlds::where('server_id', $server->id)->get();
+        $description = preg_replace('#\[[^\]]+\]#', '', $server->description);
+        SEO::setDescription($description);
+        SEO::setTitle('Сервер ' . $server->name);
+        \SEOMeta::setKeywords($this->generate_keywords($server->description));
+        if (Privilege::where('user_id', $server->user_id)->where('action', Privilege::PRIVILEGE_BB)->where('status', '1')->first())
+            $description = BBCode::parse($server->description);
+
+        return view('pages.server', compact('server', 'comments', 'worlds', 'description'));
+    }
+
+    /**
+     * @param $text
+     * @return string
+     * Генерирует ключевые слова
+     */
+    public function generate_keywords($text)
+    {
+        $this->explode_str_on_words($text);
+        $this->count_words();
+        $arr = array_slice($this->modif_arr, 0, 30);
+        $str = "";
+        foreach ($arr as $key => $val) {
+            $str .= $key . ", ";
+        }
+        return trim(substr($str, 0, strlen($str) - 2));
+    }
+
+    /**
+     * @param $text
+     * @return array
+     * Очищает текст
+     */
+    private function explode_str_on_words($text)
+    {
+        $search = array("'ё'",
+            "'<script[^>]*.*?</script>'si",  // Вырезается javascript
+            "'<[&#092;/&#092;!]*?[^<>]*'si",           // Вырезаются html-тэги
+            "'([&#092;r&#092;n])[&#092;s]+'",                 // Вырезается пустое пространство
+            "'&(quot|#34);'i",                 // Замещаются html-элементы
+            "'&(amp|#38);'i",
+            "'&(lt|#60);'i",
+            "'&(gt|#62);'i",
+            "'&(nbsp|#160);'i",
+            "'&(iexcl|#161);'i",
+            "'&(cent|#162);'i",
+            "'&(pound|#163);'i",
+            "'&(copy|#169);'i");
+        $replace = array("е",
+            " ",
+            " ",
+            "&#092;&#092;1 ",
+            "&#092;",
+            " ",
+            " ",
+            " ",
+            " ",
+            chr(161),
+            chr(162),
+            chr(163),
+            chr(169),
+            "chr(&#092;&#092;1)");
+        $text = preg_replace($search, $replace, $text);
+        $del_symbols = array(",", ".", ";", ":", "&#092;", "#", "&#092;$", "%", "^",
+            "!", "@", "`", "~", "*", "-", "=", "+", "&#092;&#092;",
+            "|", "/", ">", "<", "(", ")", "&", "?", "?", "&#092;t",
+            "&#092;r", "&#092;n", "{", "}", "[", "]", "'", "“", "”", "•",
+            "как", "для", "что", "или", "это", "этих",
+            "всех", "вас", "они", "оно", "еще", "когда",
+            "где", "эта", "лишь", "уже", "вам", "нет",
+            "если", "надо", "все", "так", "его", "чем",
+            "при", "даже", "мне", "есть", "раз", "два",
+            "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
+        );
+        $text = str_replace($del_symbols, array(" "), $text);
+        $text = preg_replace("( +)", " ", $text);
+        $this->origin_arr = explode(" ", trim($text));
+        return $this->origin_arr;
+    }
+
+    /**
+     * Считает слова
+     */
+    private function count_words()
+    {
+        $tmp_arr = array();
+        foreach ($this->origin_arr as $val) {
+            if (strlen($val) >= 3) {
+                $val = strtolower($val);
+                if (array_key_exists($val, $tmp_arr)) {
+                    $tmp_arr[$val]++;
+                } else {
+                    $tmp_arr[$val] = 1;
+                }
+            }
+        }
+        arsort($tmp_arr);
+        $this->modif_arr = $tmp_arr;
     }
 
     /**
@@ -186,8 +349,11 @@ class ServersController extends Controller
      */
     public function vote($id)
     {
-        $server = Servers::where('id', $id)->first();
+        $server = Servers::where('link', $id)->first() ?? Servers::where('id', $id)->first();
+        if (!Privilege::where('user_id', $server->user_id)->where('action', Privilege::PRIVILEGE_SERVER_LINK)->where('status', '1')->first() and !is_numeric($id))
+            return abort(404);
         $rates = Worlds::where('server_id', $id)->get();
+        SEO::setTitle('Голосование за сервер ' . $server->name);
 
         return view('pages.vote', compact('server', 'rates'));
     }
@@ -230,6 +396,8 @@ class ServersController extends Controller
         $server->votes += $voteCoeff;
         $server->save();
 
+        SEO::setTitle('Голосование за сервер ' . $server->name);
+
         return view('pages.voteFinish', compact('server'));
     }
 
@@ -269,6 +437,8 @@ class ServersController extends Controller
         $server->status = Servers::UNCONFIRMED;
         $server->save();
 
+        SEO::setTitle('Добавление сервера');
+
         return redirect()->route('addWorld', $server->id);
     }
 
@@ -281,6 +451,8 @@ class ServersController extends Controller
     {
         $server = Servers::where('id', $id)->first();
         if ($server->user_id != Auth::id()) abort(404);
+
+        SEO::setTitle('Добавление мира серверу ' . $server->name);
 
         return view('pages.addWorld', compact('id', 'server'));
     }
@@ -333,6 +505,7 @@ class ServersController extends Controller
     public function myServers()
     {
         $allServers = Servers::where('user_id', Auth::id())->get();
+        SEO::setTitle('Список моих серверов');
 
         return view('pages.myServers', compact('allServers'));
     }
@@ -346,10 +519,10 @@ class ServersController extends Controller
     {
         $server = Servers::where('id', $id)->first();
         if ($server->user_id != Auth::id()) abort('404');
+        SEO::setTitle('Редактирование сервера сервера ' . $server->name);
 
         return view('pages.editServer', compact('server'));
     }
-
 
     /**
      * @param Request $r
@@ -384,6 +557,7 @@ class ServersController extends Controller
     public function myServersStat()
     {
         $allServers = Servers::where('user_id', Auth::id())->get();
+        SEO::setTitle('Статистика моих серверов');
 
         return view('pages.myServersStat', compact('allServers'));
     }
@@ -400,6 +574,7 @@ class ServersController extends Controller
 
         $allServers = Servers::where('user_id', Auth::id())->get();
         $votes = Votes::where('server_id', $id)->get();
+        SEO::setTitle('Статистика сервера ' . $server->name);
 
         return view('pages.serverStat', compact('server', 'votes', 'allServers'));
     }
@@ -409,12 +584,47 @@ class ServersController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * Страница мира
      */
-    public function world($servId, $id)
+    public function world($serverId, $id)
     {
-        $server = Servers::where('id', $servId)->first();
+        $server = Servers::where('link', $serverId)->first() ?? Servers::where('id', $serverId)->first();
+        if (!Privilege::where('user_id', $server->user_id)->where('action', Privilege::PRIVILEGE_SERVER_LINK)->where('status', '1')->first() and !is_numeric($id))
+            return abort(404);
         if (!Worlds::where('server_id', $server->id)->first()) abort('404');
         $world = Worlds::where('id', $id)->first();
+        SEO::setTitle('Мир ' . $world->name);
+        \SEOMeta::setKeywords($this->generate_keywords($world->description));
 
         return view('pages.world', compact('world', 'server'));
+    }
+
+    /**
+     * @param Request $r
+     * @return \Illuminate\Http\JsonResponse
+     * Пинг по айпи через fSock
+     */
+    public function ping(Request $r)
+    {
+        $address = explode(":", $r->get('ip'));
+        $ta = microtime(true);
+        try {
+            if (!isset($address[1])) throw new \Exception('Адрес введен некорректно');
+            if ($fp = fsockopen($address[0], $address[1], $errno, $errstr, 10)) {
+                $tb = microtime(true);
+                fclose($fp);
+                return response()->json(['data' => "Средний пинг: " . round((($tb - $ta) * 1000), 0) . " мс"]);
+            } else {
+                throw new \Exception("Сервер не отвечает");
+            }
+        } catch (\Exception $e) {
+            return response()->json(['errors' => 'Ошибка']);
+        }
+    }
+
+    /**
+     * Функция для тестов, мы же все любим тесты)))
+     */
+    public function test($ip = '164.132.204.61:49001')
+    {
+
     }
 }

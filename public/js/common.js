@@ -76,6 +76,43 @@ $(document).ready(function () {
         });
     });
 
+    $('#ipLog').on('change', function () {
+        $.ajax({
+            type: "POST",
+            url: '/ping',
+            data: {ip: $(this).val()},
+            dataType: 'json',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function (response) {
+                if (response.errors){
+                    $('#ipLogSpan').removeClass('success').addClass('error').html(response.errors);
+                }else{
+                    $('#ipLogSpan').removeClass('error').addClass('success').html(response.data);
+                }
+            }
+        });
+    });
+
+    $('#ipGame').on('change', function () {
+        $.ajax({
+            type: "POST",
+            url: '/ping',
+            data: {ip: $(this).val()},
+            dataType: 'json',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function (response) {
+                if (response.errors){
+                    $('#ipGameSpan').removeClass('success').addClass('error').html(response.errors);
+                }else{
+                    $('#ipGameSpan').removeClass('error').addClass('success').html(response.data);
+                }
+            }
+        });
+    });
 
     // Отправка sms
     $('#sendSmsBtn').on('click', function (e) {

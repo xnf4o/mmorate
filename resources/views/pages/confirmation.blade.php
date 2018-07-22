@@ -1,5 +1,4 @@
 @extends('layouts.site')
-@section('title', 'Подтверждение аккаунта')
 @section('content')
     <div class="style-bg-content">
         <div class="content-bg-top">

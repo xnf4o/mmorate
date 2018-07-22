@@ -1,5 +1,4 @@
 @extends('layouts.site')
-@section('title', 'Главная')
 @section('content')
     <div class="style-bg-content ">
         <div class="content-bg-top">
@@ -44,14 +43,14 @@
                 @php($i++)
                 <div class="item-top @if($i == 1)no-bg @endif">
                     <div class="title-item-top">
-                        <a href="{{ route('voteServer',$server->id) }}"
+                        <a href="{{ route('voteServer', $server->link ?? $server->id) }}"
                            class="btn-golos"><i><img src="../img/icon/i-1.png" alt=""></i>
                             Проголосовать</a>
                         <div class="number-top-server silverNumber">
                             {{ $i }}
                         </div>
                         <p class="name-server"><a class="link-full-info"
-                                                  href="{{ route('serverPage', $server->id) }}">{{ $server->name }}</a>
+                                                  href="{{ route('serverPage', $server->link ?? $server->id) }}">{{ $server->name }}</a>
                             <a class="link-server" href="{{ $server->site }}" noindex><i
                                         class="lang-server flag-icon flag-icon-{{ $server->country }}"></i> {{ $server->site }}
                             </a></p>

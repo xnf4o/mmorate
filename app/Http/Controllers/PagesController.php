@@ -4,6 +4,7 @@ namespace MMORATE\Http\Controllers;
 
 use Illuminate\Http\Request;
 use MMORATE\Servers;
+use SEO;
 
 class PagesController extends Controller
 {
@@ -24,6 +25,7 @@ class PagesController extends Controller
      */
     public function about()
     {
+        SEO::setTitle('О проекте');
         return view('pages.about');
     }
 
@@ -33,6 +35,7 @@ class PagesController extends Controller
      */
     public function rules()
     {
+        SEO::setTitle('Правила');
         return view('pages.rules');
     }
 
@@ -42,6 +45,7 @@ class PagesController extends Controller
      */
     public function contacts()
     {
+        SEO::setTitle('Контакты');
         return view('pages.contacts');
     }
 
@@ -51,6 +55,7 @@ class PagesController extends Controller
      */
     public function support()
     {
+        SEO::setTitle('Техническая поддержка');
         return view('pages.support');
     }
 
@@ -60,6 +65,7 @@ class PagesController extends Controller
      */
     public function request()
     {
+        SEO::setTitle('Запрос в техническую поддержку');
         return view('pages.request');
     }
 
@@ -69,6 +75,7 @@ class PagesController extends Controller
      */
     public function faq()
     {
+        SEO::setTitle('Вопросы и ответы');
         return view('pages.faq');
     }
 
@@ -87,6 +94,7 @@ class PagesController extends Controller
      */
     public function banners()
     {
+        SEO::setTitle('Баннеры и кнопки');
         $servers = Servers::where('user_id', \Auth::id())->get();
         return view('pages.banners', compact('servers'));
     }

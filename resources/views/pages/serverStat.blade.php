@@ -1,5 +1,4 @@
 @extends('layouts.site')
-@section('title', 'Статистика севрера ' . $server->name)
 @section('content')
     <div class="style-bg-content">
         <div class="content-bg-lk">
