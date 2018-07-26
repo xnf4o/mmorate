@@ -94,7 +94,7 @@
                         </p>
                         <div class="clear"></div>
                     </div>
-                    @if($i == 1)
+                    @if(\MMORATE\Privilege::where('user_id', $server->user_id)->where('action', \MMORATE\Privilege::PRIVILEGE_BANNER)->where('status', '1')->first())
                         <div class="segment-rek-item">
                             <div class="bg-ramka-item"></div>
                             <a href=""><img src="../img/rk/bn700.png" alt=""></a>

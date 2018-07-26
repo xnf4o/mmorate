@@ -12,20 +12,20 @@
 */
 
 
-//$domain = 'mmorate.com';
-$domain = 'mmo.test';
+$domain = 'mmorate.com';
+//$domain = 'mmo.test';
 // Pages
+Route::get('/redirect/{route}', 'UserController@redirect')->name('redirect');
+Route::get('/logout', 'PagesController@logout')->name('logout');
 Route::group(['domain' => $domain], function () {
-    Route::get('/logout', 'PagesController@logout')->name('logout');
-    Route::get('/redirect/{route}', 'UserController@redirect')->name('redirect');
     Route::get('/about', 'PagesController@about')->name('about');
     Route::get('/rules', 'PagesController@rules')->name('rules');
     Route::get('/contacts', 'PagesController@contacts')->name('contacts');
     Route::get('/support', 'PagesController@support')->name('support');
     Route::get('/request', 'PagesController@request')->name('request');
     Route::get('/faq', 'PagesController@faq')->name('faq');
-//    Route::get('/', 'PagesController@promo')->name('main');
-    Route::get('/', 'ServersController@main')->name('main');
+    Route::get('/', 'PagesController@promo')->name('main');
+//    Route::get('/', 'ServersController@main')->name('main');
 
     Route::get('/test', 'ServersController@test');
     Route::post('/ping', 'ServersController@ping');

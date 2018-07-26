@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
     {!! SEO::generate(true) !!}
 </head>
 
@@ -87,30 +88,30 @@
                                                 <span class="vnutItemMenu" style="border-top: 0;"><span class="arrMenu">› </span>Панель администратора</span>
                                             </a>
                                         @endif
-                                            <a href="{{ route('profile') }}"
-                                               class="itemLkMenu @if(Request::is('profile')) lkMenuActive @endif">
-                                                <span class="vnutItemMenu"><span class="arrMenu">› </span>Настройки профиля</span>
-                                            </a>
-                                            <a href="#"
-                                               class="itemLkMenu @if(Request::is('profile')) lkMenuActive @endif">
-                                                <span class="vnutItemMenu"><span class="arrMenu">› </span>Мои голоса</span>
-                                            </a>
+                                        <a href="{{ route('profile') }}"
+                                           class="itemLkMenu @if(Request::is('profile')) lkMenuActive @endif">
+                                            <span class="vnutItemMenu"><span class="arrMenu">› </span>Настройки профиля</span>
+                                        </a>
+                                        <a href="#"
+                                           class="itemLkMenu @if(Request::is('profile')) lkMenuActive @endif">
+                                            <span class="vnutItemMenu"><span class="arrMenu">› </span>Мои голоса</span>
+                                        </a>
                                         @if(MMORATE\Servers::MyCount() != 0)
-                                                <a href="{{ route('myServers') }}"
-                                                class="itemLkMenu @if(Request::is('myServers') or Request::is('editServer')) lkMenuActive @endif">
+                                            <a href="{{ route('myServers') }}"
+                                               class="itemLkMenu @if(Request::is('myServers') or Request::is('editServer')) lkMenuActive @endif">
                                                     <span class="vnutItemMenu"><span
-                                                            class="arrMenu">› </span>Мои сервера</span>
-                                                </a>
-                                                {{--<a href="{{ route('myServersStat') }}" class="itemLkMenu @if(Request::is('statistic')) lkMenuActive @endif">--}}
-                                                {{--<span class="vnutItemMenu"><span class="arrMenu">› </span>Статистика</span>--}}
-                                                {{--</a>--}}
-                                            @endif
-                                            <a href="{{ route('addServer') }}"
-                                               class="itemLkMenu @if(Request::is('addServer')) lkMenuActive @endif">
+                                                                class="arrMenu">› </span>Мои сервера</span>
+                                            </a>
+                                            {{--<a href="{{ route('myServersStat') }}" class="itemLkMenu @if(Request::is('statistic')) lkMenuActive @endif">--}}
+                                            {{--<span class="vnutItemMenu"><span class="arrMenu">› </span>Статистика</span>--}}
+                                            {{--</a>--}}
+                                        @endif
+                                        <a href="{{ route('addServer') }}"
+                                           class="itemLkMenu @if(Request::is('addServer')) lkMenuActive @endif">
                                             <span class="vnutItemMenu" style="border-top: 0;"><span
                                                         class="arrMenu">› </span>Добавить сервер</span>
-                                            </a>
-                                            {{--<a href="{{ route('changePassword') }}"--}}
+                                        </a>
+                                        {{--<a href="{{ route('changePassword') }}"--}}
                                         {{--class="itemLkMenu @if(Request::is('changePasswordPage')) lkMenuActive @endif">--}}
                                         {{--<span class="vnutItemMenu"><span--}}
                                         {{--class="arrMenu">› </span>Сменить пароль</span>--}}
@@ -299,9 +300,11 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/localization/messages_ru.min.js"></script>
+            {{--https://github.com/wbb/wysibb--}}
+            <script src="http://cdn.wysibb.com/lang/ru.js"></script>
+            <link rel="stylesheet" href="http://cdn.wysibb.com/css/default/wbbtheme.css" />
             <script type="text/javascript" src="{{ asset('/js/jquery-ui.min.js') }}"></script>
             <script type="text/javascript" src="{{ asset('/js/common.js') }}"></script>
         @yield('scripts')
 </body>
-
 </html>

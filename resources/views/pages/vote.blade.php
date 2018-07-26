@@ -86,7 +86,7 @@
                 @else
                     <div class="infoRegist">
                         Голосование за сервер станет доступно после подтверждения почты и телефона.
-                        <span>Подтвердите почту и телефон.</span>
+                        <span><a href="{{ route('confirmation') }}">Подтвердите почту и телефон.</a></span>
                     </div>
                     <p class="lineReg"></p>
                 @endif

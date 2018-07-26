@@ -3,6 +3,9 @@ function world_click(link) {
 }
 
 $(document).ready(function () {
+    $('textarea').wysibb({
+        lang: 'ru',
+    });
     // Таймер до нового голоса
     const out = $('#timeleft');
     if (out.length != 0) {
@@ -167,7 +170,7 @@ $(document).ready(function () {
     });
 
 
-    $("#phone").mask("+7(999) 999-99-99");
+    // $("#phone").mask("+9(999) 999-99-99");
     // fuckAdBlock.onDetected(function () {
     //     $('#ad').val('1')
     // });
