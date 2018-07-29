@@ -465,13 +465,13 @@ class ServersController extends Controller
     public function addWorldPost(Request $r)
     {
         $r->validate([
-            'description' => 'required|min:80|unique:servers',
-            'modDesc' => 'required|min:80|unique:servers',
+            'description' => 'required|min:80|unique:worlds',
+            'modDesc' => 'required|min:80|unique:worlds',
             'onlineUrl' => 'required|int',
             'versionNumber' => 'required',
             'rate' => 'required|without_spaces',
-            'IpLogin' => 'unique:servers',
-            'IpGame' => 'unique:servers'
+            'IpLogin' => 'unique:worlds',
+            'IpGame' => 'unique:worlds'
         ]);
         $clans = ($r->get('clans')) ? $r->get('clans') : 0;
         $tags = ($r->get('tags')) ? $r->get('tags') : '';
