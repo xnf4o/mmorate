@@ -10,6 +10,7 @@ use Mail;
 use MMORATE\Notifications\smsNotification;
 use MMORATE\User;
 use SEO;
+use MMORATE\Votes;
 
 class UserController extends Controller
 {
@@ -148,6 +149,9 @@ class UserController extends Controller
      */
     public function sendEmailCode(Request $r)
     {
+        $r->validate([
+            'email' => 'required|string|email|max:255|unique:users',
+        ]);
         $user = Auth::user();
         if ($user->email != $r->get('email')) $user->email = $r->get('email');
         $user->email_code = rand(00000, 99999);
@@ -181,6 +185,9 @@ class UserController extends Controller
      */
     public function sendSmsCode(Request $r)
     {
+        $r->validate([
+            'phone' => 'unique:users',
+        ]);
         $user = Auth::user();
         if ($user->phone != $r->get('phone')) {
             $user->phone = $r->get('phone');
@@ -202,5 +209,14 @@ class UserController extends Controller
         $user->phone_confirmed = 1;
         $user->save();
         return response()->json(['success' => 'true']);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * История голосов пользователя
+     */
+    public function myVotes(){
+        $votes = Votes::where('user_id', Auth::id())->get();
+        return view('pages.myVotes', compact('votes'));
     }
 }

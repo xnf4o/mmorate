@@ -66,9 +66,11 @@
                         {!! $description !!}
                     </p>
                     <div class="clear"></div>
+                    @if(\MMORATE\Privilege::where('user_id', $server->user_id)->where('action', \MMORATE\Privilege::PRIVILEGE_BANNER)->where('status', '1')->first())
                     <div class="segment-rek-item" style="margin: 20px 0;">
                         <div class="bg-ramka-item"></div>
                     </div>
+                    @endif
                     <div class="opis-block">
                         <h6>Полное описание сервера</h6>
                         <p>{{ $server->fdescription }}</p>

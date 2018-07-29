@@ -3,7 +3,7 @@ function world_click(link) {
 }
 
 $(document).ready(function () {
-    $('textarea').wysibb({
+    $('textarea:not("#g-recaptcha-response")').wysibb({
         lang: 'ru',
     });
     // Таймер до нового голоса

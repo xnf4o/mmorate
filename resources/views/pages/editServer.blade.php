@@ -816,7 +816,7 @@
                         <div class="text-area-lk">
                             <label>Полное описание сервера:</label>
                             <textarea class="textarea-style-lk"
-                                      name="description" required minlength="30">{{ $server->fdescription }}</textarea>
+                                      name="fdescription" required minlength="30">{{ $server->fdescription }}</textarea>
                         </div>
                         <p class="line-razdel"></p>
                         <div class="block-select-lk">

@@ -418,8 +418,8 @@ class ServersController extends Controller
     public function addPost(Request $r)
     {
         $r->validate([
-            'site' => 'required|url',
-            'name' => 'required',
+            'site' => 'required|url|unique:servers',
+            'name' => 'required|unique:servers',
             'description' => 'required|min:80',
             'fdescription' => 'required|min:80',
         ]);
@@ -465,11 +465,13 @@ class ServersController extends Controller
     public function addWorldPost(Request $r)
     {
         $r->validate([
-            'description' => 'required|min:80',
-            'modDesc' => 'required|min:80',
+            'description' => 'required|min:80|unique:servers',
+            'modDesc' => 'required|min:80|unique:servers',
             'onlineUrl' => 'required|int',
             'versionNumber' => 'required',
-            'rate' => 'required|without_spaces'
+            'rate' => 'required|without_spaces',
+            'IpLogin' => 'unique:servers',
+            'IpGame' => 'unique:servers'
         ]);
         $clans = ($r->get('clans')) ? $r->get('clans') : 0;
         $tags = ($r->get('tags')) ? $r->get('tags') : '';

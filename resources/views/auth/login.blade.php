@@ -40,6 +40,9 @@
                             <button type="submit" class="btn-regist"><i><img src="../img/icon/i-13.png" alt=""></i>
                                 Войти
                             </button>
+                            <br>
+                            <a href="{{ route('password.request') }}">Забыли пароль?</a><br>
+                            <a href="{{ route('register') }}">Реистрация</a>
                         </div>
                     </form>
                 </div>

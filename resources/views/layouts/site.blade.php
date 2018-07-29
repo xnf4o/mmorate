@@ -92,25 +92,27 @@
                                            class="itemLkMenu @if(Request::is('profile')) lkMenuActive @endif">
                                             <span class="vnutItemMenu"><span class="arrMenu">› </span>Настройки профиля</span>
                                         </a>
-                                        <a href="#"
-                                           class="itemLkMenu @if(Request::is('profile')) lkMenuActive @endif">
+                                        <a href="{{ route('myServers') }}"
+                                           class="itemLkMenu @if(Request::is('myServers')) lkMenuActive @endif">
                                             <span class="vnutItemMenu"><span class="arrMenu">› </span>Мои голоса</span>
                                         </a>
-                                        @if(MMORATE\Servers::MyCount() != 0)
+                                        {{--@if(MMORATE\Servers::MyCount() != 0)--}}
                                             <a href="{{ route('myServers') }}"
                                                class="itemLkMenu @if(Request::is('myServers') or Request::is('editServer')) lkMenuActive @endif">
                                                     <span class="vnutItemMenu"><span
-                                                                class="arrMenu">› </span>Мои сервера</span>
+                                                                class="arrMenu">› </span>Игровые сервера</span>
                                             </a>
                                             {{--<a href="{{ route('myServersStat') }}" class="itemLkMenu @if(Request::is('statistic')) lkMenuActive @endif">--}}
                                             {{--<span class="vnutItemMenu"><span class="arrMenu">› </span>Статистика</span>--}}
                                             {{--</a>--}}
-                                        @endif
+                                        {{--@endif--}}
+                                        @if(Request::is('myServers'))
                                         <a href="{{ route('addServer') }}"
                                            class="itemLkMenu @if(Request::is('addServer')) lkMenuActive @endif">
                                             <span class="vnutItemMenu" style="border-top: 0;"><span
                                                         class="arrMenu">› </span>Добавить сервер</span>
                                         </a>
+                                            @endif
                                         {{--<a href="{{ route('changePassword') }}"--}}
                                         {{--class="itemLkMenu @if(Request::is('changePasswordPage')) lkMenuActive @endif">--}}
                                         {{--<span class="vnutItemMenu"><span--}}
@@ -125,7 +127,7 @@
                                            class="itemLkMenu @if(Request::is('privilege')) lkMenuActive @endif">
                                             <span class="vnutItemMenu"><span class="arrMenu">› </span>VIP Профиль</span>
                                         </a>
-                                        <a href="{{ route('privileges.header') }}"
+                                        <a href="{{ route('privileges') }}"
                                            class="itemLkMenu @if(Request::is('header')) lkMenuActive @endif">
                                             <span class="vnutItemMenu"><span class="arrMenu">› </span>Реклама</span>
                                         </a>

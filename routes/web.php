@@ -31,7 +31,6 @@ Route::group(['domain' => $domain], function () {
     Route::post('/ping', 'ServersController@ping');
 
     Route::middleware('auth')->group(function () {
-// Profile
         Route::get('/profile', 'UserController@profile')->name('profile');
         Route::post('/profile/changeAvatar', 'UserController@updateAvatar')->name('updateAvatar');
         Route::post('/profile/edit', 'UserController@update')->name('profile.edit');
@@ -41,14 +40,11 @@ Route::group(['domain' => $domain], function () {
         Route::post('/profile/sendSmsCode', 'UserController@sendSmsCode')->name('sendSmsCode');
         Route::post('/profile/verifySms', 'UserController@verifySms')->name('verifySms');
 
-// Change Password
         Route::get('/password/edit', 'UserController@changePassword')->name('changePassword');
         Route::post('/password/edit', 'UserController@changePasswordPost')->name('changePassword.post');
 
-//Banners
         Route::get('/banners', 'PagesController@banners')->name('banners');
 
-// Server
         Route::get('/addServer', 'ServersController@add')->name('addServer');
         Route::post('/addServer', 'ServersController@addPost')->name('addServer.post');
         Route::get('/server/{id}/addWorld', 'ServersController@addWorld')->name('addWorld');
@@ -59,10 +55,10 @@ Route::group(['domain' => $domain], function () {
         Route::get('/myServersStat', 'ServersController@myServersStat')->name('myServersStat');
         Route::get('/server/{id}/stat', 'ServersController@serverStat')->name('serverStat');
 
-// Rate server
         Route::get('/server/{id}/vote', 'ServersController@vote')->name('voteServer');
         Route::post('/server/{id}/vote', 'ServersController@votePost')->name('voteServer.post');
-// Vip functions
+        Route::get('/myVotes', 'UserController@myVotes')->name('myVotes');
+
         Route::get('/privileges', 'PrivilegesController@main')->name('privileges');
         Route::get('/privileges/bb', 'PrivilegesController@bb')->name('privileges.bb');
         Route::get('/privileges/banner', 'PrivilegesController@banner')->name('privileges.banner');
@@ -73,12 +69,10 @@ Route::group(['domain' => $domain], function () {
     });
 });
 
-//Servers
 Route::get('/server/{id}', 'ServersController@server')->name('serverPage');
 Route::get('/server/{servId}/worlds/{id}', 'ServersController@world')->name('worldPage');
 Route::post('/server/{id}/addComment', 'ServersController@addComment')->name('serverAddComment');
 
-// Statistic
 Route::get('/server/{id}/statistic', 'ServersController@serverStat')->name('serverStat');
 
 Route::group(['domain' => 'aion.' . $domain], function () {
