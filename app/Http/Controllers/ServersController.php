@@ -658,8 +658,7 @@ class ServersController extends Controller
         if (Auth::user()->balance < 30) return Redirect::back()->withErrors(['msg', 'Недостаточно баланса.']);
 
         $r->validate([
-            'nickname' => 'required',
-//            'g-recaptcha-response' => 'required|captcha'
+            'nickname' => 'required'
         ]);
 
         $vote = Votes::where('user_id', Auth::id())->orderBy('created_at', 'DESC')->first();

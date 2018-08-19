@@ -114,9 +114,4 @@ class PrivilegesController extends Controller
 
     }
 
-    public function activate()
-    {
-
-    }
-
 }
