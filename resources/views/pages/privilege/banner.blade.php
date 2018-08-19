@@ -11,84 +11,64 @@
         </div>
         <div class="contentLeft">
             <div class="title-lk">
-                <h3><i><img src="/img/icon/l-1.png" alt=""></i> Кабинет администратора</h3>
+                <h3>
+                    <i>
+                        <img src="/img/icon/l-1.png" alt="">
+                    </i> Кабинет администратора</h3>
             </div>
             <div class="top-server-list">
                 <div class="title-list-lk">
-                    <h1><i class="ico-title"><img src="/img/icon/ico-1.png" alt=""></i>Премиум услуги</h1>
+                    <h1>
+                        <i class="ico-title">
+                            <img src="/img/icon/r_1.png" alt="">
+                        </i>Размещение рекламы
+                    </h1>
                     <div class="clear"></div>
                 </div>
-                <div class="content-lk-block content-premium">
-                    <h3>Покупка баннера под сервер</h3>
-                    <p>
-                        Прикрепите картинку в формате <span>JPEG, PNG или GIF</span>, введите E-mail для оповещения о
-                        готовности и
-                        нажмите на кнопку “Оплатить услугу”. Максимальное разрешение баннера: <span>240 х 650</span>
-                        пикселей.
-                    </p>
-                </div>
-                <div class="line-premium-vnut"></div>
                 <div class="content-lk-block">
-                    <form action="{{ route('privileges.buy') }}" method="POST">
-                        @csrf
-                        <div class="form-premium-block">
+                    <div class="reclam">
+                        <h4 class="reclam_title">Размещение рекламы всего за 4 шага:</h4>
+                        <p class="reclam_text active">
+                            1. Выберите место для размещения баннера на схеме
+                        </p>
+                        <p class="reclam_text">
+                            2. Загрузите картинку для размещения и зарезервируйте необходимую сумму
+                        </p>
+                        <p class="reclam_text">
+                            3. Дождитесь одобрения модерации загруженной картинки
+                        </p>
+                        <p class="reclam_text">
+                            4. Готово! Ваш баннер будет опубликован в течении 20 минут
+                        </p>
 
-                            <div class="form-group-lk">
-                                <label>Введите свой e-mail:</label>
-                                <input type="email" class="text-ing-lk" name="email">
-                                <input type="hidden" class="text-ing-lk" name="action"
-                                       value="{{ \MMORATE\Privilege::PRIVILEGE_BANNER }}">
-                            </div>
-                            <input type="file" class="premium-file-btn" id="file-prem">
-                            <label for="file-prem"><i><img src="/img/icon/ico-file.png" alt=""></i> Загрузить
-                                файл</label>
-                            <button class="btn-bue-premium">Перейти к оплате ›</button>
-                        </div>
-                    </form>
+                    </div>
+                    <div class="clear"></div>
                 </div>
-                <div class="page-content-premium">
 
-                    <div class="item-premium">
-                        <div class="premium-content-item">
-                            <div class="img-premium">
-                                <img src="/img/icon/ico-prem-2.png" alt="">
-                            </div>
-                            <dis class="name-premium">
-                                <p>Купить возможность использовать bb коды <br>
-                                    <span>Разрешено только в описании сервера</span></p>
-                            </dis>
-                            <a href="{{ route('privileges.bb') }}" class="btn-bue-premium">
-                                <i><img src="/img/icon/ico-btn.png" alt=""></i>Заказать услугу ›
-                            </a>
+                <div class="item-top ">
+                    <div class="selectReclam">
+                        <a class="select_item1" href="{{ route('privileges.banner.step2') }}">
+                            Баннер в шапке (1024х3970px)
+                        </a>
+                        <div class="select_item2">
+                            <a class="select_link" href="{{ route('privileges.banner.step2') }}"> Баннер 1 (768х68px)</a>
+                            <img src="/img/elements/rek_1.png" alt="">
+                        </div>
+                        <div class="select_item3">
+                            <a class="select_link" href="{{ route('privileges.banner.step2') }}"> Баннер 2 (768х68px)</a>
+                            <a class="select_link2" href="{{ route('privileges.banner.step2') }}"> Баннер 3 (768х68px)</a>
+                            <img src="/img/elements/rek_2.png" alt="">
                         </div>
                     </div>
-                    <div class="item-premium">
-                        <div class="premium-content-item">
-                            <div class="img-premium">
-                                <img src="/img/icon/ico-prem-3.png" alt="">
-                            </div>
-                            <dis class="name-premium">
-                                <p>Возможность менять окончание ссылки <br>
-                                    <span>Например: с /server250 на /asterios</span></p>
-                            </dis>
-                            <a href="{{ route('privileges.link') }}" class="btn-bue-premium">
-                                <i><img src="/img/icon/ico-btn.png" alt=""></i>Заказать услугу ›
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item-premium">
-                        <div class="premium-content-item">
-                            <div class="img-premium">
-                                <img src="/img/icon/ico-prem-4.png" alt="">
-                            </div>
-                            <div class="name-premium">
-                                <p>Купить баннер в шапке на странице топов <br>
-                                    <span>Разрешение баннера: 2048х3690</span></p>
-                            </div>
-                            <a href="{{ route('privileges.header') }}" class="btn-bue-premium">
-                                <i><img src="/img/icon/ico-btn.png" alt=""></i>Заказать услугу ›
-                            </a>
-                        </div>
+                </div>
+                <div class="item-top ">
+                    <div class="priceReklam">
+                        <h4 class="priceReklam_title">Стоимость размещения рекламы</h4>
+                        <p class="priceReklam_item">Баннер в шапке (1024х3970 px) <span>250 $ / 1 неделя</span></p>
+                        <p class="priceReklam_item">Баннер в шапке (1024х3970 px) <span>250 $ / 1 неделя</span></p>
+                        <p class="priceReklam_item">Баннер в шапке (1024х3970 px) <span>250 $ / 1 неделя</span></p>
+                        <p class="priceReklam_item">Баннер в шапке (1024х3970 px) <span>250 $ / 1 неделя</span></p>
+
                     </div>
                 </div>
             </div>

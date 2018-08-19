@@ -12,8 +12,8 @@
 */
 
 
-$domain = 'mmorate.com';
-//$domain = 'mmo.test';
+//$domain = 'mmorate.com';
+$domain = 'mmo.test';
 // Pages
 Route::get('/redirect/{route}', 'UserController@redirect')->name('redirect');
 Route::get('/logout', 'PagesController@logout')->name('logout');
@@ -24,8 +24,8 @@ Route::group(['domain' => $domain], function () {
     Route::get('/support', 'PagesController@support')->name('support');
     Route::get('/request', 'PagesController@request')->name('request');
     Route::get('/faq', 'PagesController@faq')->name('faq');
-    Route::get('/', 'PagesController@promo')->name('main');
-//    Route::get('/', 'ServersController@main')->name('main');
+//    Route::get('/', 'PagesController@promo')->name('main');
+    Route::get('/', 'ServersController@main')->name('main');
 
     Route::get('/test', 'ServersController@test');
     Route::post('/ping', 'ServersController@ping');
@@ -57,14 +57,22 @@ Route::group(['domain' => $domain], function () {
 
         Route::get('/server/{id}/vote', 'ServersController@vote')->name('voteServer');
         Route::post('/server/{id}/vote', 'ServersController@votePost')->name('voteServer.post');
+
+        Route::get('/server/{id}/vote/vip', 'ServersController@voteVip')->name('voteServerVip');
+        Route::post('/server/{id}/vote/vip', 'ServersController@voteVipPost')->name('voteServerVip.post');
+
         Route::get('/myVotes', 'UserController@myVotes')->name('myVotes');
 
         Route::get('/privileges', 'PrivilegesController@main')->name('privileges');
         Route::get('/privileges/bb', 'PrivilegesController@bb')->name('privileges.bb');
-        Route::get('/privileges/banner', 'PrivilegesController@banner')->name('privileges.banner');
         Route::get('/privileges/link', 'PrivilegesController@link')->name('privileges.link');
         Route::get('/privileges/header', 'PrivilegesController@header')->name('privileges.header');
         Route::post('/privileges/buy', 'PrivilegesController@buy')->name('privileges.buy');
+
+        Route::get('/privileges/banner', 'PrivilegesController@banner')->name('privileges.banner');
+        Route::get('/privileges/banner/step-2', 'PrivilegesController@bannerStep2')->name('privileges.banner.step2');
+        Route::get('/privileges/banner/step-3', 'PrivilegesController@bannerStep3')->name('privileges.banner.step3');
+        Route::get('/privileges/banner/step-4', 'PrivilegesController@bannerStep4')->name('privileges.banner.step4');
 
     });
 });

@@ -2,6 +2,28 @@ function world_click(link) {
     window.location.href = link;
 }
 
+toastr.options = {
+    escapeHtml : true,
+    closeButton : true,
+    closeHtml : '<button></button>',
+    showDuration: "5000",
+    hideDuration: "1000",
+    closeDuration : "300",
+    timeOut : "5000",
+    extendedTimeOut : "5000",
+    newestOnTop : true,
+    showEasing : 'swing', /*easeOutBounce*/
+    hideEasing : 'linear', /*easeInBack*/
+    closeEasing : 'linear', /*easeInBack*/
+    showMethod : 'slideDown', /*fadeIn, show*/
+    hideMethod : 'slideUp', /*fadeOut, hide*/
+    closeMethod : 'slideUp',
+    preventDuplicates : true,
+    progressBar : false,
+    rtl : false,
+    positionClass: "toast-bottom-center",
+}
+
 $(document).ready(function () {
     $('textarea:not("#g-recaptcha-response")').wysibb({
         lang: 'ru',
@@ -41,6 +63,9 @@ $(document).ready(function () {
             success: function () {
                 $('#form-1').hide();
                 $('#mes-1').show();
+            },
+            error: function () {
+                toastr["warning"]("Данный EMAIL уже используется.", "Ошибка")
             }
         });
     });
@@ -53,6 +78,7 @@ $(document).ready(function () {
             setTimeout(function () {
                 $('#code').removeClass('error-input');
             }, 1000);
+            toastr["warning"]("Введите код.", "Ошибка")
             return false;
         }
         $.ajax({
@@ -75,6 +101,7 @@ $(document).ready(function () {
                 setTimeout(function () {
                     $('#code').removeClass('error-input');
                 }, 1000);
+                toastr["warning"]("Введен неверный код.", "Ошибка")
             }
         });
     });
@@ -131,6 +158,9 @@ $(document).ready(function () {
             success: function () {
                 $('#form-2').hide();
                 $('#mes-2').show();
+            },
+            error: function () {
+                toastr["warning"]("Данный телефон уже используется.", "Ошибка")
             }
         });
     });
@@ -165,6 +195,7 @@ $(document).ready(function () {
                 setTimeout(function () {
                     $('#smsCode').removeClass('error-input');
                 }, 1000);
+                toastr["warning"]("Введен неверный код.", "Ошибка")
             }
         });
     });

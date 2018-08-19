@@ -79,7 +79,7 @@
                         <p>
                             А так же Вы всегда можете поддержать сервер "{{ $server->name }}" с помощью VIP голосования!
                         </p>
-                        <a href="mmorate(Голосование-VIP).html" class="link-vip-golos">
+                        <a href="{{ route('voteServerVip', $server->id) }}" class="link-vip-golos">
                             <i><img src="/img/icon/i-7.png" alt=""></i> Отдать VIP голос
                         </a>
                     </div>
@@ -92,9 +92,7 @@
                 @endif
             </div>
         </div>
-    </div>
-
-@endsection
-@section('scripts')
-    <script>$("#editServerForm").validate();</script>
+        @endsection
+        @section('scripts')
+            <script>$("#editServerForm").validate();</script>
 @endsection

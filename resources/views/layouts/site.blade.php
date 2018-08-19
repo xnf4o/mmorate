@@ -195,6 +195,8 @@
                                                 <p>Предыдущий IP адрес: {{ Auth::user()->last_login_ip }}</p>
                                                 <p>Текущий IP адрес: {{ Request::ip() }}</p>
                                                 <p class="line-user-uath"></p>
+                                                <p>Ваш баланс: {{ Auth::user()->balance }} рублей</p>
+                                                <p class="line-user-uath"></p>
                                                 @php
                                                     $vote = \MMORATE\Votes::where('user_id', Auth::id())->orderBy('created_at', 'DESC')->first();
                                                 @endphp
@@ -305,8 +307,15 @@
             {{--https://github.com/wbb/wysibb--}}
             <script src="http://cdn.wysibb.com/lang/ru.js"></script>
             <link rel="stylesheet" href="http://cdn.wysibb.com/css/default/wbbtheme.css" />
+            {{--https://github.com/CodeSeven/toastr--}}
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+            <link rel="stylesheet" href="{{ asset('/css/toastr.style.css') }}" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
             <script type="text/javascript" src="{{ asset('/js/jquery-ui.min.js') }}"></script>
             <script type="text/javascript" src="{{ asset('/js/common.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('/js/flipclock.min.js') }}"></script>
+            <link rel="stylesheet" href="{{ asset('/css/flipclock.css') }}" />
         @yield('scripts')
 </body>
 </html>

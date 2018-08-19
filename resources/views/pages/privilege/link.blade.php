@@ -37,6 +37,7 @@
                             <div class="form-group-lk custom-width">
                                 <label>Введите свой e-mail:</label>
                                 <input type="email" class="text-ing-lk" name="email">
+                                <input type="hidden" class="text-ing-lk" name="amount" value="50">
                                 <input type="hidden" class="text-ing-lk" name="action"
                                        value="{{ \MMORATE\Privilege::PRIVILEGE_SERVER_LINK }}">
                             </div>

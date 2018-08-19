@@ -372,7 +372,7 @@ class ServersController extends Controller
         ]);
 
         $vote = Votes::where('user_id', Auth::id())->orderBy('created_at', 'DESC')->first();
-        if (isset($vote) and $vote->created_at->isToday()) abort('404');
+//        if (isset($vote) and $vote->created_at->isToday()) abort('404');
 
         $voteCoeff = self::COEF;
         $adBlock = $r->get('adBlockIsEnabled');
@@ -628,5 +628,72 @@ class ServersController extends Controller
     public function test($ip = '164.132.204.61:49001')
     {
 
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|void
+     * Вип голосование за сервер
+     */
+    public function voteVip($id)
+    {
+        $server = Servers::where('link', $id)->first() ?? Servers::where('id', $id)->first();
+        if (!Privilege::where('user_id', $server->user_id)->where('action', Privilege::PRIVILEGE_SERVER_LINK)->where('status', '1')->first() and !is_numeric($id))
+            return abort(404);
+        $rates = Worlds::where('server_id', $id)->get();
+        SEO::setTitle('Голосование за сервер ' . $server->name);
+
+        return view('pages.vote_vip', compact('server', 'rates'));
+    }
+
+    /**
+     * @param $id
+     * @param Request $r
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Вип голос за сервер
+     */
+    public function voteVipPost($id, Request $r)
+    {
+
+        if (Auth::user()->balance < 30) return Redirect::back()->withErrors(['msg', 'Недостаточно баланса.']);
+
+        $r->validate([
+            'nickname' => 'required',
+//            'g-recaptcha-response' => 'required|captcha'
+        ]);
+
+        $vote = Votes::where('user_id', Auth::id())->orderBy('created_at', 'DESC')->first();
+        if (isset($vote) and $vote->created_at->isToday()) abort('404');
+
+        $voteCoeff = self::COEF;
+        $adBlock = $r->get('adBlockIsEnabled');
+        $vote = Votes::where('server_id', $id)->orderBy('created_at', 'DESC')->first();
+        $server = Servers::where('id', $id)->first();
+        if (isset($vote) and $vote->created_at->greaterThan(Carbon::now()->subHour()->toDateTimeString()))
+            $voteCoeff = self::COEF_IF_OFTEN;
+        if ($adBlock == 1)
+            $voteCoeff = self::COEF;
+        if ($server->coefficient != self::COEF)
+            $voteCoeff = $server->coefficient;
+
+        $votes = new Votes();
+        $votes->user_id = Auth::id();
+        $votes->server_id = $id;
+        $votes->nickname = $r->get('nickname');
+        $votes->ip = $r->ip();
+        $votes->type = 2;
+        $votes->save();
+
+        $server = Servers::where('id', $id)->first();
+        $server->votes += $voteCoeff;
+        $server->save();
+
+        $user = Auth::user();
+        $user->balance -= 30;
+        $user->save();
+
+        SEO::setTitle('Голосование за сервер ' . $server->name);
+
+        return view('pages.voteFinish', compact('server'));
     }
 }

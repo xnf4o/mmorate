@@ -39,6 +39,7 @@
                             <input type="hidden" class="text-ing-lk" name="action"
                                    value="{{ \MMORATE\Privilege::PRIVILEGE_BANNER }}">
                             <input type="file" class="premium-file-btn" id="file-prem">
+                            <input type="hidden" class="text-ing-lk" name="amount" value="50">
                             <label for="file-prem"><i><img src="/img/icon/ico-file.png" alt=""></i> Загрузить
                                 файл</label>
                             <button class="btn-bue-premium">Перейти к оплате ›</button>

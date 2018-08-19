@@ -33,11 +33,12 @@
                             <div class="form-group-lk custom-width2">
                                 <label>Введите свой e-mail:</label>
                                 <input type="email" class="text-ing-lk" name="email">
+                                <input type="hidden" class="text-ing-lk" name="amount" value="50">
                                 <input type="hidden" class="text-ing-lk" name="action"
                                        value="{{ \MMORATE\Privilege::PRIVILEGE_BB }}">
                             </div>
 
-                            <button class="btn-bue-premium">Перейти к оплате ›</button>
+                            <button class="btn-bue-premium">Купить услугу ›</button>
                         </div>
                     </form>
                 </div>
