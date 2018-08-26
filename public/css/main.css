@@ -166,7 +166,7 @@ body {
   top: -430px;
   z-index: 100;
 }
-.pw-img:before{
+.perfect-img:before{
   content: url('../img/pw.png');
   position: absolute;
   right: 10px;
@@ -186,7 +186,7 @@ body {
 .mu-container {
   background: url('../img/bg/bg-mu.png') no-repeat top center;
 }
-.pw-container {
+.perfect-container {
   background: url('../img/bg/pw.jpg') no-repeat top center;
 }
 .rf-container {
@@ -227,6 +227,7 @@ body {
   background: url('../img/bg/leftBg.png') repeat-y;
   z-index: 2;
   padding-left: 11px;
+  min-height: 1750px !important;
 }
 .contentRight {
   width: 338px;

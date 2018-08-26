@@ -59,7 +59,7 @@
                 @else
                     <div class="main-container">
                         @endif
-                        <div class="contentLogoNews">
+                        <div class="contentLogo">
                             @if(isset($route))
                                 <a href="{{ route($route) }}">
                                     @else
@@ -305,8 +305,8 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/localization/messages_ru.min.js"></script>
             {{--https://github.com/wbb/wysibb--}}
-            <script src="http://cdn.wysibb.com/lang/ru.js"></script>
-            <link rel="stylesheet" href="http://cdn.wysibb.com/css/default/wbbtheme.css" />
+            <script src="https://cdn.wysibb.com/lang/ru.js"></script>
+            <link rel="stylesheet" href="https://cdn.wysibb.com/css/default/wbbtheme.css" />
             {{--https://github.com/CodeSeven/toastr--}}
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
             <link rel="stylesheet" href="{{ asset('/css/toastr.style.css') }}" />
