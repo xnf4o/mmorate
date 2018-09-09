@@ -186,7 +186,7 @@ class UserController extends Controller
     public function sendSmsCode(Request $r)
     {
         $r->validate([
-            'phone' => 'unique:users'
+            'phone' => 'unique:users',
         ]);
         $user = Auth::user();
         if ($user->phone != $r->get('phone')) {

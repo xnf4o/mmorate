@@ -22,6 +22,14 @@
                     <form action="{{ route('editServer.post', $server->id) }}" method="post" id="editServerForm">
                         @csrf
                         <div class="leftBlockLk">
+                            @if(isset($server->worlds))
+                                <div class="block-select-lk">
+                                    <label>Выбирите мир для редактирования:</label>
+                                    @foreach($server->worlds as $world)
+                                        <b><a href="{{ route('editWorld', $world->id) }}">{{ $world->name }} [x{{ $world->rate }}]</a></b> <br><br>
+                                    @endforeach
+                                </div>
+                            @endif
                             <div class="block-select-lk">
                                 <label>Выбирите игру:</label>
                                 <div class="item-select-lk">
@@ -796,8 +804,8 @@
                             </div>
                             <div class="form-group-lk">
                                 <label>Видио трейлер:</label>
-                                <input type="text" class="text-ing-lk" name="video" placeholder="Ссылка на Youtube"
-                                       value="{{ $server->video }}">
+                                <input type="text" class="text-ing-lk" name="trailer" placeholder="Ссылка на Youtube"
+                                       value="{{ $server->trailer }}">
                             </div>
                             <div class="form-group-lk">
                                 <label>Введите теги:</label>

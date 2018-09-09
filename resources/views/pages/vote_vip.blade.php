@@ -36,15 +36,15 @@
                     <form action="{{ route('voteServerVip.post', $server->id) }}" method="post">
                         @csrf
                         <input type="hidden" name="adBlockIsEnabled" id="ad">
-                        <div class="form-group-golos">
-                            <label class="title-label-golos">Выберите сервер:</label>
-                            @forelse($rates as $i => $rate)
-                                <input type="radio" id="rate-{{ $i }}" class="radio-rate" name="server">
-                                <label for="rate-{{ $i }}">{{ $rate->name }} x{{ $rate->rate }}</label>
-                            @empty
-                                Нет серверов
-                            @endforelse
-                        </div>
+                        {{--<div class="form-group-golos">--}}
+                            {{--<label class="title-label-golos">Выберите сервер:</label>--}}
+                            {{--@forelse($rates as $i => $rate)--}}
+                                {{--<input type="radio" id="rate-{{ $i }}" class="radio-rate" name="server">--}}
+                                {{--<label for="rate-{{ $i }}">{{ $rate->name }} x{{ $rate->rate }}</label>--}}
+                            {{--@empty--}}
+                                {{--Нет серверов--}}
+                            {{--@endforelse--}}
+                        {{--</div>--}}
                         <div class="info-vip-block">
                             <h3> Информация о VIP голосе:</h3>
 

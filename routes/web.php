@@ -12,8 +12,8 @@
 */
 
 
-//$domain = 'mmorate.com';
-$domain = 'mmo.test';
+$domain = 'mmorate.com';
+//$domain = 'mmo.test';
 // Pages
 Route::get('/redirect/{route}', 'UserController@redirect')->name('redirect');
 Route::get('/logout', 'PagesController@logout')->name('logout');
@@ -24,8 +24,8 @@ Route::group(['domain' => $domain], function () {
     Route::get('/support', 'PagesController@support')->name('support');
     Route::get('/request', 'PagesController@request')->name('request');
     Route::get('/faq', 'PagesController@faq')->name('faq');
-//    Route::get('/', 'PagesController@promo')->name('main');
-    Route::get('/', 'ServersController@main')->name('main');
+    Route::get('/', 'PagesController@promo')->name('main');
+//    Route::get('/', 'ServersController@main')->name('main');
 
     Route::get('/test', 'ServersController@test');
     Route::post('/ping', 'ServersController@ping');
@@ -47,13 +47,20 @@ Route::group(['domain' => $domain], function () {
 
         Route::get('/addServer', 'ServersController@add')->name('addServer');
         Route::post('/addServer', 'ServersController@addPost')->name('addServer.post');
+
+        Route::get('/editWorld/{id}', 'ServersController@editWorld')->name('editWorld');
+        Route::post('/editWorld/{id}', 'ServersController@editWorldPost')->name('editWorld.post');
+
         Route::get('/server/{id}/addWorld', 'ServersController@addWorld')->name('addWorld');
         Route::post('/server/{id}/addWorld', 'ServersController@addWorldPost')->name('addWorld.post');
-        Route::get('/myServers', 'ServersController@myServers')->name('myServers');
+
+
         Route::get('/server/{id}/edit', 'ServersController@edit')->name('editServer');
         Route::post('/server/{id}/edit', 'ServersController@editPost')->name('editServer.post');
         Route::get('/myServersStat', 'ServersController@myServersStat')->name('myServersStat');
         Route::get('/server/{id}/stat', 'ServersController@serverStat')->name('serverStat');
+
+        Route::get('/myServers', 'ServersController@myServers')->name('myServers');
 
         Route::get('/server/{id}/vote', 'ServersController@vote')->name('voteServer');
         Route::post('/server/{id}/vote', 'ServersController@votePost')->name('voteServer.post');

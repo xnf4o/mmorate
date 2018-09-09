@@ -92,8 +92,8 @@
                                            class="itemLkMenu @if(Request::is('profile')) lkMenuActive @endif">
                                             <span class="vnutItemMenu"><span class="arrMenu">› </span>Настройки профиля</span>
                                         </a>
-                                        <a href="{{ route('myServers') }}"
-                                           class="itemLkMenu @if(Request::is('myServers')) lkMenuActive @endif">
+                                        <a href="{{ route('myVotes') }}"
+                                           class="itemLkMenu @if(Request::is('myVotes')) lkMenuActive @endif">
                                             <span class="vnutItemMenu"><span class="arrMenu">› </span>Мои голоса</span>
                                         </a>
                                         {{--@if(MMORATE\Servers::MyCount() != 0)--}}
@@ -214,28 +214,28 @@
                                 <a href=""><img src="/img/rk/bn234.png" alt=""></a>
                             </div>
                             <div class="bottom-sitebar">
-                                {{--<a href=""><img src="/img/elements/logo-sitebar.png" alt=""></a>--}}
+                                <a href="{{ route('main') }}"><img src="/img/elements/logo-sitebar.png" alt=""></a>
                                 <div class="miniRek">
                                     <a href=""></a>
                                     <a href=""></a>
                                     <a href=""></a>
                                 </div>
                             </div>
-                            <div class="widget-block">
-                                <div class="title-vk">
-                                    Группа Вконтакте
-                                </div>
-                                <div class="widget-vk">
-                                    <img src="/img/elements/widget.png" alt="">
-                                </div>
-                            </div>
-                            <div class="bottom-sitebar-vnut">
-                                <div class="miniRek">
-                                    <a href=""></a>
-                                    <a href=""></a>
-                                    <a href=""></a>
-                                </div>
-                            </div>
+                            {{--<div class="widget-block">--}}
+                                {{--<div class="title-vk">--}}
+                                    {{--Группа Вконтакте--}}
+                                {{--</div>--}}
+                                {{--<div class="widget-vk">--}}
+                                    {{--<img src="/img/elements/widget.png" alt="">--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="bottom-sitebar-vnut">--}}
+                                {{--<div class="miniRek">--}}
+                                    {{--<a href=""></a>--}}
+                                    {{--<a href=""></a>--}}
+                                    {{--<a href=""></a>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
                         </div>
                         <div class="clear"></div>
                         <div class="bg-bottom-content">
@@ -311,7 +311,10 @@
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
             <link rel="stylesheet" href="{{ asset('/css/toastr.style.css') }}" />
             <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
+            {{--https://github.com/sampotts/plyr--}}
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.4.3/plyr.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.4.3/plyr.polyfilled.min.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.4.3/plyr.css" />
             <script type="text/javascript" src="{{ asset('/js/jquery-ui.min.js') }}"></script>
             <script type="text/javascript" src="{{ asset('/js/common.js') }}"></script>
             <script type="text/javascript" src="{{ asset('/js/flipclock.min.js') }}"></script>

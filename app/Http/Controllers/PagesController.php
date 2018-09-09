@@ -90,7 +90,7 @@ class PagesController extends Controller
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * Баннepы
+     * Баннеры
      */
     public function banners()
     {

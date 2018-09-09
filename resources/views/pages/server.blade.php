@@ -36,10 +36,14 @@
                 </div>
                 <div class="info-item-server">
                     <div class="rating-block">
-                        <div class="coll-rating">
-                            {{ substr($server->rating, 0, -1) }}<span
-                                    class="litle-text">,{{ substr($server->rating, -1) }}</span>
-                        </div>
+                        @if($server->rating != 0)
+                            <div class="coll-rating">
+                                {{ substr($server->rating, 0, -1) }}
+                                <span class="litle-text">,{{ substr($server->rating, -1) }}</span>
+                            </div>
+                        @else
+                            <div class="coll-rating">0<span class="litle-text">,0</span></div>
+                        @endif
                         <p>
                             {{ number_format($server->rates,0,",",".") }}
                             <br> Голосов
@@ -50,10 +54,21 @@
                             <span class="segment-info">Тип: <span class="rightText">Комплекс</span></span>
                             <span class="segment-info">Хроники: <span
                                         class="rightText colorOrange">Itnerlude</span></span>
-                            <span class="segment-info">Онлайн: <span
-                                        class="rightText">{{ $server->online }}</span></span>
-                            <span class="segment-info">Макс.онлайн: <span
-                                        class="rightText">{{ $server->max_online }}</span></span>
+                                @if($server->online != 0)
+                                    <span class="segment-info">Онлайн: <span
+                                                class="rightText">{{ $server->online }} +</span></span>
+                                @endif
+                                @if($server->max_online != 0)
+                                    <span class="segment-info">Макс.онлайн: <span
+                                                class="rightText">{{ $server->max_online }}</span></span>
+                                @endif
+                                @if(isset($worlds))
+                                    <span class="segment-info">Рейты: <span class="rightText">
+                                    @foreach($worlds as $world)
+                                                x{{ $world->rate }} @if (!$loop->last)/@endif
+                                            @endforeach
+                                </span></span>
+                                @endif
                             </span>
                         @if(isset($worlds))
                             @foreach($worlds as $world)
@@ -72,13 +87,14 @@
                     </div>
                     @endif
                     <div class="opis-block">
+                        @isset($server->trailer) <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="{{ substr($server->trailer, -32) }}"></div> @endisset
                         <h6>Полное описание сервера</h6>
                         <p>{{ $server->fdescription }}</p>
                         <span class="linkStat-and-comment">
                                 <a href="{{ route('serverStat', $server->id) }}">
                                 <i><img src="/img/icon/i-2.png"></i> Статистика
                             </a>
-                                <a href="">
+                                <a href="#comments">
                                 <i><img src="/img/icon/i-3.png"></i> {{ $server->reviews }} Комментариев
                             </a>
                             <script type="text/javascript">(function() {
@@ -156,7 +172,7 @@
                             <div class="clear"></div>
                         </div>
                         <div class="text-comment">
-                            {{ $comment->text }}
+                            {!! $comment->text !!}
                         </div>
                     </div>
                 @endforeach
@@ -199,4 +215,7 @@
                 </div>
             @endif
         </div>
+@endsection
+        @section('scripts')
+            <script>const player = new Plyr('#player');</script>
 @endsection

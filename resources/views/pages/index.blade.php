@@ -42,7 +42,7 @@
             @foreach($allServers as $i => $server)
                 @php($i++)
                 <div class="item-top @if($i == 1)no-bg @endif">
-                    <div class="title-item-top">
+                    <div class="title-item-top @if($i == 1) first @endif">
                         <a href="{{ route('voteServer', $server->link ?? $server->id) }}"
                            class="btn-golos"><i><img src="../img/icon/i-1.png" alt=""></i>
                             Проголосовать</a>
@@ -57,28 +57,59 @@
                         <div class="clear"></div>
                     </div>
                     <div class="info-item-server">
-                        <div class="rating-block">
-                            <div class="coll-rating">
-                                {{ substr($server->rating, 0, -1) }}<span
-                                        class="litle-text">,{{ substr($server->rating, -1) }}</span>
-                            </div>
-                            <p>
-                                {{ number_format($server->rates,0,",",".") }}
-                                <br> Голосов
-                            </p>
+
+                        <div class="rating-block @if($i == 1) flag @endif">
+                            @if($i == 1)
+                                <a href="{{ route('voteServerVip', $server->link ?? $server->id) }}">
+                                    <div class="vip"></div>
+                                </a>
+                                <p>
+                                    {{ number_format($server->rates,0,",",".") }}
+                                    <br> Голосов
+                                </p>
+                            @else
+                                @if($server->rating != 0)
+                                <div class="coll-rating">
+                                    {{ substr($server->rating, 0, -1) }}
+                                    <span class="litle-text">,{{ substr($server->rating, -1) }}</span>
+                                </div>
+                                @else
+                                    <div class="coll-rating">0<span class="litle-text">,0</span></div>
+                                @endif
+                                <p>
+                                    {{ number_format($server->rates,0,",",".") }}
+                                    <br> Голосов
+                                </p>
+                            @endif
                         </div>
                         <p class="text-info-server">
                             <span class="infoText-right">
                             <span class="segment-info">Тип: <span class="rightText">Комплекс</span></span>
                             <span class="segment-info">Хроники: <span
                                         class="rightText colorOrange">Itnerlude</span></span>
-                            <span class="segment-info">Онлайн: <span
-                                        class="rightText">{{ $server->online }}</span></span>
-                            <span class="segment-info">Макс.онлайн: <span
-                                        class="rightText">{{ $server->max_online }}</span></span>
-                            <span class="segment-info">Рейты: <span class="rightText">x50/x100</span></span>
+                                @if($server->online != 0)
+                                    <span class="segment-info">Онлайн: <span
+                                                class="rightText">{{ $server->online }} +</span></span>
+                                @endif
+                                @if($server->max_online != 0)
+                                    <span class="segment-info">Макс.онлайн: <span
+                                                class="rightText">{{ $server->max_online }}</span></span>
+                                @endif
+                                @if(isset($server->worlds))
+                                    <span class="segment-info">Рейты: <span class="rightText">
+                                    @foreach($server->worlds as $world)
+                                                x{{ $world->rate }} @if (!$loop->last)/@endif
+                                            @endforeach
+                                </span></span>
+                                @endif
                             </span>
-
+                            @if(isset($server->worlds))
+                                @foreach($server->worlds as $world)
+                                    <span class="rateServ @if($i == 1) first @endif">
+                                x{{ $world->rate }}
+                            </span>
+                                @endforeach
+                            @endif
                             <span class="info-text-main-top">
                              {{ $server->description }}
                            </span>

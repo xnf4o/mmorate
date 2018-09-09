@@ -341,8 +341,8 @@
                                 </div>
                                 <div class="form-group-lk">
                                     <label>Видио трейлер:</label>
-                                    <input type="url" class="text-ing-lk" name="video" placeholder="Ссылка на Youtube"
-                                           value="{{ old('video') }}">
+                                    <input type="url" class="text-ing-lk" name="trailer" placeholder="Ссылка на Youtube"
+                                           value="{{ old('trailer') }}">
                                 </div>
                                 <div class="form-group-lk">
                                     <label>Введите теги:</label>

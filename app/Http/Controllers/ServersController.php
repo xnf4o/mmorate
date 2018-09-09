@@ -39,6 +39,7 @@ class ServersController extends Controller
                 $server->description = BBCode::parse($server->description);
             if (!Privilege::where('user_id', $server->user_id)->where('action', Privilege::PRIVILEGE_SERVER_LINK)->where('status', '1')->first())
                 $server->link = null;
+            $server->worlds = Worlds::where('server_id', $server->id)->get();
         }
 
         return view('pages.index', compact('allServers'));
@@ -59,6 +60,7 @@ class ServersController extends Controller
             $server->description = preg_replace('#\[[^\]]+\]#', '', $server->description);
             if (Privilege::where('user_id', $server->user_id)->where('status', '1')->first())
                 $server->description = BBCode::parse($server->description);
+            $server->worlds = Worlds::where('server_id', $server->id)->get();
         }
 
         return view('pages.index', compact('allServers', 'game', 'gameTitle', 'route'));
@@ -79,6 +81,7 @@ class ServersController extends Controller
             $server->description = preg_replace('#\[[^\]]+\]#', '', $server->description);
             if (Privilege::where('user_id', $server->user_id)->where('status', '1')->first())
                 $server->description = BBCode::parse($server->description);
+            $server->worlds = Worlds::where('server_id', $server->id)->get();
         }
 
         return view('pages.index', compact('allServers', 'game', 'gameTitle', 'route'));
@@ -99,6 +102,7 @@ class ServersController extends Controller
             $server->description = preg_replace('#\[[^\]]+\]#', '', $server->description);
             if (Privilege::where('user_id', $server->user_id)->where('status', '1')->first())
                 $server->description = BBCode::parse($server->description);
+            $server->worlds = Worlds::where('server_id', $server->id)->get();
         }
 
         return view('pages.index', compact('allServers', 'game', 'gameTitle', 'route'));
@@ -119,6 +123,7 @@ class ServersController extends Controller
             $server->description = preg_replace('#\[[^\]]+\]#', '', $server->description);
             if (Privilege::where('user_id', $server->user_id)->where('status', '1')->first())
                 $server->description = BBCode::parse($server->description);
+            $server->worlds = Worlds::where('server_id', $server->id)->get();
         }
 
         return view('pages.index', compact('allServers', 'game', 'gameTitle', 'route'));
@@ -139,6 +144,7 @@ class ServersController extends Controller
             $server->description = preg_replace('#\[[^\]]+\]#', '', $server->description);
             if (Privilege::where('user_id', $server->user_id)->where('status', '1')->first())
                 $server->description = BBCode::parse($server->description);
+            $server->worlds = Worlds::where('server_id', $server->id)->get();
         }
 
         return view('pages.index', compact('allServers', 'game', 'gameTitle', 'route'));
@@ -159,6 +165,7 @@ class ServersController extends Controller
             $server->description = preg_replace('#\[[^\]]+\]#', '', $server->description);
             if (Privilege::where('user_id', $server->user_id)->where('status', '1')->first())
                 $server->description = BBCode::parse($server->description);
+            $server->worlds = Worlds::where('server_id', $server->id)->get();
         }
 
         return view('pages.index', compact('allServers', 'game', 'gameTitle', 'route'));
@@ -179,6 +186,7 @@ class ServersController extends Controller
             $server->description = preg_replace('#\[[^\]]+\]#', '', $server->description);
             if (Privilege::where('user_id', $server->user_id)->where('status', '1')->first())
                 $server->description = BBCode::parse($server->description);
+            $server->worlds = Worlds::where('server_id', $server->id)->get();
         }
 
         return view('pages.index', compact('allServers', 'game', 'gameTitle', 'route'));
@@ -199,6 +207,7 @@ class ServersController extends Controller
             $server->description = preg_replace('#\[[^\]]+\]#', '', $server->description);
             if (Privilege::where('user_id', $server->user_id)->where('status', '1')->first())
                 $server->description = BBCode::parse($server->description);
+            $server->worlds = Worlds::where('server_id', $server->id)->get();
         }
 
         return view('pages.index', compact('allServers', 'game', 'gameTitle', 'route'));
@@ -431,7 +440,7 @@ class ServersController extends Controller
         $server->country = $r->get('country');
         $server->site = $r->get('site');
         $server->tags = $r->get('tags');
-        $server->trailer = $r->get('video');
+        $server->trailer = $r->get('trailer');
         $server->description = $r->get('description');
         $server->fdescription = $r->get('fdescription');
         $server->status = Servers::UNCONFIRMED;
@@ -455,6 +464,20 @@ class ServersController extends Controller
         SEO::setTitle('Добавление мира серверу ' . $server->name);
 
         return view('pages.addWorld', compact('id', 'server'));
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Страница редактирования мира
+     */
+    public function editWorld($id)
+    {
+        $world = Worlds::where('id', $id)->first();
+        if ($world->user_id != Auth::id()) abort(404);
+        SEO::setTitle('Редактирование мира ' . $world->name);
+
+        return view('pages.editWorld', compact('id', 'world'));
     }
 
     /**
@@ -501,6 +524,49 @@ class ServersController extends Controller
     }
 
     /**
+     * @param Request $r
+     * @return \Illuminate\Http\RedirectResponse
+     * Редактирование мира
+     */
+    public function editWorldPost(Request $r)
+    {
+        $r->validate([
+            'description' => 'required|min:80|unique:worlds',
+            'modDesc' => 'required|min:80|unique:worlds',
+            'onlineUrl' => 'required|int',
+            'versionNumber' => 'required',
+            'rate' => 'required|without_spaces',
+            'IpLogin' => 'unique:worlds',
+            'IpGame' => 'unique:worlds'
+        ]);
+        $clans = ($r->get('clans')) ? $r->get('clans') : 0;
+        $tags = ($r->get('tags')) ? $r->get('tags') : '';
+
+        $world = Worlds::where('id', $r->get('world_id'));
+        $world->user_id = Auth::id();
+        $world->name = $r->get('name');
+        $world->rate = $r->get('rate');
+        $world->server_id = $r->get('server_id');
+        $world->description = $r->get('description');
+        $world->type = $r->get('type');
+        $world->donate = $r->get('donate');
+        $world->IpLogin = $r->get('IpLogin');
+        $world->IpGame = $r->get('IpGame');
+        $world->created = $r->get('created');
+        $world->onlineUrl = $r->get('onlineUrl');
+        $world->status = $r->get('status');
+        $world->gameVersion = $r->get('gameVersion');
+        $world->versionNumber = $r->get('versionNumber');
+        $world->modification = $r->get('modification');
+        $world->modDesc = $r->get('modDesc');
+        $world->clans = $clans;
+        $world->tags = $tags;
+        $world->save();
+
+        return redirect()->route('serverPage', $r->get('server_id'));
+    }
+
+    /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * Возврат серверов пользователя для редактирования
      */
@@ -522,6 +588,7 @@ class ServersController extends Controller
         $server = Servers::where('id', $id)->first();
         if ($server->user_id != Auth::id()) abort('404');
         SEO::setTitle('Редактирование сервера сервера ' . $server->name);
+        $server->worlds = Worlds::where('server_id', $server->id)->get();
 
         return view('pages.editServer', compact('server'));
     }
@@ -544,6 +611,7 @@ class ServersController extends Controller
         $server->name = $r->get('name');
         $server->country = $r->get('country');
         $server->site = $r->get('site');
+        $server->trailer = $r->get('trailer');
         $server->description = $r->get('description');
         $server->fdescription = $r->get('fdescription');
 //        $server->status = Servers::UNCONFIRMED;
@@ -658,7 +726,8 @@ class ServersController extends Controller
         if (Auth::user()->balance < 30) return Redirect::back()->withErrors(['msg', 'Недостаточно баланса.']);
 
         $r->validate([
-            'nickname' => 'required'
+            'nickname' => 'required',
+//            'g-recaptcha-response' => 'required|captcha'
         ]);
 
         $vote = Votes::where('user_id', Auth::id())->orderBy('created_at', 'DESC')->first();

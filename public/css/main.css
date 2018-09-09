@@ -411,6 +411,9 @@ footer {
   margin: 0 auto;
   position: relative;
 }
+.title-item-top.first{
+  background: url('../img/bg/title-top-list-1st.png') no-repeat top center !important;
+}
 .number-top-server {
   position: absolute;
   left: -3px;
@@ -447,6 +450,9 @@ footer {
   font: 16px CalibriBold;
   line-height: 55px;
   max-width: 545px;
+}
+.first>.name-server{
+  color: #fff !important;
 }
 .link-server {
   float: right;
@@ -550,6 +556,23 @@ footer {
   border-bottom: 1px solid #a76e2a;
   margin-right: 5px;
 }
+span.rateServ.first {
+  color: #fff;
+  font: 15px CalibriBold;
+  padding: 0 10px;
+  line-height: 30px;
+  display: inline-block;
+  margin-bottom: 30px;
+  background: #ffe261;
+  background: -o-linear-gradient(top, #ffeb7b 0%, #cf8a38 100%);
+  background: linear-gradient(to bottom, #ffde22 0%, #bb3800 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffeb7b', endColorstr='#cf8a38', GradientType=0);
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  border-top: 1px solid #ffff40;
+  border-bottom: 1px solid #820800;
+  margin-right: 5px;
+}
 .linkStat-and-comment {
   display: block;
   width: 100%;
@@ -568,6 +591,35 @@ footer {
 .rating-block {
   float: right;
   width: 165px;
+}
+.rating-block.flag {
+  background: url(../img/bg/1st-flag.png) no-repeat top center;
+  width: 165px;
+  height: 195px;
+  margin-top: -35px;
+}
+.vip {
+  background: url(../img/bg/vip.png) no-repeat top center;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  position: relative;
+  margin-top: 15px;
+}
+.vip:hover {
+  background: url(../img/bg/vip.png) no-repeat top center;
+}
+.vip:after {
+  content: url(../img/bg/sms-shadow.png);
+  background: url(../img/bg/sms-shadow.png) no-repeat top center;
+  width: 80px;
+  height: 10px;
+  position: absolute;
+  bottom: -15px;
+}
+.flag p{
+  color: #ffe699 !important;
+  margin-top: 28px !important;
 }
 .rating-block p {
   text-align: center;
@@ -767,6 +819,10 @@ footer {
 }
 .link-full-info {
   color: #674a37;
+}
+.first > .name-server > .link-full-info, .first > .name-server > .link-server{
+  color: #fff !important;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25) !important;
 }
 .link-full-info:hover {
   color: #674a37;
