@@ -34,7 +34,7 @@
                         <td>
                             ~{{ $world->onlineUrl }} чел.
                         </td>
-                        <td>
+                        <td id="ip" data-ip="{{ $world->IpGame }}">
                             n/a uptime
                         </td>
                         <td>
@@ -99,4 +99,29 @@
 
 
         </div>
+@endsection
+        @section('scripts')
+            <script>const player = new Plyr('#player');</script>
+            <script>
+                $('#ip').each(function () {
+                    var ip = $(this).data('ip');
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/ping',
+                        data: {ip: ip},
+                        dataType: 'json',
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function (response) {
+                            if (response.errors){
+                                $('#ip').html(response.errors);
+                            }else{
+                                $('#ip').html(response.data);
+                            }
+                        }
+                    });
+                });
+            </script>
 @endsection

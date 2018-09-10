@@ -50,29 +50,30 @@
                         </p>
                     </div>
                     <p class="text-info-server">
-                            <span class="infoText-right">
-                            <span class="segment-info">Тип: <span class="rightText">Комплекс</span></span>
-                            <span class="segment-info">Хроники: <span
-                                        class="rightText colorOrange">Itnerlude</span></span>
-                                @if($server->online != 0)
-                                    <span class="segment-info">Онлайн: <span
-                                                class="rightText">{{ $server->online }} +</span></span>
-                                @endif
-                                @if($server->max_online != 0)
-                                    <span class="segment-info">Макс.онлайн: <span
-                                                class="rightText">{{ $server->max_online }}</span></span>
-                                @endif
-                                @if(isset($worlds))
-                                    <span class="segment-info">Рейты: <span class="rightText">
-                                    @foreach($worlds as $world)
-                                                x{{ $world->rate }} @if (!$loop->last)/@endif
-                                            @endforeach
-                                </span></span>
-                                @endif
-                            </span>
+                        {{--<span class="infoText-right">--}}
+                        {{--<span class="segment-info">Тип: <span class="rightText">Комплекс</span></span>--}}
+                        {{--<span class="segment-info">Хроники: <span--}}
+                        {{--class="rightText colorOrange">Itnerlude</span></span>--}}
+                        {{--@if($server->online != 0)--}}
+                        {{--<span class="segment-info">Онлайн: <span--}}
+                        {{--class="rightText">{{ $server->online }} +</span></span>--}}
+                        {{--@endif--}}
+                        {{--@if($server->max_online != 0)--}}
+                        {{--<span class="segment-info">Макс.онлайн: <span--}}
+                        {{--class="rightText">{{ $server->max_online }}</span></span>--}}
+                        {{--@endif--}}
+                        {{--@if(isset($worlds))--}}
+                        {{--<span class="segment-info">Рейты: <span class="rightText">--}}
+                        {{--@foreach($worlds as $world)--}}
+                        {{--x{{ $world->rate }} @if (!$loop->last)/@endif--}}
+                        {{--@endforeach--}}
+                        {{--</span></span>--}}
+                        {{--@endif--}}
+                        {{--</span>--}}
                         @if(isset($worlds))
                             @foreach($worlds as $world)
-                                <span class="rateServ">
+                                <span class="rateServ hint--right hint--large hint--bounce"
+                                      aria-label="{{ $world->description }}">
                                 x{{ $world->rate }}
                             </span>
                             @endforeach
@@ -82,14 +83,25 @@
                     </p>
                     <div class="clear"></div>
                     @if(\MMORATE\Privilege::where('user_id', $server->user_id)->where('action', \MMORATE\Privilege::PRIVILEGE_BANNER)->where('status', '1')->first())
-                    <div class="segment-rek-item" style="margin: 20px 0;">
-                        <div class="bg-ramka-item"></div>
-                    </div>
+                        <div class="segment-rek-item" style="margin: 20px 0;">
+                            <div class="bg-ramka-item"></div>
+                        </div>
                     @endif
                     <div class="opis-block">
-                        @isset($server->trailer) <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="{{ substr($server->trailer, -32) }}"></div> @endisset
+                        @isset($server->trailer)
+                            <div id="player" data-plyr-provider="youtube"
+                                 data-plyr-embed-id="{{ substr($server->trailer, -32) }}"></div> @endisset
                         <h6>Полное описание сервера</h6>
                         <p>{{ $server->fdescription }}</p>
+                            <h6>Ссылка с изображением для голосования за данный сервер <br>
+                                <img src="../img/buttons/{{ $server->game }}.png" class="bimg">
+                    <code class="button">
+                        {{--<a href="{{ route('voteServer', $server->link ?? $server->id) }}" target="_blank">--}}
+                            {{--<img src="https://mmorate.com/img/buttons/{{ $server->game }}.png" border="0" alt="Рейтинг ММО серверов MMORate">--}}
+                        {{--</a>--}}
+                        &lt;a href="{{ route('voteServer', $server->link ?? $server->id) }}" target="_blank"&gt; &lt;img src="https://mmorate.com/img/buttons/{{ $server->game }}.png" border="0" alt="Рейтинг ММО серверов MMORate"&gt;&lt;/a&gt;
+                    </code>
+                </h6>
                         <span class="linkStat-and-comment">
                                 <a href="{{ route('serverStat', $server->id) }}">
                                 <i><img src="/img/icon/i-2.png"></i> Статистика
@@ -97,19 +109,26 @@
                                 <a href="#comments">
                                 <i><img src="/img/icon/i-3.png"></i> {{ $server->reviews }} Комментариев
                             </a>
-                            <script type="text/javascript">(function() {
-                                    if (window.pluso)if (typeof window.pluso.start == "function") return;
-                                    if (window.ifpluso==undefined) { window.ifpluso = 1;
+                            <script type="text/javascript">(function () {
+                                    if (window.pluso) if (typeof window.pluso.start == "function") return;
+                                    if (window.ifpluso == undefined) {
+                                        window.ifpluso = 1;
                                         var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
-                                        s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
-                                        s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';
-                                        var h=d[g]('body')[0];
+                                        s.type = 'text/javascript';
+                                        s.charset = 'UTF-8';
+                                        s.async = true;
+                                        s.src = ('https:' == window.location.protocol ? 'https' : 'http') + '://share.pluso.ru/pluso-like.js';
+                                        var h = d[g]('body')[0];
                                         h.appendChild(s);
-                                    }})();</script>
-<div class="share pluso" style="position:absolute;" data-background="transparent" data-options="small,round,line,horizontal,nocounter,theme=04" data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir,email,print"></div>
+                                    }
+                                })();</script>
+<div class="share pluso" style="position:absolute;" data-background="transparent"
+     data-options="small,round,line,horizontal,nocounter,theme=04"
+     data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir,email,print"></div>
                             </span>
                     </div>
                 </div>
+
             </div>
             <div class="block-comment content-list-page">
                 <h4>Игровые миры</h4>
@@ -127,7 +146,7 @@
                             <td>
                                 ~{{ $world->onlineUrl }} чел.
                             </td>
-                            <td>
+                            <td id="ip" data-ip="{{ $world->IpGame }}">
                                 n/a uptime
                             </td>
                             <td>
@@ -215,7 +234,29 @@
                 </div>
             @endif
         </div>
-@endsection
+        @endsection
         @section('scripts')
             <script>const player = new Plyr('#player');</script>
+            <script>
+                $('#ip').each(function () {
+                    var ip = $(this).data('ip');
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/ping',
+                        data: {ip: ip},
+                        dataType: 'json',
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function (response) {
+                            if (response.errors) {
+                                $('#ip').html(response.errors);
+                            } else {
+                                $('#ip').html(response.data);
+                            }
+                        }
+                    });
+                });
+            </script>
 @endsection

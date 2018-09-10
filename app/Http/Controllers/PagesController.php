@@ -98,4 +98,22 @@ class PagesController extends Controller
         $servers = Servers::where('user_id', \Auth::id())->get();
         return view('pages.banners', compact('servers'));
     }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Страница новостей
+     */
+    public function news()
+    {
+        return view('pages.news.index');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Страница блога
+     */
+    public function blog()
+    {
+        return view('pages.blog.index');
+    }
 }

@@ -22,6 +22,16 @@ class PrivilegesController extends Controller
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Главная страница рекламы
+     */
+    public function ads()
+    {
+        $myPrivileges = Privilege::where('user_id', Auth::id())->get();
+        return view('pages.ad', compact('myPrivileges'));
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * Страница покупки BB кодов
      */
     public function bb()

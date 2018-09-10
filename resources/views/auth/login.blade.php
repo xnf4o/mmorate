@@ -41,8 +41,19 @@
                                 Войти
                             </button>
                             <br>
-                            <a href="{{ route('password.request') }}">Забыли пароль?</a><br>
-                            <a href="{{ route('register') }}">Реистрация</a>
+                            <br>
+                            <br>
+                            <button type="button" class="btn-regist" onclick="location.href='{{ route('password.request') }}'">
+                                Забыли пароль?
+                            </button>
+                            <br>
+                            <br>
+                            <br>
+                            <button type="button" class="btn-regist" onclick="location.href='{{ route('register') }}'">
+                                Регистрация
+                            </button>
+                            {{--<a href="{{ route('password.request') }}">Забыли пароль?</a><br>--}}
+                            {{--<a href="{{ route('register') }}">Реистрация</a>--}}
                         </div>
                     </form>
                 </div>

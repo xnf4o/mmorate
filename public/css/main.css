@@ -159,7 +159,7 @@ body {
   top: -300px;
   z-index: 100;
 }
-.online-games-img:before{
+.onl-img:before{
   content: url('../img/on1.png');
   position: absolute;
   left: -90px;
@@ -229,11 +229,20 @@ body {
   padding-left: 11px;
   min-height: 1750px !important;
 }
+/*.contentRight {*/
+  /*width: 338px;*/
+  /*float: left;*/
+  /*background: url('../img/bg/rightBg.png') repeat-y;*/
+  /*position: relative;*/
+/*}*/
 .contentRight {
   width: 338px;
   float: left;
-  background: url('../img/bg/rightBg.png') repeat-y;
-  position: relative;
+  background: url(../img/bg/rightBg.png) repeat-y;
+  position: absolute;
+  min-height: 100%;
+  bottom: 1px;
+  right: 1px;
 }
 .element-desing-1 {
   position: absolute;
@@ -576,6 +585,8 @@ span.rateServ.first {
 .linkStat-and-comment {
   display: block;
   width: 100%;
+  margin-top: 140px;
+  position: relative;
 }
 .linkStat-and-comment a {
   color: #674a37;
@@ -1462,7 +1473,8 @@ span.rateServ.first {
 .form-group-reg .title-label-reg {
   position: relative;
   display: inline-block;
-  width: 275px;
+  /*width: 275px;*/
+  width: 215px;
   text-align: right;
   color: #674a37;
   font: 15px Calibri;
@@ -3212,4 +3224,41 @@ span.success {
   font-weight: bold;
   font: 16px CalibriBold;
   padding: 10px;
+}
+
+[class*=hint--]:after {
+  box-shadow: 4px 4px 8px rgba(0,0,0,.3);
+  background: url(../img/bg/leftBg.png) repeat-y !important;
+  color: #674a37 !important;
+  font: 12px/1.4em CalibriBold !important;
+  padding-left: 15px !important;
+  text-shadow: none !important;
+  border: 2px solid #ffce89;
+  background-position-x: -50px !important;
+  outline: 1px solid #d61f1d;
+}
+
+.hint--right:before {
+  border-right-color: #ca2b2b !important;
+  margin-left: -13px !important;
+  margin-bottom: -6px;
+}
+
+code.button {
+  display: inline-block;
+  width: 80%;
+  background: #772d31;
+  color: #ffe9a5;
+  border-radius: 0;
+  padding: 15px;
+  position: relative;
+  float: right;
+  margin-top: 25px;
+  /* margin-bottom: 5px; */
+}
+
+.bimg{
+  position: relative;
+  display: block;
+  float: left;
 }

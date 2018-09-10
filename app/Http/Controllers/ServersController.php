@@ -764,4 +764,46 @@ class ServersController extends Controller
 
         return view('pages.voteFinish', compact('server'));
     }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     * Выключить сервер
+     */
+    public function stopServer($id)
+    {
+        $server = Servers::where('id', $id)->first();
+        $server->status = Servers::UNCONFIRMED;
+        $server->save();
+
+        return redirect()->back();
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     * Включить сервер
+     */
+    public function startServer($id)
+    {
+        $server = Servers::where('id', $id)->first();
+        $server->status = Servers::CONFIRMED;
+        $server->save();
+
+        return redirect()->back();
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     * Удалить сервер
+     */
+    public function deleteServer($id)
+    {
+        $server = Servers::where('id', $id)->first();
+        $server->status = Servers::DELETED;
+        $server->save();
+
+        return redirect()->back();
+    }
 }

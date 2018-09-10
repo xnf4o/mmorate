@@ -51,6 +51,11 @@ Route::group(['domain' => $domain], function () {
         Route::get('/editWorld/{id}', 'ServersController@editWorld')->name('editWorld');
         Route::post('/editWorld/{id}', 'ServersController@editWorldPost')->name('editWorld.post');
 
+        Route::get('/stopServer/{id}', 'ServersController@stopServer')->name('stopServer');
+        Route::get('/startServer/{id}', 'ServersController@startServer')->name('startServer');
+        Route::get('/deleteServer/{id}', 'ServersController@deleteServer')->name('deleteServer');
+
+
         Route::get('/server/{id}/addWorld', 'ServersController@addWorld')->name('addWorld');
         Route::post('/server/{id}/addWorld', 'ServersController@addWorldPost')->name('addWorld.post');
 
@@ -69,6 +74,8 @@ Route::group(['domain' => $domain], function () {
         Route::post('/server/{id}/vote/vip', 'ServersController@voteVipPost')->name('voteServerVip.post');
 
         Route::get('/myVotes', 'UserController@myVotes')->name('myVotes');
+
+        Route::get('/ads', 'PrivilegesController@ads')->name('ads');
 
         Route::get('/privileges', 'PrivilegesController@main')->name('privileges');
         Route::get('/privileges/bb', 'PrivilegesController@bb')->name('privileges.bb');
@@ -89,6 +96,9 @@ Route::get('/server/{servId}/worlds/{id}', 'ServersController@world')->name('wor
 Route::post('/server/{id}/addComment', 'ServersController@addComment')->name('serverAddComment');
 
 Route::get('/server/{id}/statistic', 'ServersController@serverStat')->name('serverStat');
+
+Route::get('/news', 'PagesController@news')->name('news.main');
+Route::get('/blog', 'PagesController@blog')->name('blog.main');
 
 Route::group(['domain' => 'aion.' . $domain], function () {
     Route::get('/', 'ServersController@aion')->name('aion');

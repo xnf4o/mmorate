@@ -44,6 +44,8 @@
 </div>
 <div class="nav-main">
     <div class="content-main">
+        <a href="{{ route('blog.main') }}" class="menu-item"><span class="line-menu"></span>Блог</a>
+        <a href="{{ route('news.main') }}" class="menu-item"><span class="line-menu"></span>Новости</a>
         <a href="{{ route('about') }}" class="menu-item"><span class="line-menu"></span>О проекте</a>
         <a href="{{ route('rules') }}" class="menu-item"><span class="line-menu"></span>Правила</a>
         <a href="{{ route('contacts') }}" class="menu-item"><span class="line-menu"></span>Контакты</a>
@@ -127,8 +129,8 @@
                                            class="itemLkMenu @if(Request::is('privilege')) lkMenuActive @endif">
                                             <span class="vnutItemMenu"><span class="arrMenu">› </span>VIP Профиль</span>
                                         </a>
-                                        <a href="{{ route('privileges') }}"
-                                           class="itemLkMenu @if(Request::is('header')) lkMenuActive @endif">
+                                        <a href="{{ route('ads') }}"
+                                           class="itemLkMenu @if(Request::is('ads')) lkMenuActive @endif">
                                             <span class="vnutItemMenu"><span class="arrMenu">› </span>Реклама</span>
                                         </a>
                                         <a href="{{ route('logout') }}" class="itemLkMenu">
@@ -145,7 +147,7 @@
                             @guest
                                 <div class="auth-block">
                                     <div class="title-auth">
-                                        Личный кабинет
+                                        Профиль
                                     </div>
                                     <form method="POST" action="{{ route('login') }}" id="loginForm">
                                         @csrf
@@ -184,7 +186,7 @@
                             @else
                                 <div class="auth-block">
                                     <div class="title-auth">
-                                        Личный кабинет
+                                        Информация
                                     </div>
                                     <form>
                                         <div class="form-auth">
@@ -315,6 +317,15 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.4.3/plyr.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.4.3/plyr.polyfilled.min.js"></script>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.4.3/plyr.css" />
+            {{--http://kushagragour.in/lab/hint/--}}
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hint.css/2.5.0/hint.base.min.css" />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hint.css/2.5.0/hint.min.css" />
+            {{--https://www.highcharts.com/--}}
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/6.1.2/highcharts.js"></script>
+            <!--[if lt IE 9]>
+            <script src="https://code.highcharts.com/modules/oldie.js"></script>
+            <![endif]-->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highcharts/6.1.2/css/highcharts.css" />
             <script type="text/javascript" src="{{ asset('/js/jquery-ui.min.js') }}"></script>
             <script type="text/javascript" src="{{ asset('/js/common.js') }}"></script>
             <script type="text/javascript" src="{{ asset('/js/flipclock.min.js') }}"></script>
