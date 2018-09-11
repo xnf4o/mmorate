@@ -857,6 +857,12 @@
                         @endif
 
                         <button class="create-server">Сохранить изменения ›</button>
+                        @if($server->status == \MMORATE\Servers::CONFIRMED)
+                        <button type="button" class="create-server" onclick="location.href='{{ route('stopServer', $server->id) }}'">Приостановить ›</button>
+                        @else
+                        <button type="button" class="create-server" onclick="location.href='{{ route('startServer', $server->id) }}'">Возобновить ›</button>
+                        @endif
+                        <button type="button" class="create-server" onclick="location.href='{{ route('deleteServer', $server->id) }}'">Удалить ›</button>
                     </form>
                 </div>
             </div>
