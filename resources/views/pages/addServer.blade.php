@@ -200,6 +200,8 @@
                                             <option value="1">Минимальные</option>
                                             <option value="2">Средние</option>
                                             <option value="3">Большие</option>
+                                            <option value="4">Баланс классов</option>
+                                            <option value="5">Дисбаланс</option>
                                         </select>
                                     </div>
                                 </div>
@@ -207,10 +209,23 @@
                                     <label>Есть ли донат?:</label>
                                     <div class="item-select-lk">
                                         <select name="donate" required>
-                                            <option value="0">Нет</option>
+                                            <option value="min">Минимальный</option>
+                                            <option value="mid">Средний</option>
+                                            <option value="max">Большой</option>
                                             <option value="1">Вещи, влияющие на экономику</option>
                                             <option value="2">Вещи, не влияющие на экономику</option>
                                         </select>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="block-select-lk">
+                                    <label>Статус:</label>
+                                    <div class="item-select-lk">
+                                        <select name="status" required>
+                                            <option value="open">Открытый</option>
+                                            <option value="openBeta">Открытый Бета тест</option>
+                                            <option value="closedBeta">Закрытый Бета тест</option>
+                                            <option value="closed">Закрытый</option>
                                         </select>
                                     </div>
                                 </div>
