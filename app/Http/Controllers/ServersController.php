@@ -235,6 +235,9 @@ class ServersController extends Controller
         if (Privilege::where('user_id', $server->user_id)->where('action', Privilege::PRIVILEGE_BB)->where('status', '1')->first())
             $description = BBCode::parse($server->description);
 
+        $server->views += 1;
+        $server->save();
+
         return view('pages.server', compact('server', 'comments', 'worlds', 'description'));
     }
 

@@ -84,25 +84,17 @@
                         </div>
                         <p class="text-info-server">
                             <span class="infoText-right">
-                            <span class="segment-info">Тип: <span class="rightText">{{ $server->type }}</span></span>
-                            <span class="segment-info">Хроники: <span
-                                        class="rightText colorOrange">{{ $server->chronicles }}</span></span>
+                        <span class="segment-info">Тип: <span class="rightText">{{ $server->type }}</span></span>
+                        <span class="segment-info">Хроники: </span>
                                 @if($server->online != 0)
                                     <span class="segment-info">Онлайн: <span
                                                 class="rightText">{{ $server->online }} +</span></span>
                                 @endif
-                                @if($server->max_online != 0)
-                                    <span class="segment-info">Макс.онлайн: <span
-                                                class="rightText">{{ $server->max_online }}</span></span>
-                                @endif
-                                @if(isset($server->worlds))
-                                    <span class="segment-info">Рейты: <span class="rightText">
-                                    @foreach($server->worlds as $world)
-                                                x{{ $world->rate }} @if (!$loop->last)/@endif
-                                            @endforeach
-                                </span></span>
-                                @endif
-                            </span>
+                                <span class="segment-info">Переходы: <span
+                                            class="rightText">{{ $server->views }}</span></span>
+                            <span class="segment-info">Версия: <span
+                                        class="rightText">{{ $server->chronicles }}</span></span>
+                        </span>
                             @if(isset($server->worlds))
                                 @foreach($server->worlds as $world)
                                     <span class="rateServ hint--right hint--large hint--bounce @if($i == 1) first @endif"
