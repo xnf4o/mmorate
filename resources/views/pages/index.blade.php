@@ -69,10 +69,10 @@
                                 </p>
                             @else
                                 @if($server->rating != 0)
-                                <div class="coll-rating">
-                                    {{ substr($server->rating, 0, -1) }}
-                                    <span class="litle-text">,{{ substr($server->rating, -1) }}</span>
-                                </div>
+                                    <div class="coll-rating">
+                                        {{ substr($server->rating, 0, -1) }}
+                                        <span class="litle-text">,{{ substr($server->rating, -1) }}</span>
+                                    </div>
                                 @else
                                     <div class="coll-rating">0<span class="litle-text">,0</span></div>
                                 @endif
@@ -83,29 +83,30 @@
                             @endif
                         </div>
                         <p class="text-info-server">
-                            {{--<span class="infoText-right">--}}
-                            {{--<span class="segment-info">Тип: <span class="rightText">Комплекс</span></span>--}}
-                            {{--<span class="segment-info">Хроники: <span--}}
-                                        {{--class="rightText colorOrange">{{ $server->version }}</span></span>--}}
-                                {{--@if($server->online != 0)--}}
-                                    {{--<span class="segment-info">Онлайн: <span--}}
-                                                {{--class="rightText">{{ $server->online }} +</span></span>--}}
-                                {{--@endif--}}
-                                {{--@if($server->max_online != 0)--}}
-                                    {{--<span class="segment-info">Макс.онлайн: <span--}}
-                                                {{--class="rightText">{{ $server->max_online }}</span></span>--}}
-                                {{--@endif--}}
-                                {{--@if(isset($server->worlds))--}}
-                                    {{--<span class="segment-info">Рейты: <span class="rightText">--}}
-                                    {{--@foreach($server->worlds as $world)--}}
-                                                {{--x{{ $world->rate }} @if (!$loop->last)/@endif--}}
-                                            {{--@endforeach--}}
-                                {{--</span></span>--}}
-                                {{--@endif--}}
-                            {{--</span>--}}
+                            <span class="infoText-right">
+                            <span class="segment-info">Тип: <span class="rightText">{{ $server->type }}</span></span>
+                            <span class="segment-info">Хроники: <span
+                                        class="rightText colorOrange">{{ $server->chronicles }}</span></span>
+                                @if($server->online != 0)
+                                    <span class="segment-info">Онлайн: <span
+                                                class="rightText">{{ $server->online }} +</span></span>
+                                @endif
+                                @if($server->max_online != 0)
+                                    <span class="segment-info">Макс.онлайн: <span
+                                                class="rightText">{{ $server->max_online }}</span></span>
+                                @endif
+                                @if(isset($server->worlds))
+                                    <span class="segment-info">Рейты: <span class="rightText">
+                                    @foreach($server->worlds as $world)
+                                                x{{ $world->rate }} @if (!$loop->last)/@endif
+                                            @endforeach
+                                </span></span>
+                                @endif
+                            </span>
                             @if(isset($server->worlds))
                                 @foreach($server->worlds as $world)
-                                    <span class="rateServ hint--right hint--large hint--bounce @if($i == 1) first @endif" aria-label="{{ $world->description }}">
+                                    <span class="rateServ hint--right hint--large hint--bounce @if($i == 1) first @endif"
+                                          aria-label="{{ $world->description }}">
                                 x{{ $world->rate }}
                             </span>
                                 @endforeach

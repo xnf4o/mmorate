@@ -50,26 +50,26 @@
                         </p>
                     </div>
                     <p class="text-info-server">
-                        {{--<span class="infoText-right">--}}
-                        {{--<span class="segment-info">Тип: <span class="rightText">Комплекс</span></span>--}}
-                        {{--<span class="segment-info">Хроники: <span--}}
-                        {{--class="rightText colorOrange">Itnerlude</span></span>--}}
-                        {{--@if($server->online != 0)--}}
-                        {{--<span class="segment-info">Онлайн: <span--}}
-                        {{--class="rightText">{{ $server->online }} +</span></span>--}}
-                        {{--@endif--}}
-                        {{--@if($server->max_online != 0)--}}
-                        {{--<span class="segment-info">Макс.онлайн: <span--}}
-                        {{--class="rightText">{{ $server->max_online }}</span></span>--}}
-                        {{--@endif--}}
-                        {{--@if(isset($worlds))--}}
-                        {{--<span class="segment-info">Рейты: <span class="rightText">--}}
-                        {{--@foreach($worlds as $world)--}}
-                        {{--x{{ $world->rate }} @if (!$loop->last)/@endif--}}
-                        {{--@endforeach--}}
-                        {{--</span></span>--}}
-                        {{--@endif--}}
-                        {{--</span>--}}
+                        <span class="infoText-right">
+                        <span class="segment-info">Тип: <span class="rightText">{{ $server->type }}</span></span>
+                        <span class="segment-info">Хроники: <span
+                                    class="rightText colorOrange">{{ $server->chronicles }}</span></span>
+                            @if($server->online != 0)
+                                <span class="segment-info">Онлайн: <span
+                                            class="rightText">{{ $server->online }} +</span></span>
+                            @endif
+                            @if($server->max_online != 0)
+                                <span class="segment-info">Макс.онлайн: <span
+                                            class="rightText">{{ $server->max_online }}</span></span>
+                            @endif
+                            @if(isset($worlds))
+                                <span class="segment-info">Рейты: <span class="rightText">
+                        @foreach($worlds as $world)
+                                            x{{ $world->rate }} @if (!$loop->last)/@endif
+                                        @endforeach
+                        </span></span>
+                            @endif
+                        </span>
                         @if(isset($worlds))
                             @foreach($worlds as $world)
                                 <span class="rateServ hint--right hint--large hint--bounce"
@@ -93,15 +93,17 @@
                                  data-plyr-embed-id="{{ substr($server->trailer, -32) }}"></div> @endisset
                         <h6>Полное описание сервера</h6>
                         <p>{{ $server->fdescription }}</p>
-                            <h6>Ссылка с изображением для голосования за данный сервер <br>
-                                <img src="../img/buttons/{{ $server->game }}.png" class="bimg">
-                    <code class="button">
-                        {{--<a href="{{ route('voteServer', $server->link ?? $server->id) }}" target="_blank">--}}
-                            {{--<img src="https://mmorate.com/img/buttons/{{ $server->game }}.png" border="0" alt="Рейтинг ММО серверов MMORate">--}}
-                        {{--</a>--}}
-                        &lt;a href="{{ route('voteServer', $server->link ?? $server->id) }}" target="_blank"&gt; &lt;img src="https://mmorate.com/img/buttons/{{ $server->game }}.png" border="0" alt="Рейтинг ММО серверов MMORate"&gt;&lt;/a&gt;
-                    </code>
-                </h6>
+                        <h6>Ссылка с изображением для голосования за данный сервер <br>
+                            <img src="../img/buttons/{{ $server->game }}.png" class="bimg">
+                            <code class="button">
+                                {{--<a href="{{ route('voteServer', $server->link ?? $server->id) }}" target="_blank">--}}
+                                {{--<img src="https://mmorate.com/img/buttons/{{ $server->game }}.png" border="0" alt="Рейтинг ММО серверов MMORate">--}}
+                                {{--</a>--}}
+                                &lt;a href="{{ route('voteServer', $server->link ?? $server->id) }}" target="_blank"&gt;
+                                &lt;img src="https://mmorate.com/img/buttons/{{ $server->game }}.png" border="0"
+                                alt="Рейтинг ММО серверов MMORate"&gt;&lt;/a&gt;
+                            </code>
+                        </h6>
                         <span class="linkStat-and-comment">
                                 <a href="{{ route('serverStat', $server->id) }}">
                                 <i><img src="/img/icon/i-2.png"></i> Статистика
