@@ -8,6 +8,7 @@ use MMORATE\Privilege;
 use MMORATE\Servers;
 use MMORATE\Comments;
 use Illuminate\Http\Request;
+use MMORATE\Views;
 use MMORATE\Votes;
 use Illuminate\Support\Facades\Auth;
 use MMORATE\Worlds;
@@ -235,6 +236,11 @@ class ServersController extends Controller
         if (Privilege::where('user_id', $server->user_id)->where('action', Privilege::PRIVILEGE_BB)->where('status', '1')->first())
             $description = BBCode::parse($server->description);
 
+        $views = new Views();
+        $views->server_id = $server->id;
+        $views->save();
+
+//        $views = Views::where('server_id', $server->id)->get();
         $server->views += 1;
         $server->save();
 

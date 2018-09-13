@@ -24,16 +24,6 @@
                         <form action="{{ route('addServer.post') }}" method="post" id="addServerForm">
                             @csrf
                             <div class="leftBlockLk">
-                                <div class="form-group-lk">
-                                    <label>Название игрового сервера:</label>
-                                    <input type="text"
-                                           class="text-ing-lk {{ $errors->has('name') ? 'error-input' : '' }}"
-                                           name="name" alt="Название игрового сервера" value="{{ old('name') }}"
-                                           required minlength="3">
-                                    @if ($errors->has('name'))
-                                        <span class="error-message">Введите название сервера.</span>
-                                    @endif
-                                </div>
                                 <div class="block-select-lk">
                                     <label>Выбирите игру:</label>
                                     <div class="item-select-lk">
@@ -49,6 +39,16 @@
                                             <option value="other" @if(request()->get('g') == 'other') selected @endif>Online Games</option>
                                         </select>
                                     </div>
+                                </div>
+                                <div class="form-group-lk">
+                                    <label>Название игрового сервера:</label>
+                                    <input type="text"
+                                           class="text-ing-lk {{ $errors->has('name') ? 'error-input' : '' }}"
+                                           name="name" alt="Название игрового сервера" value="{{ old('name') }}"
+                                           required minlength="3">
+                                    @if ($errors->has('name'))
+                                        <span class="error-message">Введите название сервера.</span>
+                                    @endif
                                 </div>
                                 <div class="block-select-lk">
                                     <label>Выбирите тип мира:</label>

@@ -52,11 +52,10 @@
                     <p class="text-info-server">
                         <span class="infoText-right">
                         <span class="segment-info">Тип: <span class="rightText">{{ $server->type }}</span></span>
-                        <span class="segment-info">Хроники: </span>
-                            @if($server->online != 0)
-                                <span class="segment-info">Онлайн: <span
-                                            class="rightText">{{ $server->online }} +</span></span>
-                            @endif
+                            {{--@if($server->online != 0)--}}
+                            <span class="segment-info">Онлайн: <span
+                                        class="rightText">{{ $server->online }} +</span></span>
+                            {{--@endif--}}
                             <span class="segment-info">Переходы: <span
                                         class="rightText">{{ $server->views }}</span></span>
                             <span class="segment-info">Версия: <span
