@@ -5,14 +5,13 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/libs.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
-    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
     {!! SEO::generate(true) !!}
 </head>
-
+<link rel="stylesheet" type="text/css" href="{{ asset('css/libs.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
+<link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
 <body>
 <div class="nav-game">
     <div class="content-main">
@@ -53,6 +52,11 @@
         <a href="{{ route('faq') }}" class="menu-item"><span class="line-menu"></span>Вопросы и ответы</a>
     </div>
 </div>
+@if(!isset($game))
+    @php
+        $game = request()->get('g')
+    @endphp
+@endif
 @if(isset($game) && $game != 'lineage')
     @if($game == 'perfect' or $game == 'my')
         <div class="pw-container">
@@ -99,22 +103,22 @@
                                             <span class="vnutItemMenu"><span class="arrMenu">› </span>Мои голоса</span>
                                         </a>
                                         {{--@if(MMORATE\Servers::MyCount() != 0)--}}
-                                            <a href="{{ route('myServers') }}"
-                                               class="itemLkMenu @if(Request::is('myServers') or Request::is('editServer')) lkMenuActive @endif">
+                                        <a href="{{ route('myServers') }}"
+                                           class="itemLkMenu @if(Request::is('myServers') or Request::is('editServer')) lkMenuActive @endif">
                                                     <span class="vnutItemMenu"><span
                                                                 class="arrMenu">› </span>Игровые сервера</span>
-                                            </a>
-                                            {{--<a href="{{ route('myServersStat') }}" class="itemLkMenu @if(Request::is('statistic')) lkMenuActive @endif">--}}
-                                            {{--<span class="vnutItemMenu"><span class="arrMenu">› </span>Статистика</span>--}}
-                                            {{--</a>--}}
+                                        </a>
+                                        {{--<a href="{{ route('myServersStat') }}" class="itemLkMenu @if(Request::is('statistic')) lkMenuActive @endif">--}}
+                                        {{--<span class="vnutItemMenu"><span class="arrMenu">› </span>Статистика</span>--}}
+                                        {{--</a>--}}
                                         {{--@endif--}}
                                         @if(Request::is('myServers'))
-                                        <a href="{{ route('addServer') }}"
-                                           class="itemLkMenu @if(Request::is('addServer')) lkMenuActive @endif">
+                                            <a href="{{ route('addServer') }}"
+                                               class="itemLkMenu @if(Request::is('addServer')) lkMenuActive @endif">
                                             <span class="vnutItemMenu" style="border-top: 0;"><span
                                                         class="arrMenu">› </span>Добавить сервер</span>
-                                        </a>
-                                            @endif
+                                            </a>
+                                        @endif
                                         {{--<a href="{{ route('changePassword') }}"--}}
                                         {{--class="itemLkMenu @if(Request::is('changePasswordPage')) lkMenuActive @endif">--}}
                                         {{--<span class="vnutItemMenu"><span--}}
@@ -224,19 +228,19 @@
                                 </div>
                             </div>
                             {{--<div class="widget-block">--}}
-                                {{--<div class="title-vk">--}}
-                                    {{--Группа Вконтакте--}}
-                                {{--</div>--}}
-                                {{--<div class="widget-vk">--}}
-                                    {{--<img src="/img/elements/widget.png" alt="">--}}
-                                {{--</div>--}}
+                            {{--<div class="title-vk">--}}
+                            {{--Группа Вконтакте--}}
+                            {{--</div>--}}
+                            {{--<div class="widget-vk">--}}
+                            {{--<img src="/img/elements/widget.png" alt="">--}}
+                            {{--</div>--}}
                             {{--</div>--}}
                             {{--<div class="bottom-sitebar-vnut">--}}
-                                {{--<div class="miniRek">--}}
-                                    {{--<a href=""></a>--}}
-                                    {{--<a href=""></a>--}}
-                                    {{--<a href=""></a>--}}
-                                {{--</div>--}}
+                            {{--<div class="miniRek">--}}
+                            {{--<a href=""></a>--}}
+                            {{--<a href=""></a>--}}
+                            {{--<a href=""></a>--}}
+                            {{--</div>--}}
                             {{--</div>--}}
                         </div>
                         <div class="clear"></div>
@@ -308,28 +312,28 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/localization/messages_ru.min.js"></script>
             {{--https://github.com/wbb/wysibb--}}
             <script src="https://cdn.wysibb.com/lang/ru.js"></script>
-            <link rel="stylesheet" href="https://cdn.wysibb.com/css/default/wbbtheme.css" />
+            <link rel="stylesheet" href="https://cdn.wysibb.com/css/default/wbbtheme.css"/>
             {{--https://github.com/CodeSeven/toastr--}}
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
-            <link rel="stylesheet" href="{{ asset('/css/toastr.style.css') }}" />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
+            <link rel="stylesheet" href="{{ asset('/css/toastr.style.css') }}"/>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
             {{--https://github.com/sampotts/plyr--}}
             <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.4.3/plyr.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.4.3/plyr.polyfilled.min.js"></script>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.4.3/plyr.css" />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.4.3/plyr.css"/>
             {{--http://kushagragour.in/lab/hint/--}}
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hint.css/2.5.0/hint.base.min.css" />
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hint.css/2.5.0/hint.min.css" />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hint.css/2.5.0/hint.base.min.css"/>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hint.css/2.5.0/hint.min.css"/>
             {{--https://www.highcharts.com/--}}
             <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/6.1.2/highcharts.js"></script>
             <!--[if lt IE 9]>
             <script src="https://code.highcharts.com/modules/oldie.js"></script>
             <![endif]-->
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highcharts/6.1.2/css/highcharts.css" />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highcharts/6.1.2/css/highcharts.css"/>
             <script type="text/javascript" src="{{ asset('/js/jquery-ui.min.js') }}"></script>
             <script type="text/javascript" src="{{ asset('/js/common.js') }}"></script>
             <script type="text/javascript" src="{{ asset('/js/flipclock.min.js') }}"></script>
-            <link rel="stylesheet" href="{{ asset('/css/flipclock.css') }}" />
-        @yield('scripts')
+            <link rel="stylesheet" href="{{ asset('/css/flipclock.css') }}"/>
+            @yield('scripts')
 </body>
 </html>

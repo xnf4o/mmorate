@@ -13,7 +13,7 @@
 
 
 $domain = 'mmorate.com';
-//$domain = 'mmo.test';
+//$domain = 'mmt.test';
 // Pages
 Route::get('/redirect/{route}', 'UserController@redirect')->name('redirect');
 Route::get('/logout', 'PagesController@logout')->name('logout');

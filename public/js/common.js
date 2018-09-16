@@ -3,24 +3,24 @@ function world_click(link) {
 }
 
 toastr.options = {
-    escapeHtml : true,
-    closeButton : true,
-    closeHtml : '<button></button>',
+    escapeHtml: true,
+    closeButton: true,
+    closeHtml: '<button></button>',
     showDuration: "5000",
     hideDuration: "1000",
-    closeDuration : "300",
-    timeOut : "5000",
-    extendedTimeOut : "5000",
-    newestOnTop : true,
-    showEasing : 'swing', /*easeOutBounce*/
-    hideEasing : 'linear', /*easeInBack*/
-    closeEasing : 'linear', /*easeInBack*/
-    showMethod : 'slideDown', /*fadeIn, show*/
-    hideMethod : 'slideUp', /*fadeOut, hide*/
-    closeMethod : 'slideUp',
-    preventDuplicates : true,
-    progressBar : false,
-    rtl : false,
+    closeDuration: "300",
+    timeOut: "5000",
+    extendedTimeOut: "5000",
+    newestOnTop: true,
+    showEasing: 'swing', /*easeOutBounce*/
+    hideEasing: 'linear', /*easeInBack*/
+    closeEasing: 'linear', /*easeInBack*/
+    showMethod: 'slideDown', /*fadeIn, show*/
+    hideMethod: 'slideUp', /*fadeOut, hide*/
+    closeMethod: 'slideUp',
+    preventDuplicates: true,
+    progressBar: false,
+    rtl: false,
     positionClass: "toast-bottom-center",
 }
 
@@ -116,9 +116,9 @@ $(document).ready(function () {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function (response) {
-                if (response.errors){
+                if (response.errors) {
                     $('#ipLogSpan').removeClass('success').addClass('error').html(response.errors);
-                }else{
+                } else {
                     $('#ipLogSpan').removeClass('error').addClass('success').html(response.data);
                 }
             }
@@ -135,9 +135,9 @@ $(document).ready(function () {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function (response) {
-                if (response.errors){
+                if (response.errors) {
                     $('#ipGameSpan').removeClass('success').addClass('error').html(response.errors);
-                }else{
+                } else {
                     $('#ipGameSpan').removeClass('error').addClass('success').html(response.data);
                 }
             }
@@ -376,5 +376,16 @@ $(document).ready(function () {
     //         $('#graphick2').hide();
     //         $('#graphick').show();
     //     });
+    $('a').click(function (e) {
+        e.preventDefault();
+        var link = $(this).attr('href');
+        $(document.body).load(link);
+        $(document.head).load(link);
+        if (link !== location.href) {
+            window.history.pushState({path: link}, '', link);
+        }
+        return false;
+    });
+
 
 });

@@ -56,7 +56,7 @@ class ServersController extends Controller
         $game = 'aion';
         $gameTitle = 'Aion';
         $route = 'aion';
-        SEO::setTitle('Список серверов' . $gameTitle);
+        SEO::setTitle('Список серверов ' . $gameTitle);
         foreach ($allServers as $server) {
             $server->description = preg_replace('#\[[^\]]+\]#', '', $server->description);
             if (Privilege::where('user_id', $server->user_id)->where('status', '1')->first())
@@ -77,7 +77,7 @@ class ServersController extends Controller
         $game = 'lineage';
         $gameTitle = 'Lineage 2';
         $route = 'lineage';
-        SEO::setTitle('Список серверов' . $gameTitle);
+        SEO::setTitle('Список серверов ' . $gameTitle);
         foreach ($allServers as $server) {
             $server->description = preg_replace('#\[[^\]]+\]#', '', $server->description);
             if (Privilege::where('user_id', $server->user_id)->where('status', '1')->first())
@@ -98,7 +98,7 @@ class ServersController extends Controller
         $game = 'wow';
         $gameTitle = 'World Of Warcraft';
         $route = 'wow';
-        SEO::setTitle('Список серверов' . $gameTitle);
+        SEO::setTitle('Список серверов ' . $gameTitle);
         foreach ($allServers as $server) {
             $server->description = preg_replace('#\[[^\]]+\]#', '', $server->description);
             if (Privilege::where('user_id', $server->user_id)->where('status', '1')->first())
@@ -119,7 +119,7 @@ class ServersController extends Controller
         $game = 'jade';
         $gameTitle = 'Jade Dynasty';
         $route = 'jade';
-        SEO::setTitle('Список серверов' . $gameTitle);
+        SEO::setTitle('Список серверов ' . $gameTitle);
         foreach ($allServers as $server) {
             $server->description = preg_replace('#\[[^\]]+\]#', '', $server->description);
             if (Privilege::where('user_id', $server->user_id)->where('status', '1')->first())
@@ -140,7 +140,7 @@ class ServersController extends Controller
         $game = 'mu';
         $gameTitle = 'Mu Online';
         $route = 'mu';
-        SEO::setTitle('Список серверов' . $gameTitle);
+        SEO::setTitle('Список серверов ' . $gameTitle);
         foreach ($allServers as $server) {
             $server->description = preg_replace('#\[[^\]]+\]#', '', $server->description);
             if (Privilege::where('user_id', $server->user_id)->where('status', '1')->first())
@@ -161,7 +161,7 @@ class ServersController extends Controller
         $game = 'rf';
         $gameTitle = 'RF Online';
         $route = 'rf';
-        SEO::setTitle('Список серверов' . $gameTitle);
+        SEO::setTitle('Список серверов ' . $gameTitle);
         foreach ($allServers as $server) {
             $server->description = preg_replace('#\[[^\]]+\]#', '', $server->description);
             if (Privilege::where('user_id', $server->user_id)->where('status', '1')->first())
@@ -182,7 +182,7 @@ class ServersController extends Controller
         $game = 'perfect';
         $gameTitle = 'Perfect World';
         $route = 'perfect';
-        SEO::setTitle('Список серверов' . $gameTitle);
+        SEO::setTitle('Список серверов ' . $gameTitle);
         foreach ($allServers as $server) {
             $server->description = preg_replace('#\[[^\]]+\]#', '', $server->description);
             if (Privilege::where('user_id', $server->user_id)->where('status', '1')->first())
@@ -203,7 +203,7 @@ class ServersController extends Controller
         $game = 'onl';
         $gameTitle = 'онлайн игр';
         $route = 'other';
-        SEO::setTitle('Список серверов' . $gameTitle);
+        SEO::setTitle('Список серверов ' . $gameTitle);
         foreach ($allServers as $server) {
             $server->description = preg_replace('#\[[^\]]+\]#', '', $server->description);
             if (Privilege::where('user_id', $server->user_id)->where('status', '1')->first())
@@ -436,7 +436,7 @@ class ServersController extends Controller
     public function addPost(Request $r)
     {
         $r->validate([
-            'site' => 'required|url|unique:servers',
+            'site' => 'required|unique:servers',
             'name' => 'required|unique:servers',
             'description' => 'required|min:80',
             'fdescription' => 'required|min:80',
