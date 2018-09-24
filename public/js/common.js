@@ -25,7 +25,7 @@ toastr.options = {
 }
 
 $(document).ready(function () {
-    $('textarea:not("#g-recaptcha-response")').wysibb({
+    $('form textarea').wysibb({
         lang: 'ru',
     });
     // Таймер до нового голоса
