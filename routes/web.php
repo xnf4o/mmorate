@@ -12,8 +12,8 @@
 */
 
 
-$domain = 'mmorate.com';
-//$domain = 'mmt.test';
+//$domain = 'mmorate.com';
+$domain = 'mmt.test';
 // Pages
 Route::get('/redirect/{route}', 'UserController@redirect')->name('redirect');
 Route::get('/logout', 'PagesController@logout')->name('logout');
@@ -24,71 +24,71 @@ Route::group(['domain' => $domain], function () {
     Route::get('/support', 'PagesController@support')->name('support');
     Route::get('/request', 'PagesController@request')->name('request');
     Route::get('/faq', 'PagesController@faq')->name('faq');
-    Route::get('/', 'PagesController@promo')->name('main');
-//    Route::get('/', 'ServersController@main')->name('main');
+//    Route::get('/', 'PagesController@promo')->name('main');
+    Route::get('/', 'ServersController@main')->name('main');
 
     Route::get('/test', 'ServersController@test');
     Route::post('/ping', 'ServersController@ping');
+});
 
-    Route::middleware('auth')->group(function () {
-        Route::get('/profile', 'UserController@profile')->name('profile');
-        Route::post('/profile/changeAvatar', 'UserController@updateAvatar')->name('updateAvatar');
-        Route::post('/profile/edit', 'UserController@update')->name('profile.edit');
-        Route::get('/profile/confirmation', 'UserController@confirmation')->name('confirmation');
-        Route::post('/profile/sendEmailCode', 'UserController@sendEmailCode')->name('sendEmailCode');
-        Route::post('/profile/verifyEmail', 'UserController@verifyEmail')->name('verifyEmail');
-        Route::post('/profile/sendSmsCode', 'UserController@sendSmsCode')->name('sendSmsCode');
-        Route::post('/profile/verifySms', 'UserController@verifySms')->name('verifySms');
+Route::middleware('auth')->group(['domain' => '*.' . $domain], function () {
+    Route::get('/profile', 'UserController@profile')->name('profile');
+    Route::post('/profile/changeAvatar', 'UserController@updateAvatar')->name('updateAvatar');
+    Route::post('/profile/edit', 'UserController@update')->name('profile.edit');
+    Route::get('/profile/confirmation', 'UserController@confirmation')->name('confirmation');
+    Route::post('/profile/sendEmailCode', 'UserController@sendEmailCode')->name('sendEmailCode');
+    Route::post('/profile/verifyEmail', 'UserController@verifyEmail')->name('verifyEmail');
+    Route::post('/profile/sendSmsCode', 'UserController@sendSmsCode')->name('sendSmsCode');
+    Route::post('/profile/verifySms', 'UserController@verifySms')->name('verifySms');
 
-        Route::get('/password/edit', 'UserController@changePassword')->name('changePassword');
-        Route::post('/password/edit', 'UserController@changePasswordPost')->name('changePassword.post');
+    Route::get('/password/edit', 'UserController@changePassword')->name('changePassword');
+    Route::post('/password/edit', 'UserController@changePasswordPost')->name('changePassword.post');
 
-        Route::get('/banners', 'PagesController@banners')->name('banners');
+    Route::get('/banners', 'PagesController@banners')->name('banners');
 
-        Route::get('/addServer', 'ServersController@add')->name('addServer');
-        Route::post('/addServer', 'ServersController@addPost')->name('addServer.post');
+    Route::get('/addServer', 'ServersController@add')->name('addServer');
+    Route::post('/addServer', 'ServersController@addPost')->name('addServer.post');
 
-        Route::get('/editWorld/{id}', 'ServersController@editWorld')->name('editWorld');
-        Route::post('/editWorld/{id}', 'ServersController@editWorldPost')->name('editWorld.post');
+    Route::get('/editWorld/{id}', 'ServersController@editWorld')->name('editWorld');
+    Route::post('/editWorld/{id}', 'ServersController@editWorldPost')->name('editWorld.post');
 
-        Route::get('/stopServer/{id}', 'ServersController@stopServer')->name('stopServer');
-        Route::get('/startServer/{id}', 'ServersController@startServer')->name('startServer');
-        Route::get('/deleteServer/{id}', 'ServersController@deleteServer')->name('deleteServer');
-
-
-        Route::get('/server/{id}/addWorld', 'ServersController@addWorld')->name('addWorld');
-        Route::post('/server/{id}/addWorld', 'ServersController@addWorldPost')->name('addWorld.post');
+    Route::get('/stopServer/{id}', 'ServersController@stopServer')->name('stopServer');
+    Route::get('/startServer/{id}', 'ServersController@startServer')->name('startServer');
+    Route::get('/deleteServer/{id}', 'ServersController@deleteServer')->name('deleteServer');
 
 
-        Route::get('/server/{id}/edit', 'ServersController@edit')->name('editServer');
-        Route::post('/server/{id}/edit', 'ServersController@editPost')->name('editServer.post');
-        Route::get('/myServersStat', 'ServersController@myServersStat')->name('myServersStat');
-        Route::get('/server/{id}/stat', 'ServersController@serverStat')->name('serverStat');
+    Route::get('/server/{id}/addWorld', 'ServersController@addWorld')->name('addWorld');
+    Route::post('/server/{id}/addWorld', 'ServersController@addWorldPost')->name('addWorld.post');
 
-        Route::get('/myServers', 'ServersController@myServers')->name('myServers');
 
-        Route::get('/server/{id}/vote', 'ServersController@vote')->name('voteServer');
-        Route::post('/server/{id}/vote', 'ServersController@votePost')->name('voteServer.post');
+    Route::get('/server/{id}/edit', 'ServersController@edit')->name('editServer');
+    Route::post('/server/{id}/edit', 'ServersController@editPost')->name('editServer.post');
+    Route::get('/myServersStat', 'ServersController@myServersStat')->name('myServersStat');
+    Route::get('/server/{id}/stat', 'ServersController@serverStat')->name('serverStat');
 
-        Route::get('/server/{id}/vote/vip', 'ServersController@voteVip')->name('voteServerVip');
-        Route::post('/server/{id}/vote/vip', 'ServersController@voteVipPost')->name('voteServerVip.post');
+    Route::get('/myServers', 'ServersController@myServers')->name('myServers');
 
-        Route::get('/myVotes', 'UserController@myVotes')->name('myVotes');
+    Route::get('/server/{id}/vote', 'ServersController@vote')->name('voteServer');
+    Route::post('/server/{id}/vote', 'ServersController@votePost')->name('voteServer.post');
 
-        Route::get('/ads', 'PrivilegesController@ads')->name('ads');
+    Route::get('/server/{id}/vote/vip', 'ServersController@voteVip')->name('voteServerVip');
+    Route::post('/server/{id}/vote/vip', 'ServersController@voteVipPost')->name('voteServerVip.post');
 
-        Route::get('/privileges', 'PrivilegesController@main')->name('privileges');
-        Route::get('/privileges/bb', 'PrivilegesController@bb')->name('privileges.bb');
-        Route::get('/privileges/link', 'PrivilegesController@link')->name('privileges.link');
-        Route::get('/privileges/header', 'PrivilegesController@header')->name('privileges.header');
-        Route::post('/privileges/buy', 'PrivilegesController@buy')->name('privileges.buy');
+    Route::get('/myVotes', 'UserController@myVotes')->name('myVotes');
 
-        Route::get('/privileges/banner', 'PrivilegesController@banner')->name('privileges.banner');
-        Route::get('/privileges/banner/step-2', 'PrivilegesController@bannerStep2')->name('privileges.banner.step2');
-        Route::get('/privileges/banner/step-3', 'PrivilegesController@bannerStep3')->name('privileges.banner.step3');
-        Route::get('/privileges/banner/step-4', 'PrivilegesController@bannerStep4')->name('privileges.banner.step4');
+    Route::get('/ads', 'PrivilegesController@ads')->name('ads');
 
-    });
+    Route::get('/privileges', 'PrivilegesController@main')->name('privileges');
+    Route::get('/privileges/bb', 'PrivilegesController@bb')->name('privileges.bb');
+    Route::get('/privileges/link', 'PrivilegesController@link')->name('privileges.link');
+    Route::get('/privileges/header', 'PrivilegesController@header')->name('privileges.header');
+    Route::post('/privileges/buy', 'PrivilegesController@buy')->name('privileges.buy');
+
+    Route::get('/privileges/banner', 'PrivilegesController@banner')->name('privileges.banner');
+    Route::get('/privileges/banner/step-2', 'PrivilegesController@bannerStep2')->name('privileges.banner.step2');
+    Route::get('/privileges/banner/step-3', 'PrivilegesController@bannerStep3')->name('privileges.banner.step3');
+    Route::get('/privileges/banner/step-4', 'PrivilegesController@bannerStep4')->name('privileges.banner.step4');
+
 });
 
 Route::get('/server/{id}', 'ServersController@server')->name('serverPage');
