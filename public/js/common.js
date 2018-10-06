@@ -377,12 +377,18 @@ $(document).ready(function () {
     //         $('#graphick').show();
     //     });
     $('a').click(function (e) {
-        e.preventDefault();
         var link = $(this).attr('href');
-        $(document.body).load(link);
-        $(document.head).load(link);
-        if (link !== location.href) {
-            window.history.pushState({path: link}, '', link);
+        var siteUrl = window.location.hostname;
+        var regex = /^([a-z0-9]{1,})./gi;
+        var CurrSubDomain = regex.exec(siteUrl);
+        var NewSubDomain = regex.exec(link);
+        if(CurrSubDomain !== NewSubDomain) {
+            e.preventDefault();
+            $(document.body).load(link);
+            $(document.head).load(link);
+            if (link !== location.href) {
+                window.history.pushState({path: link}, '', link);
+            }
         }
         return false;
     });
