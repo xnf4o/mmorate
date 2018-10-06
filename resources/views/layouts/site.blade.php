@@ -113,7 +113,7 @@
                                         {{--</a>--}}
                                         {{--@endif--}}
                                         @if(Request::is('myServers'))
-                                            <a href="{{ route('addServer') }}"
+                                            <a href="{{ route('addServer' . '?g=' . $game ?? '') }}"
                                                class="itemLkMenu @if(Request::is('addServer')) lkMenuActive @endif">
                                             <span class="vnutItemMenu" style="border-top: 0;"><span
                                                         class="arrMenu">› </span>Добавить сервер</span>
