@@ -112,13 +112,13 @@
                                         {{--<span class="vnutItemMenu"><span class="arrMenu">› </span>Статистика</span>--}}
                                         {{--</a>--}}
                                         {{--@endif--}}
-                                        @if(Request::is('myServers'))
+                                        {{--@if(Request::is('myServers'))--}}
                                             <a href="{{ route('addServer') . '?g=' . $game ?? '' }}"
                                                class="itemLkMenu @if(Request::is('addServer')) lkMenuActive @endif">
                                             <span class="vnutItemMenu" style="border-top: 0;"><span
                                                         class="arrMenu">› </span>Добавить сервер</span>
                                             </a>
-                                        @endif
+                                        {{--@endif--}}
                                         {{--<a href="{{ route('changePassword') }}"--}}
                                         {{--class="itemLkMenu @if(Request::is('changePasswordPage')) lkMenuActive @endif">--}}
                                         {{--<span class="vnutItemMenu"><span--}}
