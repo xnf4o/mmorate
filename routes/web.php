@@ -27,7 +27,7 @@ Route::group(['domain' => $domain], function () {
     Route::get('/', 'PagesController@promo')->name('main');
 //    Route::get('/', 'ServersController@main')->name('main');
 
-    Route::middleware('auth','cors')->prefix('*')->group(function () {
+    Route::middleware('auth','cors')->group(function () {
         Route::get('/profile', 'UserController@profile')->name('profile');
         Route::post('/profile/changeAvatar', 'UserController@updateAvatar')->name('updateAvatar');
         Route::post('/profile/edit', 'UserController@update')->name('profile.edit');
