@@ -1,5 +1,10 @@
 @extends('layouts.site')
 @section('content')
+    @if(!isset($game))
+        @php
+            $game = request()->get('g')
+        @endphp
+    @endif
     <div class="style-bg-content ">
         <div class="content-bg-top">
             <div class="element-desing-1">
