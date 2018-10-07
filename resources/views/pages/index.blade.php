@@ -1,10 +1,5 @@
 @extends('layouts.site')
 @section('content')
-    @if(!isset($game))
-        @php
-            $game = request()->get('g')
-        @endphp
-    @endif
     <div class="style-bg-content ">
         <div class="content-bg-top">
             <div class="element-desing-1">
@@ -17,7 +12,7 @@
                 <img src="../img/elements/elem-3.png" alt="">
             </div>
         </div>
-        <div class="contentLeft @if(isset($game)){{ $game.'-img' }}@endif">
+        <div class="contentLeft {{ $game ?? request()->get('g').'-img' }}">
             <div class="segment-rek-top">
                 <div class="bg-ramka-rek"></div>
                 <a href=""><img src="../img/rk/bn468.png" alt=""></a>
