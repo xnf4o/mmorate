@@ -30,12 +30,6 @@
                                 <input type="text" class="text-ing-lk" name="name" value="{{ old('name') }}" required
                                        minlength="3">
                             </div>
-                            <div class="form-group-lk">
-                                <span class="reteIcon">X</span>
-                                <label>Введите рейты:</label>
-                                <input type="number" class="text-ing-lk customInputRate" name="rate"
-                                       value="{{ old('rate') }}" required>
-                            </div>
                             <div class="block-select-lk">
                                 <label>Выбирите тип мира:</label>
                                 <div class="item-select-lk">
@@ -48,6 +42,17 @@
                                         <option value="ffapvp">FFAPVP</option>
                                     </select>
                                 </div>
+                            </div>
+                            <div class="text-area-lk-srv">
+                                <label>Описание мира:</label>
+                                <textarea class="textarea-style-lk"
+                                          name="description" required minlength="30">{{ old('description') }}</textarea>
+                            </div>
+                            <div class="form-group-lk">
+                                <span class="reteIcon">X</span>
+                                <label>Введите рейты:</label>
+                                <input type="number" class="text-ing-lk customInputRate" name="rate"
+                                       value="{{ old('rate') }}" required>
                             </div>
                             <div class="block-select-lk">
                                 <label>Есть ли донат?:</label>
@@ -68,11 +73,6 @@
                             </div>
                         </div>
                         <div class="clear"></div>
-                        <div class="text-area-lk-srv">
-                            <label>Описание мира:</label>
-                            <textarea class="textarea-style-lk"
-                                      name="description" required minlength="30">{{ old('description') }}</textarea>
-                        </div>
                         <div class="leftBlockLk">
 
                             <div class="form-group-lk">

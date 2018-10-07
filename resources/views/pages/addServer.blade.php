@@ -55,184 +55,37 @@
                                         <span class="error-message">Введите название сервера.</span>
                                     @endif
                                 </div>
-                                <div class="block-select-lk">
-                                    <label>Выбирите тип мира:</label>
-                                    <div class="item-select-lk">
-                                        <select name="type" required>
-                                            <option value="normal">Normal</option>
-                                            <option value="pvp">PVP</option>
-                                            <option value="pve">PVE</option>
-                                            <option value="rp">RP</option>
-                                            <option value="rppvp">RPPVP</option>
-                                            <option value="ffapvp">FFAPVP</option>
-                                        </select>
-                                    </div>
+                                <div class="form-group-lk">
+                                    <label>Сайт сервера:</label>
+                                    <input type="url"
+                                           class="text-ing-lk {{ $errors->has('site') ? 'error-input' : '' }}"
+                                           name="site" value="{{ old('site') }}" placeholder="http://site.ru" required>
+                                    @if ($errors->has('site'))
+                                        <span class="error-message">Ссылка на сайт должны быть вида http://site.ru.</span>
+                                    @endif
                                 </div>
-                                <div class="block-select-lk">
-                                    <label>Номер версии:</label>
-                                    <div class="item-select-lk">
-                                        <select name="versionNumber" required>
-                                            @if(request()->get('g') == 'lineage')
-                                                <option value="Saga 1: The Chaotic Chronicles">Saga 1: The Chaotic Chronicles</option>
-                                                <option value="Prelude">Prelude</option>
-                                                <option value="Chronicle 1: Harbingers of War">Chronicle 1: Harbingers of War</option>
-                                                <option value="Chronicle 2: Age of Splendor">Chronicle 2: Age of Splendor</option>
-                                                <option value="Chronicle 3: Rise of Darkness">Chronicle 3: Rise of Darkness</option>
-                                                <option value="Chronicle 4: Scions of Destiny">Chronicle 4: Scions of Destiny</option>
-                                                <option value="Chronicle 5: Oath of Blood">Chronicle 5: Oath of Blood</option>
-                                                <option value="Saga 2: The Chaotic Throne">Saga 2: The Chaotic Throne</option>
-                                                <option value="Interlude">Interlude</option>
-                                                <option value="The 1st Throne: The Kamael">The 1st Throne: The Kamael</option>
-                                                <option value="The 1st Throne: Hellbound">The 1st Throne: Hellbound</option>
-                                                <option value="The 2nd Throne: Gracia (Part 1, Part 2)">The 2nd Throne: Gracia (Part 1, Part 2)</option>
-                                                <option value="The 2nd Throne: Gracia Final">The 2nd Throne: Gracia Final</option>
-                                                <option value="Gracia Plus (Epiloque)">Gracia Plus (Epiloque)</option>
-                                                <option value="The 2nd Throne: Freya">The 2nd Throne: Freya</option>
-                                            @elseif(request()->get('g') == 'aion')
-                                                <option value="v1.5">v1.5</option>
-                                                <option value="v1.9">v1.9</option>
-                                                <option value="v2.0">v2.0</option>
-                                                <option value="v2.1">v2.1</option>
-                                                <option value="v2.5">v2.5</option>
-                                                <option value="v2.6">v2.6</option>
-                                                <option value="v2.7">v2.7</option>
-                                                <option value="v3.0">v3.0</option>
-                                                <option value="v3.5">v3.5</option>
-                                                <option value="v3.7">v3.7</option>
-                                                <option value="v3.9">v3.9</option>
-                                                <option value="v4.0">v4.0</option>
-                                                <option value="v4.3">v4.3</option>
-                                                <option value="v4.">v4.5</option>
-                                                <option value="v4.5.2">v4.5.2</option>
-                                                <option value="v4.5.10">v4.5.10</option>
-                                                <option value="4.5.0.16">4.5.0.16</option>
-                                                <option value="v4.6">v4.6</option>
-                                                <option value="v4.7.0">v4.7.0</option>
-                                                <option value="v4.7.5">v4.7.5</option>
-                                                <option value="4.8">4.8</option>
-                                                <option value="v4.9">v4.9</option>
-                                                <option value="v4.9.1">v4.9.1</option>
-                                                <option value="v5.0">v5.0</option>
-                                                <option value="v5.1">v5.1</option>
-                                                <option value="v5.3">v5.3</option>
-                                                <option value="v5.6">v5.6</option>
-                                            @elseif(request()->get('g') == 'wow')
-                                                <option value="1.12.x">1.12.x</option>
-                                                <option value="2.4.3">2.4.3</option>
-                                                <option value="3.3.5">3.3.5</option>
-                                                <option value="4.0.6a">4.0.6a</option>
-                                                <option value="4.3.4">4.3.4</option>
-                                                <option value="5.0.5">5.0.5</option>
-                                                <option value="5.4.1">5.4.1</option>
-                                                <option value="5.4.2">5.4.2</option>
-                                                <option value="5.1.0">5.1.0</option>
-                                                <option value="3.3.5a">3.3.5a</option>
-                                                <option value="5.4.8">5.4.8</option>
-                                                <option value="6.0.3">6.0.3</option>
-                                                <option value="6.1.2">6.1.2</option>
-                                                <option value="6.2.3">6.2.3</option>
-                                                <option value="7.0.1">7.0.1</option>
-                                                <option value="7.0.3">7.0.3</option>
-                                                <option value="6.2.4">6.2.4</option>
-                                                <option value="7.1.0">7.1.0</option>
-                                                <option value="7.1.5">7.1.5</option>
-                                                <option value="7.2.0">7.2.0</option>
-                                                <option value="7.2.5">7.2.5</option>
-                                                <option value="7.3.2">7.3.2</option>
-                                                <option value="7.3.5">7.3.5</option>
-                                            @elseif(request()->get('g') == 'mu')
-                                                <option value="S1">S1</option>
-                                                <option value="S2">S2</option>
-                                                <option value="S3">S3</option>
-                                                <option value="S4">S4</option>
-                                                <option value="S5">S5</option>
-                                                <option value="S6">S6</option>
-                                                <option value="S8">S8</option>
-                                                <option value="S7">S7</option>
-                                                <option value="S9">S9</option>
-                                                <option value="S10">S10</option>
-                                                <option value="S11">S11</option>
-                                                <option value="S12">S12</option>
-                                                <option value="S13">S13</option>
-                                                <option value="97d-99i">97d-99i</option>
-                                            @elseif(request()->get('g') == 'rf')
-                                                <option value="1.5">1.5</option>
-                                                <option value="2.1.1">2.1.1</option>
-                                                <option value="2.1.5">2.1.5</option>
-                                                <option value="2.1.5.2">2.1.5.2</option>
-                                                <option value="2.1.6">2.1.6</option>
-                                                <option value="2.2.3">2.2.3</option>
-                                                <option value="2.2.3.2">2.2.3.2</option>
-                                                <option value="2.2.4">2.2.4</option>
-                                                <option value="18.2.6">18.2.6</option>
-                                            @elseif(request()->get('g') == 'jade')
-                                                <option value="3.0.1">3.0.1</option>
-                                                <option value="3.0.9">3.0.9</option>
-                                                <option value="3.1.1">3.1.1</option>
-                                                <option value="2.2.8">2.2.8</option>
-                                                <option value="1.3.6">1.3.6</option>
-                                                <option value="4.0.0">4.0.0</option>
-                                                <option value="4.2.0">4.2.0</option>
-                                                <option value="4.4.0">4.4.0</option>
-                                            @elseif(request()->get('g') == 'perfect')
-                                                <option value="1.2.6">1.2.6</option>
-                                                <option value="1.3.6">1.3.6</option>
-                                                <option value="1.4.0">1.4.0</option>
-                                                <option value="1.4.1">1.4.1</option>
-                                                <option value="1.4.2">1.4.2</option>
-                                                <option value="1.4.4">1.4.4</option>
-                                                <option value="1.4.5">1.4.5</option>
-                                                <option value="1.4.6">1.4.6</option>
-                                                <option value="1.4.7">1.4.7</option>
-                                                <option value="1.4.8">1.4.8</option>
-                                                <option value="1.5.0">1.5.0</option>
-                                                <option value="1.5.1">1.5.1</option>
-                                                <option value="1.5.3">1.5.3</option>
-                                                <option value="1.5.5">1.5.5</option>
-                                                <option value="1.5.6">1.5.6</option>
-                                                <option value="1.5.7">1.5.7</option>
-                                                <option value="1.6.0">1.6.0</option>
-                                            @endif
-                                        </select>
-                                        <a href="{{ route('support') }}">Нет необходимой версии?</a>
-                                    </div>
+                                <div class="text-area-lk">
+                                    <label>Кратакое описание сервера:</label>
+                                    <textarea
+                                            class="textarea-style-lk {{ $errors->has('description') ? 'error-input' : '' }}"
+                                            name="description" required minlength="30">{{ old('description') }}</textarea>
+                                    @if ($errors->has('description'))
+                                        <span class="error-message">Описание сервера должно быть не менее 80 символов.</span>
+                                    @endif
                                 </div>
-                                <div class="block-select-lk">
-                                    <label>Модификации:</label>
-                                    <div class="item-select-lk">
-                                        <select name="modification">
-                                            <option value="0">Нет</option>
-                                            <option value="1">Минимальные</option>
-                                            <option value="2">Средние</option>
-                                            <option value="3">Большие</option>
-                                            <option value="4">Баланс классов</option>
-                                            <option value="5">Дисбаланс</option>
-                                        </select>
-                                    </div>
+                                <div class="text-area-lk">
+                                    <label>Полное описание сервера:</label>
+                                    <textarea
+                                            class="textarea-style-lk {{ $errors->has('fdescription') ? 'error-input' : '' }}"
+                                            name="fdescription" required minlength="30">{{ old('fdescription') }}</textarea>
+                                    @if ($errors->has('fdescription'))
+                                        <span class="error-message">Полное описание сервера должно быть не менее 80 символов.</span>
+                                    @endif
                                 </div>
-                                <div class="block-select-lk">
-                                    <label>Есть ли донат?:</label>
-                                    <div class="item-select-lk">
-                                        <select name="donate" required>
-                                            <option value="min">Минимальный</option>
-                                            <option value="mid">Средний</option>
-                                            <option value="max">Большой</option>
-                                            <option value="1">Вещи, влияющие на экономику</option>
-                                            <option value="2">Вещи, не влияющие на экономику</option>
-                                        </select>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="block-select-lk">
-                                    <label>Статус:</label>
-                                    <div class="item-select-lk">
-                                        <select name="status" required>
-                                            <option value="open">Открытый</option>
-                                            <option value="openBeta">Открытый Бета тест</option>
-                                            <option value="closedBeta">Закрытый Бета тест</option>
-                                            <option value="closed">Закрытый</option>
-                                        </select>
-                                    </div>
+                                <div class="form-group-lk">
+                                    <label>Видио трейлер:</label>
+                                    <input type="url" class="text-ing-lk" name="trailer" placeholder="Ссылка на Youtube"
+                                           value="{{ old('trailer') }}">
                                 </div>
                                 <div class="block-select-lk">
                                     <label>Выбирите страну:</label>
@@ -514,19 +367,190 @@
                                     <input type="checkbox" id="check-1" class="lkCheckSucsess" name="international">
                                     <label for="check-1">Интернацианальный</label>
                                 </div>
-                                <div class="form-group-lk">
-                                    <label>Сайт сервера:</label>
-                                    <input type="url"
-                                           class="text-ing-lk {{ $errors->has('site') ? 'error-input' : '' }}"
-                                           name="site" value="{{ old('site') }}" placeholder="http://site.ru" required>
-                                    @if ($errors->has('site'))
-                                        <span class="error-message">Ссылка на сайт должны быть вида http://site.ru.</span>
-                                    @endif
-                                </div>
-                                <div class="form-group-lk">
-                                    <label>Видио трейлер:</label>
-                                    <input type="url" class="text-ing-lk" name="trailer" placeholder="Ссылка на Youtube"
-                                           value="{{ old('trailer') }}">
+                                {{--<div class="block-select-lk">--}}
+                                    {{--<label>Выбирите тип мира:</label>--}}
+                                    {{--<div class="item-select-lk">--}}
+                                        {{--<select name="type" required>--}}
+                                            {{--<option value="normal">Normal</option>--}}
+                                            {{--<option value="pvp">PVP</option>--}}
+                                            {{--<option value="pve">PVE</option>--}}
+                                            {{--<option value="rp">RP</option>--}}
+                                            {{--<option value="rppvp">RPPVP</option>--}}
+                                            {{--<option value="ffapvp">FFAPVP</option>--}}
+                                        {{--</select>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="block-select-lk">--}}
+                                    {{--<label>Номер версии:</label>--}}
+                                    {{--<div class="item-select-lk">--}}
+                                        {{--<select name="versionNumber" required>--}}
+                                            {{--@if(request()->get('g') == 'lineage')--}}
+                                                {{--<option value="Saga 1: The Chaotic Chronicles">Saga 1: The Chaotic Chronicles</option>--}}
+                                                {{--<option value="Prelude">Prelude</option>--}}
+                                                {{--<option value="Chronicle 1: Harbingers of War">Chronicle 1: Harbingers of War</option>--}}
+                                                {{--<option value="Chronicle 2: Age of Splendor">Chronicle 2: Age of Splendor</option>--}}
+                                                {{--<option value="Chronicle 3: Rise of Darkness">Chronicle 3: Rise of Darkness</option>--}}
+                                                {{--<option value="Chronicle 4: Scions of Destiny">Chronicle 4: Scions of Destiny</option>--}}
+                                                {{--<option value="Chronicle 5: Oath of Blood">Chronicle 5: Oath of Blood</option>--}}
+                                                {{--<option value="Saga 2: The Chaotic Throne">Saga 2: The Chaotic Throne</option>--}}
+                                                {{--<option value="Interlude">Interlude</option>--}}
+                                                {{--<option value="The 1st Throne: The Kamael">The 1st Throne: The Kamael</option>--}}
+                                                {{--<option value="The 1st Throne: Hellbound">The 1st Throne: Hellbound</option>--}}
+                                                {{--<option value="The 2nd Throne: Gracia (Part 1, Part 2)">The 2nd Throne: Gracia (Part 1, Part 2)</option>--}}
+                                                {{--<option value="The 2nd Throne: Gracia Final">The 2nd Throne: Gracia Final</option>--}}
+                                                {{--<option value="Gracia Plus (Epiloque)">Gracia Plus (Epiloque)</option>--}}
+                                                {{--<option value="The 2nd Throne: Freya">The 2nd Throne: Freya</option>--}}
+                                            {{--@elseif(request()->get('g') == 'aion')--}}
+                                                {{--<option value="v1.5">v1.5</option>--}}
+                                                {{--<option value="v1.9">v1.9</option>--}}
+                                                {{--<option value="v2.0">v2.0</option>--}}
+                                                {{--<option value="v2.1">v2.1</option>--}}
+                                                {{--<option value="v2.5">v2.5</option>--}}
+                                                {{--<option value="v2.6">v2.6</option>--}}
+                                                {{--<option value="v2.7">v2.7</option>--}}
+                                                {{--<option value="v3.0">v3.0</option>--}}
+                                                {{--<option value="v3.5">v3.5</option>--}}
+                                                {{--<option value="v3.7">v3.7</option>--}}
+                                                {{--<option value="v3.9">v3.9</option>--}}
+                                                {{--<option value="v4.0">v4.0</option>--}}
+                                                {{--<option value="v4.3">v4.3</option>--}}
+                                                {{--<option value="v4.">v4.5</option>--}}
+                                                {{--<option value="v4.5.2">v4.5.2</option>--}}
+                                                {{--<option value="v4.5.10">v4.5.10</option>--}}
+                                                {{--<option value="4.5.0.16">4.5.0.16</option>--}}
+                                                {{--<option value="v4.6">v4.6</option>--}}
+                                                {{--<option value="v4.7.0">v4.7.0</option>--}}
+                                                {{--<option value="v4.7.5">v4.7.5</option>--}}
+                                                {{--<option value="4.8">4.8</option>--}}
+                                                {{--<option value="v4.9">v4.9</option>--}}
+                                                {{--<option value="v4.9.1">v4.9.1</option>--}}
+                                                {{--<option value="v5.0">v5.0</option>--}}
+                                                {{--<option value="v5.1">v5.1</option>--}}
+                                                {{--<option value="v5.3">v5.3</option>--}}
+                                                {{--<option value="v5.6">v5.6</option>--}}
+                                            {{--@elseif(request()->get('g') == 'wow')--}}
+                                                {{--<option value="1.12.x">1.12.x</option>--}}
+                                                {{--<option value="2.4.3">2.4.3</option>--}}
+                                                {{--<option value="3.3.5">3.3.5</option>--}}
+                                                {{--<option value="4.0.6a">4.0.6a</option>--}}
+                                                {{--<option value="4.3.4">4.3.4</option>--}}
+                                                {{--<option value="5.0.5">5.0.5</option>--}}
+                                                {{--<option value="5.4.1">5.4.1</option>--}}
+                                                {{--<option value="5.4.2">5.4.2</option>--}}
+                                                {{--<option value="5.1.0">5.1.0</option>--}}
+                                                {{--<option value="3.3.5a">3.3.5a</option>--}}
+                                                {{--<option value="5.4.8">5.4.8</option>--}}
+                                                {{--<option value="6.0.3">6.0.3</option>--}}
+                                                {{--<option value="6.1.2">6.1.2</option>--}}
+                                                {{--<option value="6.2.3">6.2.3</option>--}}
+                                                {{--<option value="7.0.1">7.0.1</option>--}}
+                                                {{--<option value="7.0.3">7.0.3</option>--}}
+                                                {{--<option value="6.2.4">6.2.4</option>--}}
+                                                {{--<option value="7.1.0">7.1.0</option>--}}
+                                                {{--<option value="7.1.5">7.1.5</option>--}}
+                                                {{--<option value="7.2.0">7.2.0</option>--}}
+                                                {{--<option value="7.2.5">7.2.5</option>--}}
+                                                {{--<option value="7.3.2">7.3.2</option>--}}
+                                                {{--<option value="7.3.5">7.3.5</option>--}}
+                                            {{--@elseif(request()->get('g') == 'mu')--}}
+                                                {{--<option value="S1">S1</option>--}}
+                                                {{--<option value="S2">S2</option>--}}
+                                                {{--<option value="S3">S3</option>--}}
+                                                {{--<option value="S4">S4</option>--}}
+                                                {{--<option value="S5">S5</option>--}}
+                                                {{--<option value="S6">S6</option>--}}
+                                                {{--<option value="S8">S8</option>--}}
+                                                {{--<option value="S7">S7</option>--}}
+                                                {{--<option value="S9">S9</option>--}}
+                                                {{--<option value="S10">S10</option>--}}
+                                                {{--<option value="S11">S11</option>--}}
+                                                {{--<option value="S12">S12</option>--}}
+                                                {{--<option value="S13">S13</option>--}}
+                                                {{--<option value="97d-99i">97d-99i</option>--}}
+                                            {{--@elseif(request()->get('g') == 'rf')--}}
+                                                {{--<option value="1.5">1.5</option>--}}
+                                                {{--<option value="2.1.1">2.1.1</option>--}}
+                                                {{--<option value="2.1.5">2.1.5</option>--}}
+                                                {{--<option value="2.1.5.2">2.1.5.2</option>--}}
+                                                {{--<option value="2.1.6">2.1.6</option>--}}
+                                                {{--<option value="2.2.3">2.2.3</option>--}}
+                                                {{--<option value="2.2.3.2">2.2.3.2</option>--}}
+                                                {{--<option value="2.2.4">2.2.4</option>--}}
+                                                {{--<option value="18.2.6">18.2.6</option>--}}
+                                            {{--@elseif(request()->get('g') == 'jade')--}}
+                                                {{--<option value="3.0.1">3.0.1</option>--}}
+                                                {{--<option value="3.0.9">3.0.9</option>--}}
+                                                {{--<option value="3.1.1">3.1.1</option>--}}
+                                                {{--<option value="2.2.8">2.2.8</option>--}}
+                                                {{--<option value="1.3.6">1.3.6</option>--}}
+                                                {{--<option value="4.0.0">4.0.0</option>--}}
+                                                {{--<option value="4.2.0">4.2.0</option>--}}
+                                                {{--<option value="4.4.0">4.4.0</option>--}}
+                                            {{--@elseif(request()->get('g') == 'perfect')--}}
+                                                {{--<option value="1.2.6">1.2.6</option>--}}
+                                                {{--<option value="1.3.6">1.3.6</option>--}}
+                                                {{--<option value="1.4.0">1.4.0</option>--}}
+                                                {{--<option value="1.4.1">1.4.1</option>--}}
+                                                {{--<option value="1.4.2">1.4.2</option>--}}
+                                                {{--<option value="1.4.4">1.4.4</option>--}}
+                                                {{--<option value="1.4.5">1.4.5</option>--}}
+                                                {{--<option value="1.4.6">1.4.6</option>--}}
+                                                {{--<option value="1.4.7">1.4.7</option>--}}
+                                                {{--<option value="1.4.8">1.4.8</option>--}}
+                                                {{--<option value="1.5.0">1.5.0</option>--}}
+                                                {{--<option value="1.5.1">1.5.1</option>--}}
+                                                {{--<option value="1.5.3">1.5.3</option>--}}
+                                                {{--<option value="1.5.5">1.5.5</option>--}}
+                                                {{--<option value="1.5.6">1.5.6</option>--}}
+                                                {{--<option value="1.5.7">1.5.7</option>--}}
+                                                {{--<option value="1.6.0">1.6.0</option>--}}
+                                            {{--@endif--}}
+                                        {{--</select>--}}
+                                        {{--<a href="{{ route('support') }}">Нет необходимой версии?</a>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="block-select-lk">--}}
+                                    {{--<label>Модификации:</label>--}}
+                                    {{--<div class="item-select-lk">--}}
+                                        {{--<select name="modification">--}}
+                                            {{--<option value="0">Нет</option>--}}
+                                            {{--<option value="1">Минимальные</option>--}}
+                                            {{--<option value="2">Средние</option>--}}
+                                            {{--<option value="3">Большие</option>--}}
+                                            {{--<option value="4">Баланс классов</option>--}}
+                                            {{--<option value="5">Дисбаланс</option>--}}
+                                        {{--</select>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="block-select-lk">--}}
+                                    {{--<label>Есть ли донат?:</label>--}}
+                                    {{--<div class="item-select-lk">--}}
+                                        {{--<select name="donate" required>--}}
+                                            {{--<option value="min">Минимальный</option>--}}
+                                            {{--<option value="mid">Средний</option>--}}
+                                            {{--<option value="max">Большой</option>--}}
+                                            {{--<option value="1">Вещи, влияющие на экономику</option>--}}
+                                            {{--<option value="2">Вещи, не влияющие на экономику</option>--}}
+                                        {{--</select>--}}
+                                        {{--</select>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="block-select-lk">--}}
+                                    {{--<label>Статус:</label>--}}
+                                    {{--<div class="item-select-lk">--}}
+                                        {{--<select name="status" required>--}}
+                                            {{--<option value="open">Открытый</option>--}}
+                                            {{--<option value="openBeta">Открытый Бета тест</option>--}}
+                                            {{--<option value="closedBeta">Закрытый Бета тест</option>--}}
+                                            {{--<option value="closed">Закрытый</option>--}}
+                                        {{--</select>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                <div class="block-select-lk">
+                                    <input type="checkbox" id="check-2" class="lkCheckSucsess" name="adult">
+                                    <label for="check-2">Ограничение “Только для совершенолетних”</label> <br>
+                                    <input type="checkbox" id="check-3" class="lkCheckSucsess" name="bonus">
+                                    <label for="check-3">Начисляете ли Вы игрокам бонусы за голосование?</label>
                                 </div>
                                 <div class="form-group-lk">
                                     <label>Введите теги:</label>
@@ -534,47 +558,23 @@
                                            value="{{ old('tags') }}">
                                 </div>
                             </div>
-                            <div class="rightBlockLk">
-                            </div>
-                            <div class="clear"></div>
-                            <div class="text-area-lk">
-                                <label>Кратакое описание сервера:</label>
-                                <textarea
-                                        class="textarea-style-lk {{ $errors->has('description') ? 'error-input' : '' }}"
-                                        name="description" required minlength="30">{{ old('description') }}</textarea>
-                                @if ($errors->has('description'))
-                                    <span class="error-message">Описание сервера должно быть не менее 80 символов.</span>
-                                @endif
-                            </div>
-                            <div class="text-area-lk">
-                                <label>Полное описание сервера:</label>
-                                <textarea
-                                        class="textarea-style-lk {{ $errors->has('fdescription') ? 'error-input' : '' }}"
-                                        name="fdescription" required minlength="30">{{ old('fdescription') }}</textarea>
-                                @if ($errors->has('fdescription'))
-                                    <span class="error-message">Полное описание сервера должно быть не менее 80 символов.</span>
-                                @endif
-                            </div>
-                            <p class="line-razdel"></p>
-                            <div class="block-select-lk">
-                                <input type="checkbox" id="check-2" class="lkCheckSucsess" name="adult">
-                                <label for="check-2">Ограничение “Только для совершенолетних”</label> <br>
-                                <input type="checkbox" id="check-3" class="lkCheckSucsess" name="bonus">
-                                <label for="check-3">Начисляете ли Вы игрокам бонусы за голосование?</label>
-                            </div>
-                            <div class="block-select-lk" id="vote_description" style="display: none;">
-                                <label>Правила голосования для игроков:</label>
-                                {{--<div class="item-select-lk">--}}
-                                {{--<select>--}}
-                                {{--<option>Ник персоанажа</option>--}}
-                                {{--<option>Ник персоанажа</option>--}}
-                                {{--<option>Ник персоанажа</option>--}}
-                                {{--<option>Ник персоанажа</option>--}}
-                                {{--</select>--}}
-                                {{--</div>--}}
-                                <textarea class="textarea-style-lk"
-                                          name="vote_description">{{ old('vote_description') }}</textarea>
-                            </div>
+                            {{--<div class="rightBlockLk">--}}
+                            {{--</div>--}}
+                            {{--<div class="clear"></div>--}}
+                            {{--<p class="line-razdel"></p>--}}
+                            {{--<div class="block-select-lk" id="vote_description" style="display: none;">--}}
+                            {{--<label>Правила голосования для игроков:</label>--}}
+                            {{--<div class="item-select-lk">--}}
+                            {{--<select>--}}
+                            {{--<option>Ник персоанажа</option>--}}
+                            {{--<option>Ник персоанажа</option>--}}
+                            {{--<option>Ник персоанажа</option>--}}
+                            {{--<option>Ник персоанажа</option>--}}
+                            {{--</select>--}}
+                            {{--</div>--}}
+                            {{--<textarea class="textarea-style-lk"--}}
+                            {{--name="vote_description">{{ old('vote_description') }}</textarea>--}}
+                            {{--</div>--}}
                             {{--@if ($errors->any())--}}
                             {{--@foreach ($errors->all() as $error)--}}
                             {{--<span class="invalid-feedback" style="margin: 0">--}}
