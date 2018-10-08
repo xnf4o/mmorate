@@ -28,7 +28,7 @@
                     @if(auth()->user()->email_confirmed == 1 and auth()->user()->phone_confirmed == 1)
                         <form action="{{ route('addServer.post') }}" method="post" id="addServerForm">
                             @csrf
-                            <div class="leftBlockLk">
+                            {{--<div class="leftBlockLk">--}}
                                 <div class="block-select-lk">
                                     <label>Выбирите игру:</label>
                                     <div class="item-select-lk">
@@ -557,7 +557,22 @@
                                     <input type="text" class="text-ing-lk" name="tags" placeholder="Через запятую"
                                            value="{{ old('tags') }}">
                                 </div>
+                            <div class="form-group-lk">
+                                <label>Вконтакте:</label>
+                                <input type="text" class="text-ing-lk" name="vk" placeholder=""
+                                       value="{{ old('vk') }}">
                             </div>
+                            <div class="form-group-lk">
+                                <label>Фейсбук:</label>
+                                <input type="text" class="text-ing-lk" name="fb" placeholder=""
+                                       value="{{ old('fb') }}">
+                            </div>
+                            <div class="form-group-lk">
+                                <label>Твиттер:</label>
+                                <input type="text" class="text-ing-lk" name="tw" placeholder=""
+                                       value="{{ old('tw') }}">
+                            </div>
+                            {{--</div>--}}
                             {{--<div class="rightBlockLk">--}}
                             {{--</div>--}}
                             {{--<div class="clear"></div>--}}
