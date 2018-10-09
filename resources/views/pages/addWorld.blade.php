@@ -23,7 +23,7 @@
                     <form action="{{ route('addWorld.post', $server->id) }}" method="post" id="addWorldForm">
                         @csrf
                         <input type="hidden" name="server_id" value="{{ $server->id }}">
-                        <div class="leftBlockLk">
+                        {{--<div class="leftBlockLk">--}}
 
                             <div class="form-group-lk">
                                 <label>Введите название мира:</label>
@@ -71,9 +71,9 @@
                                        value="{{ old('onlineUrl') }}" required>
                                 <span>Введите данные онлайна вручную</span>
                             </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="leftBlockLk">
+                        {{--</div>--}}
+                        {{--<div class="clear"></div>--}}
+                        {{--<div class="leftBlockLk">--}}
 
                             <div class="form-group-lk">
                                 <label>IP:PORT Логин сервера:</label>
@@ -334,7 +334,7 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
+                        {{--</div>--}}
                         <div class="clear"></div>
                         <div class="text-area-lk-srv">
                             <label>Описание модификаций:</label>

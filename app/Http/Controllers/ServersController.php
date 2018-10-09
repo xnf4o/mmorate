@@ -445,7 +445,8 @@ class ServersController extends Controller
         $server = new Servers();
         $server->user_id = Auth::id();
         $server->name = $r->get('name');
-        $server->type = $r->get('type');
+//        $server->type = $r->get('type');
+        $server->type = '0';
         $server->chronicles = $r->get('chronicles');
         $server->game = $r->get('game');
         $server->country = $r->get('country');
