@@ -331,6 +331,8 @@
                                         <option value="1">Минимальные</option>
                                         <option value="2">Средние</option>
                                         <option value="3">Большие</option>
+                                        <option value="4">Вещи, влияющие на экономику</option>
+                                        <option value="5">Вещи, не влияющие на экономику</option>
                                     </select>
                                 </div>
                             </div>
