@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use MMORATE\Comments;
+use MMORATE\Ping;
 use MMORATE\Privilege;
 use MMORATE\Servers;
 use MMORATE\Views;
@@ -705,6 +706,32 @@ class ServersController extends Controller
     }
 
     /**
+     * @param Request $r
+     * @return \Illuminate\Http\JsonResponse
+     * [API] Пинг по айпи через fSock
+     */
+    public function pingApi($ip)
+    {
+        $status = 0;
+        $address = explode(":", $ip);
+        $starttime = microtime(true);
+        try {
+            $file = fsockopen ($address[0], $address[1], $errno, $errstr, 2);
+        }catch(\Exception $ex) {
+            $status = -1;
+        }
+        $stoptime  = microtime(true);
+
+        if ($status or !$file) $status = -1;  // Site is down
+        else {
+            fclose($file);
+            $status = ($stoptime - $starttime) * 1000;
+            $status = floor($status);
+        }
+        return $status;
+    }
+
+    /**
      * Функция для тестов, мы же все любим тесты)))
      */
     public function test($ip = '164.132.205.47:49001')
@@ -819,5 +846,18 @@ class ServersController extends Controller
         $server->save();
 
         return redirect()->back();
+    }
+
+    public function SaveAllWorldsPing(){
+        $worlds = Worlds::all();
+        foreach ($worlds as $world){
+            $ping = new Ping();
+            $ping->ipGame   = $world->IpGame;
+            $ping->ipLogin  = $world->IpLogin;
+            $ping->world    = $world->id;
+            $ping->ipGamePing = $this->pingApi($world->IpGame);
+            $ping->ipLoginPing = $this->pingApi($world->IpLogin);
+            $ping->save();
+        }
     }
 }
