@@ -116,10 +116,10 @@ $(document).ready(function () {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function (response) {
-                if (response.errors) {
-                    $('#ipLogSpan').removeClass('success').addClass('error').html(response.errors);
+                if (response === '-1') {
+                    $('#ipLogSpan').removeClass('success').addClass('error').html('Нет ответа от сервера');
                 } else {
-                    $('#ipLogSpan').removeClass('error').addClass('success').html(response.data);
+                    $('#ipLogSpan').removeClass('error').addClass('success').html('Средний пинг ' + response + ' мс.');
                 }
             }
         });
@@ -135,10 +135,10 @@ $(document).ready(function () {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function (response) {
-                if (response.errors) {
-                    $('#ipGameSpan').removeClass('success').addClass('error').html(response.errors);
+                if (response === '-1') {
+                    $('#ipGameSpan').removeClass('success').addClass('error').html('Нет ответа от сервера');
                 } else {
-                    $('#ipGameSpan').removeClass('error').addClass('success').html(response.data);
+                    $('#ipGameSpan').removeClass('error').addClass('success').html('Средний пинг ' + response + ' мс.');
                 }
             }
         });

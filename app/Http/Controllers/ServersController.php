@@ -2,15 +2,14 @@
 
 namespace MMORATE\Http\Controllers;
 
-use Artesaos\SEOTools\SEOMeta;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use MMORATE\Comments;
 use MMORATE\Privilege;
 use MMORATE\Servers;
-use MMORATE\Comments;
-use Illuminate\Http\Request;
 use MMORATE\Views;
 use MMORATE\Votes;
-use Illuminate\Support\Facades\Auth;
 use MMORATE\Worlds;
 use PheRum\BBCode\Facades\BBCode;
 use SEO;
@@ -686,26 +685,29 @@ class ServersController extends Controller
      */
     public function ping(Request $r)
     {
+        $status = 0;
         $address = explode(":", $r->get('ip'));
-        $ta = microtime(true);
+        $starttime = microtime(true);
         try {
-            if (!isset($address[1])) throw new \Exception('Адрес введен некорректно');
-            if ($fp = fsockopen($address[0], $address[1], $errno, $errstr, 10)) {
-                $tb = microtime(true);
-                fclose($fp);
-                return response()->json(['data' => "Средний пинг: " . round((($tb - $ta) * 1000), 0) . " мс"]);
-            } else {
-                throw new \Exception("Сервер не отвечает");
-            }
-        } catch (\Exception $e) {
-            return response()->json(['errors' => 'Ошибка']);
+            $file = fsockopen ($address[0], $address[1], $errno, $errstr, 2);
+        }catch(\Exception $ex) {
+            $status = -1;
         }
+        $stoptime  = microtime(true);
+
+        if ($status or !$file) $status = -1;  // Site is down
+        else {
+            fclose($file);
+            $status = ($stoptime - $starttime) * 1000;
+            $status = floor($status);
+        }
+        return $status;
     }
 
     /**
      * Функция для тестов, мы же все любим тесты)))
      */
-    public function test($ip = '164.132.204.61:49001')
+    public function test($ip = '164.132.205.47:49001')
     {
 
     }
