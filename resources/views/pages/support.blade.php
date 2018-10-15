@@ -36,6 +36,11 @@
                             <textarea class="textarea-style"></textarea>
                         </div>
                         <br>
+                        <div class="capcha">{!! Captcha::display() !!}
+                            @if ($errors->has('g-recaptcha-response'))
+                                <span class="error-message">Подтвердите капчу</span>
+                            @endif
+                        </div>
                         <button class="send-comment">Отправить письмо</button>
                     </form>
                 </div>

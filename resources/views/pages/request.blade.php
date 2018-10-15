@@ -35,6 +35,7 @@
                             <label>Опишите проблему</label>
                             <textarea class="textarea-style"></textarea>
                         </div>
+                        ик
                         <button class="send-comment">Отправить письмо</button>
                     </form>
                 </div>
