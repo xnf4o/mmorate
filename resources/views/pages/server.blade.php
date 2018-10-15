@@ -17,7 +17,7 @@
             </div>
             <div class="top-server-list">
                 <div class="title-list-server">
-                    <h1><i class="ico-title"><img src="../img/icon/i-4.png" alt=""></i>Отзывы игроков о сервере
+                    <h1><i class="ico-title"><img src="../img/icon/i-4.png" alt=""></i>Описание сервера
                         <span class="miniText">({{ $server->reviews }} отзывов)</span></h1>
                     <div class="clear"></div>
                 </div>

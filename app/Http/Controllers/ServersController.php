@@ -355,7 +355,7 @@ class ServersController extends Controller
     public function addComment($id, Request $r)
     {
         $comment = new Comments();
-        $comment->author = Auth::user()->name;
+        $comment->author = Auth::user()->nickname ?? 'Аноним';
         $comment->text = $r->get('text');
         $comment->server_id = $id;
         $comment->rating = $r->get('rating');
