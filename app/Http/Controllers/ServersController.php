@@ -400,7 +400,7 @@ class ServersController extends Controller
         ]);
 
         $vote = Votes::where('user_id', Auth::id())->orderBy('created_at', 'DESC')->first();
-//        if (isset($vote) and $vote->created_at->isToday()) abort('404');
+        if (isset($vote) and ($vote->type == 1 and $vote->created_at->isToday())) abort('404');
 
         $voteCoeff = self::COEF;
         $adBlock = $r->get('adBlockIsEnabled');
