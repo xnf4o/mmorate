@@ -248,6 +248,16 @@ class ServersController extends Controller
     }
 
     /**
+     * @param $id
+     * Редирект на сайт
+     */
+    public function redirectServer($id){
+        $server = Servers::where('link', $id)->first() ?? Servers::where('id', $id)->first();
+        header('Location: ' . $server->site,true, 301);
+        die();
+    }
+
+    /**
      * @param $text
      * @return string
      * Генерирует ключевые слова

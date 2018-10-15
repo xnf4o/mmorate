@@ -29,7 +29,9 @@
                     <div class="number-top-server goldNumber">
                         {{ $server->id }}
                     </div>
-                    <p class="name-server">{{ $server->name }} <a class="link-server"><i
+                    <p class="name-server">{{ $server->name }} <a class="link-server"
+                                                                  href="{{ route('redirectServer', $server->link ?? $server->id) }}"
+                                                                  target="_blank"><i
                                     class="lang-server flag-icon flag-icon-{{ $server->country }}"></i> {{ $server->site }}
                         </a></p>
                     <div class="clear"></div>

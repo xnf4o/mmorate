@@ -12,8 +12,8 @@
 */
 
 
-//$domain = 'mmorate.com';
-$domain = 'mmt.test';
+$domain = 'mmorate.com';
+//$domain = 'mmt.test';
 // Pages
 Route::get('/redirect/{route}', 'UserController@redirect')->name('redirect');
 Route::get('/logout', 'PagesController@logout')->name('logout');
@@ -24,8 +24,8 @@ Route::group(['domain' => $domain], function () {
     Route::get('/support', 'PagesController@support')->name('support');
     Route::get('/request', 'PagesController@request')->name('request');
     Route::get('/faq', 'PagesController@faq')->name('faq');
-//    Route::get('/', 'PagesController@promo')->name('main');
-    Route::get('/', 'ServersController@main')->name('main');
+    Route::get('/', 'PagesController@promo')->name('main');
+//    Route::get('/', 'ServersController@main')->name('main');
 
     Route::middleware('auth','cors')->group(function () {
         Route::get('/profile', 'UserController@profile')->name('profile');
@@ -92,6 +92,7 @@ Route::group(['domain' => $domain], function () {
 });
 
 Route::get('/server/{id}', 'ServersController@server')->name('serverPage');
+Route::get('/server/{id}/url', 'ServersController@redirectServer')->name('redirectServer');
 Route::get('/server/{servId}/worlds/{id}', 'ServersController@world')->name('worldPage');
 Route::post('/server/{id}/addComment', 'ServersController@addComment')->name('serverAddComment');
 
