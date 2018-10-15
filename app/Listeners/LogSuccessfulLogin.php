@@ -30,7 +30,7 @@ class LogSuccessfulLogin
     {
         $user = $event->user;
         $user->last_login_at = date('Y-m-d H:i:s');
-        $user->last_login_ip = $this->request->ip();
+        $user->last_login_ip = $_SERVER['REMOTE_ADDR'];
         $user->save();
     }
 }

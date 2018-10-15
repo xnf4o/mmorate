@@ -199,7 +199,7 @@
                                                             href="{{ route('profile') }}">{{ Auth::user()->name }}</a></span>
                                                 <p class="line-user-uath"></p>
                                                 <p>Предыдущий IP адрес: {{ Auth::user()->last_login_ip }}</p>
-                                                <p>Текущий IP адрес: {{ Request::ip() }}</p>
+                                                <p>Текущий IP адрес: {{ $_SERVER['REMOTE_ADDR'] }}</p>
                                                 <p class="line-user-uath"></p>
                                                 <p>Ваш баланс: {{ Auth::user()->balance }} рублей</p>
                                                 <p class="line-user-uath"></p>
