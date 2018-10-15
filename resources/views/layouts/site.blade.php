@@ -310,9 +310,10 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/localization/messages_ru.min.js"></script>
-            {{--https://github.com/wbb/wysibb--}}
-            <script src="https://cdn.wysibb.com/lang/ru.js"></script>
-            <link rel="stylesheet" href="https://cdn.wysibb.com/css/default/wbbtheme.css"/>
+            {{--http://premiumsoftware.net/cleditor/--}}
+            <link rel="stylesheet" href="{{ asset('js/cleditor/jquery.cleditor.css') }}" />
+            <script src="{{ asset('js/cleditor/jquery.cleditor.min.js') }}"></script>
+            <script src="{{ asset('js/cleditor/jquery.cleditor.bbcode.min.js') }}"></script>
             {{--https://github.com/CodeSeven/toastr--}}
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
             <link rel="stylesheet" href="{{ asset('/css/toastr.style.css') }}"/>

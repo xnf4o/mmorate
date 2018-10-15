@@ -25,9 +25,7 @@ toastr.options = {
 }
 
 $(document).ready(function () {
-    $('textarea:not(".g-recaptcha-response")').wysibb({
-        lang: 'ru',
-    });
+    $('textarea:not(".g-recaptcha-response")').cleditor();
     // Таймер до нового голоса
     const out = $('#timeleft');
     if (out.length != 0) {
