@@ -63,7 +63,8 @@
             @endif
             <div class="{{ $game }}-container">
                 @else
-                    <div class="main-container">
+                    <div class="page_bg_style">
+                    {{--<div class="main-container">--}}
                         @endif
                         <div class="contentLogo">
                             @if(isset($route))
@@ -79,71 +80,73 @@
                             <div class="element-desing-2">
                                 <img src="/img/elements/elem-2.png" alt="">
                             </div>
-                            @guest
-                                <div class="link-lk">
-                                    <a href="{{ route('register') }}" class="link-lk-btn">Создать аккаунт</a>
+                            {{--@guest--}}
+                            <div class="link-lk">
+                                <a href="{{ route('register') }}" class="link-lk-btn">Создать аккаунт</a>
+                            </div>
+                            {{--@else--}}
+                            <div class="menu-block-lk">
+                                <div class="title-menu-lk" onclick="$('.menu-panel-lk').slideToggle();">
+                                    Панель навигации
+                                    <i><img src="/img/image_dop/arr_panel.png" alt=""></i>
                                 </div>
-                            @else
-                                <div class="menu-block-lk">
-                                    <div class="title-menu-lk" onclick="$('.menu-panel-lk').slideToggle();">
-                                        Панель навигации
-                                    </div>
-                                    <div class="menu-panel-lk" style="display: block">
-                                        @if(auth()->user()->is_admin == 1)
-                                            <a href="{{ route('admin.servers') }}" class="itemLkMenu">
-                                                <span class="vnutItemMenu" style="border-top: 0;"><span class="arrMenu">› </span>Панель администратора</span>
-                                            </a>
-                                        @endif
-                                        <a href="{{ route('profile') }}"
-                                           class="itemLkMenu @if(Request::is('profile')) lkMenuActive @endif">
-                                            <span class="vnutItemMenu"><span class="arrMenu">› </span>Настройки профиля</span>
-                                        </a>
-                                        <a href="{{ route('myVotes') }}"
-                                           class="itemLkMenu @if(Request::is('myVotes')) lkMenuActive @endif">
-                                            <span class="vnutItemMenu"><span class="arrMenu">› </span>Мои голоса</span>
-                                        </a>
-                                        {{--@if(MMORATE\Servers::MyCount() != 0)--}}
-                                        <a href="{{ route('myServers') }}"
-                                           class="itemLkMenu @if(Request::is('myServers') or Request::is('editServer')) lkMenuActive @endif">
+                                <div class="menu-panel-lk" style="display: none">
+                                    {{--@if(auth()->user()->is_admin == 1)--}}
+                                    {{--<a href="{{ route('admin.servers') }}" class="itemLkMenu">--}}
+                                    {{--<span class="vnutItemMenu" style="border-top: 0;"><span class="arrMenu">› </span>Панель администратора</span>--}}
+                                    {{--</a>--}}
+                                    {{--@endif--}}
+                                    <a href="{{ route('profile') }}"
+                                       class="itemLkMenu @if(Request::is('profile')) lkMenuActive @endif">
+                                        <span class="vnutItemMenu"><span
+                                                    class="arrMenu">› </span>Настройки профиля</span>
+                                    </a>
+                                    <a href="{{ route('myVotes') }}"
+                                       class="itemLkMenu @if(Request::is('myVotes')) lkMenuActive @endif">
+                                        <span class="vnutItemMenu"><span class="arrMenu">› </span>Мои голоса</span>
+                                    </a>
+                                    {{--@if(MMORATE\Servers::MyCount() != 0)--}}
+                                    <a href="{{ route('myServers') }}"
+                                       class="itemLkMenu @if(Request::is('myServers') or Request::is('editServer')) lkMenuActive @endif">
                                                     <span class="vnutItemMenu"><span
                                                                 class="arrMenu">› </span>Игровые сервера</span>
-                                        </a>
-                                        {{--<a href="{{ route('myServersStat') }}" class="itemLkMenu @if(Request::is('statistic')) lkMenuActive @endif">--}}
-                                        {{--<span class="vnutItemMenu"><span class="arrMenu">› </span>Статистика</span>--}}
-                                        {{--</a>--}}
-                                        {{--@endif--}}
-                                        {{--@if(Request::is('myServers'))--}}
-                                            <a href="{{ route('addServer') . '?g=' . $game ?? '' }}"
-                                               class="itemLkMenu @if(Request::is('addServer')) lkMenuActive @endif">
+                                    </a>
+                                    {{--<a href="{{ route('myServersStat') }}" class="itemLkMenu @if(Request::is('statistic')) lkMenuActive @endif">--}}
+                                    {{--<span class="vnutItemMenu"><span class="arrMenu">› </span>Статистика</span>--}}
+                                    {{--</a>--}}
+                                    {{--@endif--}}
+                                    {{--@if(Request::is('myServers'))--}}
+                                    <a href="{{ route('addServer') . '?g=' . $game ?? '' }}"
+                                       class="itemLkMenu @if(Request::is('addServer')) lkMenuActive @endif">
                                             <span class="vnutItemMenu" style="border-top: 0;"><span
                                                         class="arrMenu">› </span>Добавить сервер</span>
-                                            </a>
-                                        {{--@endif--}}
-                                        {{--<a href="{{ route('changePassword') }}"--}}
-                                        {{--class="itemLkMenu @if(Request::is('changePasswordPage')) lkMenuActive @endif">--}}
-                                        {{--<span class="vnutItemMenu"><span--}}
-                                        {{--class="arrMenu">› </span>Сменить пароль</span>--}}
-                                        {{--</a>--}}
-                                        {{--<a href="{{ route('banners') }}"--}}
-                                        {{--class="itemLkMenu @if(Request::is('ads')) lkMenuActive @endif">--}}
-                                        {{--<span class="vnutItemMenu"><span--}}
-                                        {{--class="arrMenu">› </span>Баннера и кнопки</span>--}}
-                                        {{--</a>--}}
-                                        <a href="{{ route('privileges') }}"
-                                           class="itemLkMenu @if(Request::is('privilege')) lkMenuActive @endif">
-                                            <span class="vnutItemMenu"><span class="arrMenu">› </span>VIP Профиль</span>
-                                        </a>
-                                        <a href="{{ route('ads') }}"
-                                           class="itemLkMenu @if(Request::is('ads')) lkMenuActive @endif">
-                                            <span class="vnutItemMenu"><span class="arrMenu">› </span>Реклама</span>
-                                        </a>
-                                        <a href="{{ route('logout') }}" class="itemLkMenu">
+                                    </a>
+                                    {{--@endif--}}
+                                    {{--<a href="{{ route('changePassword') }}"--}}
+                                    {{--class="itemLkMenu @if(Request::is('changePasswordPage')) lkMenuActive @endif">--}}
+                                    {{--<span class="vnutItemMenu"><span--}}
+                                    {{--class="arrMenu">› </span>Сменить пароль</span>--}}
+                                    {{--</a>--}}
+                                    {{--<a href="{{ route('banners') }}"--}}
+                                    {{--class="itemLkMenu @if(Request::is('ads')) lkMenuActive @endif">--}}
+                                    {{--<span class="vnutItemMenu"><span--}}
+                                    {{--class="arrMenu">› </span>Баннера и кнопки</span>--}}
+                                    {{--</a>--}}
+                                    <a href="{{ route('privileges') }}"
+                                       class="itemLkMenu @if(Request::is('privilege')) lkMenuActive @endif">
+                                        <span class="vnutItemMenu"><span class="arrMenu">› </span>VIP Профиль</span>
+                                    </a>
+                                    <a href="{{ route('ads') }}"
+                                       class="itemLkMenu @if(Request::is('ads')) lkMenuActive @endif">
+                                        <span class="vnutItemMenu"><span class="arrMenu">› </span>Реклама</span>
+                                    </a>
+                                    <a href="{{ route('logout') }}" class="itemLkMenu">
                                             <span class="vnutItemMenu" style="border-bottom: 0;"><span
                                                         class="arrMenu">› </span>Выйти</span>
-                                        </a>
-                                    </div>
+                                    </a>
                                 </div>
-                            @endif
+                            </div>
+                            {{--@endif--}}
                             <div class="segment-rek-sitebar">
                                 <div class="bg-ramka-sitebar"></div>
                                 <a href=""><img src="/img/rk/bn234.png" alt=""></a>
@@ -311,7 +314,7 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/localization/messages_ru.min.js"></script>
             {{--http://premiumsoftware.net/cleditor/--}}
-            <link rel="stylesheet" href="{{ asset('js/cleditor/jquery.cleditor.css') }}" />
+            <link rel="stylesheet" href="{{ asset('js/cleditor/jquery.cleditor.css') }}"/>
             <script src="{{ asset('js/cleditor/jquery.cleditor.min.js') }}"></script>
             <script src="{{ asset('js/cleditor/jquery.cleditor.bbcode.min.js') }}"></script>
             {{--https://github.com/CodeSeven/toastr--}}
@@ -335,6 +338,6 @@
             <script type="text/javascript" src="{{ asset('/js/common.js') }}"></script>
             <script type="text/javascript" src="{{ asset('/js/flipclock.min.js') }}"></script>
             <link rel="stylesheet" href="{{ asset('/css/flipclock.css') }}"/>
-            @yield('scripts')
+        @yield('scripts')
 </body>
 </html>

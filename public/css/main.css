@@ -3264,3 +3264,149 @@ code.button {
 .mt140px{
   margin-top: 140px;
 }
+
+.lang_block{
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(0,-50%);
+}
+.item_lang.ru{
+  display: inline-block;
+  padding: 5px 4px;
+  border-radius: 3px 0 0 3px;
+  border:1px solid #843737;
+  background: #551e20;
+  cursor: pointer;
+}
+.item_lang.en{
+  display: inline-block;
+  padding: 5px 4px;
+  border-radius:0 3px 3px 0;
+  border:1px solid #843737;
+  background: #551e20;
+  position: relative;
+  border-left: 0;
+  margin-left: -3px;
+  cursor: pointer;
+}
+.item_lang.active{
+  opacity: 0.7;
+}
+.menu-item.custom-item-menu:hover{
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ac464a+0,ffffff+63&1+0,0+63 */
+  background: -moz-radial-gradient(center, ellipse cover, rgba(172,70,74,1) 0%, rgba(255,255,255,0) 63%); /* FF3.6-15 */
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(172,70,74,1) 0%,rgba(255,255,255,0) 63%); /* Chrome10-25,Safari5.1-6 */
+  background: radial-gradient(ellipse at center, rgba(172,70,74,1) 0%,rgba(255,255,255,0) 63%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ac464a', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  color: #fff;
+
+}
+.textarea-style{
+  background: #fff;
+}
+.capcha_support{
+  float: right;
+  margin-bottom: 25px;
+}
+.setting_server_panel{
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+.setting_server_panel a{
+  padding: 0 2px;
+}
+.title-list-lk a{
+  font-size: 14px;
+  color: #5f5b4f;
+}
+.message_form{
+  padding: 45px 50px 0 45px;
+}
+.message_form .textarea-style{
+  background: #faf4e5;
+}
+.line_page{
+  border-bottom: 1px solid #fff;
+  border-top: 1px solid #e8cc82;
+  margin-top: 30px;
+}
+.content_message_chat{
+  padding: 40px 50px;
+}
+.content_message_chat h3{
+  color: #674a37;
+  font:18px CalibriBold;
+  margin-bottom: 40px;
+}
+.item_message_user{
+  padding: 20px 25px;
+  border-radius: 4px;
+  border:1px solid #e0d4c4;
+  background: #ece4cb;
+  margin-bottom: 25px;
+}
+.name_user_chat{
+  color: #ff7800;
+  font:17px CalibriBold;
+  margin-bottom: 20px;
+}
+.text_message_chat{
+  color: #674a37;
+  font:15px CalibriBold;
+  margin-bottom: 0;
+}
+.coll_message{
+  display: inline-block;
+  padding: 4px 5px;
+  border-radius: 3px;
+  border:1px solid #ffe9a5;
+  color:#ffe9a5;
+  font:14px CalibriBold;
+}
+.item_message_dialog{
+  position: relative;
+  border-radius: 4px;
+  background: #f6efdb;
+  border-bottom:4px solid #ede2c7;
+  margin-bottom: 25px;
+  padding: 22px 20px;
+}
+.title_dialog{
+  color: #614c3f;
+  font:19px CalibriBold;
+  margin-bottom: 10px;
+}
+.user_dialog{
+  color: #614c3f;
+  font:14px CalibriBold;
+  margin-bottom: 0;
+}
+.user_dialog a{
+  color: #ff7800;
+}
+.link_dialog{
+  position: absolute;
+  display: block;
+  height: 100%;
+  text-align: center;
+  color: #614c3f;
+  font:14px CalibriBold;
+  background: #eadfc0;
+  border-radius: 4px;
+  border:4px solid #f5eccf;
+  right: 0;
+  top: 0;
+  width: 200px;
+  line-height: 86px;
+}
+.link_dialog:hover{
+  color: #614c3f;
+}
+.capcha_pass{
+  margin-bottom: 30px;
+}
+.page_bg_style{
+  background: url('../img/image_dop/bg_page.png') no-repeat top center;
+}
