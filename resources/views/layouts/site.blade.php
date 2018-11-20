@@ -80,11 +80,11 @@
                             <div class="element-desing-2">
                                 <img src="/img/elements/elem-2.png" alt="">
                             </div>
-                            {{--@guest--}}
+                            @guest
                             <div class="link-lk">
                                 <a href="{{ route('register') }}" class="link-lk-btn">Создать аккаунт</a>
                             </div>
-                            {{--@else--}}
+                            @else
                             <div class="menu-block-lk">
                                 <div class="title-menu-lk" onclick="$('.menu-panel-lk').slideToggle();">
                                     Панель навигации
@@ -146,7 +146,7 @@
                                     </a>
                                 </div>
                             </div>
-                            {{--@endif--}}
+                            @endif
                             <div class="segment-rek-sitebar">
                                 <div class="bg-ramka-sitebar"></div>
                                 <a href=""><img src="/img/rk/bn234.png" alt=""></a>
