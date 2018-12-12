@@ -3410,3 +3410,64 @@ code.button {
 .page_bg_style{
   background: url('../img/image_dop/bg_page.png') no-repeat top center;
 }
+.list_ticket{
+  width: 100%;
+
+}
+.list_ticket th{
+  padding: 25px 10px 10px 10px;
+  color: #614c3f;
+  font:16px Calibri;
+}
+.list_ticket td{
+  color: #614c3f;
+  font:15px CalibriBold;
+  padding:20px 10px;
+  border-bottom: 1px solid #f7f3e7;
+}
+.status_close_ticket{
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background: #f60002;
+  border-top: 1px solid #ff7171;
+}
+.status_yel_ticket{
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background: #ffa702;
+  border-top: 1px solid #ffffad;
+}
+.status_blue_ticket{
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background: #008bff;
+  border-top: 1px solid #5de6ff;
+}
+.status_open_ticket{
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background: #11b601;
+  border-top: 1px solid #53ff43;
+}
+.submenu_lk{
+  padding-left: 25px;
+}
+.submenu_lk .vnutItemMenu{
+  font-size: 13px;
+}
+.arrow_slide-menu:after{
+  content: url('../img/image_dop/arr_menu.png');
+  position: absolute;
+  right: 55px;
+  top: 0;
+}
+.lkMenuActive.arrow_slide-menu:after{
+  content: url('../img/image_dop/arr_active.png');
+  position: absolute;
+  right: 55px;
+  top: 0;
+}
