@@ -393,8 +393,8 @@ $(document).ready(function () {
         return false;
     });
 
-    function subMenuSlide(id){
-        $('#submenu_lk_'+id).slideToggle(500);
-    }
 
 });
+function subMenuSlide(id){
+    $('#submenu_lk_'+id).slideToggle(500);
+}

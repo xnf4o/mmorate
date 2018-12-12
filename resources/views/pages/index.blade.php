@@ -54,7 +54,9 @@
                         <div class="number-top-server silverNumber">
                             {{ $i }}
                         </div>
-                        <p class="name-server">{{ $server->name }} <a class="link-server"
+                        <p class="name-server">
+                            <a href="{{ route('serverPage', $server->id) }}" style="color: inherit;">{{ $server->name }}</a>
+                            <a class="link-server"
                                                                       href="{{ route('redirectServer', $server->link ?? $server->id) }}"
                                                                       target="_blank"><i
                                         class="lang-server flag-icon flag-icon-{{ $server->country }}"></i> {{ $server->site }}
