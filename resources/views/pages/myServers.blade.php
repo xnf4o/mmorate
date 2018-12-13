@@ -45,8 +45,16 @@
                                     баллов</span>
                             </div>
                             <div class="link-list-server">
-                                <a href="{{ route('editServer', $server->id) }}"><img src="img/icon/l1.png" alt=""></a>
-                                <a href="{{ route('serverStat', $server->id) }}"><img src="img/icon/l2.png" alt=""></a>
+                                <div class="setting_server_panel">
+                                    <a href=""><img src="img/image_dop/s6.png" alt=""></a>
+                                    <a href=""><img src="img/image_dop/s5.png" alt=""></a>
+                                    <a href=""><img src="img/image_dop/s4.png" alt=""></a>
+                                    <a href=""><img src="img/image_dop/s3.png" alt=""></a>
+                                    <a href=""><img src="img/image_dop/s2.png" alt=""></a>
+                                    <a href=""><img src="img/image_dop/s1.png" alt=""></a>
+                                </div>
+                                {{--<a href="{{ route('editServer', $server->id) }}"><img src="img/icon/l1.png" alt=""></a>--}}
+                                {{--<a href="{{ route('serverStat', $server->id) }}"><img src="img/icon/l2.png" alt=""></a>--}}
                                 <div class="clear"></div>
                                 <a href="{{ $server->site }}" class="link-site-game">{{ $server->site }}</a>
                             </div>
