@@ -7,6 +7,7 @@ use MMORATE\Servers;
 
 class AdminController extends Controller
 {
+    $games = ["aion","jade","lineage","mu","perfect","wow"];
     public function main()
     {
         return view('admin.main');
@@ -18,41 +19,13 @@ class AdminController extends Controller
         return view('admin.serverList', compact('servers'));
     }
 
-    public function aion()
-    {
-        $servers = Servers::aion()->where('status', '1')->get();
-        return view('admin.serverList', compact('servers'));
-    }
-
-    public function jade()
-    {
-        $servers = Servers::jade()->where('status', '1')->get();
-        return view('admin.serverList', compact('servers'));
-    }
-
-    public function lineage()
-    {
-        $servers = Servers::lineage()->where('status', '1')->get();
-        return view('admin.serverList', compact('servers'));
-    }
-
-    public function mu()
-    {
-        $servers = Servers::mu()->where('status', '1')->get();
-        return view('admin.serverList', compact('servers'));
-    }
-
-    public function perfect()
-    {
-        $servers = Servers::perfect()->where('status', '1')->get();
-        return view('admin.serverList', compact('servers'));
-    }
-
-    public function wow()
-    {
-        $servers = Servers::wow()->where('status', '1')->get();
-        return view('admin.serverList', compact('servers'));
-    }
+    foreach($games as $game){
+         public function {$game}()
+        {
+            $servers = Servers::{$game}()->where('status', '1')->get();
+            return view('admin.serverList', compact('servers'));
+        }
+    } 
 
     public function editServer($id)
     {
