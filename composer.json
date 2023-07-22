@@ -14,7 +14,7 @@
         "intervention/image": "^2.4",
         "kyslik/column-sortable": "^5.6",
         "laravel-notification-channels/smsc-ru": "^2.0",
-        "laravel/framework": "6.20.12",
+        "laravel/framework": "5.6.40",
         "laravel/tinker": "^1.0",
         "pherum/laravel-bbcode": "^1.0"
     },
